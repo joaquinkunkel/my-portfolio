@@ -282,7 +282,7 @@ const LivingRoom = ({
         <animated.mesh>
           <Text
             position={[0, isMobile ? 7.9 : 5.7, 0]}
-            fontSize={isMobile ? 0.65 : 0.3}
+            fontSize={isMobile ? 0.65 : 0.25}
             color={isDarkMode ? "white" : "#383842"}
             anchorX="center"
             anchorY="middle"
@@ -290,7 +290,7 @@ const LivingRoom = ({
             font="/fonts/Supply-Regular.otf"
             material={isDarkMode ? textShaderRef.current : undefined}
           >
-            Designer who codes
+            Product designer who codes • 8 yrs experience
           </Text>
         </animated.mesh>
       </Billboard>
@@ -322,7 +322,7 @@ const LivingRoom = ({
             </Text>
             <Text
               position={[0, isMobile ? 3.5 : 3.55, 0]}
-              fontSize={isMobile ? 0.35 : 0.28}
+              fontSize={isMobile ? 0.35 : 0.24}
               color={isDarkMode ? "white" : "#383842"}
               font="/fonts/Supply-Regular.otf"
             >
@@ -330,7 +330,7 @@ const LivingRoom = ({
             </Text>
             {!isMobile && <Text
               position={[0, 3.2, 0]}
-              fontSize={0.28}
+              fontSize={0.24}
               color={"#888888"}
               font="/fonts/Supply-Regular.otf"
             >
@@ -414,15 +414,15 @@ const LivingRoom = ({
             </Text>
             <Text
               position={[0, isMobile ? 3.5 : 3.15, 0]}
-              fontSize={isMobile ? 0.35 : 0.28}
+              fontSize={isMobile ? 0.35 : 0.24}
               color={isDarkMode ? "white" : "#383842"}
               font="/fonts/Supply-Regular.otf"
             >
               Design, motion,
             </Text>
             <Text
-              position={[0, isMobile ? 3 : 2.8, 0]}
-              fontSize={isMobile ? 0.35 : 0.28}
+              position={[0, isMobile ? 3 : 2.83, 0]}
+              fontSize={isMobile ? 0.35 : 0.24}
               color={isDarkMode ? "white" : "#383842"}
               font="/fonts/Supply-Regular.otf"
             >
@@ -497,7 +497,7 @@ const LivingRoom = ({
             </Text>
             <Text
               position={[0, isMobile ? 2.55 : 2.58, 0]}
-              fontSize={isMobile ? 0.35 : 0.28}
+              fontSize={isMobile ? 0.35 : 0.24}
               color={isDarkMode ? "white" : "#383842"}
               font="/fonts/Supply-Regular.otf"
             >
@@ -505,7 +505,7 @@ const LivingRoom = ({
             </Text>
             {!isMobile && <Text
               position={[0, 2.2, 0]}
-              fontSize={0.28}
+              fontSize={0.24}
               color={"#888888"}
               font="/fonts/Supply-Regular.otf"
             >
