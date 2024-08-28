@@ -18,6 +18,8 @@ import {
 import * as THREE from "three";
 import { useSpring, animated } from "@react-spring/three";
 import useIsMobile from "./useIsMobile";
+import './globals.css';
+
 function IOSIconShape() {
   // Create the shape in a useMemo to avoid re-creating it on every render
   const shape = useMemo(() => {
