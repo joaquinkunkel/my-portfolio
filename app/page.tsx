@@ -545,14 +545,14 @@ export default function Home() {
         }}
       >
         <a
-          style={{ position: "absolute", zIndex: 10, bottom: isMobile ? 120 : 75, left: 60 }}
+          style={{ position: "absolute", zIndex: 10, bottom: isMobile ? 120 : 75, left: isMobile ? 20 : 60 }}
           href="mailto:joaquinkunkel@gmail.com"
           target="_blank"
         >
           Let&apos;s talk
         </a>
         <a
-          style={{ position: "absolute", zIndex: 10, bottom: isMobile ? 120 : 75, right: 60 }}
+          style={{ position: "absolute", zIndex: 10, bottom: isMobile ? 120 : 75, right: isMobile ? 20 : 60 }}
           href="https://github.com/joaquinkunkel/my-portfolio"
           target="_blank"
         >
