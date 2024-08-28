@@ -4,6 +4,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { RoundedBox, Text, Billboard, useGLTF, Shape } from "@react-three/drei";
 import { OrbitControls as DreiOrbitControls } from "@react-three/drei";
 import { useState, useRef, useEffect, useMemo } from "react";
+import Lightbulb from "../public/icons/bulb.svg";
 import {
   EffectComposer,
   Bloom,
@@ -81,10 +82,12 @@ const LivingRoom = ({
   onProjectClick,
   onProjectHover,
   controlsRef,
+  isDarkMode,
 }: {
   onProjectClick: (project: any) => void;
   onProjectHover: (project: any) => void;
   controlsRef: React.MutableRefObject<any>;
+  isDarkMode: boolean;
 }) => {
   const tvScreenRef = useRef<THREE.ShaderMaterial | null>(null);
   const sphereRef = useRef<THREE.ShaderMaterial | null>(null);
@@ -268,7 +271,7 @@ const LivingRoom = ({
             anchorY="middle"
             castShadow
             font="/fonts/COOPBL.TTF"
-            color="white"
+            color={isDarkMode ? "white" : "#383842"}
           >
             Joaquín Kunkel
           </Text>
@@ -280,12 +283,12 @@ const LivingRoom = ({
           <Text
             position={[0, isMobile ? 8 : 6, 0]}
             fontSize={isMobile ? 0.65 : 0.3}
-            color="black"
+            color={isDarkMode ? "white" : "#383842"}
             anchorX="center"
             anchorY="middle"
             castShadow
             font="/fonts/Supply-Regular.otf"
-            material={textShaderRef.current}
+            material={isDarkMode ? textShaderRef.current : undefined}
           >
             Designer who codes
           </Text>
@@ -319,7 +322,7 @@ const LivingRoom = ({
             <Text
               position={[0, isMobile ? 3.5 : 3.2, 0]}
               fontSize={isMobile ? 0.35 : 0.28}
-              color="white"
+              color={isDarkMode ? "white" : "#383842"}
               font="/fonts/Supply-Regular.otf"
             >
               Front-end & Design
@@ -395,7 +398,7 @@ const LivingRoom = ({
             <Text
               position={[0, isMobile ? 4 : 3.6, 0]}
               fontSize={isMobile ? 0.6 : 0.4}
-              color="#c6f545"
+              color={isDarkMode ? "#c6f545" : "#76d525"}
               font="/fonts/COOPBL.TTF"
             >
               Freelance
@@ -403,7 +406,7 @@ const LivingRoom = ({
             <Text
               position={[0, isMobile ? 3.5 : 3.15, 0]}
               fontSize={isMobile ? 0.35 : 0.28}
-              color="white"
+              color={isDarkMode ? "white" : "#383842"}
               font="/fonts/Supply-Regular.otf"
             >
               Design, motion,
@@ -411,7 +414,7 @@ const LivingRoom = ({
             <Text
               position={[0, isMobile ? 3 : 2.8, 0]}
               fontSize={isMobile ? 0.35 : 0.28}
-              color="white"
+              color={isDarkMode ? "white" : "#383842"}
               font="/fonts/Supply-Regular.otf"
             >
               eng & art
@@ -424,11 +427,7 @@ const LivingRoom = ({
           smoothness={10}
           position={[0, 0.55, 0.1]}
         >
-          <meshStandardMaterial
-            color="white"
-            metalness={0.4}
-            roughness={0.3}
-          />
+          <meshStandardMaterial color="white" metalness={0.4} roughness={0.3} />
         </RoundedBox>
         <mesh position={[0, 1.4, 0]}>
           <boxGeometry args={[1.5, 1, 1]} />
@@ -442,7 +441,7 @@ const LivingRoom = ({
         <mesh position={[0, 1.4, 0.51]} castShadow>
           <planeGeometry args={[1.3, 0.8]} />
           <primitive object={tvScreenShaderMaterial} ref={tvScreenRef} />
-          <spotLight
+          {/* <spotLight
             position={[0, 1.6, 0.61]}
             target-position={[0, 2, 5]}
             intensity={2}
@@ -451,10 +450,10 @@ const LivingRoom = ({
             penumbra={0.5}
             color="white"
             castShadow
-          />
+          /> */}
         </mesh>
         <pointLight
-          position={[0.5, 1, 0.2]}
+          position={[0.5, 1.4, 0.2]}
           intensity={hoveredObject === "tv" ? 1 : 0.2}
           distance={8}
           color="white"
@@ -490,7 +489,7 @@ const LivingRoom = ({
             <Text
               position={[0, isMobile ? 2.55 : 2.58, 0]}
               fontSize={isMobile ? 0.35 : 0.28}
-              color="white"
+              color={isDarkMode ? "white" : "#383842"}
               font="/fonts/Supply-Regular.otf"
             >
               Front-end & Design
@@ -498,11 +497,7 @@ const LivingRoom = ({
           </Billboard>
         )}
         <RoundedBox args={[1.5, 1, 1.5]} radius={0.2} smoothness={10}>
-          <meshStandardMaterial
-            color="white"
-            metalness={0.4}
-            roughness={0.3}
-          />
+          <meshStandardMaterial color="white" metalness={0.4} roughness={0.3} />
         </RoundedBox>
         <pointLight
           position={[11, 2, -9]}
@@ -536,6 +531,7 @@ export default function Home() {
   const isMobile = useIsMobile();
   const [activeProject, setActiveProject] = useState(null);
   const [hoveredProject, setHoveredProject] = useState(null);
+  const [isDarkMode, setIsDarkMode] = useState(true);
   const controlsRef = useRef<any>(null);
 
   const sceneScale = useIsMobile()
@@ -548,23 +544,40 @@ export default function Home() {
         height: "100vh",
         width: "100vw",
         position: "relative",
-        background: "radial-gradient(#141c29, #27272e)",
+        background: isDarkMode
+          ? "radial-gradient(#27272e, #141c29)"
+          : "#dddddd",
         animation: "gradientAnimation 120s ease infinite",
         backgroundSize: "500% 500%",
+        transition: 'all 0.3s ease-out',
       }}
     >
       <div
         style={{
           fontFamily: "Cooper Black, Radio Grotesk, sans-serif",
-          color: "rgba(255, 255, 255, 0.7)",
+          color: isDarkMode ? "rgba(255, 255, 255, 0.7)" : "#383842",
         }}
       >
         <a
           style={{
             position: "absolute",
             zIndex: 10,
-            bottom: isMobile ? 120 : 75,
+            top: 75,
             left: isMobile ? 20 : 60,
+          }}
+          href="#"
+          onClick={() => {
+            setIsDarkMode(!isDarkMode);
+          }}
+        >
+          <Lightbulb style={{ width: 40, height: 40, filter: "contrast(0)" }} />
+        </a>
+        <a
+          style={{
+            position: "absolute",
+            zIndex: 10,
+            top: 75,
+            right: isMobile ? 20 : 60,
           }}
           href="mailto:joaquinkunkel@gmail.com"
           target="_blank"
@@ -607,48 +620,41 @@ export default function Home() {
             onProjectClick={setActiveProject}
             onProjectHover={setHoveredProject}
             controlsRef={controlsRef}
+            isDarkMode={isDarkMode}
           />
         </group>
         {/* Add post-processing effects here */}
-        <EffectComposer>
-          <Bloom
-            intensity={0.1}
-            luminanceThreshold={0.6}
-            luminanceSmoothing={0.3}
-          />
-          <Vignette eskil={false} offset={0.1} darkness={1.1} />
-          <HueSaturation hue={0} saturation={0.1} />
-          <BrightnessContrast brightness={0.05} contrast={0.2} />
-          <Noise opacity={0.08} />
-          <DepthOfField
-            focusDistance={0.1}
-            focalLength={0.9}
-            bokehScale={2}
-            height={480}
-          />
-        </EffectComposer>
+        {isDarkMode ? (
+          <EffectComposer>
+            <Bloom
+              intensity={0.1}
+              luminanceThreshold={0.6}
+              luminanceSmoothing={0.3}
+            />
+            <Vignette eskil={false} offset={0.1} darkness={1.1} />
+            <HueSaturation hue={0} saturation={0.1} />
+            <BrightnessContrast brightness={0.05} contrast={0.2} />
+            <Noise opacity={0.08} />
+            <DepthOfField
+              focusDistance={0.1}
+              focalLength={0.9}
+              bokehScale={2}
+              height={480}
+            />
+          </EffectComposer>
+        ) : (
+          <EffectComposer>
+            <BrightnessContrast brightness={-0.15} />
+            {/* <HueSaturation hue={0} saturation={0.2} /> */}
+            <Noise opacity={0.08} />
+            {/* <Bloom
+            intensity={0.2}
+            luminanceThreshold={1.0}
+            luminanceSmoothing={0.7}
+          /> */}
+          </EffectComposer>
+        )}
       </Canvas>
-
-      {activeProject !== null && (
-        <div
-          style={{
-            position: "absolute",
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: "50%",
-            backgroundColor: "rgba(0,0,0,0.7)",
-            color: "white",
-            overflowY: "scroll",
-            padding: "20px",
-            transition: "opacity 0.5s",
-          }}
-        >
-          <h1>Project {activeProject + 1}</h1>
-          <p>Details about project {activeProject + 1}...</p>
-          <button onClick={() => setActiveProject(null)}>Close</button>
-        </div>
-      )}
     </div>
   );
 }
