@@ -188,9 +188,9 @@ const LivingRoom = ({
   });
 
   const { position } = useSpring({
-    from: { position: [10, -10, 10] },
-    to: { position: [-12.47, 4.28, 9.57] },
-    config: { duration: 1400, easing: (t) => --t * t * t * t + 1 },
+    from: { position: [isMobile ? 9 : 10, isMobile ? 4 : -10, isMobile ? 0 : 10] },
+    to: { position: [-12.47, isMobile ? 6 : 4.28, 9.57] },
+    config: { duration: isMobile ? 3000 : 1400, easing: (t) => isMobile ? --t * t * t + 1 : --t * t * t * t + 1 },
     onRest: () => setTextVisible(true),
   });
 
@@ -509,7 +509,7 @@ function ResponsiveCamera() {
   const { camera } = useThree();
   useEffect(() => {
     if (camera instanceof THREE.PerspectiveCamera) {
-      camera.fov = isMobile ? 70 : 50;
+      camera.fov = isMobile ? 64 : 50;
       camera.updateProjectionMatrix();
     }
   }, [isMobile, camera]);
@@ -544,14 +544,14 @@ export default function Home() {
         }}
       >
         <a
-          style={{ position: "absolute", zIndex: 10, bottom: 80, left: 60 }}
+          style={{ position: "absolute", zIndex: 10, bottom: 120, left: 60 }}
           href="mailto:joaquinkunkel@gmail.com"
           target="_blank"
         >
           Let&apos;s talk
         </a>
         <a
-          style={{ position: "absolute", zIndex: 10, bottom: 80, right: 60 }}
+          style={{ position: "absolute", zIndex: 10, bottom: 120, right: 60 }}
           href="https://github.com/joaquinkunkel/my-portfolio"
           target="_blank"
         >
