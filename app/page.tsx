@@ -201,7 +201,7 @@ const LivingRoom = ({
     from: {
       position: [isMobile ? 9 : 10, isMobile ? 4 : -10, isMobile ? 0 : 10],
     },
-    to: { position: [-12.47, isMobile ? 6 : 4.28, 9.57] },
+    to: { position: [-12.47, isMobile ? 7 : 5.28, 9.57] },
     config: {
       duration: isMobile ? 3000 : 1400,
       easing: (t) => (isMobile ? --t * t * t + 1 : --t * t * t * t + 1),
@@ -255,14 +255,14 @@ const LivingRoom = ({
   });
 
   return (
-    <group>
+    <group position={[0, -0.5, 0]}>
       <IOSIconShape />
 
       {/* Text elements with Billboard to face the camera */}
       <Billboard>
         <animated.mesh>
           <Text
-            position={[0, isMobile ? 8 : 6.5, 0]}
+            position={[0, isMobile ? 9 : 6.5, 0]}
             fontSize={isMobile ? 1 : 0.5}
             anchorX="center"
             anchorY="middle"
@@ -278,7 +278,7 @@ const LivingRoom = ({
       <Billboard>
         <animated.mesh>
           <Text
-            position={[0, isMobile ? 7 : 6, 0]}
+            position={[0, isMobile ? 8 : 6, 0]}
             fontSize={isMobile ? 0.65 : 0.3}
             color="black"
             anchorX="center"
