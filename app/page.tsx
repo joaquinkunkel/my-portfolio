@@ -552,7 +552,7 @@ export default function Home() {
         </a>
         <a
           style={{ position: "absolute", zIndex: 10, bottom: 80, right: 60 }}
-          href="https://github.com/joaquinkunkel"
+          href="https://github.com/joaquinkunkel/my-portfolio"
           target="_blank"
         >
           See this page on GitHub
