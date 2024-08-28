@@ -266,7 +266,7 @@ const LivingRoom = ({
         <animated.mesh>
           <Text
             position={[0, isMobile ? 9 : 6.5, 0]}
-            fontSize={isMobile ? 1 : 0.5}
+            fontSize={isMobile ? 1 : 0.9}
             anchorX="center"
             anchorY="middle"
             castShadow
@@ -281,7 +281,7 @@ const LivingRoom = ({
       <Billboard>
         <animated.mesh>
           <Text
-            position={[0, isMobile ? 7.9 : 6, 0]}
+            position={[0, isMobile ? 7.9 : 5.7, 0]}
             fontSize={isMobile ? 0.65 : 0.3}
             color={isDarkMode ? "white" : "#383842"}
             anchorX="center"
