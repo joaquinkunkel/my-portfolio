@@ -533,9 +533,9 @@ export default function Home() {
         height: "100vh",
         width: "100vw",
         position: "relative",
-        background: "linear-gradient(180deg, #615660, #020a14)",
-        animation: "gradientAnimation 1.5s ease infinite",
-        backgroundSize: "200% 200%",
+        background: "radial-gradient(#615660, #020a14)",
+        animation: "gradientAnimation 120s ease infinite",
+        backgroundSize: "500% 500%",
       }}
     >
       <div
