@@ -317,7 +317,7 @@ const LivingRoom = ({
               Bubbles
             </Text>
             <Text
-              position={[0, isMobile ? 3.5 : 3.25, 0]}
+              position={[0, isMobile ? 3.5 : 3.2, 0]}
               fontSize={isMobile ? 0.35 : 0.28}
               color="white"
               font="/fonts/Supply-Regular.otf"
@@ -488,7 +488,7 @@ const LivingRoom = ({
               Cambly
             </Text>
             <Text
-              position={[0, isMobile ? 2.55 : 2.65, 0]}
+              position={[0, isMobile ? 2.55 : 2.58, 0]}
               fontSize={isMobile ? 0.35 : 0.28}
               color="white"
               font="/fonts/Supply-Regular.otf"
@@ -506,7 +506,7 @@ const LivingRoom = ({
         </RoundedBox>
         <pointLight
           position={[11, 2, -9]}
-          intensity={hoveredObject === "bird" ? 9 : 0.1}
+          intensity={hoveredObject === "bird" ? 25 : 0.1}
           distance={59}
           color="orange"
           castShadow
