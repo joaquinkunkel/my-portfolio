@@ -202,7 +202,7 @@ const LivingRoom = ({
         receiveShadow
       >
         <meshStandardMaterial
-          color="#343938"
+          color="#696968"
           metalness={0.6}
           roughness={0.7}
           envMapIntensity={0.4}
@@ -500,9 +500,9 @@ export default function Home() {
         height: "100vh",
         width: "100vw",
         position: "relative",
-        background: "linear-gradient(180deg, #d3cdcd, #060607)",
+        background: "linear-gradient(180deg, #b3adad, #060607)",
         animation: "gradientAnimation 1.5s ease infinite",
-        backgroundSize: "400% 400%",
+        backgroundSize: "300% 300%",
       }}
     >
       <div
