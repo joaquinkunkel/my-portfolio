@@ -518,6 +518,7 @@ function ResponsiveCamera() {
 }
 
 export default function Home() {
+  const isMobile = useIsMobile();
   const [activeProject, setActiveProject] = useState(null);
   const [hoveredProject, setHoveredProject] = useState(null);
   const controlsRef = useRef<any>(null);
@@ -544,14 +545,14 @@ export default function Home() {
         }}
       >
         <a
-          style={{ position: "absolute", zIndex: 10, bottom: 120, left: 60 }}
+          style={{ position: "absolute", zIndex: 10, bottom: isMobile ? 120 : 75, left: 60 }}
           href="mailto:joaquinkunkel@gmail.com"
           target="_blank"
         >
           Let&apos;s talk
         </a>
         <a
-          style={{ position: "absolute", zIndex: 10, bottom: 120, right: 60 }}
+          style={{ position: "absolute", zIndex: 10, bottom: isMobile ? 120 : 75, right: 60 }}
           href="https://github.com/joaquinkunkel/my-portfolio"
           target="_blank"
         >
