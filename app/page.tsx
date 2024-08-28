@@ -282,7 +282,7 @@ const LivingRoom = ({
         <animated.mesh>
           <Text
             position={[0, isMobile ? 7.9 : 5.7, 0]}
-            fontSize={isMobile ? 0.65 : 0.25}
+            fontSize={isMobile ? 0.4 : 0.25}
             color={isDarkMode ? "white" : "#383842"}
             anchorX="center"
             anchorY="middle"
@@ -536,7 +536,7 @@ function ResponsiveCamera() {
   const { camera } = useThree();
   useEffect(() => {
     if (camera instanceof THREE.PerspectiveCamera) {
-      camera.fov = isMobile ? 60 : 50;
+      camera.fov = isMobile ? 64 : 50;
       camera.updateProjectionMatrix();
     }
   }, [isMobile, camera]);
