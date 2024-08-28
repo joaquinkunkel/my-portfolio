@@ -51,3 +51,25 @@ a {
 a:hover {
   opacity: 1;
 }
+
+
+@font-face {
+  font-family: 'Cooper Black';
+  src: url('/fonts/COOPBL.TTF') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Radio Grotesk';
+  src: url('/fonts/RadioGrotesk-Regular.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Supply';
+  src: url('/fonts/Supply-Regular.otf') format('otf');
+  font-weight: normal;
+  font-style: normal;
+}
