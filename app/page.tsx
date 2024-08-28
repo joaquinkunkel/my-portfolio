@@ -4,6 +4,16 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { RoundedBox, Text, Billboard, useGLTF, Shape } from "@react-three/drei";
 import { OrbitControls as DreiOrbitControls } from "@react-three/drei";
 import { useState, useRef, useEffect, useMemo } from "react";
+import {
+  EffectComposer,
+  Bloom,
+  Vignette,
+  DepthOfField,
+  Noise,
+  HueSaturation,
+  BrightnessContrast,
+} from "@react-three/postprocessing";
+
 import * as THREE from "three";
 import { useSpring, animated } from "@react-spring/three";
 import useIsMobile from "./useIsMobile";
@@ -50,12 +60,12 @@ function IOSIconShape() {
       rotation={[-Math.PI / 2, 0, 0]}
     >
       <meshStandardMaterial
-        color="#000000"
-        metalness={0.4}
-        roughness={0.3}
+        color="#111111"
+        metalness={0.6}
+        roughness={0.24}
         envMapIntensity={0.4}
         transparent={true}
-        opacity={0.3}
+        opacity={0.15}
       />
     </mesh>
   );
@@ -143,9 +153,9 @@ const LivingRoom = ({
 
         wave = wave * 0.5 + 0.5;
 
-        float r = 0.3 - 0.2 * wave;
-        float g = 0.3 - 0.2 * wave;
-        float b = 0.6 - 0.3 * wave;
+        float r = 0.1 - 0.5 * wave;
+        float g = 0.0 - 0.4 * wave;
+        float b = 0.6 - 0.2 * wave;
         
         gl_FragColor = vec4(r, g, b, 1.0);
       }
@@ -176,21 +186,26 @@ const LivingRoom = ({
 
         if (dist > 0.3) {
           float edgeFactor = smoothstep(0.3, 0.5, dist);
-          color.r += edgeFactor * (1.0 + 0.5 * sin(uTime + dist * 10.0));
-          color.g += edgeFactor * (1.0 + 0.5 * sin(uTime + dist * 15.0 + 1.0));
-          color.b += edgeFactor * (1.0 + 0.5 * sin(uTime + dist * 20.0 + 2.0));
+          color.r += edgeFactor * (0.6 + 0.2 * sin(uTime + dist * 10.0));
+          color.g += edgeFactor * (0.6 + 0.2 * sin(uTime + dist * 15.0 + 1.0));
+          color.b += edgeFactor * (0.6 + 0.2 * sin(uTime + dist * 20.0 + 2.0));
         }
 
-        gl_FragColor = vec4(color, 0.7);
+        gl_FragColor = vec4(color, 0.3);
       }
     `,
     transparent: true,
   });
 
   const { position } = useSpring({
-    from: { position: [isMobile ? 9 : 10, isMobile ? 4 : -10, isMobile ? 0 : 10] },
+    from: {
+      position: [isMobile ? 9 : 10, isMobile ? 4 : -10, isMobile ? 0 : 10],
+    },
     to: { position: [-12.47, isMobile ? 6 : 4.28, 9.57] },
-    config: { duration: isMobile ? 3000 : 1400, easing: (t) => isMobile ? --t * t * t + 1 : --t * t * t * t + 1 },
+    config: {
+      duration: isMobile ? 3000 : 1400,
+      easing: (t) => (isMobile ? --t * t * t + 1 : --t * t * t * t + 1),
+    },
     onRest: () => setTextVisible(true),
   });
 
@@ -241,7 +256,7 @@ const LivingRoom = ({
 
   return (
     <group>
-      <IOSIconShape/>
+      <IOSIconShape />
 
       {/* Text elements with Billboard to face the camera */}
       <Billboard>
@@ -253,7 +268,7 @@ const LivingRoom = ({
             anchorY="middle"
             castShadow
             font="/fonts/COOPBL.TTF"
-            material={textShaderRef.current}
+            color="white"
           >
             Joaquín Kunkel
           </Text>
@@ -269,7 +284,7 @@ const LivingRoom = ({
             anchorX="center"
             anchorY="middle"
             castShadow
-            font="/fonts/RadioGrotesk-Regular.ttf"
+            font="/fonts/Supply-Regular.otf"
             material={textShaderRef.current}
           >
             Designer who codes
@@ -303,9 +318,9 @@ const LivingRoom = ({
             </Text>
             <Text
               position={[0, isMobile ? 3.5 : 3.25, 0]}
-              fontSize={isMobile ? 0.4 : 0.28}
+              fontSize={isMobile ? 0.35 : 0.28}
               color="white"
-              font="/fonts/RadioGrotesk-Regular.ttf"
+              font="/fonts/Supply-Regular.otf"
             >
               Front-end & Design
             </Text>
@@ -327,7 +342,7 @@ const LivingRoom = ({
         <mesh position={[0, 2.1, 0]}>
           <sphereGeometry args={[0.76, 33, 33]} />
           <meshStandardMaterial
-            color="black"
+            color="gray"
             metalness={1}
             roughness={0.3}
             transparent
@@ -380,24 +395,24 @@ const LivingRoom = ({
             <Text
               position={[0, isMobile ? 4 : 3.6, 0]}
               fontSize={isMobile ? 0.6 : 0.4}
-              color="#30f03f"
+              color="#c6f545"
               font="/fonts/COOPBL.TTF"
             >
               Freelance
             </Text>
             <Text
-              position={[0, isMobile ? 3.5 : 3.25, 0]}
-              fontSize={isMobile ? 0.4 : 0.28}
+              position={[0, isMobile ? 3.5 : 3.15, 0]}
+              fontSize={isMobile ? 0.35 : 0.28}
               color="white"
-              font="/fonts/RadioGrotesk-Regular.ttf"
+              font="/fonts/Supply-Regular.otf"
             >
               Design, motion,
             </Text>
             <Text
-              position={[0, isMobile ? 3 : 2.96, 0]}
-              fontSize={isMobile ? 0.4 : 0.28}
+              position={[0, isMobile ? 3 : 2.8, 0]}
+              fontSize={isMobile ? 0.35 : 0.28}
               color="white"
-              font="/fonts/RadioGrotesk-Regular.ttf"
+              font="/fonts/Supply-Regular.otf"
             >
               eng & art
             </Text>
@@ -418,7 +433,7 @@ const LivingRoom = ({
         <mesh position={[0, 1.4, 0]}>
           <boxGeometry args={[1.5, 1, 1]} />
           <meshStandardMaterial
-            color="#555555"
+            color="#333333"
             metalness={0.6}
             roughness={0.3}
           />
@@ -474,9 +489,9 @@ const LivingRoom = ({
             </Text>
             <Text
               position={[0, isMobile ? 2.55 : 2.65, 0]}
-              fontSize={isMobile ? 0.4 : 0.28}
+              fontSize={isMobile ? 0.35 : 0.28}
               color="white"
-              font="/fonts/RadioGrotesk-Regular.ttf"
+              font="/fonts/Supply-Regular.otf"
             >
               Front-end & Design
             </Text>
@@ -509,7 +524,7 @@ function ResponsiveCamera() {
   const { camera } = useThree();
   useEffect(() => {
     if (camera instanceof THREE.PerspectiveCamera) {
-      camera.fov = isMobile ? 64 : 50;
+      camera.fov = isMobile ? 60 : 50;
       camera.updateProjectionMatrix();
     }
   }, [isMobile, camera]);
@@ -533,7 +548,7 @@ export default function Home() {
         height: "100vh",
         width: "100vw",
         position: "relative",
-        background: "radial-gradient(#615660, #020a14)",
+        background: "radial-gradient(#141c29, #27272e)",
         animation: "gradientAnimation 120s ease infinite",
         backgroundSize: "500% 500%",
       }}
@@ -545,14 +560,24 @@ export default function Home() {
         }}
       >
         <a
-          style={{ position: "absolute", zIndex: 10, bottom: isMobile ? 120 : 75, left: isMobile ? 20 : 60 }}
+          style={{
+            position: "absolute",
+            zIndex: 10,
+            bottom: isMobile ? 120 : 75,
+            left: isMobile ? 20 : 60,
+          }}
           href="mailto:joaquinkunkel@gmail.com"
           target="_blank"
         >
           Let&apos;s talk
         </a>
         <a
-          style={{ position: "absolute", zIndex: 10, bottom: isMobile ? 120 : 75, right: isMobile ? 20 : 60 }}
+          style={{
+            position: "absolute",
+            zIndex: 10,
+            bottom: isMobile ? 120 : 75,
+            right: isMobile ? 20 : 60,
+          }}
           href="https://github.com/joaquinkunkel/my-portfolio"
           target="_blank"
         >
@@ -584,6 +609,24 @@ export default function Home() {
             controlsRef={controlsRef}
           />
         </group>
+        {/* Add post-processing effects here */}
+        <EffectComposer>
+          <Bloom
+            intensity={0.1}
+            luminanceThreshold={0.6}
+            luminanceSmoothing={0.3}
+          />
+          <Vignette eskil={false} offset={0.1} darkness={1.1} />
+          <HueSaturation hue={0} saturation={0.1} />
+          <BrightnessContrast brightness={0.05} contrast={0.2} />
+          <Noise opacity={0.08} />
+          <DepthOfField
+            focusDistance={0.1}
+            focalLength={0.9}
+            bokehScale={2}
+            height={480}
+          />
+        </EffectComposer>
       </Canvas>
 
       {activeProject !== null && (
