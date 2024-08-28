@@ -425,7 +425,7 @@ const LivingRoom = ({
           position={[0, 0.55, 0.1]}
         >
           <meshStandardMaterial
-            color="#darkgray"
+            color="white"
             metalness={0.4}
             roughness={0.3}
           />
@@ -499,7 +499,7 @@ const LivingRoom = ({
         )}
         <RoundedBox args={[1.5, 1, 1.5]} radius={0.2} smoothness={10}>
           <meshStandardMaterial
-            color="#darkgray"
+            color="white"
             metalness={0.4}
             roughness={0.3}
           />
