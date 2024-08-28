@@ -310,9 +310,10 @@ const LivingRoom = ({
         onClick={() => window.open("https://usebubbles.com/", "_blank")}
       >
         {(hoveredObject === "lamp" || isMobile) && (
-          <Billboard>
+          <Billboard
+          >
             <Text
-              position={[0, isMobile ? 4 : 3.6, 0]}
+              position={[0, isMobile ? 4 : 3.95, 0]}
               fontSize={isMobile ? 0.6 : 0.4}
               color="#ff80ff"
               font="/fonts/COOPBL.TTF"
@@ -320,13 +321,21 @@ const LivingRoom = ({
               Bubbles
             </Text>
             <Text
-              position={[0, isMobile ? 3.5 : 3.2, 0]}
+              position={[0, isMobile ? 3.5 : 3.55, 0]}
               fontSize={isMobile ? 0.35 : 0.28}
               color={isDarkMode ? "white" : "#383842"}
               font="/fonts/Supply-Regular.otf"
             >
               Front-end & Design
             </Text>
+            {!isMobile && <Text
+              position={[0, 3.2, 0]}
+              fontSize={0.28}
+              color={"#888888"}
+              font="/fonts/Supply-Regular.otf"
+            >
+              2021 - now
+            </Text>}
           </Billboard>
         )}
         <mesh position={[0, 2.1, 0]}>
@@ -494,6 +503,14 @@ const LivingRoom = ({
             >
               Front-end & Design
             </Text>
+            {!isMobile && <Text
+              position={[0, 2.2, 0]}
+              fontSize={0.28}
+              color={"#888888"}
+              font="/fonts/Supply-Regular.otf"
+            >
+              2019 - 2021
+            </Text>}
           </Billboard>
         )}
         <RoundedBox args={[1.5, 1, 1.5]} radius={0.2} smoothness={10}>
