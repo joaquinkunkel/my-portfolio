@@ -271,7 +271,7 @@ const LivingRoom = ({
             anchorY="middle"
             castShadow
             font="/fonts/COOPBL.TTF"
-            color={isDarkMode ? "white" : "#383842"}
+            color={isDarkMode ? "#ffffff" : "#383842"}
           >
             Joaquín Kunkel
           </Text>
@@ -281,7 +281,7 @@ const LivingRoom = ({
       <Billboard>
         <animated.mesh>
           <Text
-            position={[0, isMobile ? 8 : 6, 0]}
+            position={[0, isMobile ? 7.9 : 6, 0]}
             fontSize={isMobile ? 0.65 : 0.3}
             color={isDarkMode ? "white" : "#383842"}
             anchorX="center"
@@ -544,59 +544,71 @@ export default function Home() {
         height: "100vh",
         width: "100vw",
         position: "relative",
-        background: isDarkMode
-          ? "#242c39"
-          : "#dddddd",
+        background: isDarkMode ? "#242432" : "#eeeeee",
         animation: "gradientAnimation 120s ease infinite",
         backgroundSize: "500% 500%",
         transition: "all 0.3s ease-out",
       }}
     >
-      <div
-        style={{
-          fontFamily: "Cooper Black, Radio Grotesk, sans-serif",
-          color: isDarkMode ? "rgba(255, 255, 255, 0.7)" : "#383842",
-        }}
-      >
-        <a
+      {isMobile !== undefined && (
+        <div
           style={{
-            position: "absolute",
-            zIndex: 10,
-            top: 75,
-            left: isMobile ? 20 : 60,
-          }}
-          href="#"
-          onClick={() => {
-            setIsDarkMode(!isDarkMode);
+            fontFamily: "Cooper Black, Radio Grotesk, sans-serif",
+            color: isDarkMode ? "rgba(255, 255, 255, 0.7)" : "#383842",
           }}
         >
-          <Lightbulb style={{ width: 40, height: 40, filter: "contrast(0)" }} />
-        </a>
-        <a
-          style={{
-            position: "absolute",
-            zIndex: 10,
-            top: 75,
-            right: isMobile ? 20 : 60,
-          }}
-          href="mailto:joaquinkunkel@gmail.com"
-          target="_blank"
-        >
-          Let&apos;s talk
-        </a>
-        <a
-          style={{
-            position: "absolute",
-            zIndex: 10,
-            bottom: isMobile ? 120 : 75,
-            right: isMobile ? 20 : 60,
-          }}
-          href="https://github.com/joaquinkunkel/my-portfolio"
-          target="_blank"
-        >
-          See this page on GitHub
-        </a>
-      </div>
+          <a
+            style={{
+              position: "absolute",
+              zIndex: 10,
+              bottom: isMobile ? 120 : 75,
+              left: isMobile ? 20 : 60,
+            }}
+            href="#"
+            onClick={() => {
+              setIsDarkMode(!isDarkMode);
+            }}
+          >
+            <Lightbulb
+              style={{
+                width: 32,
+                height: 32,
+                filter: isDarkMode ? "invert()" : "none",
+                strokeWidth: 9,
+                stroke: "black",
+              }}
+            />
+          </a>
+          <a
+            style={{
+              position: "absolute",
+              zIndex: 10,
+              top: isMobile ? 20 : 75,
+              right: isMobile ? 20 : 60,
+              padding: "2px 10px",
+              background: isDarkMode ? "white" : "#383842",
+              color: isDarkMode ? "#383842" : "#eeeeee",
+              borderRadius: 10,
+            }}
+            href="mailto:joaquinkunkel@gmail.com"
+            target="_blank"
+          >
+            Let&apos;s talk!
+          </a>
+          <a
+            style={{
+              position: "absolute",
+              zIndex: 10,
+              bottom: isMobile ? 120 : 75,
+              right: isMobile ? 20 : 60,
+            }}
+            href="https://github.com/joaquinkunkel/my-portfolio"
+            target="_blank"
+          >
+            See this page on GitHub
+          </a>
+        </div>
+      )}
       <Canvas shadows>
         <ResponsiveCamera />
         <ambientLight intensity={2} />
@@ -624,32 +636,22 @@ export default function Home() {
           />
         </group>
         {/* Add post-processing effects here */}
-        {isDarkMode ? (
+        {isDarkMode && (
           <EffectComposer>
             <Bloom
-              intensity={0.1}
+              intensity={0.02}
               luminanceThreshold={0.6}
               luminanceSmoothing={0.3}
             />
             <Vignette eskil={false} offset={0.1} darkness={1.1} />
             <HueSaturation hue={0} saturation={0.1} />
-            <BrightnessContrast brightness={0.05} contrast={0.2} />
-            <Noise opacity={0.08} />
+            {/* <BrightnessContrast brightness={0.05} contrast={0.2} /> */}
+            {/* <Noise opacity={0.08} /> */}
             <DepthOfField
               focusDistance={0.1}
               focalLength={0.9}
               bokehScale={2}
               height={480}
-            />
-          </EffectComposer>
-        ) : (
-          <EffectComposer>
-            <BrightnessContrast brightness={-0.05} />
-            {/* <HueSaturation hue={0} saturation={0.2} /> */}
-            <Bloom
-              intensity={0.1}
-              luminanceThreshold={1.0}
-              luminanceSmoothing={0.7}
             />
           </EffectComposer>
         )}
