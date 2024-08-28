@@ -606,7 +606,7 @@ export default function Home() {
               background: isDarkMode ? "white" : "#383842",
               color: isDarkMode ? "#383842" : "#eeeeee",
               borderRadius: 10,
-              fontFamily: 'Cooper Black'
+              fontFamily: 'Cooper Black, monospace, sans-serif'
             }}
             href="mailto:joaquinkunkel@gmail.com"
             target="_blank"
