@@ -545,11 +545,11 @@ export default function Home() {
         width: "100vw",
         position: "relative",
         background: isDarkMode
-          ? "radial-gradient(#27272e, #141c29)"
+          ? "#242c39"
           : "#dddddd",
         animation: "gradientAnimation 120s ease infinite",
         backgroundSize: "500% 500%",
-        transition: 'all 0.3s ease-out',
+        transition: "all 0.3s ease-out",
       }}
     >
       <div
@@ -644,14 +644,13 @@ export default function Home() {
           </EffectComposer>
         ) : (
           <EffectComposer>
-            <BrightnessContrast brightness={-0.15} />
+            <BrightnessContrast brightness={-0.05} />
             {/* <HueSaturation hue={0} saturation={0.2} /> */}
-            <Noise opacity={0.08} />
-            {/* <Bloom
-            intensity={0.2}
-            luminanceThreshold={1.0}
-            luminanceSmoothing={0.7}
-          /> */}
+            <Bloom
+              intensity={0.1}
+              luminanceThreshold={1.0}
+              luminanceSmoothing={0.7}
+            />
           </EffectComposer>
         )}
       </Canvas>
