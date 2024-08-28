@@ -6,12 +6,52 @@ import {
   Text,
   Billboard,
   useGLTF,
+  Shape,
 } from "@react-three/drei";
 import { OrbitControls as DreiOrbitControls } from "@react-three/drei";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import * as THREE from "three";
 import { useSpring, animated } from "@react-spring/three";
 import useIsMobile from "./useIsMobile";
+function IOSIconShape() {
+  // Create the shape in a useMemo to avoid re-creating it on every render
+  const shape = useMemo(() => {
+    const x = 0;
+    const y = 0;
+    const width = 10;
+    const height = 10;
+    const radius = 1.8; // Adjust this value to control the roundness of the corners
+
+    const roundedRect = new THREE.Shape();
+    roundedRect.moveTo(x, y + radius);
+    roundedRect.lineTo(x, y + height - radius);
+    roundedRect.quadraticCurveTo(x, y + height, x + radius, y + height);
+    roundedRect.lineTo(x + width - radius, y + height);
+    roundedRect.quadraticCurveTo(x + width, y + height, x + width, y + height - radius);
+    roundedRect.lineTo(x + width, y + radius);
+    roundedRect.quadraticCurveTo(x + width, y, x + width - radius, y);
+    roundedRect.lineTo(x + radius, y);
+    roundedRect.quadraticCurveTo(x, y, x, y + radius);
+
+    return roundedRect;
+  }, []);
+
+  // Create the geometry in a useMemo to avoid re-creating it on every render
+  const geometry = useMemo(() => new THREE.ExtrudeGeometry(shape, { depth: 0.04, bevelEnabled: false }), [shape]);
+
+  return (
+    <mesh geometry={geometry} position={[-4.5, 0.01, 4.5]} receiveShadow rotation={[-Math.PI / 2, 0, 0]}>
+      <meshStandardMaterial
+        color="#000000"
+        metalness={0.4}
+        roughness={0.5}
+        envMapIntensity={0.4}
+        transparent={true}
+        opacity={0.2}
+      />
+    </mesh>
+  );
+}
 
 // Load the GLTF bird model
 function BirdModel(props: any) {
@@ -194,20 +234,15 @@ const LivingRoom = ({
 
   return (
     <group>
-      <RoundedBox
-        args={[9, 0.3, 9]}
-        radius={0.1}
-        smoothness={8}
-        position={[0, 0, 0]}
-        receiveShadow
-      >
-        <meshStandardMaterial
-          color="#696968"
-          metalness={0.6}
-          roughness={0.7}
-          envMapIntensity={0.4}
-        />
-      </RoundedBox>
+   <IOSIconShape>
+
+      <meshStandardMaterial
+        color="#696968"
+        metalness={0.6}
+        roughness={0.7}
+        envMapIntensity={0.4}
+      />
+   </IOSIconShape>
 
       {/* Text elements with Billboard to face the camera */}
       <Billboard>
@@ -439,7 +474,7 @@ const LivingRoom = ({
               Cambly
             </Text>
             <Text
-              position={[0, isMobile ? 2.65 : 2.65, 0]}
+              position={[0, isMobile ? 2.55 : 2.65, 0]}
               fontSize={isMobile ? 0.4 : 0.28}
               color="white"
               font="/fonts/RadioGrotesk-Regular.ttf"
@@ -500,7 +535,7 @@ export default function Home() {
         height: "100vh",
         width: "100vw",
         position: "relative",
-        background: "linear-gradient(180deg, #b3adad, #060607)",
+        background: "linear-gradient(180deg, #736d6d, #060607)",
         animation: "gradientAnimation 1.5s ease infinite",
         backgroundSize: "300% 300%",
       }}
@@ -541,6 +576,11 @@ export default function Home() {
           shadow-camera-right={10}
           shadow-camera-top={10}
           shadow-camera-bottom={-10}
+        />
+        <directionalLight
+          position={[-10, 0, -4]}
+          intensity={1}
+          castShadow
         />
         <DreiOrbitControls ref={controlsRef} />
         <group scale={sceneScale}>
