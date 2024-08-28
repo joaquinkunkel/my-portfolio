@@ -542,19 +542,19 @@ export default function Home() {
     >
       <div
         style={{
-          fontFamily: "Radio Grotesk",
+          fontFamily: "Cooper Black, Radio Grotesk, sans-serif",
           color: "rgba(255, 255, 255, 0.7)",
         }}
       >
         <a
-          style={{ position: "absolute", zIndex: 10, bottom: 30, left: 20 }}
+          style={{ position: "absolute", zIndex: 10, bottom: 80, left: 60 }}
           href="mailto:joaquinkunkel@gmail.com"
           target="_blank"
         >
           Let&apos;s talk
         </a>
         <a
-          style={{ position: "absolute", zIndex: 10, bottom: 30, right: 20 }}
+          style={{ position: "absolute", zIndex: 10, bottom: 80, right: 60 }}
           href="https://github.com/joaquinkunkel"
           target="_blank"
         >
