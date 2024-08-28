@@ -544,7 +544,7 @@ export default function Home() {
         height: "100vh",
         width: "100vw",
         position: "relative",
-        background: isDarkMode ? "#242432" : "#eeeeee",
+        background: isDarkMode ? "#20202a" : "#eeeeee",
         animation: "gradientAnimation 120s ease infinite",
         backgroundSize: "500% 500%",
         transition: "all 0.3s ease-out",
