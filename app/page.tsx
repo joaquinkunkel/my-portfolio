@@ -160,7 +160,7 @@ const LivingRoom = ({
   const birdSpring = useSpring({
     scale: hoveredObject === "bird" ? [1.1, 1.1, 1.1] : [1, 1, 1],
     config: { duration: 250, easing: (t) => t * t * (3 - 2 * t) },
-    position: hoveredObject === "bird" ? [3, 0.8, -3] : [3, 0.8, -3],
+    position: hoveredObject === "bird" ? [3, 0.55, -3] : [3, 0.55, -3],
   });
 
   const lampSpring = useSpring({
@@ -195,15 +195,15 @@ const LivingRoom = ({
   return (
     <group>
       <RoundedBox
-        args={[10, 1, 10]}
-        radius={0.3}
-        smoothness={10}
+        args={[9, 0.3, 9]}
+        radius={0.1}
+        smoothness={8}
         position={[0, 0, 0]}
         receiveShadow
       >
         <meshStandardMaterial
-          color="#444948"
-          metalness={0.5}
+          color="#343938"
+          metalness={0.6}
           roughness={0.7}
           envMapIntensity={0.4}
         />
@@ -262,7 +262,7 @@ const LivingRoom = ({
             <Text
               position={[0, isMobile ? 4 : 3.6, 0]}
               fontSize={isMobile ? 0.6 : 0.4}
-              color="#f070af"
+              color="#ff80ff"
               font="/fonts/COOPBL.TTF"
             >
               Bubbles
@@ -306,20 +306,20 @@ const LivingRoom = ({
           args={[1.5, 1, 1.5]}
           radius={0.2}
           smoothness={10}
-          position={[0, 0.75, 0]}
+          position={[0, 0.55, 0]}
         >
           <meshStandardMaterial
             color="#e87967"
-            metalness={0.2}
-            roughness={0.4}
+            metalness={0.3}
+            roughness={0.9}
           />
         </RoundedBox>
 
         <pointLight
-          position={[0, 2.1, 0]}
-          intensity={hoveredObject === "lamp" ? 2 : 0.3}
-          distance={5}
-          color="white"
+          position={[0, 1.1, 0]}
+          intensity={hoveredObject === "lamp" ? 2 : 0.1}
+          distance={10}
+          color="pink"
           castShadow
         />
       </animated.mesh>
@@ -370,18 +370,18 @@ const LivingRoom = ({
           </Billboard>
         )}
         <RoundedBox
-          args={[1.5, 1, 1.5]}
-          radius={0.2}
+          args={[2, 0.6, 2]}
+          radius={0.1}
           smoothness={10}
-          position={[0, 0.75, 0]}
+          position={[0, 0.55, 0.1]}
         >
           <meshStandardMaterial
-            color="#999999"
-            metalness={0.1}
-            roughness={0.4}
+            color="#darkgray"
+            metalness={0.4}
+            roughness={0.3}
           />
         </RoundedBox>
-        <mesh position={[0, 2, 0]}>
+        <mesh position={[0, 1.4, 0]}>
           <boxGeometry args={[1.5, 1, 1]} />
           <meshStandardMaterial
             color="#555555"
@@ -390,11 +390,11 @@ const LivingRoom = ({
           />
         </mesh>
 
-        <mesh position={[0, 2, 0.51]} castShadow>
+        <mesh position={[0, 1.4, 0.51]} castShadow>
           <planeGeometry args={[1.3, 0.8]} />
           <primitive object={tvScreenShaderMaterial} ref={tvScreenRef} />
           <spotLight
-            position={[0, 2, 0.51]}
+            position={[0, 1.6, 0.61]}
             target-position={[0, 2, 5]}
             intensity={2}
             distance={10}
@@ -405,9 +405,9 @@ const LivingRoom = ({
           />
         </mesh>
         <pointLight
-          position={[0, 2.1, 0]}
-          intensity={hoveredObject === "tv" ? 2 : 0.3}
-          distance={5}
+          position={[0, 1.2, 1]}
+          intensity={hoveredObject === "tv" ? 1 : 0.2}
+          distance={8}
           color="white"
           castShadow
         />
@@ -454,21 +454,21 @@ const LivingRoom = ({
           smoothness={10}
         >
           <meshStandardMaterial
-            color="#999999"
-            metalness={0.1}
-            roughness={0.4}
+            color="#darkgray"
+            metalness={0.4}
+            roughness={0.3}
           />
         </RoundedBox>
-        <mesh scale={3.0}>
-          <BirdModel position={[0, 0.39, 0]} />
-        </mesh>
         <pointLight
-          position={[0, 1, 0]}
-          intensity={hoveredObject === "bird" ? 2 : 0.3}
-          distance={5}
-          color="white"
+          position={[5, 2, -3]}
+          intensity={hoveredObject === "bird" ? 9 : 0.1}
+          distance={80}
+          color="orange"
           castShadow
         />
+        <mesh scale={3.0} castShadow>
+          <BirdModel position={[0, 0.39, 0]} />
+        </mesh>
       </animated.mesh>
     </group>
   );
@@ -500,7 +500,7 @@ export default function Home() {
         height: "100vh",
         width: "100vw",
         position: "relative",
-        background: "linear-gradient(180deg, #4a4a44, #242428)",
+        background: "linear-gradient(180deg, #d3cdcd, #060607)",
         animation: "gradientAnimation 1.5s ease infinite",
         backgroundSize: "400% 400%",
       }}
@@ -530,7 +530,7 @@ export default function Home() {
         <ResponsiveCamera />
         <ambientLight intensity={2} />
         <directionalLight
-          position={[10, 14, -10]}
+          position={[8, 14, -8]}
           intensity={0.5}
           castShadow
           shadow-mapSize-width={1024}
