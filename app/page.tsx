@@ -44,10 +44,10 @@ function IOSIconShape() {
       <meshStandardMaterial
         color="#000000"
         metalness={0.4}
-        roughness={0.5}
+        roughness={0.3}
         envMapIntensity={0.4}
         transparent={true}
-        opacity={0.2}
+        opacity={0.3}
       />
     </mesh>
   );
@@ -440,7 +440,7 @@ const LivingRoom = ({
           />
         </mesh>
         <pointLight
-          position={[0, 1.2, 1]}
+          position={[0.5, 1, 0.2]}
           intensity={hoveredObject === "tv" ? 1 : 0.2}
           distance={8}
           color="white"
@@ -495,9 +495,9 @@ const LivingRoom = ({
           />
         </RoundedBox>
         <pointLight
-          position={[5, 2, -3]}
+          position={[11, 2, -9]}
           intensity={hoveredObject === "bird" ? 9 : 0.1}
-          distance={80}
+          distance={59}
           color="orange"
           castShadow
         />
@@ -535,9 +535,9 @@ export default function Home() {
         height: "100vh",
         width: "100vw",
         position: "relative",
-        background: "linear-gradient(180deg, #736d6d, #060607)",
+        background: "linear-gradient(180deg, #615660, #020a14)",
         animation: "gradientAnimation 1.5s ease infinite",
-        backgroundSize: "300% 300%",
+        backgroundSize: "200% 200%",
       }}
     >
       <div
