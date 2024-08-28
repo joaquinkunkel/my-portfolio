@@ -1,13 +1,7 @@
 "use client"; // Add this line at the very top
 
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import {
-  RoundedBox,
-  Text,
-  Billboard,
-  useGLTF,
-  Shape,
-} from "@react-three/drei";
+import { RoundedBox, Text, Billboard, useGLTF, Shape } from "@react-three/drei";
 import { OrbitControls as DreiOrbitControls } from "@react-three/drei";
 import { useState, useRef, useEffect, useMemo } from "react";
 import * as THREE from "three";
@@ -27,7 +21,12 @@ function IOSIconShape() {
     roundedRect.lineTo(x, y + height - radius);
     roundedRect.quadraticCurveTo(x, y + height, x + radius, y + height);
     roundedRect.lineTo(x + width - radius, y + height);
-    roundedRect.quadraticCurveTo(x + width, y + height, x + width, y + height - radius);
+    roundedRect.quadraticCurveTo(
+      x + width,
+      y + height,
+      x + width,
+      y + height - radius,
+    );
     roundedRect.lineTo(x + width, y + radius);
     roundedRect.quadraticCurveTo(x + width, y, x + width - radius, y);
     roundedRect.lineTo(x + radius, y);
@@ -37,10 +36,19 @@ function IOSIconShape() {
   }, []);
 
   // Create the geometry in a useMemo to avoid re-creating it on every render
-  const geometry = useMemo(() => new THREE.ExtrudeGeometry(shape, { depth: 0.04, bevelEnabled: false }), [shape]);
+  const geometry = useMemo(
+    () =>
+      new THREE.ExtrudeGeometry(shape, { depth: 0.04, bevelEnabled: false }),
+    [shape],
+  );
 
   return (
-    <mesh geometry={geometry} position={[-4.5, 0.01, 4.5]} receiveShadow rotation={[-Math.PI / 2, 0, 0]}>
+    <mesh
+      geometry={geometry}
+      position={[-4.5, 0.01, 4.5]}
+      receiveShadow
+      rotation={[-Math.PI / 2, 0, 0]}
+    >
       <meshStandardMaterial
         color="#000000"
         metalness={0.4}
@@ -224,8 +232,7 @@ const LivingRoom = ({
       tvScreenRef.current.uniforms.uTime.value = state.clock.getElapsedTime();
     }
     if (textShaderRef.current) {
-      textShaderRef.current.uniforms.uTime.value =
-        state.clock.getElapsedTime();
+      textShaderRef.current.uniforms.uTime.value = state.clock.getElapsedTime();
     }
     if (sphereRef.current) {
       sphereRef.current.uniforms.uTime.value = state.clock.getElapsedTime();
@@ -234,15 +241,7 @@ const LivingRoom = ({
 
   return (
     <group>
-   <IOSIconShape>
-
-      <meshStandardMaterial
-        color="#696968"
-        metalness={0.6}
-        roughness={0.7}
-        envMapIntensity={0.4}
-      />
-   </IOSIconShape>
+      <IOSIconShape/>
 
       {/* Text elements with Billboard to face the camera */}
       <Billboard>
@@ -483,11 +482,7 @@ const LivingRoom = ({
             </Text>
           </Billboard>
         )}
-        <RoundedBox
-          args={[1.5, 1, 1.5]}
-          radius={0.2}
-          smoothness={10}
-        >
+        <RoundedBox args={[1.5, 1, 1.5]} radius={0.2} smoothness={10}>
           <meshStandardMaterial
             color="#darkgray"
             metalness={0.4}
@@ -527,7 +522,9 @@ export default function Home() {
   const [hoveredProject, setHoveredProject] = useState(null);
   const controlsRef = useRef<any>(null);
 
-  const sceneScale = useIsMobile() ? new THREE.Vector3(0.8, 0.8, 0.8) : new THREE.Vector3(1, 1, 1)
+  const sceneScale = useIsMobile()
+    ? new THREE.Vector3(0.8, 0.8, 0.8)
+    : new THREE.Vector3(1, 1, 1);
 
   return (
     <div
@@ -577,11 +574,7 @@ export default function Home() {
           shadow-camera-top={10}
           shadow-camera-bottom={-10}
         />
-        <directionalLight
-          position={[-10, 0, -4]}
-          intensity={1}
-          castShadow
-        />
+        <directionalLight position={[-10, 0, -4]} intensity={1} castShadow />
         <DreiOrbitControls ref={controlsRef} />
         <group scale={sceneScale}>
           <LivingRoom
