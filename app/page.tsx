@@ -572,7 +572,7 @@ export default function Home() {
       {isMobile !== undefined && (
         <div
           style={{
-            fontFamily: "Supply, Radio Grotesk, sans-serif",
+            fontFamily: "Supply, Radio Grotesk, monospace, sans-serif",
             color: isDarkMode ? "rgba(255, 255, 255, 0.7)" : "#383842",
           }}
         >
@@ -608,7 +608,7 @@ export default function Home() {
               background: isDarkMode ? "white" : "#383842",
               color: isDarkMode ? "#383842" : "#eeeeee",
               borderRadius: 10,
-              fontFamily: 'Cooper Black, monospace, sans-serif'
+              fontFamily: 'Cooper Black, Supply, Radio Grotesk, monospace, sans-serif'
             }}
             href="mailto:joaquinkunkel@gmail.com"
             target="_blank"
