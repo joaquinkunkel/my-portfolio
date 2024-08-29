@@ -12,7 +12,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "types": ["/types/global.d.ts"],  // Adjust the path according to your project structure
+    "typeRoots": ["./node_modules/@types", "./src/types"],  // This is fine to keep
     "plugins": [
       {
         "name": "next"
@@ -22,6 +22,10 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/**/*", "global.d.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/**/*", "types/global.d.ts",     "src/**/*",               // Include your source files
+  "src/types/global.d.ts",  // Adjust this path according to your structure
+  "types/global.d.ts",      // If you put it in 'types' folder, adjust accordingly
+  "global.d.ts"             // If in root
+  ],
   "exclude": ["node_modules"]
 }
