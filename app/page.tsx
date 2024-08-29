@@ -19,7 +19,6 @@ import * as THREE from "three";
 import { useSpring, animated } from "@react-spring/three";
 import useIsMobile from "./useIsMobile";
 import './globals.css';
-import { initGA, logPageView } from '../lib/ga';
 
 function IOSIconShape() {
   // Create the shape in a useMemo to avoid re-creating it on every render
@@ -551,13 +550,8 @@ export default function Home() {
   const isMobile = useIsMobile();
   const [activeProject, setActiveProject] = useState(null);
   const [hoveredProject, setHoveredProject] = useState(null);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
   const controlsRef = useRef<any>(null);
-
-  useEffect(() => {
-    initGA();
-    logPageView();
-  }, []);
 
   const sceneScale = useIsMobile()
     ? new THREE.Vector3(0.8, 0.8, 0.8)
