@@ -98,6 +98,33 @@ const LivingRoom = ({
   const [textVisible, setTextVisible] = useState(false);
   const [hoveredObject, setHoveredObject] = useState<string | null>(null);
   const isMobile = useIsMobile();
+  const [mouse, setMouse] = useState({ x: 0, y: 0 });
+  const {size} = useThree();
+  const [isAnimationDone, setIsAnimationDone] = useState(false);
+
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      setMouse({
+        x: (event.clientX / size.width) * 2 - 1,
+        y: -(event.clientY / size.height) * 2 + 1,
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, [size]);
+
+  useEffect(() => {
+    // Set the intro animation duration (in milliseconds) and then trigger the cursor-following effect
+    const animationDuration = isMobile ? 3000 : 1200; // Adjust based on your intro animation duration
+    const timer = setTimeout(() => {
+      setIsAnimationDone(true);
+    }, animationDuration);
+
+    return () => clearTimeout(timer);
+  }, [isMobile]);
 
   // Shader for the TV screen
   const tvScreenShaderMaterial = new THREE.ShaderMaterial({
@@ -243,9 +270,13 @@ const LivingRoom = ({
 
   useFrame((state) => {
     const controls = controlsRef.current;
-    if (controls) {
-      controls.object.position.set(...position.get());
+    if (controls && isAnimationDone) {
+      const targetX = mouse.x * 0.2;
+      const targetY = Math.pow(mouse.y, 1) * 1; // Exaggerate the effect based on the Y position
+      controls.target.lerp(new THREE.Vector3(targetX * 2.0, targetY * 0.1, - targetY * 0.2), 0.06);
       controls.update();
+    } else {
+      controls.object.position.set(...position.get());
     }
 
     if (tvScreenRef.current) {
@@ -258,16 +289,16 @@ const LivingRoom = ({
       sphereRef.current.uniforms.uTime.value = state.clock.getElapsedTime();
     }
   });
-
   return (
-    <group position={[0, -0.5, 0]}>
+    <group position={[0, -1, 0]} scale={[1.1, 1.1, 1.1]}>
       <IOSIconShape />
 
       {/* Text elements with Billboard to face the camera */}
-      <Billboard>
+      <Billboard
+      >
         <animated.mesh>
           <Text
-            position={[0, isMobile ? 9 : 6.5, 0]}
+            position={[0, isMobile ? 10 : 6.5, 0]}
             fontSize={isMobile ? 1 : 0.9}
             anchorX="center"
             anchorY="middle"
@@ -283,7 +314,7 @@ const LivingRoom = ({
       <Billboard>
         <animated.mesh>
           <Text
-            position={[0, isMobile ? 7.9 : 5.7, 0]}
+            position={[0, isMobile ? 8.9 : 5.7, 0]}
             fontSize={isMobile ? 0.4 : 0.25}
             color={isDarkMode ? "white" : "#383842"}
             anchorX="center"
@@ -563,7 +594,7 @@ export default function Home() {
         height: "100vh",
         width: "100vw",
         position: "relative",
-        background: isDarkMode ? "#20202a" : "#eeeeee",
+        background: isDarkMode ? "#20192a" : "#eeeeee",
         animation: "gradientAnimation 120s ease infinite",
         backgroundSize: "500% 500%",
         transition: "all 0.3s ease-out",
@@ -646,7 +677,7 @@ export default function Home() {
           shadow-camera-bottom={-10}
         />
         <directionalLight position={[-10, 0, -4]} intensity={1} castShadow />
-        <DreiOrbitControls ref={controlsRef} />
+        <DreiOrbitControls ref={controlsRef} regress enableRotate={false} />
         <group scale={sceneScale}>
           <LivingRoom
             onProjectClick={setActiveProject}
@@ -663,7 +694,7 @@ export default function Home() {
               luminanceThreshold={0.6}
               luminanceSmoothing={0.3}
             />
-            <Vignette eskil={false} offset={0.1} darkness={1.1} />
+            <Vignette eskil={false} offset={0.1} darkness={0.4} />
             <HueSaturation hue={0} saturation={0.1} />
             {/* <BrightnessContrast brightness={0.05} contrast={0.2} /> */}
             {/* <Noise opacity={0.08} /> */}
