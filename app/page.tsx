@@ -22,7 +22,9 @@ import "./globals.css";
 import { useLoader } from "@react-three/fiber";
 import { CubeTextureLoader } from "three";
 
-function LoadingScreen({onLoaded}) {
+const LoadingScreen = ({onLoaded} : {
+  onLoaded: () => void;
+}) => {
   const { progress, loaded, total } = useProgress();
   useEffect(() => {
     if (loaded === total) {
@@ -187,7 +189,6 @@ const LivingRoom = ({
   onProjectHover: (project: any) => void;
   controlsRef: React.MutableRefObject<any>;
   isDarkMode: boolean;
-  setFeaturedCard: React.Dispatch<React.SetStateAction<IFeaturedCard>>;
   shouldStartAnimation: boolean;
   setShouldStartAnimation: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
@@ -700,10 +701,6 @@ export default function Home() {
   const [isDarkMode, setIsDarkMode] = useState(true);
   const controlsRef = useRef<any>(null);
   const [shouldStartAnimation, setShouldStartAnimation] = useState(false);
-  const [featuredCard, setFeaturedCard] = useState<IFeaturedCard>(null);
-  const resetFeaturedCard = useCallback(() => {
-    setFeaturedCard(null);
-  }, []);
   const sceneScale = useIsMobile()
     ? new THREE.Vector3(0.8, 0.8, 0.8)
     : new THREE.Vector3(1, 1, 1);
