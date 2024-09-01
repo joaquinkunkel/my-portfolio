@@ -195,7 +195,7 @@ const LivingRoom = ({
 
   useEffect(() => {
     // Set the intro animation duration (in milliseconds) and then trigger the cursor-following effect
-    const animationDuration = isMobile ? 3000 : 1200; // Adjust based on your intro animation duration
+    const animationDuration = isMobile ? 3000 : 1400; // Adjust based on your intro animation duration
     const timer = setTimeout(() => {
       setIsAnimationDone(true);
     }, animationDuration);
