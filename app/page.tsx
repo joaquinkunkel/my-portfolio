@@ -3,7 +3,7 @@
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { RoundedBox, Text, Billboard, useGLTF, Shape } from "@react-three/drei";
 import { OrbitControls as DreiOrbitControls } from "@react-three/drei";
-import { useState, useRef, useEffect, useMemo } from "react";
+import { useState, useRef, useEffect, useMemo, Ref } from "react";
 import Lightbulb from "../public/icons/bulb.svg";
 import {
   EffectComposer,
@@ -18,8 +18,85 @@ import {
 import * as THREE from "three";
 import { useSpring, animated } from "@react-spring/three";
 import useIsMobile from "./useIsMobile";
-import './globals.css';
+import "./globals.css";
+import { useLoader } from "@react-three/fiber";
+import { CubeTextureLoader } from "three";
 
+function GlassyTVScreen() {
+  const envMap = useMemo(() => {
+    // Create a basic color-based environment map
+    const size = 512; // Size of the texture
+    const data = new Uint8Array(3 * size * size); // RGB format
+
+    // Fill the texture with a gradient color or a solid color
+    for (let i = 0; i < size * size; i++) {
+      const stride = i * 3;
+      const color = i * 255; // Simple gradient
+      data[stride] = color;
+      data[stride + 1] = color;
+      data[stride + 2] = color;
+    }
+
+    const texture = new THREE.DataTexture(data, size, size, THREE.RGBFormat);
+    texture.needsUpdate = true;
+
+    const cubeTexture = new THREE.CubeTexture([
+      texture,
+      texture,
+      texture,
+      texture,
+      texture,
+      texture,
+    ]);
+    cubeTexture.format = THREE.RGBFormat;
+    cubeTexture.needsUpdate = true;
+
+    return cubeTexture;
+  }, []);
+
+  if (!envMap) {
+    console.error("Environment map is not loaded correctly");
+    return null;
+  }
+
+  return (
+    <mesh position={[0, 1.41, 0.52]} castShadow>
+      <planeGeometry args={[1.3, 0.8]} />
+      <meshPhysicalMaterial
+        color="#ffffff"
+        metalness={0.6}
+        roughness={0}
+        transparent={true}
+        opacity={0.1}
+        reflectivity={1}
+        clearcoat={1}
+        clearcoatRoughness={0.05}
+        envMap={envMap}
+        envMapIntensity={2}
+      />
+    </mesh>
+  );
+}
+
+type FloatingGroupProps = {
+  active?: boolean;
+  children: React.ReactNode;
+};
+
+const FloatingGroup: React.FC<FloatingGroupProps> = ({ active = true, children }) => {
+  const groupRef = useRef<THREE.Group | null>(null);
+  const speed = 2; // Adjust speed for the breathing motion
+  const amplitude = 0.1; // Adjust amplitude for how much it moves up and down
+
+  useFrame(({ clock }) => {
+    if (groupRef.current) {
+      const elapsedTime = clock.getElapsedTime();
+      const y = amplitude + Math.sin(elapsedTime * speed) * amplitude; // Sine wave for smooth oscillation
+      groupRef.current.position.y = active ? y : 0;
+    }
+  });
+  return <group ref={groupRef}>{children}</group>;
+}
 function IOSIconShape() {
   // Create the shape in a useMemo to avoid re-creating it on every render
   const shape = useMemo(() => {
@@ -99,7 +176,7 @@ const LivingRoom = ({
   const [hoveredObject, setHoveredObject] = useState<string | null>(null);
   const isMobile = useIsMobile();
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
-  const {size} = useThree();
+  const { size } = useThree();
   const [isAnimationDone, setIsAnimationDone] = useState(false);
 
   useEffect(() => {
@@ -273,7 +350,10 @@ const LivingRoom = ({
     if (controls && isAnimationDone) {
       const targetX = mouse.x * 0.2;
       const targetY = Math.pow(mouse.y, 1) * 1; // Exaggerate the effect based on the Y position
-      controls.target.lerp(new THREE.Vector3(targetX * 2.0, targetY * 0.1, - targetY * 0.2), 0.06);
+      controls.target.lerp(
+        new THREE.Vector3(targetX * 2.0, targetY * 0.1, -targetY * 0.2),
+        0.06,
+      );
       controls.update();
     } else {
       controls.object.position.set(...position.get());
@@ -294,8 +374,7 @@ const LivingRoom = ({
       <IOSIconShape />
 
       {/* Text elements with Billboard to face the camera */}
-      <Billboard
-      >
+      <Billboard>
         <animated.mesh>
           <Text
             position={[0, isMobile ? 10 : 6.5, 0]}
@@ -343,8 +422,7 @@ const LivingRoom = ({
         onClick={() => window.open("https://usebubbles.com/", "_blank")}
       >
         {(hoveredObject === "lamp" || isMobile) && (
-          <Billboard
-          >
+          <Billboard>
             <Text
               position={[0, isMobile ? 4 : 3.95, 0]}
               fontSize={isMobile ? 0.6 : 0.4}
@@ -361,40 +439,44 @@ const LivingRoom = ({
             >
               Front-end & Design
             </Text>
-            {!isMobile && <Text
-              position={[0, 3.2, 0]}
-              fontSize={0.24}
-              color={"#888888"}
-              font="/fonts/Supply-Regular.otf"
-            >
-              2021 - now
-            </Text>}
+            {!isMobile && (
+              <Text
+                position={[0, 3.2, 0]}
+                fontSize={0.24}
+                color={"#888888"}
+                font="/fonts/Supply-Regular.otf"
+              >
+                2021 - now
+              </Text>
+            )}
           </Billboard>
         )}
-        <mesh position={[0, 2.1, 0]}>
-          <sphereGeometry args={[0.75, 32, 32]} />
-          <meshStandardMaterial
-            color="white"
-            transparent
-            opacity={0.4}
-            metalness={0.9}
-            roughness={0.1}
-            envMapIntensity={0.5}
-          />
-          <primitive object={gradientShaderRef.current} ref={sphereRef} />
-        </mesh>
+        <FloatingGroup active={hoveredObject === "lamp"}>
+          <mesh position={[0, 2.1, 0]}>
+            <sphereGeometry args={[0.75, 32, 32]} />
+            <meshStandardMaterial
+              color="white"
+              transparent
+              opacity={0.4}
+              metalness={0.9}
+              roughness={0.1}
+              envMapIntensity={0.5}
+            />
+            <primitive object={gradientShaderRef.current} ref={sphereRef} />
+          </mesh>
 
-        <mesh position={[0, 2.1, 0]}>
-          <sphereGeometry args={[0.76, 33, 33]} />
-          <meshStandardMaterial
-            color="gray"
-            metalness={1}
-            roughness={0.3}
-            transparent
-            opacity={0.4}
-            envMapIntensity={1}
-          />
-        </mesh>
+          <mesh position={[0, 2.1, 0]}>
+            <sphereGeometry args={[0.76, 33, 33]} />
+            <meshStandardMaterial
+              color="gray"
+              metalness={1}
+              roughness={0.3}
+              transparent
+              opacity={0.4}
+              envMapIntensity={1}
+            />
+          </mesh>
+        </FloatingGroup>
 
         <RoundedBox
           args={[1.5, 1, 1.5]}
@@ -419,6 +501,7 @@ const LivingRoom = ({
       </animated.mesh>
 
       {/* TV */}
+
       <animated.mesh
         position={[-3, 0, -3]}
         castShadow
@@ -471,19 +554,21 @@ const LivingRoom = ({
         >
           <meshStandardMaterial color="white" metalness={0.4} roughness={0.3} />
         </RoundedBox>
-        <mesh position={[0, 1.4, 0]}>
-          <boxGeometry args={[1.5, 1, 1]} />
-          <meshStandardMaterial
-            color="#333333"
-            metalness={0.6}
-            roughness={0.3}
-          />
-        </mesh>
+        <FloatingGroup active={hoveredObject === "tv"}>
+          <GlassyTVScreen />
+          <mesh position={[0, 1.4, 0]}>
+            <boxGeometry args={[1.5, 1, 1]} />
+            <meshStandardMaterial
+              color="#333333"
+              metalness={0.6}
+              roughness={0.3}
+            />
+          </mesh>
 
-        <mesh position={[0, 1.4, 0.51]} castShadow>
-          <planeGeometry args={[1.3, 0.8]} />
-          <primitive object={tvScreenShaderMaterial} ref={tvScreenRef} />
-          {/* <spotLight
+          <mesh position={[0, 1.4, 0.51]} castShadow>
+            <planeGeometry args={[1.3, 0.8]} />
+            <primitive object={tvScreenShaderMaterial} ref={tvScreenRef} />
+            {/* <spotLight
             position={[0, 1.6, 0.61]}
             target-position={[0, 2, 5]}
             intensity={2}
@@ -493,12 +578,14 @@ const LivingRoom = ({
             color="white"
             castShadow
           /> */}
-        </mesh>
+          </mesh>
+        </FloatingGroup>
+
         <pointLight
-          position={[0.5, 1.4, 0.2]}
-          intensity={hoveredObject === "tv" ? 1 : 0.2}
+          position={[0.2, 1, 1.2]}
+          intensity={hoveredObject === "tv" ? 0.4 : 0.1}
           distance={8}
-          color="white"
+          color="pink"
           castShadow
         />
       </animated.mesh>
@@ -536,14 +623,16 @@ const LivingRoom = ({
             >
               Front-end & Design
             </Text>
-            {!isMobile && <Text
-              position={[0, 2.2, 0]}
-              fontSize={0.24}
-              color={"#888888"}
-              font="/fonts/Supply-Regular.otf"
-            >
-              2019 - 2021
-            </Text>}
+            {!isMobile && (
+              <Text
+                position={[0, 2.2, 0]}
+                fontSize={0.24}
+                color={"#888888"}
+                font="/fonts/Supply-Regular.otf"
+              >
+                2019 - 2021
+              </Text>
+            )}
           </Billboard>
         )}
         <RoundedBox args={[1.5, 1, 1.5]} radius={0.2} smoothness={10}>
@@ -556,9 +645,11 @@ const LivingRoom = ({
           color="orange"
           castShadow
         />
-        <mesh scale={3.0} castShadow>
-          <BirdModel position={[0, 0.39, 0]} />
-        </mesh>
+        <FloatingGroup active={false}>
+          <mesh scale={3.0} castShadow>
+            <BirdModel position={[0, 0.39, 0]} />
+          </mesh>
+        </FloatingGroup>
       </animated.mesh>
     </group>
   );
@@ -639,7 +730,8 @@ export default function Home() {
               background: isDarkMode ? "white" : "#383842",
               color: isDarkMode ? "#383842" : "#eeeeee",
               borderRadius: 10,
-              fontFamily: 'Cooper Black, Supply, Radio Grotesk, monospace, sans-serif'
+              fontFamily:
+                "Cooper Black, Supply, Radio Grotesk, monospace, sans-serif",
             }}
             href="mailto:joaquinkunkel@gmail.com"
             target="_blank"
