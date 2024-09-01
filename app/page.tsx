@@ -1,9 +1,9 @@
 "use client"; // Add this line at the very top
 
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { RoundedBox, Text, Billboard, useGLTF, Shape } from "@react-three/drei";
+import { RoundedBox, Text, Billboard, useGLTF, Shape, Html, useProgress } from "@react-three/drei";
 import { OrbitControls as DreiOrbitControls } from "@react-three/drei";
-import { useState, useRef, useEffect, useMemo, Ref } from "react";
+import { useState, useRef, useEffect, useMemo, Ref, useCallback, Suspense } from "react";
 import Lightbulb from "../public/icons/bulb.svg";
 import {
   EffectComposer,
@@ -21,6 +21,24 @@ import useIsMobile from "./useIsMobile";
 import "./globals.css";
 import { useLoader } from "@react-three/fiber";
 import { CubeTextureLoader } from "three";
+
+function LoadingScreen({onLoaded}) {
+  const { progress, loaded, total } = useProgress();
+  useEffect(() => {
+    if (loaded === total) {
+      onLoaded();  // Call the function passed as a prop when loading is complete
+    }
+  }, [loaded, total, onLoaded]);
+
+  return (
+    <Html center>
+      <div style={{ color: 'white', fontSize: '1.5em' }}>
+        Loading... {progress.toFixed(2)}%
+      </div>
+    </Html>
+  );
+}
+
 
 function GlassyTVScreen() {
   const envMap = useMemo(() => {
@@ -162,11 +180,16 @@ const LivingRoom = ({
   onProjectHover,
   controlsRef,
   isDarkMode,
+  shouldStartAnimation,
+  setShouldStartAnimation,
 }: {
   onProjectClick: (project: any) => void;
   onProjectHover: (project: any) => void;
   controlsRef: React.MutableRefObject<any>;
   isDarkMode: boolean;
+  setFeaturedCard: React.Dispatch<React.SetStateAction<IFeaturedCard>>;
+  shouldStartAnimation: boolean;
+  setShouldStartAnimation: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const tvScreenRef = useRef<THREE.ShaderMaterial | null>(null);
   const sphereRef = useRef<THREE.ShaderMaterial | null>(null);
@@ -194,14 +217,16 @@ const LivingRoom = ({
   }, [size]);
 
   useEffect(() => {
-    // Set the intro animation duration (in milliseconds) and then trigger the cursor-following effect
-    const animationDuration = isMobile ? 3000 : 1400; // Adjust based on your intro animation duration
-    const timer = setTimeout(() => {
-      setIsAnimationDone(true);
-    }, animationDuration);
-
-    return () => clearTimeout(timer);
-  }, [isMobile]);
+    if (shouldStartAnimation) {
+      const animationDuration = isMobile ? 3000 : 1800; // Adjust based on your intro animation duration
+      const timer = setTimeout(() => {
+        console.log('@@')
+        setIsAnimationDone(true);
+      }, animationDuration);
+  
+      return () => clearTimeout(timer);
+    }
+  }, [shouldStartAnimation, isMobile]);
 
   // Shader for the TV screen
   const tvScreenShaderMaterial = new THREE.ShaderMaterial({
@@ -312,8 +337,8 @@ const LivingRoom = ({
     },
     to: { position: [-12.47, isMobile ? 7 : 5.28, 9.57] },
     config: {
-      duration: isMobile ? 3000 : 1400,
-      easing: (t) => (isMobile ? --t * t * t + 1 : --t * t * t * t + 1),
+      duration: isMobile ? 3000 : 1800,
+      easing: (t) => (isMobile ? --t * t * t + 1 : --t * t + 1),
     },
     onRest: () => setTextVisible(true),
   });
@@ -347,7 +372,9 @@ const LivingRoom = ({
 
   useFrame((state) => {
     const controls = controlsRef.current;
+    controls.object.position.set(...position.get());
     if (controls && isAnimationDone) {
+      controlsRef.current.enabled = true; // Enable controls only after animation
       const targetX = mouse.x * 0.2;
       const targetY = Math.pow(mouse.y, 1) * 1; // Exaggerate the effect based on the Y position
       controls.target.lerp(
@@ -355,8 +382,6 @@ const LivingRoom = ({
         0.06,
       );
       controls.update();
-    } else {
-      controls.object.position.set(...position.get());
     }
 
     if (tvScreenRef.current) {
@@ -674,7 +699,11 @@ export default function Home() {
   const [hoveredProject, setHoveredProject] = useState(null);
   const [isDarkMode, setIsDarkMode] = useState(true);
   const controlsRef = useRef<any>(null);
-
+  const [shouldStartAnimation, setShouldStartAnimation] = useState(false);
+  const [featuredCard, setFeaturedCard] = useState<IFeaturedCard>(null);
+  const resetFeaturedCard = useCallback(() => {
+    setFeaturedCard(null);
+  }, []);
   const sceneScale = useIsMobile()
     ? new THREE.Vector3(0.8, 0.8, 0.8)
     : new THREE.Vector3(1, 1, 1);
@@ -753,6 +782,7 @@ export default function Home() {
         </div>
       )}
       <Canvas shadows>
+        <Suspense fallback={<LoadingScreen  onLoaded={() => setShouldStartAnimation(true)}  />}>
         <ResponsiveCamera />
         <ambientLight intensity={2} />
         <directionalLight
@@ -776,6 +806,8 @@ export default function Home() {
             onProjectHover={setHoveredProject}
             controlsRef={controlsRef}
             isDarkMode={isDarkMode}
+            shouldStartAnimation={shouldStartAnimation}
+            setShouldStartAnimation={setShouldStartAnimation}
           />
         </group>
         {/* Add post-processing effects here */}
@@ -798,6 +830,7 @@ export default function Home() {
             />
           </EffectComposer>
         )}
+        </Suspense>
       </Canvas>
     </div>
   );
