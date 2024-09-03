@@ -841,7 +841,7 @@ const webLinkStyle = {
   background: "rgba(255, 255, 255, 0.5)",
   borderRadius: 10,
   padding: "6px 12px",
-  boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
+  boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.1)",
   color: "#383842",
   textDecoration: "none",
   fontWeight: "bold",
@@ -1017,7 +1017,7 @@ const BubblesFeaturedCard = ({ onBackgroundClick, isDarkMode, visible } : {
         <Row>
           <div style={sectionStyle}>
             <div style={mapContainerStyle}>
-              <Image src={mapUrl} alt="San Francisco Map" style={mapStyle} />
+              <img  src={mapUrl} alt="San Francisco Map" style={mapStyle} />
             </div>
             <div>
               San Francisco, CA
@@ -1148,7 +1148,7 @@ const CamblyFeaturedCard = ({ onBackgroundClick, isDarkMode, visible}: {
         >
           <div style={sectionStyle}>
             <div style={mapContainerStyle}>
-              <Image src={mapUrl} alt="San Francisco Map" style={mapStyle} />
+              <img  src={mapUrl} alt="San Francisco Map" style={mapStyle} />
             </div>
             <div>
               San Francisco, CA
