@@ -52,6 +52,9 @@ a:hover {
   opacity: 1;
 }
 
+li {
+  margin: 4px auto 10px;
+}
 
 @font-face {
   font-family: 'Cooper Black';

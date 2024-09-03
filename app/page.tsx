@@ -1,44 +1,58 @@
 "use client"; // Add this line at the very top
-
+import styled from 'styled-components';
+import FeaturedCard from './FeaturedCard';
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { RoundedBox, Text, Billboard, useGLTF, Shape, Html, useProgress } from "@react-three/drei";
+import Image from 'next/image';
+import {
+  RoundedBox,
+  Text,
+  Billboard,
+  useGLTF,
+  Html,
+  useProgress,
+} from "@react-three/drei";
 import { OrbitControls as DreiOrbitControls } from "@react-three/drei";
-import { useState, useRef, useEffect, useMemo, Ref, useCallback, Suspense } from "react";
+import {
+  useState,
+  useRef,
+  useEffect,
+  useMemo,
+  useCallback,
+  Suspense,
+} from "react";
 import Lightbulb from "../public/icons/bulb.svg";
 import {
   EffectComposer,
   Bloom,
   Vignette,
   DepthOfField,
-  Noise,
   HueSaturation,
-  BrightnessContrast,
 } from "@react-three/postprocessing";
 
 import * as THREE from "three";
 import { useSpring, animated } from "@react-spring/three";
 import useIsMobile from "./useIsMobile";
 import "./globals.css";
-import { useLoader } from "@react-three/fiber";
-import { CubeTextureLoader } from "three";
+import "leaflet/dist/leaflet.css";
 
-function LoadingScreen({onLoaded}) {
+function LoadingScreen({ onLoaded } : {
+  onLoaded: () => void;
+}) {
   const { progress, loaded, total } = useProgress();
   useEffect(() => {
     if (loaded === total) {
-      onLoaded();  // Call the function passed as a prop when loading is complete
+      onLoaded(); // Call the function passed as a prop when loading is complete
     }
   }, [loaded, total, onLoaded]);
 
   return (
     <Html center>
-      <div style={{ color: 'white', fontSize: '1.5em' }}>
+      <div style={{ color: "white", fontSize: "1.5em" }}>
         Loading... {progress.toFixed(2)}%
       </div>
     </Html>
   );
 }
-
 
 function GlassyTVScreen() {
   const envMap = useMemo(() => {
@@ -101,7 +115,10 @@ type FloatingGroupProps = {
   children: React.ReactNode;
 };
 
-const FloatingGroup: React.FC<FloatingGroupProps> = ({ active = true, children }) => {
+const FloatingGroup: React.FC<FloatingGroupProps> = ({
+  active = true,
+  children,
+}) => {
   const groupRef = useRef<THREE.Group | null>(null);
   const speed = 2; // Adjust speed for the breathing motion
   const amplitude = 0.1; // Adjust amplitude for how much it moves up and down
@@ -114,7 +131,7 @@ const FloatingGroup: React.FC<FloatingGroupProps> = ({ active = true, children }
     }
   });
   return <group ref={groupRef}>{children}</group>;
-}
+};
 function IOSIconShape() {
   // Create the shape in a useMemo to avoid re-creating it on every render
   const shape = useMemo(() => {
@@ -175,11 +192,14 @@ function BirdModel(props: any) {
   return <primitive object={scene} {...props} />;
 }
 
+type IFeaturedCard = "bubbles" | "cambly" | "freelance" | null;
+
 const LivingRoom = ({
   onProjectClick,
   onProjectHover,
   controlsRef,
   isDarkMode,
+  setFeaturedCard,
   shouldStartAnimation,
   setShouldStartAnimation,
 }: {
@@ -202,6 +222,18 @@ const LivingRoom = ({
   const { size } = useThree();
   const [isAnimationDone, setIsAnimationDone] = useState(false);
 
+  const handleBubblesClick = useCallback(() => {
+    setFeaturedCard("bubbles");
+  }, []);
+
+  const handleCamblyClick = useCallback(() => {
+    setFeaturedCard("cambly");
+  }, []);
+
+  const handleFreelanceClick = useCallback(() => {
+    window.open("https://behance.net/joaquinkunkel", "_blank");
+  }, []);
+
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
       setMouse({
@@ -220,10 +252,10 @@ const LivingRoom = ({
     if (shouldStartAnimation) {
       const animationDuration = isMobile ? 3000 : 1800; // Adjust based on your intro animation duration
       const timer = setTimeout(() => {
-        console.log('@@')
+        console.log("@@");
         setIsAnimationDone(true);
       }, animationDuration);
-  
+
       return () => clearTimeout(timer);
     }
   }, [shouldStartAnimation, isMobile]);
@@ -444,14 +476,14 @@ const LivingRoom = ({
           setHoveredObject(null);
           document.body.style.cursor = "auto";
         }}
-        onClick={() => window.open("https://usebubbles.com/", "_blank")}
+        onClick={handleBubblesClick}
       >
         {(hoveredObject === "lamp" || isMobile) && (
           <Billboard>
             <Text
               position={[0, isMobile ? 4 : 3.95, 0]}
               fontSize={isMobile ? 0.6 : 0.4}
-              color="#ff80ff"
+              color="#cf60cf"
               font="/fonts/COOPBL.TTF"
             >
               Bubbles
@@ -539,9 +571,7 @@ const LivingRoom = ({
           setHoveredObject(null);
           document.body.style.cursor = "auto";
         }}
-        onClick={() =>
-          window.open("https://behance.net/joaquinkunkel", "_blank")
-        }
+        onClick={handleFreelanceClick}
       >
         {(hoveredObject === "tv" || isMobile) && (
           <Billboard>
@@ -627,7 +657,7 @@ const LivingRoom = ({
           setHoveredObject(null);
           document.body.style.cursor = "auto";
         }}
-        onClick={() => window.open("https://cambly.com/", "_blank")}
+        onClick={handleCamblyClick}
         castShadow
       >
         {(hoveredObject === "bird" || isMobile) && (
@@ -635,7 +665,7 @@ const LivingRoom = ({
             <Text
               position={[0, isMobile ? 3 : 3, 0]}
               fontSize={isMobile ? 0.6 : 0.4}
-              color="orange"
+              color="#e49610"
               font="/fonts/COOPBL.TTF"
             >
               Cambly
@@ -693,11 +723,507 @@ function ResponsiveCamera() {
   return null;
 }
 
+const cardStyle = {
+  background: "rgba(245, 245, 245, 0.8)",
+  // height: "100%",
+  width: "100%",
+  maxWidth: 600,
+  margin: "0 auto",
+  zIndex: 11,
+  borderRadius: 22,
+  boxShadow:
+    "0px 28px 60px -28px rgba(0,0,0,0.4), inset 0px 2px 2px -1px rgba(255, 255, 255, 0.4), inset 0px -32px 6px -32px rgba(0, 0, 0, 0.1)",
+  outline: "1px solid rgba(0, 0, 0, 0.1)",
+  backdropFilter: "blur(20px)",
+  padding: "14px 24px",
+  fontFamily: "Radio Grotesk, sans-serif",
+  color: "#383842",
+  lineHeight: "130%",
+};
+
+const cardBackgroundStyle = {
+  height: "100%",
+  width: "100%",
+  padding: 40,
+  position: "absolute",
+  fontFamily: "Cooper Black",
+  zIndex: 11,
+  background: "rgba(0,0,0,0.5)",
+  overflow: 'auto',
+};
+
+const closeLinkStyle = {
+  color: "white",
+  position: "absolute",
+  margin: "50px auto",
+  right: 0,
+  marginLeft: "auto",
+  textAlign: "right",
+  width: "100%",
+  display: "flex",
+};
+
+const featuredHeadingStyle = {
+  fontFamily: "Cooper Black",
+  fontSize: 32,
+  margin: "16px 0 40px",
+  textShadow:
+    "0 0 24px rgba(255, 255, 255, 0.6), 0 10px 20px rgba(255, 255, 255, 0.4)",
+};
+
+const captionStyle = {
+  fontSize: "0.8em",
+};
+
+const sectionStyle = {
+  background: "rgba(255, 255, 255, 0.4)",
+  padding: "0px 20px 20px",
+  fontSize: 16,
+  borderRadius: 12,
+  display: "flex",
+  alignItems: "baseline",
+  flexDirection: "column" as "column",
+  outline: "1px solid rgba(0, 0, 0, 0.1)",
+  width: '100%',
+};
+
+const liStyle = {
+  width: "100%",
+};
+
+const mapStyle = {
+  height: 120,
+  // filter: "grayscale(1)",
+  mixBlendMode: "multiply" as "multiply",
+};
+const mapContainerStyle = {
+  background: "white",
+  height: 120,
+  display: "flex",
+  borderRadius: 8,
+  overflow: "hidden",
+  width: "100%",
+  margin: "16px 0 12px",
+  outline: "1px solid rgba(0,0,0,0.1)",
+};
+const graphStyle = {
+  background:
+    "linear-gradient(rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.65))",
+  borderRadius: 8,
+  height: 120,
+  width: "100%",
+  margin: "16px 0 12px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  outline: "1px solid rgba(0,0,0,0.1)",
+};
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  margin: 20px 0;
+  width: 100%;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+`;
+const webLinkStyle = {
+  position: "absolute" as "absolute",
+  top: 20,
+  right: 20,
+  background: "rgba(255, 255, 255, 0.5)",
+  borderRadius: 10,
+  padding: "6px 12px",
+  boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
+  color: "#383842",
+  textDecoration: "none",
+  fontWeight: "bold",
+  fontSize: "0.9em",
+  outline: "1px solid rgba(0, 0, 0, 0.1)",
+}
+const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=San+Francisco,CA&zoom=13&size=600x300&maptype=roadmap
+&markers=color:red%7Clabel:S%7C37.7749,-122.4194
+&key=pk.eyJ1Ijoiam9hcXVpbmt1bmtlbCIsImEiOiJjbTBraHNzajMxN2IwMm1xMnA1NHBqMDY3In0.QoxI3AJs0BryBFMJXh_jXQ`;
+
+const BubblesFeaturedCard = ({ onBackgroundClick, isDarkMode, visible } : {
+  onBackgroundClick: () => void;
+  isDarkMode ?: boolean;
+  visible ?: boolean;
+}) => {
+  const iconStyle = {
+    marginRight: 8,
+    color: "#383842",
+  };
+
+  const captionStyle = {
+    fontSize: "0.85em",
+    opacity: 0.65,
+    marginTop: 4,
+  };
+
+  const mapUrl = `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/-122.4194,37.7749,12/600x300?access_token=pk.eyJ1Ijoiam9hcXVpbmt1bmtlbCIsImEiOiJjbTBraHNzajMxN2IwMm1xMnA1NHBqMDY3In0.QoxI3AJs0BryBFMJXh_jXQ`;
+
+  const svgGraph = (
+    <svg
+      style={{ opacity: 0.7 }}
+      width="calc(100% - 40px)"
+      height="auto"
+      viewBox="0 0 100 50"
+    >
+      <line
+        x1="0"
+        y1="10"
+        x2="100"
+        y2="10"
+        stroke="rgba(56, 56, 66, 0.2)"
+        strokeWidth="0.5"
+      />
+      <line
+        x1="0"
+        y1="20"
+        x2="100"
+        y2="20"
+        stroke="rgba(56, 56, 66, 0.2)"
+        strokeWidth="0.5"
+      />
+      <line
+        x1="0"
+        y1="30"
+        x2="100"
+        y2="30"
+        stroke="rgba(56, 56, 66, 0.2)"
+        strokeWidth="0.5"
+      />
+      <line
+        x1="0"
+        y1="40"
+        x2="100"
+        y2="40"
+        stroke="rgba(56, 56, 66, 0.2)"
+        strokeWidth="0.5"
+      />
+      <line
+        x1="10"
+        y1="0"
+        x2="10"
+        y2="50"
+        stroke="rgba(56, 56, 66, 0.2)"
+        strokeWidth="0.5"
+      />
+      <line
+        x1="20"
+        y1="0"
+        x2="20"
+        y2="50"
+        stroke="rgba(56, 56, 66, 0.2)"
+        strokeWidth="0.5"
+      />
+      <line
+        x1="30"
+        y1="0"
+        x2="30"
+        y2="50"
+        stroke="rgba(56, 56, 66, 0.2)"
+        strokeWidth="0.5"
+      />
+      <line
+        x1="40"
+        y1="0"
+        x2="40"
+        y2="50"
+        stroke="rgba(56, 56, 66, 0.2)"
+        strokeWidth="0.5"
+      />
+      <line
+        x1="50"
+        y1="0"
+        x2="50"
+        y2="50"
+        stroke="rgba(56, 56, 66, 0.2)"
+        strokeWidth="0.5"
+      />
+      <line
+        x1="60"
+        y1="0"
+        x2="60"
+        y2="50"
+        stroke="rgba(56, 56, 66, 0.2)"
+        strokeWidth="0.5"
+      />
+      <line
+        x1="70"
+        y1="0"
+        x2="70"
+        y2="50"
+        stroke="rgba(56, 56, 66, 0.2)"
+        strokeWidth="0.5"
+      />
+      <line
+        x1="80"
+        y1="0"
+        x2="80"
+        y2="50"
+        stroke="rgba(56, 56, 66, 0.2)"
+        strokeWidth="0.5"
+      />
+      <line
+        x1="90"
+        y1="0"
+        x2="90"
+        y2="50"
+        stroke="rgba(56, 56, 66, 0.2)"
+        strokeWidth="0.5"
+      />
+      <polyline
+        fill="none"
+        stroke="#cf50df"
+        strokeWidth="1.2"
+        points="0,50 10,40 20,35 30,20 40,10 50,15 60,5 70,0 80,10 90,20 100,5"
+      />
+    </svg>
+  );
+
+  return (
+    <FeaturedCard
+      onBackgroundClick={onBackgroundClick}
+      isDarkMode={isDarkMode}
+      visible={visible}
+    >
+
+        <a
+          href="https://usebubbles.com" // Replace with the actual Bubbles landing page URL
+          target="_blank"
+          rel="noopener noreferrer"
+          style={webLinkStyle}
+        >
+          Visit website
+        </a>
+        <h1
+          style={{
+            ...featuredHeadingStyle,
+            color: "#cf60cf",
+          }}
+        >
+          Bubbles
+        </h1>
+
+        <Row>
+          <div style={sectionStyle}>
+            <div style={mapContainerStyle}>
+              <Image src={mapUrl} alt="San Francisco Map" style={mapStyle} />
+            </div>
+            <div>
+              San Francisco, CA
+              <br />
+              <p style={captionStyle}>Remote team</p>
+            </div>
+          </div>
+
+          <div style={sectionStyle}>
+            <div style={graphStyle}>{svgGraph}</div>
+            <div>ARR from 0 to $150K</div>
+            <p style={captionStyle}>2022 - 2024 • Team of 7</p>
+          </div>
+        </Row>
+
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column" as "column",
+            gap: 24,
+            margin: "20px 0",
+            width: "100%",
+          }}
+        >
+          {/* <p style={captionStyle}>Some highlights</p> */}
+          <div
+            style={{
+              ...sectionStyle,
+              padding: 20,
+              borderRadius: 12,
+              width: "100%",
+            }}
+          >
+            <div
+              style={{ display: "flex", alignItems: "center", width: "100%" }}
+            >
+              <li style={liStyle}>
+                Design & implement UX for growth & core product
+              </li>
+            </div>
+            <div
+              style={{ display: "flex", alignItems: "center", width: "100%" }}
+            >
+              <li style={liStyle}>Full rebrand & marketing guidelines</li>
+            </div>
+            <div
+              style={{ display: "flex", alignItems: "center", width: "100%" }}
+            >
+              <li style={liStyle}>
+                Introduced generative AI functionality
+                <p style={captionStyle}>
+                  Incl. automatic meeting notes & action items
+                </p>
+              </li>
+            </div>
+            <div
+              style={{ display: "flex", alignItems: "center", width: "100%" }}
+            >
+              <li style={liStyle}>
+                Collaborated with the incredible&nbsp;
+                <a href="https://taylorlecroy.com/" target="_blank">
+                  @Taylor Lecroy&nbsp;
+                </a>
+              </li>
+            </div>
+          </div>
+        </div>
+    </FeaturedCard>
+  );
+};
+
+const CamblyFeaturedCard = ({ onBackgroundClick, isDarkMode, visible}: {
+  onBackgroundClick: () => void;
+  isDarkMode?: boolean;
+  visible?: boolean;
+}) => {
+  const iconStyle = {
+    marginRight: 8,
+    color: "#383842",
+  };
+
+  const captionStyle = {
+    fontSize: "0.85em",
+    opacity: 0.65,
+    marginTop: 4,
+  };
+
+  const mapUrl = `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/-122.4194,37.7749,12/600x300?access_token=pk.eyJ1Ijoiam9hcXVpbmt1bmtlbCIsImEiOiJjbTBraHNzajMxN2IwMm1xMnA1NHBqMDY3In0.QoxI3AJs0BryBFMJXh_jXQ`;
+
+  const svgGraph = (
+    <svg
+      style={{ opacity: 0.7 }}
+      width="calc(100% - 40px)"
+      height="auto"
+      viewBox="0 0 100 50"
+    >
+      <rect width="100" height="50" fill="rgba(56, 56, 66, 0.01)" />
+      {[...Array(99)].map((_, i) => (
+        <circle
+          key={i}
+          cx={(i % 10) * 10 + 5}
+          cy={Math.floor(i / 10) * 10 + 5}
+          r="2"
+          fill="rgba(56, 56, 66, 0.3)"
+        />
+      ))}
+      <circle cx="95" cy="5" r="4" fill="#a45600" />
+    </svg>
+  );
+
+  return (
+    <FeaturedCard
+    onBackgroundClick={onBackgroundClick}
+    isDarkMode={isDarkMode}
+    visible={visible}
+    >
+        <a
+          href="https://cambly.com" // Replace with the actual Bubbles landing page URL
+          target="_blank"
+          rel="noopener noreferrer"
+          style={webLinkStyle}
+        >
+          Visit website
+        </a>
+        <h1 style={{ ...featuredHeadingStyle, color: "#e49610" }}>Cambly</h1>
+
+        <Row
+        >
+          <div style={sectionStyle}>
+            <div style={mapContainerStyle}>
+              <Image src={mapUrl} alt="San Francisco Map" style={mapStyle} />
+            </div>
+            <div>
+              San Francisco, CA
+              <br />
+              <p style={captionStyle}>Hybrid team</p>
+            </div>
+          </div>
+
+          <div style={sectionStyle}>
+            <div style={graphStyle}>{svgGraph}</div>
+            <div>Design team of 1 (me!)</div>
+            <p style={captionStyle}>Company of 100</p>
+          </div>
+        </Row>
+
+        <Row
+        >
+          {/* <p style={captionStyle}>Some highlights</p> */}
+          <div
+            style={{
+              ...sectionStyle,
+              padding: 20,
+              borderRadius: 12,
+              width: "100%",
+            }}
+          >
+            <div
+              style={{ display: "flex", alignItems: "center", width: "100%" }}
+            >
+              <li style={liStyle}>Owned UX for iOS, Android & web features</li>
+            </div>
+            <div
+              style={{ display: "flex", alignItems: "center", width: "100%" }}
+            >
+              <li style={liStyle}>Implemented web features in React</li>
+            </div>
+            <div
+              style={{ display: "flex", alignItems: "center", width: "100%" }}
+            >
+              <li style={liStyle}>
+                Introduced higher-converting onboarding flows
+                <p style={captionStyle}>
+                  Boosted free-trial conversion by 10% in adult and kids
+                  products
+                </p>
+              </li>
+            </div>
+            <div
+              style={{ display: "flex", alignItems: "center", width: "100%" }}
+            >
+              <li style={liStyle}>Full rebrand & marketing guidelines</li>
+            </div>
+            <div
+              style={{ display: "flex", alignItems: "center", width: "100%" }}
+            >
+              {/* <li style={liStyle}>
+                Led a branding workshop fresh out of college
+                <p style={captionStyle}>
+                <a href="https://taylorlecroy.com/" target="_blank">
+                  Watch the video&nbsp;
+                </a>
+                </p>
+              </li> */}
+            </div>
+          </div>
+        </Row>
+    </FeaturedCard>
+  );
+};
+
 export default function Home() {
   const isMobile = useIsMobile();
   const [activeProject, setActiveProject] = useState(null);
   const [hoveredProject, setHoveredProject] = useState(null);
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const controlsRef = useRef<any>(null);
   const [shouldStartAnimation, setShouldStartAnimation] = useState(false);
   const [featuredCard, setFeaturedCard] = useState<IFeaturedCard>(null);
@@ -720,10 +1246,24 @@ export default function Home() {
         transition: "all 0.3s ease-out",
       }}
     >
+      {controlsRef.current &&
+      <>
+        <BubblesFeaturedCard
+        onBackgroundClick={resetFeaturedCard}
+        isDarkMode={isDarkMode}
+        visible={featuredCard === 'bubbles'}
+        />
+        <CamblyFeaturedCard
+        onBackgroundClick={resetFeaturedCard}
+        isDarkMode={isDarkMode}
+        visible={featuredCard === 'cambly'}
+        />
+        </>
+}
       {isMobile !== undefined && (
         <div
           style={{
-            fontFamily: "Supply, Radio Grotesk, monospace, sans-serif",
+            fontFamily: "Radio Grotesk, Radio Grotesk, sans-serif, monospace",
             color: isDarkMode ? "rgba(255, 255, 255, 0.7)" : "#383842",
           }}
         >
@@ -760,7 +1300,7 @@ export default function Home() {
               color: isDarkMode ? "#383842" : "#eeeeee",
               borderRadius: 10,
               fontFamily:
-                "Cooper Black, Supply, Radio Grotesk, monospace, sans-serif",
+                "Cooper Black, Radio Grotesk, sans-serif, monospace, sans-serif",
             }}
             href="mailto:joaquinkunkel@gmail.com"
             target="_blank"
@@ -782,54 +1322,59 @@ export default function Home() {
         </div>
       )}
       <Canvas shadows>
-        <Suspense fallback={<LoadingScreen  onLoaded={() => setShouldStartAnimation(true)}  />}>
-        <ResponsiveCamera />
-        <ambientLight intensity={2} />
-        <directionalLight
-          position={[8, 14, -8]}
-          intensity={0.5}
-          castShadow
-          shadow-mapSize-width={1024}
-          shadow-mapSize-height={1024}
-          shadow-camera-far={50}
-          shadow-camera-near={1}
-          shadow-camera-left={-10}
-          shadow-camera-right={10}
-          shadow-camera-top={10}
-          shadow-camera-bottom={-10}
-        />
-        <directionalLight position={[-10, 0, -4]} intensity={1} castShadow />
-        <DreiOrbitControls ref={controlsRef} regress enableRotate={false} />
-        <group scale={sceneScale}>
-          <LivingRoom
-            onProjectClick={setActiveProject}
-            onProjectHover={setHoveredProject}
-            controlsRef={controlsRef}
-            isDarkMode={isDarkMode}
-            shouldStartAnimation={shouldStartAnimation}
-            setShouldStartAnimation={setShouldStartAnimation}
+        <Suspense
+          fallback={
+            <LoadingScreen onLoaded={() => setShouldStartAnimation(true)} />
+          }
+        >
+          <ResponsiveCamera />
+          <ambientLight intensity={2} />
+          <directionalLight
+            position={[8, 14, -8]}
+            intensity={0.5}
+            castShadow
+            shadow-mapSize-width={1024}
+            shadow-mapSize-height={1024}
+            shadow-camera-far={50}
+            shadow-camera-near={1}
+            shadow-camera-left={-10}
+            shadow-camera-right={10}
+            shadow-camera-top={10}
+            shadow-camera-bottom={-10}
           />
-        </group>
-        {/* Add post-processing effects here */}
-        {isDarkMode && (
-          <EffectComposer>
-            <Bloom
-              intensity={0.02}
-              luminanceThreshold={0.6}
-              luminanceSmoothing={0.3}
+          <directionalLight position={[-10, 0, -4]} intensity={1} castShadow />
+          <DreiOrbitControls ref={controlsRef} regress enableRotate={false} />
+          <group scale={sceneScale}>
+            <LivingRoom
+              onProjectClick={setActiveProject}
+              onProjectHover={setHoveredProject}
+              controlsRef={controlsRef}
+              isDarkMode={isDarkMode}
+              setFeaturedCard={setFeaturedCard}
+              shouldStartAnimation={shouldStartAnimation}
+              setShouldStartAnimation={setShouldStartAnimation}
             />
-            <Vignette eskil={false} offset={0.1} darkness={0.4} />
-            <HueSaturation hue={0} saturation={0.1} />
-            {/* <BrightnessContrast brightness={0.05} contrast={0.2} /> */}
-            {/* <Noise opacity={0.08} /> */}
-            <DepthOfField
-              focusDistance={0.1}
-              focalLength={0.9}
-              bokehScale={2}
-              height={480}
-            />
-          </EffectComposer>
-        )}
+          </group>
+          {/* Add post-processing effects here */}
+          {isDarkMode && (
+            <EffectComposer>
+              <Bloom
+                intensity={0.02}
+                luminanceThreshold={0.6}
+                luminanceSmoothing={0.3}
+              />
+              <Vignette eskil={false} offset={0.1} darkness={0.4} />
+              <HueSaturation hue={0} saturation={0.1} />
+              {/* <BrightnessContrast brightness={0.05} contrast={0.2} /> */}
+              {/* <Noise opacity={0.08} /> */}
+              <DepthOfField
+                focusDistance={0.1}
+                focalLength={0.9}
+                bokehScale={2}
+                height={480}
+              />
+            </EffectComposer>
+          )}
         </Suspense>
       </Canvas>
     </div>
