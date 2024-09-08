@@ -451,7 +451,7 @@ const LivingRoom = ({
         <animated.mesh>
           <Text
             position={[0, isMobile ? 8.9 : 5.7, 0]}
-            fontSize={isMobile ? 0.4 : 0.25}
+            fontSize={isMobile ? 0.4 : 0.3}
             color={isDarkMode ? "white" : "#383842"}
             anchorX="center"
             anchorY="middle"
@@ -459,7 +459,7 @@ const LivingRoom = ({
             font="/fonts/Supply-Regular.otf"
             material={isDarkMode ? textShaderRef.current : undefined}
           >
-            Product designer who codes • 8 yrs experience
+            Product designer who codes
           </Text>
         </animated.mesh>
       </Billboard>
@@ -1159,8 +1159,8 @@ const CamblyFeaturedCard = ({ onBackgroundClick, isDarkMode, visible}: {
 
           <div style={sectionStyle}>
             <div style={graphStyle}>{svgGraph}</div>
-            <div>Design team of 1 (me!)</div>
-            <p style={captionStyle}>Company of 100</p>
+            <div>Solo UX designer</div>
+            <p style={captionStyle}>in a company of 100</p>
           </div>
         </Row>
 
@@ -1300,7 +1300,7 @@ export default function Home() {
               color: isDarkMode ? "#383842" : "#eeeeee",
               borderRadius: 10,
               fontFamily:
-                "Cooper Black, Radio Grotesk, sans-serif, monospace, sans-serif",
+                "Cooper Black, Supply, Radio Grotesk, sans-serif, monospace, sans-serif",
             }}
             href="mailto:joaquinkunkel@gmail.com"
             target="_blank"
@@ -1313,6 +1313,8 @@ export default function Home() {
               zIndex: 10,
               bottom: isMobile ? 120 : 75,
               right: isMobile ? 20 : 60,
+              fontFamily:
+              "Supply, Radio Grotesk, sans-serif, monospace, sans-serif",
             }}
             href="https://github.com/joaquinkunkel/my-portfolio"
             target="_blank"

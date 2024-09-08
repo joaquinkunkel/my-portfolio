@@ -36,6 +36,7 @@ const Card = styled.div<{ visible?: boolean }>`
   line-height: 130%;
   position: relative;
   transition: bottom 0.2s ease-out;
+  bottom: ${({visible}) => (visible ? '0' : '-20px')};
 `;
 
 const CardBackground = styled.div<{ visible?: boolean }>`
