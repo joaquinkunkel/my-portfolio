@@ -17,25 +17,24 @@ const FeaturedCard: React.FC<IFeaturedCardProps> = ({ onBackgroundClick, isDarkM
     );
 };
 
-const Card = styled.div<{ visible?: boolean }>`
-  background: rgba(245, 245, 245, 0.8);
+const Card = styled.div<{ visible?: boolean; darkMode?: boolean; }>`
+  background: rgba(225, 225, 225, 1);
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
   z-index: 11;
+  font-weight: 400;
   border-radius: 22px;
   box-shadow: 
-    0px 28px 60px -28px rgba(0, 0, 0, 0.4), 
-    inset 0px 2px 2px -1px rgba(255, 255, 255, 0.4), 
-    inset 0px -32px 6px -32px rgba(0, 0, 0, 0.1);
+    0px 28px 60px -28px rgba(0, 0, 0, 0.6), 
+    inset 0px 2px 2px -1px rgba(255, 255, 255, 0.6);
   outline: 1px solid rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(20px);
-  padding: 14px 24px;
-  font-family: 'Supply', sans-serif;
+  padding: 10px 20px 4px;
+  font-family: 'Radio Grotesk', 'Supply', sans-serif;
   color: #383842;
   line-height: 130%;
   position: relative;
-  transition: all 0.2s ease-out;
+  transition: bottom 0.2s ease-out;
   bottom: ${({visible}) => (visible ? '0' : '-20px')};
 `;
 
@@ -52,7 +51,7 @@ const CardBackground = styled.div<{ visible?: boolean }>`
   z-index: 11;
   background: rgba(0, 0, 0, 0.5);
   overflow: auto;
-  transition: opacity 0.2s ease-out;
+  transition: opacity 0.1s ease-out;
 `;
 
 export default FeaturedCard;
