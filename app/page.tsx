@@ -1,6 +1,6 @@
 "use client"; // Add this line at the very top
 import styled from "styled-components";
-import FeaturedCard from "./FeaturedCard";
+import FeaturedCard, { fadeInUp } from "./FeaturedCard";
 import { motion } from "framer-motion";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import Image from "next/image";
@@ -60,20 +60,6 @@ function LoadingScreen({ onLoaded }: { onLoaded: () => void }) {
   );
 }
 
-export const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
-
-export const cardVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1, // Controls the delay between animations of children
-    },
-  },
-};
 function GlassyTVScreen() {
   const envMap = useMemo(() => {
     // Create a basic color-based environment map
