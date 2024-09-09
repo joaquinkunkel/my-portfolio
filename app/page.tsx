@@ -465,7 +465,7 @@ const LivingRoom = ({
       </Billboard>
 
       <animated.mesh
-        position={[3, 0, 3]}
+        position={[-3.0, 0, -3.6]}
         castShadow
         scale={lampSpring.scale.to((s) => [s, s, s])}
         onPointerOver={() => {
@@ -481,7 +481,7 @@ const LivingRoom = ({
         {(hoveredObject === "lamp" || isMobile) && (
           <Billboard>
             <Text
-              position={[0, isMobile ? 4 : 3.95, 0]}
+              position={[0, isMobile ? 3.5 : 3.75, 0]}
               fontSize={isMobile ? 0.6 : 0.4}
               color="#cf60cf"
               font="/fonts/COOPBL.TTF"
@@ -489,7 +489,7 @@ const LivingRoom = ({
               Bubbles
             </Text>
             <Text
-              position={[0, isMobile ? 3.5 : 3.55, 0]}
+              position={[0, isMobile ? 3 : 3.35, 0]}
               fontSize={isMobile ? 0.35 : 0.24}
               color={isDarkMode ? "white" : "#383842"}
               font="/fonts/Supply-Regular.otf"
@@ -498,7 +498,7 @@ const LivingRoom = ({
             </Text>
             {!isMobile && (
               <Text
-                position={[0, 3.2, 0]}
+                position={[0, 3, 0]}
                 fontSize={0.24}
                 color={"#888888"}
                 font="/fonts/Supply-Regular.otf"
@@ -509,7 +509,7 @@ const LivingRoom = ({
           </Billboard>
         )}
         <FloatingGroup active={hoveredObject === "lamp"}>
-          <mesh position={[0, 2.1, 0]}>
+          <mesh position={[0, 1.75, 0]}>
             <sphereGeometry args={[0.75, 32, 32]} />
             <meshStandardMaterial
               color="white"
@@ -522,7 +522,7 @@ const LivingRoom = ({
             <primitive object={gradientShaderRef.current} ref={sphereRef} />
           </mesh>
 
-          <mesh position={[0, 2.1, 0]}>
+          <mesh position={[0, 1.75, 0]}>
             <sphereGeometry args={[0.76, 33, 33]} />
             <meshStandardMaterial
               color="gray"
@@ -536,15 +536,15 @@ const LivingRoom = ({
         </FloatingGroup>
 
         <RoundedBox
-          args={[1.5, 1, 1.5]}
+          args={[1.8, 0.8, 1.8]}
           radius={0.2}
           smoothness={10}
-          position={[0, 0.55, 0]}
+          position={[0, 0.35, 0]}
         >
           <meshStandardMaterial
             color="#e87967"
             metalness={0.3}
-            roughness={0.9}
+            roughness={0.4}
           />
         </RoundedBox>
 
@@ -560,7 +560,8 @@ const LivingRoom = ({
       {/* TV */}
 
       <animated.mesh
-        position={[-3, 0, -3]}
+        position={[3, 0, 3]}
+        rotation={[0, - Math.PI / 2, 0]}
         castShadow
         scale={tvSpring.scale.to((s) => [s, s, s])}
         onPointerOver={() => {
@@ -576,7 +577,7 @@ const LivingRoom = ({
         {(hoveredObject === "tv" || isMobile) && (
           <Billboard>
             <Text
-              position={[0, isMobile ? 4 : 3.6, 0]}
+              position={[0, isMobile ? 3.6 : 3.6, 0]}
               fontSize={isMobile ? 0.6 : 0.4}
               color={isDarkMode ? "#c6f545" : "#76d525"}
               font="/fonts/COOPBL.TTF"
@@ -584,21 +585,23 @@ const LivingRoom = ({
               Freelance
             </Text>
             <Text
-              position={[0, isMobile ? 3.5 : 3.15, 0]}
+              position={[0, isMobile ? 3.1 : 3.15, 0]}
               fontSize={isMobile ? 0.35 : 0.24}
               color={isDarkMode ? "white" : "#383842"}
               font="/fonts/Supply-Regular.otf"
             >
-              Design, motion,
+              Design, motion & art
             </Text>
-            <Text
-              position={[0, isMobile ? 3 : 2.83, 0]}
-              fontSize={isMobile ? 0.35 : 0.24}
-              color={isDarkMode ? "white" : "#383842"}
-              font="/fonts/Supply-Regular.otf"
-            >
-              eng & art
-            </Text>
+            {!isMobile && (
+              <Text
+                position={[0, 2.76, 0]}
+                fontSize={0.24}
+                color={"#888888"}
+                font="/fonts/Supply-Regular.otf"
+              >
+                Since 2015
+              </Text>
+            )}
           </Billboard>
         )}
         <RoundedBox

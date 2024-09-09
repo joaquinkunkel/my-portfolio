@@ -35,7 +35,7 @@ const Card = styled.div<{ visible?: boolean }>`
   color: #383842;
   line-height: 130%;
   position: relative;
-  transition: bottom 0.2s ease-out;
+  transition: all 0.2s ease-out;
   bottom: ${({visible}) => (visible ? '0' : '-20px')};
 `;
 
@@ -52,7 +52,7 @@ const CardBackground = styled.div<{ visible?: boolean }>`
   z-index: 11;
   background: rgba(0, 0, 0, 0.5);
   overflow: auto;
-  transition: opacity 0.2s ease-out, visibility 0.2s ease-out;
+  transition: opacity 0.2s ease-out;
 `;
 
 export default FeaturedCard;
