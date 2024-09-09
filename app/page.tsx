@@ -771,10 +771,6 @@ const featuredHeadingStyle = {
     "0 0 24px rgba(255, 255, 255, 0.6), 0 10px 20px rgba(255, 255, 255, 0.4)",
 };
 
-const captionStyle = {
-  fontSize: "0.8em",
-};
-
 const sectionStyle = {
   background: "rgba(255, 255, 255, 0.4)",
   padding: "0px 20px 20px",
@@ -848,6 +844,22 @@ const webLinkStyle = {
   fontSize: "0.9em",
   outline: "1px solid rgba(0, 0, 0, 0.1)",
 }
+
+const iconStyle = {
+  marginRight: 8,
+  color: "#383842",
+};
+
+const captionStyle = {
+  fontSize: "0.85em",
+  opacity: 0.65,
+  marginTop: 4,
+};
+
+const indented = {
+  marginLeft: 22,
+};
+
 const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=San+Francisco,CA&zoom=13&size=600x300&maptype=roadmap
 &markers=color:red%7Clabel:S%7C37.7749,-122.4194
 &key=pk.eyJ1Ijoiam9hcXVpbmt1bmtlbCIsImEiOiJjbTBraHNzajMxN2IwMm1xMnA1NHBqMDY3In0.QoxI3AJs0BryBFMJXh_jXQ`;
@@ -857,16 +869,6 @@ const BubblesFeaturedCard = ({ onBackgroundClick, isDarkMode, visible } : {
   isDarkMode ?: boolean;
   visible ?: boolean;
 }) => {
-  const iconStyle = {
-    marginRight: 8,
-    color: "#383842",
-  };
-
-  const captionStyle = {
-    fontSize: "0.85em",
-    opacity: 0.65,
-    marginTop: 4,
-  };
 
   const mapUrl = `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/-122.4194,37.7749,12/600x300?access_token=pk.eyJ1Ijoiam9hcXVpbmt1bmtlbCIsImEiOiJjbTBraHNzajMxN2IwMm1xMnA1NHBqMDY3In0.QoxI3AJs0BryBFMJXh_jXQ`;
 
@@ -1068,7 +1070,7 @@ const BubblesFeaturedCard = ({ onBackgroundClick, isDarkMode, visible } : {
             >
               <li style={liStyle}>
                 Introduced generative AI functionality
-                <p style={captionStyle}>
+                <p style={{...captionStyle, ...indented}}>
                   Incl. automatic meeting notes & action items
                 </p>
               </li>
@@ -1094,16 +1096,6 @@ const CamblyFeaturedCard = ({ onBackgroundClick, isDarkMode, visible}: {
   isDarkMode?: boolean;
   visible?: boolean;
 }) => {
-  const iconStyle = {
-    marginRight: 8,
-    color: "#383842",
-  };
-
-  const captionStyle = {
-    fontSize: "0.85em",
-    opacity: 0.65,
-    marginTop: 4,
-  };
 
   const mapUrl = `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/-122.4194,37.7749,12/600x300?access_token=pk.eyJ1Ijoiam9hcXVpbmt1bmtlbCIsImEiOiJjbTBraHNzajMxN2IwMm1xMnA1NHBqMDY3In0.QoxI3AJs0BryBFMJXh_jXQ`;
 
@@ -1190,7 +1182,7 @@ const CamblyFeaturedCard = ({ onBackgroundClick, isDarkMode, visible}: {
             >
               <li style={liStyle}>
                 Introduced higher-converting onboarding flows
-                <p style={captionStyle}>
+                <p style={{...captionStyle, ...indented}}>
                   Boosted free-trial conversion by 10% in adult and kids
                   products
                 </p>
