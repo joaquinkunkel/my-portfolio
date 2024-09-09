@@ -70,7 +70,7 @@ export const cardVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2, // Controls the delay between animations of children
+      staggerChildren: 0.1, // Controls the delay between animations of children
     },
   },
 };
