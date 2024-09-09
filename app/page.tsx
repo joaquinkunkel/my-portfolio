@@ -1034,7 +1034,7 @@ const BubblesFeaturedCard = ({ onBackgroundClick, isDarkMode, visible } : {
           <div style={sectionStyle}>
             <div style={graphStyle}>{svgGraph}</div>
             <div>ARR from 0 to $150K</div>
-            <p style={captionStyle}>2022 - 2024 • Team of 7</p>
+            <p style={captionStyle}>2021 - 2024 • Team of 7</p>
           </div>
         </Row>
 
