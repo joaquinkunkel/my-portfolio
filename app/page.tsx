@@ -47,7 +47,7 @@ function LoadingScreen({ onLoaded } : {
 
   return (
     <Html center>
-      <div style={{ color: "white", fontSize: "1.5em" }}>
+      <div style={{ fontSize: "1.5em", color: '#383842', fontFamily: 'Cooper Black, sans-serif' }}>
         Loading... {progress.toFixed(2)}%
       </div>
     </Html>
