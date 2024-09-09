@@ -450,8 +450,8 @@ const LivingRoom = ({
       <Billboard>
         <animated.mesh>
           <Text
-            position={[0, isMobile ? 8.9 : 5.7, 0]}
-            fontSize={isMobile ? 0.4 : 0.3}
+            position={[0, isMobile ? 8.96 : 5.7, 0]}
+            fontSize={isMobile ? 0.5 : 0.36}
             color={isDarkMode ? "white" : "#383842"}
             anchorX="center"
             anchorY="middle"
@@ -489,7 +489,7 @@ const LivingRoom = ({
               Bubbles
             </Text>
             <Text
-              position={[0, isMobile ? 3 : 3.35, 0]}
+              position={[0, isMobile ? 2.9 : 3.35, 0]}
               fontSize={isMobile ? 0.35 : 0.24}
               color={isDarkMode ? "white" : "#383842"}
               font="/fonts/Supply-Regular.otf"
@@ -500,7 +500,7 @@ const LivingRoom = ({
               <Text
                 position={[0, 3, 0]}
                 fontSize={0.24}
-                color={"#888888"}
+                color={"#777777"}
                 font="/fonts/Supply-Regular.otf"
               >
                 2021 - now
@@ -585,7 +585,7 @@ const LivingRoom = ({
               Freelance
             </Text>
             <Text
-              position={[0, isMobile ? 3.1 : 3.15, 0]}
+              position={[0, isMobile ? 3 : 3.15, 0]}
               fontSize={isMobile ? 0.35 : 0.24}
               color={isDarkMode ? "white" : "#383842"}
               font="/fonts/Supply-Regular.otf"
@@ -596,7 +596,7 @@ const LivingRoom = ({
               <Text
                 position={[0, 2.76, 0]}
                 fontSize={0.24}
-                color={"#888888"}
+                color={"#777777"}
                 font="/fonts/Supply-Regular.otf"
               >
                 Since 2015
@@ -674,7 +674,7 @@ const LivingRoom = ({
               Cambly
             </Text>
             <Text
-              position={[0, isMobile ? 2.55 : 2.58, 0]}
+              position={[0, isMobile ? 2.4 : 2.58, 0]}
               fontSize={isMobile ? 0.35 : 0.24}
               color={isDarkMode ? "white" : "#383842"}
               font="/fonts/Supply-Regular.otf"
@@ -685,7 +685,7 @@ const LivingRoom = ({
               <Text
                 position={[0, 2.2, 0]}
                 fontSize={0.24}
-                color={"#888888"}
+                color={"#777777"}
                 font="/fonts/Supply-Regular.otf"
               >
                 2019 - 2021
