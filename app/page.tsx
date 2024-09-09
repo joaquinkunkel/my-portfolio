@@ -48,7 +48,7 @@ function LoadingScreen({ onLoaded }: { onLoaded: () => void }) {
     <Html center>
       <div
         style={{
-          opacity: 0.2,
+          opacity: 0.6,
           fontSize: "1.5em",
           color: "#585862",
           fontFamily: "Cooper Black, sans-serif",
