@@ -1,6 +1,7 @@
 "use client"; // Add this line at the very top
 import styled from "styled-components";
 import FeaturedCard from "./FeaturedCard";
+import { motion } from "framer-motion";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import Image from "next/image";
 import {
@@ -59,6 +60,20 @@ function LoadingScreen({ onLoaded }: { onLoaded: () => void }) {
   );
 }
 
+export const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
+export const cardVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2, // Controls the delay between animations of children
+    },
+  },
+};
 function GlassyTVScreen() {
   const envMap = useMemo(() => {
     // Create a basic color-based environment map
@@ -501,7 +516,7 @@ const LivingRoom = ({
               color={isDarkMode ? "white" : "#383842"}
               font="/fonts/RadioGrotesk-Regular.ttf"
             >
-              Front-end & Design
+              Senior UX engineer
             </Text>
             {!isMobile && (
               <Text
@@ -686,7 +701,7 @@ const LivingRoom = ({
               color={isDarkMode ? "white" : "#383842"}
               font="/fonts/RadioGrotesk-Regular.ttf"
             >
-              Front-end & Design
+              Lead product designer
             </Text>
             {!isMobile && (
               <Text
@@ -733,12 +748,13 @@ function ResponsiveCamera() {
   return null;
 }
 
-const featuredHeadingStyle = {
-  fontFamily: "Radio Grotesk",
-  fontSize: 32,
-  margin: "16px 0 40px",
-  letterSpacing: '0.02em',
-};
+const FeaturedHeading = styled.h1`
+  font-family:
+    Cooper Black,
+    Radio Grotesk;
+  font-size: 26px;
+  font-weight: normal;
+`;
 
 const sectionStyle = {
   background: "rgba(255, 255, 255, 0.4)",
@@ -800,20 +816,6 @@ const Row = styled.div`
     gap: 16px;
   }
 `;
-const webLinkStyle = {
-  position: "absolute" as "absolute",
-  top: 20,
-  right: 20,
-  background: "rgba(255, 255, 255, 0.5)",
-  borderRadius: 10,
-  padding: "6px 12px",
-  boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.1)",
-  color: "#383842",
-  textDecoration: "none",
-  fontWeight: "bold",
-  fontSize: "0.9em",
-  outline: "1px solid rgba(0, 0, 0, 0.05)",
-};
 
 const iconStyle = {
   marginRight: 8,
@@ -822,8 +824,8 @@ const iconStyle = {
 
 const captionStyle = {
   fontSize: "0.85em",
-  opacity: 0.65,
-  marginTop: 4,
+  opacity: 0.75,
+  marginTop: 0,
 };
 
 const indented = {
@@ -968,61 +970,62 @@ const BubblesFeaturedCard = ({
   return (
     <FeaturedCard
       onBackgroundClick={onBackgroundClick}
-      isDarkMode={isDarkMode}
       visible={visible}
+      isDarkMode={isDarkMode}
     >
-      <a
-        href="https://usebubbles.com" // Replace with the actual Bubbles landing page URL
-        target="_blank"
-        rel="noopener noreferrer"
-        style={webLinkStyle}
-      >
-        Visit website
-      </a>
-      <h1
-        style={{
-          ...featuredHeadingStyle,
-        }}
-      >
-        Bubbles
-      </h1>
+      <motion.div variants={fadeInUp}>
+        <Row>
+          <div>
+            <FeaturedHeading>Bubbles</FeaturedHeading>
+            <Caption>Senior UX engineer • 2021 - now</Caption>
+          </div>
+          <Weblink
+            href="https://usebubbles.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Visit website
+          </Weblink>
+        </Row>
+      </motion.div>
 
       <Row>
-        <div style={sectionStyle}>
+        <motion.div style={sectionStyle} variants={fadeInUp}>
           <div style={mapContainerStyle}>
             <img src={mapUrl} alt="San Francisco Map" style={mapStyle} />
           </div>
           <div>
             San Francisco, CA
             <br />
-            <p style={captionStyle}>Remote team</p>
+            <Caption>Remote team</Caption>
           </div>
-        </div>
+        </motion.div>
 
-        <div style={sectionStyle}>
+        <motion.div style={sectionStyle} variants={fadeInUp}>
           <div style={graphStyle}>{svgGraph}</div>
           <div>ARR from 0 to $150K</div>
-          <p style={captionStyle}>2021 - 2024 • Team of 7</p>
-        </div>
+          <Caption>2021 - 2024 • Team of 7</Caption>
+        </motion.div>
       </Row>
 
-      <div
+      <motion.div
         style={{
           display: "flex",
-          flexDirection: "column" as "column",
+          flexDirection: "column",
           gap: 24,
           margin: "20px 0",
           width: "100%",
         }}
+        variants={fadeInUp}
       >
-        {/* <p style={captionStyle}>Some highlights</p> */}
-        <div
+        <motion.div
           style={{
             ...sectionStyle,
             padding: 20,
             borderRadius: 12,
             width: "100%",
           }}
+          variants={fadeInUp}
         >
           <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
             <li style={liStyle}>
@@ -1048,8 +1051,8 @@ const BubblesFeaturedCard = ({
               </a>
             </li>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </FeaturedCard>
   );
 };
@@ -1092,44 +1095,50 @@ const CamblyFeaturedCard = ({
       isDarkMode={isDarkMode}
       visible={visible}
     >
-      <a
-        href="https://cambly.com" // Replace with the actual Bubbles landing page URL
-        target="_blank"
-        rel="noopener noreferrer"
-        style={webLinkStyle}
-      >
-        Visit website
-      </a>
-      <h1 style={{ ...featuredHeadingStyle }}>Cambly</h1>
+      <motion.div variants={fadeInUp}>
+        <Row>
+          <div>
+            <FeaturedHeading>Cambly</FeaturedHeading>
+            <Caption>Lead product designer • 2019 - 2021</Caption>
+          </div>
+          <Weblink
+            href="https://cambly.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Visit website
+          </Weblink>
+        </Row>
+      </motion.div>
 
       <Row>
-        <div style={sectionStyle}>
+        <motion.div style={sectionStyle} variants={fadeInUp}>
           <div style={mapContainerStyle}>
             <img src={mapUrl} alt="San Francisco Map" style={mapStyle} />
           </div>
           <div>
             San Francisco, CA
             <br />
-            <p style={captionStyle}>Hybrid team</p>
+            <Caption>Hybrid team</Caption>
           </div>
-        </div>
+        </motion.div>
 
-        <div style={sectionStyle}>
+        <motion.div style={sectionStyle} variants={fadeInUp}>
           <div style={graphStyle}>{svgGraph}</div>
           <div>Solo UX designer</div>
-          <p style={captionStyle}>in a company of 100</p>
-        </div>
+          <Caption>Product team of 12 • Company of 100</Caption>
+        </motion.div>
       </Row>
 
       <Row>
-        {/* <p style={captionStyle}>Some highlights</p> */}
-        <div
+        <motion.div
           style={{
             ...sectionStyle,
             padding: 20,
             borderRadius: 12,
             width: "100%",
           }}
+          variants={fadeInUp}
         >
           <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
             <li style={liStyle}>Owned UX for iOS, Android & web features</li>
@@ -1148,17 +1157,7 @@ const CamblyFeaturedCard = ({
           <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
             <li style={liStyle}>Full rebrand & marketing guidelines</li>
           </div>
-          <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
-            {/* <li style={liStyle}>
-                Led a branding workshop fresh out of college
-                <p style={captionStyle}>
-                <a href="https://taylorlecroy.com/" target="_blank">
-                  Watch the video&nbsp;
-                </a>
-                </p>
-              </li> */}
-          </div>
-        </div>
+        </motion.div>
       </Row>
     </FeaturedCard>
   );
@@ -1194,16 +1193,20 @@ export default function Home() {
     >
       {controlsRef.current && (
         <>
-          <BubblesFeaturedCard
-            onBackgroundClick={resetFeaturedCard}
-            isDarkMode={isDarkMode}
-            visible={featuredCard === "bubbles"}
-          />
-          <CamblyFeaturedCard
-            onBackgroundClick={resetFeaturedCard}
-            isDarkMode={isDarkMode}
-            visible={featuredCard === "cambly"}
-          />
+          {featuredCard === "bubbles" && (
+            <BubblesFeaturedCard
+              onBackgroundClick={resetFeaturedCard}
+              isDarkMode={isDarkMode}
+              visible={featuredCard === "bubbles"}
+            />
+          )}
+          {featuredCard === "cambly" && (
+            <CamblyFeaturedCard
+              onBackgroundClick={resetFeaturedCard}
+              isDarkMode={isDarkMode}
+              visible={featuredCard === "cambly"}
+            />
+          )}
         </>
       )}
       <LinksContainer visible={isAnimationDone} isDarkMode={isDarkMode}>
@@ -1324,9 +1327,36 @@ export default function Home() {
 }
 
 const LinksContainer = styled.div<{ visible?: boolean; isDarkMode?: boolean }>`
-  opacity: 0;            
-font-family: "Radio Grotesk", sans-serif, monospace;
-           color: ${({ isDarkMode }) => (isDarkMode ? "rgba(255, 255, 255, 0.7)" : "#383842")};
-            transition: ${({visible}) => visible && '0.2s all ease-out'};
-            opacity: ${({visible}) => (visible ? '1' : '0')};
-           `;
+  opacity: 0;
+  font-family: "Radio Grotesk", sans-serif, monospace;
+  color: ${({ isDarkMode }) =>
+    isDarkMode ? "rgba(255, 255, 255, 0.7)" : "#383842"};
+  transition: ${({ visible }) => visible && "0.2s all ease-out"};
+  opacity: ${({ visible }) => (visible ? "1" : "0")};
+`;
+
+const Weblink = styled.a`
+  background: #474e59;
+  border-radius: 10px;
+  padding: 4px 10px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  color: white;
+  text-decoration: none;
+  font-family:
+    Cooper Black,
+    Radio Grotesk,
+    sans-serif;
+  font-size: 0.9em;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease-out;
+  opacity: 1;
+  &:hover {
+    background: #171e29;
+  }
+`;
+
+const Caption = styled.p`
+  font-size: 0.85em;
+  opacity: 0.75;
+  margin-top: 4px;
+`;
