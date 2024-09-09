@@ -734,11 +734,10 @@ function ResponsiveCamera() {
 }
 
 const featuredHeadingStyle = {
-  fontFamily: "Cooper Black",
+  fontFamily: "Radio Grotesk",
   fontSize: 32,
   margin: "16px 0 40px",
-  textShadow:
-    "0 0 34px rgba(255, 255, 255, 0.6), 0 10px 30px rgba(255, 255, 255, 0.4)",
+  letterSpacing: '0.02em',
 };
 
 const sectionStyle = {
@@ -983,7 +982,6 @@ const BubblesFeaturedCard = ({
       <h1
         style={{
           ...featuredHeadingStyle,
-          color: "#cf60cf",
         }}
       >
         Bubbles
@@ -1102,7 +1100,7 @@ const CamblyFeaturedCard = ({
       >
         Visit website
       </a>
-      <h1 style={{ ...featuredHeadingStyle, color: "#e49610" }}>Cambly</h1>
+      <h1 style={{ ...featuredHeadingStyle }}>Cambly</h1>
 
       <Row>
         <div style={sectionStyle}>
@@ -1326,8 +1324,9 @@ export default function Home() {
 }
 
 const LinksContainer = styled.div<{ visible?: boolean; isDarkMode?: boolean }>`
-            font-family: "Radio Grotesk", sans-serif, monospace;
+  opacity: 0;            
+font-family: "Radio Grotesk", sans-serif, monospace;
            color: ${({ isDarkMode }) => (isDarkMode ? "rgba(255, 255, 255, 0.7)" : "#383842")};
-            transition: 0.2s all ease-out;
+            transition: ${({visible}) => visible && '0.2s all ease-out'};
             opacity: ${({visible}) => (visible ? '1' : '0')};
            `;
