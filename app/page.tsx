@@ -1168,7 +1168,7 @@ export default function Home() {
   return (
     <div
       style={{
-        height: "100vh",
+        height: "100svh",
         width: "100vw",
         position: "relative",
         background: isDarkMode ? "#20192a" : "#eeeeee",
