@@ -880,7 +880,7 @@ const captionStyle = {
 };
 
 const indented = {
-  marginLeft: 22,
+  marginLeft: 16,
 };
 
 const mapUrl = `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/-122.4194,37.7749,12/600x300?access_token=pk.eyJ1Ijoiam9hcXVpbmt1bmtlbCIsImEiOiJjbTBraHNzajMxN2IwMm1xMnA1NHBqMDY3In0.QoxI3AJs0BryBFMJXh_jXQ`;
@@ -958,7 +958,7 @@ const BubblesFeaturedCard = ({
         <Row noPadding spaceBetween>
           <div>
             <b>
-              At Bubbles, I lead the design of async collaboration software.
+              At Bubbles, I design async collaboration software.
               </b>
             <a target="_blank" href="https://www.producthunt.com/products/bubbles#bubbles-for-teams">
             <ProductHuntBadge src="/img/producthunt-badge.png" />
@@ -992,7 +992,7 @@ const BubblesFeaturedCard = ({
           variants={fadeInUp}
         >
           <Caption style={{marginBottom: 8, marginTop: 0}}>
-            My highlights
+            Some of what I do
           </Caption>
           <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
             <li style={liStyle}>
@@ -1004,13 +1004,13 @@ const BubblesFeaturedCard = ({
           </div>
           <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
             <li style={liStyle}>
-              Introduced generative AI functionality
+              Lead the design of generative AI features
               <p style={{ ...captionStyle, ...indented }}>
-                Incl. automatic meeting notes & action items
+                Smart meeting notes and action items
               </p>
             </li>
           </div>
-          <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
+          <div style={{ displayx: "flex", alignItems: "center", width: "100%" }}>
             <li style={liStyle}>
               Collaborated with the incredible&nbsp;
               <a href="https://taylorlecroy.com/" target="_blank">
