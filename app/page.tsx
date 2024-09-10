@@ -611,7 +611,7 @@ const LivingRoom = ({
             />
           </mesh>
         </FloatingGroup>
-        <EngravedBox text="CURRENT" position={[0, 0.35, 0]} />
+        <EngravedBox text="Current" position={[0, 0.35, 0]} />
         <pointLight
           position={[0, 1.1, 0]}
           intensity={hoveredObject === "lamp" ? 2 : 0.1}
