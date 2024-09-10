@@ -1385,6 +1385,7 @@ const StyledVideo = styled.video`
   margin-left: 8px;
   @media (max-width: 600px) {
     margin: 8px auto;
+    max-width: 100%;
   }
 `;
 
