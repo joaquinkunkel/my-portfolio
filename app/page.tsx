@@ -503,7 +503,7 @@ const LivingRoom = ({
               color={isDarkMode ? "white" : "#383842"}
               font="/fonts/RadioGrotesk-Regular.ttf"
             >
-              Senior UX engineer
+              Founding designer
             </Text>
             {!isMobile && (
               <Text
@@ -964,7 +964,7 @@ const BubblesFeaturedCard = ({
         <Row noWrap>
           <div>
             <FeaturedHeading>Bubbles</FeaturedHeading>
-            <Caption>Senior UX engineer • 2021 - now</Caption>
+            <Caption>Founding designer • 2021 - now</Caption>
           </div>
           <Weblink
             href="https://usebubbles.com"
