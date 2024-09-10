@@ -762,12 +762,12 @@ const liStyle = {
 
 const mapStyle = {
   // filter: "grayscale(1)",
-  width: '100%',
+  width: "100%",
   mixBlendMode: "multiply" as "multiply",
 };
 const mapContainerStyle = {
   background: "white",
-  height: 'auto',
+  height: "auto",
   display: "flex",
   borderRadius: 6,
   overflow: "hidden",
@@ -787,7 +787,11 @@ const graphStyle = {
   justifyContent: "center",
   outline: "1px solid rgba(0,0,0,0.05)",
 };
-const Row = styled.div<{ noWrap?: boolean }>`
+const Row = styled.div<{
+  noWrap?: boolean;
+  noPadding?: boolean;
+  spaceBetween?: boolean;
+}>`
   display: flex;
   flex-direction: row;
   gap: 20px;
@@ -803,6 +807,10 @@ const Row = styled.div<{ noWrap?: boolean }>`
     gap: 16px;
     ${({ noWrap }) => noWrap && "flex-direction: row;"}
   }
+
+  ${({ noPadding }) => noPadding && "padding: 0; margin: 0;"}
+  ${({ spaceBetween }) =>
+    spaceBetween && "gap: space-between; align-items: center;"}
 `;
 
 const captionStyle = {
@@ -815,9 +823,127 @@ const indented = {
   marginLeft: 22,
 };
 
-const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=San+Francisco,CA&zoom=13&size=600x300&maptype=roadmap
-&markers=color:red%7Clabel:S%7C37.7749,-122.4194
-&key=pk.eyJ1Ijoiam9hcXVpbmt1bmtlbCIsImEiOiJjbTBraHNzajMxN2IwMm1xMnA1NHBqMDY3In0.QoxI3AJs0BryBFMJXh_jXQ`;
+const mapUrl = `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/-122.4194,37.7749,12/600x300?access_token=pk.eyJ1Ijoiam9hcXVpbmt1bmtlbCIsImEiOiJjbTBraHNzajMxN2IwMm1xMnA1NHBqMDY3In0.QoxI3AJs0BryBFMJXh_jXQ`;
+
+const svgGraph = (
+  <svg
+    style={{ opacity: 0.7 }}
+    width="calc(100% - 40px)"
+    height="auto"
+    viewBox="0 0 100 50"
+  >
+    <line
+      x1="0"
+      y1="10"
+      x2="100"
+      y2="10"
+      stroke="rgba(56, 56, 66, 0.2)"
+      strokeWidth="0.5"
+    />
+    <line
+      x1="0"
+      y1="20"
+      x2="100"
+      y2="20"
+      stroke="rgba(56, 56, 66, 0.2)"
+      strokeWidth="0.5"
+    />
+    <line
+      x1="0"
+      y1="30"
+      x2="100"
+      y2="30"
+      stroke="rgba(56, 56, 66, 0.2)"
+      strokeWidth="0.5"
+    />
+    <line
+      x1="0"
+      y1="40"
+      x2="100"
+      y2="40"
+      stroke="rgba(56, 56, 66, 0.2)"
+      strokeWidth="0.5"
+    />
+    <line
+      x1="10"
+      y1="0"
+      x2="10"
+      y2="50"
+      stroke="rgba(56, 56, 66, 0.2)"
+      strokeWidth="0.5"
+    />
+    <line
+      x1="20"
+      y1="0"
+      x2="20"
+      y2="50"
+      stroke="rgba(56, 56, 66, 0.2)"
+      strokeWidth="0.5"
+    />
+    <line
+      x1="30"
+      y1="0"
+      x2="30"
+      y2="50"
+      stroke="rgba(56, 56, 66, 0.2)"
+      strokeWidth="0.5"
+    />
+    <line
+      x1="40"
+      y1="0"
+      x2="40"
+      y2="50"
+      stroke="rgba(56, 56, 66, 0.2)"
+      strokeWidth="0.5"
+    />
+    <line
+      x1="50"
+      y1="0"
+      x2="50"
+      y2="50"
+      stroke="rgba(56, 56, 66, 0.2)"
+      strokeWidth="0.5"
+    />
+    <line
+      x1="60"
+      y1="0"
+      x2="60"
+      y2="50"
+      stroke="rgba(56, 56, 66, 0.2)"
+      strokeWidth="0.5"
+    />
+    <line
+      x1="70"
+      y1="0"
+      x2="70"
+      y2="50"
+      stroke="rgba(56, 56, 66, 0.2)"
+      strokeWidth="0.5"
+    />
+    <line
+      x1="80"
+      y1="0"
+      x2="80"
+      y2="50"
+      stroke="rgba(56, 56, 66, 0.2)"
+      strokeWidth="0.5"
+    />
+    <line
+      x1="90"
+      y1="0"
+      x2="90"
+      y2="50"
+      stroke="rgba(56, 56, 66, 0.2)"
+      strokeWidth="0.5"
+    />
+    <polyline
+      fill="none"
+      stroke="#cf50df"
+      strokeWidth="1.2"
+      points="0,50 10,40 20,35 30,20 40,10 50,15 60,5 70,0 80,10 90,20 100,5"
+    />
+  </svg>
+);
 
 const BubblesFeaturedCard = ({
   onBackgroundClick,
@@ -828,128 +954,6 @@ const BubblesFeaturedCard = ({
   isDarkMode?: boolean;
   visible?: boolean;
 }) => {
-  const mapUrl = `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/-122.4194,37.7749,12/600x300?access_token=pk.eyJ1Ijoiam9hcXVpbmt1bmtlbCIsImEiOiJjbTBraHNzajMxN2IwMm1xMnA1NHBqMDY3In0.QoxI3AJs0BryBFMJXh_jXQ`;
-
-  const svgGraph = (
-    <svg
-      style={{ opacity: 0.7 }}
-      width="calc(100% - 40px)"
-      height="auto"
-      viewBox="0 0 100 50"
-    >
-      <line
-        x1="0"
-        y1="10"
-        x2="100"
-        y2="10"
-        stroke="rgba(56, 56, 66, 0.2)"
-        strokeWidth="0.5"
-      />
-      <line
-        x1="0"
-        y1="20"
-        x2="100"
-        y2="20"
-        stroke="rgba(56, 56, 66, 0.2)"
-        strokeWidth="0.5"
-      />
-      <line
-        x1="0"
-        y1="30"
-        x2="100"
-        y2="30"
-        stroke="rgba(56, 56, 66, 0.2)"
-        strokeWidth="0.5"
-      />
-      <line
-        x1="0"
-        y1="40"
-        x2="100"
-        y2="40"
-        stroke="rgba(56, 56, 66, 0.2)"
-        strokeWidth="0.5"
-      />
-      <line
-        x1="10"
-        y1="0"
-        x2="10"
-        y2="50"
-        stroke="rgba(56, 56, 66, 0.2)"
-        strokeWidth="0.5"
-      />
-      <line
-        x1="20"
-        y1="0"
-        x2="20"
-        y2="50"
-        stroke="rgba(56, 56, 66, 0.2)"
-        strokeWidth="0.5"
-      />
-      <line
-        x1="30"
-        y1="0"
-        x2="30"
-        y2="50"
-        stroke="rgba(56, 56, 66, 0.2)"
-        strokeWidth="0.5"
-      />
-      <line
-        x1="40"
-        y1="0"
-        x2="40"
-        y2="50"
-        stroke="rgba(56, 56, 66, 0.2)"
-        strokeWidth="0.5"
-      />
-      <line
-        x1="50"
-        y1="0"
-        x2="50"
-        y2="50"
-        stroke="rgba(56, 56, 66, 0.2)"
-        strokeWidth="0.5"
-      />
-      <line
-        x1="60"
-        y1="0"
-        x2="60"
-        y2="50"
-        stroke="rgba(56, 56, 66, 0.2)"
-        strokeWidth="0.5"
-      />
-      <line
-        x1="70"
-        y1="0"
-        x2="70"
-        y2="50"
-        stroke="rgba(56, 56, 66, 0.2)"
-        strokeWidth="0.5"
-      />
-      <line
-        x1="80"
-        y1="0"
-        x2="80"
-        y2="50"
-        stroke="rgba(56, 56, 66, 0.2)"
-        strokeWidth="0.5"
-      />
-      <line
-        x1="90"
-        y1="0"
-        x2="90"
-        y2="50"
-        stroke="rgba(56, 56, 66, 0.2)"
-        strokeWidth="0.5"
-      />
-      <polyline
-        fill="none"
-        stroke="#cf50df"
-        strokeWidth="1.2"
-        points="0,50 10,40 20,35 30,20 40,10 50,15 60,5 70,0 80,10 90,20 100,5"
-      />
-    </svg>
-  );
-
   return (
     <FeaturedCard
       onBackgroundClick={onBackgroundClick}
@@ -972,6 +976,30 @@ const BubblesFeaturedCard = ({
         </Row>
       </motion.div>
 
+      <motion.div
+        style={{
+          ...sectionStyle,
+          padding: 16,
+          borderRadius: 12,
+          width: "100%",
+        }}
+        variants={fadeInUp}
+      >
+        <Row noPadding spaceBetween>
+          <div>
+            <b>Leading the design of async collaboration software</b>
+            <a target="_blank" href="https://www.producthunt.com/products/bubbles#bubbles-for-teams" style={{mixBlendMode: 'multiply'}}>
+            <ProductHuntBadge src="/img/producthunt-badge.png" />
+            </a>
+          </div>
+            <StyledVideo
+              autoPlay
+              loop
+              src="https://cdn.prod.website-files.com/63cc43d53b100d36f4967cc3/63d2f441daf96d163e51ee8b_Powerful%20(large)-transcode.mp4"
+            />
+        </Row>
+      </motion.div>
+
       <Row>
         <motion.div style={sectionStyle} variants={fadeInUp}>
           <div style={mapContainerStyle}>
@@ -980,14 +1008,14 @@ const BubblesFeaturedCard = ({
           <div>
             San Francisco, CA
             <br />
-            <Caption>Remote team</Caption>
+            <Caption>Part of the founding team</Caption>
           </div>
         </motion.div>
 
         <motion.div style={sectionStyle} variants={fadeInUp}>
           <div style={graphStyle}>{svgGraph}</div>
           <div>ARR from 0 to $150K</div>
-          <Caption>2021 - 2024 • Team of 7</Caption>
+          <Caption>since I joined in 2021</Caption>
         </motion.div>
       </Row>
 
@@ -1010,6 +1038,9 @@ const BubblesFeaturedCard = ({
           }}
           variants={fadeInUp}
         >
+          <Caption style={{marginBottom: 8, marginTop: 0}}>
+            My highlights
+          </Caption>
           <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
             <li style={liStyle}>
               Design & implement UX for growth & core product
@@ -1347,3 +1378,21 @@ const Caption = styled.p`
   opacity: 0.75;
   margin-top: 4px;
 `;
+
+const StyledVideo = styled.video`
+  max-width: 240px;
+  border-radius: 8px;
+  margin-left: 8px;
+  @media (max-width: 600px) {
+    margin: 8px auto;
+  }
+`;
+
+const ProductHuntBadge = styled.img`
+  mix-blend-mode: multiply;
+  width: 110px;
+  margin-top: 20px;
+    @media (max-width: 600px) {
+    margin: 8px auto;
+  }
+`
