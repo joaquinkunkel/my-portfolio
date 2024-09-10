@@ -42,6 +42,8 @@ import { Mesh, MeshStandardMaterial, BoxGeometry, Group } from 'three';
 import { useLoader } from '@react-three/fiber';
 import engravingFont from '../public/fonts/Supply_Bold.json'; // Load the modern, rounded font
 
+const featuredBoxShadow = '0 6px 10px rgba(0, 0, 0, 0.06), 0 1.5px 4px rgba(0, 0, 0, 0.05)';
+
 function EngravedBox({ text, position, rotation } : {
   text: string;
   position: number[];
@@ -816,29 +818,34 @@ const liStyle = {
 const mapStyle = {
   // filter: "grayscale(1)",
   width: "100%",
+  height: 'auto',
   mixBlendMode: "multiply" as "multiply",
 };
 const mapContainerStyle = {
   background: "white",
-  height: "auto",
-  display: "flex",
+  height: 100,
   borderRadius: 6,
   overflow: "hidden",
   width: "100%",
   margin: "16px 0 12px",
   outline: "1px solid rgba(0,0,0,0.05)",
+  boxShadow: featuredBoxShadow,
 };
 const graphStyle = {
-  background:
-    "linear-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.35))",
+  background: `linear-gradient(135deg, 
+    rgba(255, 243, 206, 0.85),  /* soft peach */
+    rgba(206, 275, 241, 0.75)   /* light mint green */
+  )`,
   borderRadius: 6,
-  height: 120,
   width: "100%",
   margin: "16px 0 12px",
   display: "flex",
-  alignItems: "center",
+  alignItems: "flex-start",
   justifyContent: "center",
   outline: "1px solid rgba(0,0,0,0.05)",
+  boxShadow: featuredBoxShadow,
+  height: 100,
+  overflow: 'hidden',
 };
 const Row = styled.div<{
   noWrap?: boolean;
@@ -881,117 +888,26 @@ const mapUrl = `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/-122.
 const svgGraph = (
   <svg
     style={{ opacity: 0.7 }}
-    width="calc(100% - 40px)"
-    height="auto"
+    width="100%"
     viewBox="0 0 100 50"
   >
-    <line
-      x1="0"
-      y1="10"
-      x2="100"
-      y2="10"
-      stroke="rgba(56, 56, 66, 0.2)"
-      strokeWidth="0.5"
+    <defs>
+      <linearGradient id="lineGradient" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="rgba(0, 0, 0, 0.3)" />
+        <stop offset="100%" stopColor="rgba(0, 0, 0, 0)" />
+      </linearGradient>
+    </defs>
+
+    {/* Shaded area under the line */}
+    <polygon
+      fill="url(#lineGradient)"
+      points="0,50 10,40 20,35 30,20 40,10 50,15 60,5 70,0 80,10 90,20 100,5 100,50 0,50"
     />
-    <line
-      x1="0"
-      y1="20"
-      x2="100"
-      y2="20"
-      stroke="rgba(56, 56, 66, 0.2)"
-      strokeWidth="0.5"
-    />
-    <line
-      x1="0"
-      y1="30"
-      x2="100"
-      y2="30"
-      stroke="rgba(56, 56, 66, 0.2)"
-      strokeWidth="0.5"
-    />
-    <line
-      x1="0"
-      y1="40"
-      x2="100"
-      y2="40"
-      stroke="rgba(56, 56, 66, 0.2)"
-      strokeWidth="0.5"
-    />
-    <line
-      x1="10"
-      y1="0"
-      x2="10"
-      y2="50"
-      stroke="rgba(56, 56, 66, 0.2)"
-      strokeWidth="0.5"
-    />
-    <line
-      x1="20"
-      y1="0"
-      x2="20"
-      y2="50"
-      stroke="rgba(56, 56, 66, 0.2)"
-      strokeWidth="0.5"
-    />
-    <line
-      x1="30"
-      y1="0"
-      x2="30"
-      y2="50"
-      stroke="rgba(56, 56, 66, 0.2)"
-      strokeWidth="0.5"
-    />
-    <line
-      x1="40"
-      y1="0"
-      x2="40"
-      y2="50"
-      stroke="rgba(56, 56, 66, 0.2)"
-      strokeWidth="0.5"
-    />
-    <line
-      x1="50"
-      y1="0"
-      x2="50"
-      y2="50"
-      stroke="rgba(56, 56, 66, 0.2)"
-      strokeWidth="0.5"
-    />
-    <line
-      x1="60"
-      y1="0"
-      x2="60"
-      y2="50"
-      stroke="rgba(56, 56, 66, 0.2)"
-      strokeWidth="0.5"
-    />
-    <line
-      x1="70"
-      y1="0"
-      x2="70"
-      y2="50"
-      stroke="rgba(56, 56, 66, 0.2)"
-      strokeWidth="0.5"
-    />
-    <line
-      x1="80"
-      y1="0"
-      x2="80"
-      y2="50"
-      stroke="rgba(56, 56, 66, 0.2)"
-      strokeWidth="0.5"
-    />
-    <line
-      x1="90"
-      y1="0"
-      x2="90"
-      y2="50"
-      stroke="rgba(56, 56, 66, 0.2)"
-      strokeWidth="0.5"
-    />
+
+    {/* The line */}
     <polyline
       fill="none"
-      stroke="#cf50df"
+      stroke="rgba(0, 0, 0, 0.3)"
       strokeWidth="1.2"
       points="0,50 10,40 20,35 30,20 40,10 50,15 60,5 70,0 80,10 90,20 100,5"
     />
@@ -1040,7 +956,9 @@ const BubblesFeaturedCard = ({
       >
         <Row noPadding spaceBetween>
           <div>
-            At Bubbles, I lead the design of async collaboration software
+            <b>
+              At Bubbles, I lead the design of async collaboration software.
+              </b>
             <a target="_blank" href="https://www.producthunt.com/products/bubbles#bubbles-for-teams">
             <ProductHuntBadge src="/img/producthunt-badge.png" />
             </a>
@@ -1052,26 +970,6 @@ const BubblesFeaturedCard = ({
             />
         </Row>
       </motion.div>
-
-      <Row>
-        <motion.div style={sectionStyle} variants={fadeInUp}>
-          <div style={mapContainerStyle}>
-            <img src={mapUrl} alt="San Francisco Map" style={mapStyle} />
-          </div>
-          <div>
-            San Francisco, CA
-            <br />
-            <Caption>Part of the founding team</Caption>
-          </div>
-        </motion.div>
-
-        <motion.div style={sectionStyle} variants={fadeInUp}>
-          <div style={graphStyle}>{svgGraph}</div>
-          <div>ARR from 0 to $150K</div>
-          <Caption>since I joined in 2021</Caption>
-        </motion.div>
-      </Row>
-
       <motion.div
         style={{
           display: "flex",
@@ -1120,6 +1018,24 @@ const BubblesFeaturedCard = ({
           </div>
         </motion.div>
       </motion.div>
+      <Row>
+        <motion.div style={sectionStyle} variants={fadeInUp}>
+          <div style={mapContainerStyle}>
+            <img src={mapUrl} alt="San Francisco Map" style={mapStyle} />
+          </div>
+          <div>
+            San Francisco, CA
+            <br />
+            <Caption>Part of the founding team</Caption>
+          </div>
+        </motion.div>
+
+        <motion.div style={sectionStyle} variants={fadeInUp}>
+          <div style={graphStyle}>{svgGraph}</div>
+          <div>ARR from 0 to $150K</div>
+          <Caption>since I joined in 2021</Caption>
+        </motion.div>
+      </Row>
     </FeaturedCard>
   );
 };
@@ -1140,9 +1056,9 @@ const CamblyFeaturedCard = ({
       style={{ opacity: 0.7 }}
       width="calc(100% - 40px)"
       height="auto"
-      viewBox="0 0 100 50"
+      viewBox="0 0 100 30"
     >
-      <rect width="100" height="50" fill="rgba(56, 56, 66, 0.01)" />
+      <rect width="100" height="30" fill="rgba(56, 56, 66, 0.01)" />
       {[...Array(99)].map((_, i) => (
         <circle
           key={i}
@@ -1152,7 +1068,7 @@ const CamblyFeaturedCard = ({
           fill="rgba(56, 56, 66, 0.3)"
         />
       ))}
-      <circle cx="95" cy="5" r="4" fill="#a45600" />
+      <circle cx="95" cy="5" r="4" fill="#000000" />
     </svg>
   );
 
@@ -1447,6 +1363,6 @@ const ProductHuntBadge = styled.img`
   width: 190px;
   margin-top: 20px;
     @media (max-width: 600px) {
-    margin: 8px auto;
+    margin: 20px auto 0 0;
   }
 `
