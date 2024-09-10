@@ -585,7 +585,7 @@ const LivingRoom = ({
             )}
           </Billboard>
         )}
-        <FloatingGroup active={hoveredObject === "lamp"}>
+        <FloatingGroup active>
           <mesh position={[0, 1.75, 0]}>
             <sphereGeometry args={[0.75, 32, 32]} />
             <meshStandardMaterial
