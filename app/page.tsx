@@ -988,7 +988,7 @@ const BubblesFeaturedCard = ({
         <Row noPadding spaceBetween>
           <div>
             <b>Leading the design of async collaboration software</b>
-            <a target="_blank" href="https://www.producthunt.com/products/bubbles#bubbles-for-teams" style={{mixBlendMode: 'multiply'}}>
+            <a target="_blank" href="https://www.producthunt.com/products/bubbles#bubbles-for-teams">
             <ProductHuntBadge src="/img/producthunt-badge.png" />
             </a>
           </div>
@@ -1390,8 +1390,7 @@ const StyledVideo = styled.video`
 `;
 
 const ProductHuntBadge = styled.img`
-  mix-blend-mode: multiply;
-  width: 110px;
+  width: 160px;
   margin-top: 20px;
     @media (max-width: 600px) {
     margin: 8px auto;
