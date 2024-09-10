@@ -1200,7 +1200,7 @@ export default function Home() {
           style={{
             position: "absolute",
             zIndex: 10,
-            bottom: 75,
+            bottom: isMobile ? 40 : 75,
             left: isMobile ? 20 : 60,
           }}
           href="#"
@@ -1240,7 +1240,7 @@ export default function Home() {
           style={{
             position: "absolute",
             zIndex: 10,
-            bottom: 75,
+            bottom: isMobile ? 40 : 75,
             right: isMobile ? 20 : 60,
             fontFamily: "Radio Grotesk, sans-serif, monospace, sans-serif",
           }}
