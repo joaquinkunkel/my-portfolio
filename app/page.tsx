@@ -390,15 +390,15 @@ const LivingRoom = ({
       varying vec3 vNormal;
 
       void main() {
-        float wave = sin(vNormal.x * 4.0 + uTime * 0.2) + 
+        float wave = sin(vNormal.x * 4.0 + uTime * 0.9) + 
                      sin(vNormal.y * 4.0 + uTime * 0.5) + 
                      sin(vNormal.z * 4.0 + uTime * 1.0);
 
         wave = wave * 0.5 + 0.5;
 
-        float r = 0.1 - 0.5 * wave;
+        float r = 0.2 - 0.5 * wave;
         float g = 0.0 - 0.4 * wave;
-        float b = 0.6 - 0.2 * wave;
+        float b = 0.8 - 0.2 * wave;
         
         gl_FragColor = vec4(r, g, b, 1.0);
       }
