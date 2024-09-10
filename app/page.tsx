@@ -35,6 +35,7 @@ import { useSpring, animated } from "@react-spring/three";
 import useIsMobile from "./useIsMobile";
 import "./globals.css";
 import "leaflet/dist/leaflet.css";
+import css from "styled-components";
 
 function LoadingScreen({ onLoaded }: { onLoaded: () => void }) {
   const { progress, loaded, total } = useProgress();
@@ -760,13 +761,13 @@ const liStyle = {
 };
 
 const mapStyle = {
-  height: 120,
   // filter: "grayscale(1)",
+  width: '100%',
   mixBlendMode: "multiply" as "multiply",
 };
 const mapContainerStyle = {
   background: "white",
-  height: 120,
+  height: 'auto',
   display: "flex",
   borderRadius: 6,
   overflow: "hidden",
@@ -786,10 +787,10 @@ const graphStyle = {
   justifyContent: "center",
   outline: "1px solid rgba(0,0,0,0.05)",
 };
-const Row = styled.div`
+const Row = styled.div<{ noWrap?: boolean }>`
   display: flex;
   flex-direction: row;
-  gap: 24px;
+  gap: 20px;
   margin: 20px 0;
   width: 100%;
   flex-wrap: nowrap;
@@ -800,13 +801,9 @@ const Row = styled.div`
     flex-direction: column;
     flex-wrap: wrap;
     gap: 16px;
+    ${({ noWrap }) => noWrap && "flex-direction: row;"}
   }
 `;
-
-const iconStyle = {
-  marginRight: 8,
-  color: "#383842",
-};
 
 const captionStyle = {
   fontSize: "0.85em",
@@ -960,7 +957,7 @@ const BubblesFeaturedCard = ({
       isDarkMode={isDarkMode}
     >
       <motion.div variants={fadeInUp}>
-        <Row>
+        <Row noWrap>
           <div>
             <FeaturedHeading>Bubbles</FeaturedHeading>
             <Caption>Senior UX engineer • 2021 - now</Caption>
@@ -1082,7 +1079,7 @@ const CamblyFeaturedCard = ({
       visible={visible}
     >
       <motion.div variants={fadeInUp}>
-        <Row>
+        <Row noWrap>
           <div>
             <FeaturedHeading>Cambly</FeaturedHeading>
             <Caption>Lead product designer • 2019 - 2021</Caption>
@@ -1165,25 +1162,28 @@ export default function Home() {
     ? new THREE.Vector3(0.8, 0.8, 0.8)
     : new THREE.Vector3(1, 1, 1);
 
-  const darkEffects = useMemo(() => (
-    <EffectComposer>
-      <Bloom
-        intensity={0.02}
-        luminanceThreshold={0.6}
-        luminanceSmoothing={0.3}
-      />
-      <Vignette eskil={false} offset={0.1} darkness={0.4} />
-      <HueSaturation hue={0} saturation={0.1} />
-      {/* <BrightnessContrast brightness={0.05} contrast={0.2} /> */}
-      {/* <Noise opacity={0.08} /> */}
-      <DepthOfField
-        focusDistance={0.1}
-        focalLength={0.9}
-        bokehScale={2}
-        height={480}
-      />
-    </EffectComposer>
-  ), []);
+  const darkEffects = useMemo(
+    () => (
+      <EffectComposer>
+        <Bloom
+          intensity={0.02}
+          luminanceThreshold={0.6}
+          luminanceSmoothing={0.3}
+        />
+        <Vignette eskil={false} offset={0.1} darkness={0.4} />
+        <HueSaturation hue={0} saturation={0.1} />
+        {/* <BrightnessContrast brightness={0.05} contrast={0.2} /> */}
+        {/* <Noise opacity={0.08} /> */}
+        <DepthOfField
+          focusDistance={0.1}
+          focalLength={0.9}
+          bokehScale={2}
+          height={480}
+        />
+      </EffectComposer>
+    ),
+    [],
+  );
 
   return (
     <div
