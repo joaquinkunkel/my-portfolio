@@ -1102,7 +1102,7 @@ const CamblyFeaturedCard = ({
             <img src={mapUrl} alt="San Francisco Map" style={mapStyle} />
           </div>
           <div>
-            California
+            San Francisco, CA
             <br />
             <Caption>Hybrid team</Caption>
           </div>
