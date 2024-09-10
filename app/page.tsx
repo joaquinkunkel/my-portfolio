@@ -995,7 +995,7 @@ const BubblesFeaturedCard = ({
             <StyledVideo
               autoPlay
               loop
-              src="https://cdn.prod.website-files.com/63cc43d53b100d36f4967cc3/63dcdaf3a88f45abce7f9225_share-inspo-transcode.mp4"
+              src="https://cdn.prod.website-files.com/63cc43d53b100d36f4967cc3/63d2f441daf96d163e51ee8b_Powerful%20(large)-transcode.mp4"
             />
         </Row>
       </motion.div>
