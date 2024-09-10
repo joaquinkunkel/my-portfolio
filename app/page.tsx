@@ -833,8 +833,8 @@ const mapContainerStyle = {
 };
 const graphStyle = {
   background: `linear-gradient(135deg, 
-    rgba(255, 243, 206, 0.85),  /* soft peach */
-    rgba(206, 275, 241, 0.75)   /* light mint green */
+    rgba(245, 243, 236, 0.85),  /* soft peach */
+    rgba(246, 245, 221, 0.75)   /* light mint green */
   )`,
   borderRadius: 6,
   width: "100%",
@@ -886,32 +886,33 @@ const indented = {
 const mapUrl = `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/-122.4194,37.7749,12/600x300?access_token=pk.eyJ1Ijoiam9hcXVpbmt1bmtlbCIsImEiOiJjbTBraHNzajMxN2IwMm1xMnA1NHBqMDY3In0.QoxI3AJs0BryBFMJXh_jXQ`;
 
 const svgGraph = (
-  <svg
-    style={{ opacity: 0.7 }}
-    width="100%"
-    viewBox="0 0 100 50"
-  >
-    <defs>
-      <linearGradient id="lineGradient" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="rgba(0, 0, 0, 0.3)" />
-        <stop offset="100%" stopColor="rgba(0, 0, 0, 0)" />
-      </linearGradient>
-    </defs>
+<svg
+  style={{ opacity: 0.9 }}
+  width="100%"
+  viewBox="0 0 100 50"
+>
+  <defs>
+    {/* Gradient for the shaded area */}
+    <linearGradient id="lineGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stopColor="rgba(135, 206, 250, 0.5)" />  {/* Light sky blue */}
+      <stop offset="100%" stopColor="rgba(0, 255, 127, 0)" />  {/* Soft green */}
+    </linearGradient>
+  </defs>
 
-    {/* Shaded area under the line */}
-    <polygon
-      fill="url(#lineGradient)"
-      points="0,50 10,40 20,35 30,20 40,10 50,15 60,5 70,0 80,10 90,20 100,5 100,50 0,50"
-    />
+  {/* Shaded area under the line representing exponential growth */}
+  <polygon
+    fill="url(#lineGradient)"
+    points="0,50 10,48 20,45 30,42 40,38 50,32 60,28 70,20 80,15 90,10 100,5 100,50 0,50"
+  />
 
-    {/* The line */}
-    <polyline
-      fill="none"
-      stroke="rgba(0, 0, 0, 0.3)"
-      strokeWidth="1.2"
-      points="0,50 10,40 20,35 30,20 40,10 50,15 60,5 70,0 80,10 90,20 100,5"
-    />
-  </svg>
+  {/* Line representing exponential growth */}
+  <polyline
+    fill="none"
+    stroke="rgba(0, 0, 0, 0.4)"
+    strokeWidth="1.5"
+    points="0,50 10,48 20,45 30,42 40,38 50,32 60,28 70,20 80,15 90,10 100,5" 
+  />
+</svg>
 );
 
 const BubblesFeaturedCard = ({
@@ -1026,7 +1027,7 @@ const BubblesFeaturedCard = ({
           <div>
             San Francisco, CA
             <br />
-            <Caption>Part of the founding team</Caption>
+            <Caption>Founding team of 6</Caption>
           </div>
         </motion.div>
 
