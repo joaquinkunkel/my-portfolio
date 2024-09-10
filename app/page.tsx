@@ -1352,6 +1352,7 @@ const Caption = styled.p`
 
 const StyledVideo = styled.video`
   max-width: 240px;
+  min-height: 100px;
   border-radius: 6px;
   outline: 1px solid rgba(0, 0, 0, 0.05);
   margin-left: 8px;
