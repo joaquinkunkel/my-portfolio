@@ -1165,6 +1165,26 @@ export default function Home() {
     ? new THREE.Vector3(0.8, 0.8, 0.8)
     : new THREE.Vector3(1, 1, 1);
 
+  const darkEffects = useMemo(() => (
+    <EffectComposer>
+      <Bloom
+        intensity={0.02}
+        luminanceThreshold={0.6}
+        luminanceSmoothing={0.3}
+      />
+      <Vignette eskil={false} offset={0.1} darkness={0.4} />
+      <HueSaturation hue={0} saturation={0.1} />
+      {/* <BrightnessContrast brightness={0.05} contrast={0.2} /> */}
+      {/* <Noise opacity={0.08} /> */}
+      <DepthOfField
+        focusDistance={0.1}
+        focalLength={0.9}
+        bokehScale={2}
+        height={480}
+      />
+    </EffectComposer>
+  ), []);
+
   return (
     <div
       style={{
@@ -1286,26 +1306,7 @@ export default function Home() {
               setIsAnimationDone={setIsAnimationDone}
             />
           </group>
-          {/* Add post-processing effects here */}
-          {isDarkMode && (
-            <EffectComposer>
-              <Bloom
-                intensity={0.02}
-                luminanceThreshold={0.6}
-                luminanceSmoothing={0.3}
-              />
-              <Vignette eskil={false} offset={0.1} darkness={0.4} />
-              <HueSaturation hue={0} saturation={0.1} />
-              {/* <BrightnessContrast brightness={0.05} contrast={0.2} /> */}
-              {/* <Noise opacity={0.08} /> */}
-              <DepthOfField
-                focusDistance={0.1}
-                focalLength={0.9}
-                bokehScale={2}
-                height={480}
-              />
-            </EffectComposer>
-          )}
+          {isDarkMode && <>{darkEffects}</>}
         </Suspense>
       </Canvas>
     </div>
