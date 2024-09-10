@@ -992,25 +992,25 @@ const BubblesFeaturedCard = ({
           variants={fadeInUp}
         >
           <Caption style={{marginBottom: 8, marginTop: 0}}>
-            Some of what I do
+            Some highlights
           </Caption>
           <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
             <li style={liStyle}>
-              Design & implement UX for growth & core product
+              Co-lead UX design strategy for end-to-end product experience
+            </li>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
+            <li style={liStyle}>
+               Design & implement generative AI features
+              <p style={{ ...captionStyle, ...indented }}>
+                Smart meeting notes and action items
+              </p>
             </li>
           </div>
           <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
             <li style={liStyle}>Full rebrand & marketing guidelines</li>
           </div>
           <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
-            <li style={liStyle}>
-              Lead the design of generative AI features
-              <p style={{ ...captionStyle, ...indented }}>
-                Smart meeting notes and action items
-              </p>
-            </li>
-          </div>
-          <div style={{ displayx: "flex", alignItems: "center", width: "100%" }}>
             <li style={liStyle}>
               Collaborated with the incredible&nbsp;
               <a href="https://taylorlecroy.com/" target="_blank">
