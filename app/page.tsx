@@ -1359,6 +1359,7 @@ const StyledVideo = styled.video`
     margin: 8px auto;
     max-width: 100%;
   }
+  box-shadow: ${featuredBoxShadow};
 `;
 
 const ProductHuntBadge = styled.img`
