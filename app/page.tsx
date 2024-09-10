@@ -987,7 +987,7 @@ const BubblesFeaturedCard = ({
       >
         <Row noPadding spaceBetween>
           <div>
-            Leading the design of async collaboration software
+            At Bubbles, I lead the design of async collaboration software
             <a target="_blank" href="https://www.producthunt.com/products/bubbles#bubbles-for-teams">
             <ProductHuntBadge src="/img/producthunt-badge.png" />
             </a>
@@ -1381,7 +1381,8 @@ const Caption = styled.p`
 
 const StyledVideo = styled.video`
   max-width: 240px;
-  border-radius: 8px;
+  border-radius: 6px;
+  outline: 1px solid rgba(0, 0, 0, 0.05);
   margin-left: 8px;
   @media (max-width: 600px) {
     margin: 8px auto;
