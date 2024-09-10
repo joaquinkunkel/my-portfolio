@@ -89,7 +89,6 @@ const CardBackground = styled.div<{ visible?: boolean }>`
   z-index: 11;
   background: rgba(0, 0, 0, 0.5);
   overflow: auto;
-  transition: all 0.2s ease-out;
 `;
 
 export default FeaturedCard;
