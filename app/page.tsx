@@ -1390,7 +1390,7 @@ const StyledVideo = styled.video`
 `;
 
 const ProductHuntBadge = styled.img`
-  width: 160px;
+  width: 190px;
   margin-top: 20px;
     @media (max-width: 600px) {
     margin: 8px auto;
