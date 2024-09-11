@@ -1,20 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  async redirects() {
-    return [
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'www.joaquin.world', // Replace with your actual domain
-          },
-        ],
-        destination: 'https://joaquin.world/*',
-        permanent: true,
-      },
-    ];
-  },
   webpack(config) {
     // Find the rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule) =>
