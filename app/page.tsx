@@ -964,12 +964,7 @@ const BubblesFeaturedCard = ({
             <ProductHuntBadge src="/img/producthunt-badge.png" />
             </a>
           </div>
-            <StyledVideo
-              playsInline
-              autoPlay
-              loop
-              src="https://cdn.prod.website-files.com/63cc43d53b100d36f4967cc3/63d2f441daf96d163e51ee8b_Powerful%20(large)-transcode.mp4"
-            />
+            <VideoWithPlaceholder />
         </Row>
       </motion.div>
       <motion.div
@@ -1362,6 +1357,30 @@ const StyledVideo = styled.video`
   }
   box-shadow: ${featuredBoxShadow};
 `;
+
+const VideoWithPlaceholder = () => {
+  const [videoReady, setVideoReady] = useState(false);
+
+  return (
+    <div>
+      {!videoReady && (
+        <div style={{ width: '230px', height: '100px', backgroundColor: '#e0e0e0', borderRadius: '6px' }}>
+          {/* Loading Placeholder (Could be a spinner, etc.) */}
+          <p>Loading video...</p>
+        </div>
+      )}
+      <StyledVideo
+        playsInline
+        autoPlay
+        loop
+        muted
+        src="https://cdn.prod.website-files.com/63cc43d53b100d36f4967cc3/63d2f441daf96d163e51ee8b_Powerful%20(large)-transcode.mp4"
+        onCanPlay={() => setVideoReady(true)} // Only show the video when it's ready
+        style={{ display: videoReady ? 'block' : 'none' }} // Hide video until ready
+      />
+    </div>
+  );
+};
 
 const ProductHuntBadge = styled.img`
   width: 190px;
