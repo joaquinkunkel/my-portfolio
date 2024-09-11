@@ -957,9 +957,7 @@ const BubblesFeaturedCard = ({
       >
         <Row noPadding spaceBetween>
           <div>
-            <b>
-              At Bubbles, I design async collaboration software.
-              </b>
+          <QuoteType>At Bubbles, I design async collaboration software to make teams happier with how they use their time.</QuoteType>
             <a target="_blank" href="https://www.producthunt.com/products/bubbles#bubbles-for-teams">
             <ProductHuntBadge src="/img/producthunt-badge.png" />
             </a>
@@ -1348,14 +1346,15 @@ const Caption = styled.p`
 const StyledVideo = styled.video`
   max-width: 230px;
   min-height: 100px;
-  border-radius: 6px;
-  outline: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
   margin-left: 8px;
   @media (max-width: 600px) {
     margin: 8px auto;
     max-width: 100%;
   }
-  box-shadow: ${featuredBoxShadow};
+  // box-shadow: -4px 10px 32px rgba(0, 0, 0, 0.2);
+  filter: brightness(0.72);
 `;
 
 const VideoWithPlaceholder = () => {
@@ -1389,3 +1388,15 @@ const ProductHuntBadge = styled.img`
     margin: 20px auto 0 0;
   }
 `
+
+const QuoteType = styled.p`
+font-size: 0.9em;
+  ::first-letter {
+    font-size: 250%;
+    color: green;  // Customize as you like
+    font-weight: bold; // Optional, for emphasis
+    float: left; // Ensures the drop cap "floats" to the left
+    margin-right: 0.1em; // Adjust spacing
+    line-height: 1; // Adjust line height to align properly
+  }
+`;

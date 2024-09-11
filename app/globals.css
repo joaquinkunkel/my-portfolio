@@ -76,3 +76,11 @@ li {
   font-weight: normal;
   font-style: normal;
 }
+
+.drop-cap:first-letter {
+  font-size: 300%;
+  float: left;
+  margin-right: 0.1em;
+  line-height: 0.9;
+  font-family: 'Cooper Black';
+}
