@@ -991,14 +991,14 @@ const BubblesFeaturedCard = ({
           </Caption>
           <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
             <li style={liStyle}>
-              Co-lead UX design strategy for end-to-end product experience
+              Co-lead UX design for end-to-end product flows
             </li>
           </div>
           <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
             <li style={liStyle}>
-               Design & implement generative AI features
+               Implement growth and core user flows using React and Redux
               <p style={{ ...captionStyle, ...indented }}>
-                Smart meeting notes and action items
+                Including generative AI for smart meeting notes and action items
               </p>
             </li>
           </div>
