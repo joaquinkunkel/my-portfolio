@@ -1355,6 +1355,7 @@ const StyledVideo = styled.video`
   }
   // box-shadow: -4px 10px 32px rgba(0, 0, 0, 0.2);
   filter: brightness(0.72);
+  transition: all 0.2s;
 `;
 
 const VideoWithPlaceholder = () => {
