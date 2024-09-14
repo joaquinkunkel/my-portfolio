@@ -41,6 +41,8 @@ import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
 import { Mesh, MeshStandardMaterial, BoxGeometry, Group } from "three";
 import { useLoader } from "@react-three/fiber";
 import engravingFont from "../public/fonts/Supply_Bold.json"; // Load the modern, rounded font
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faVideo, faCode, faPaintBrush, faHeadset } from "@fortawesome/free-solid-svg-icons";
 
 const featuredBoxShadow =
   "0 6px 10px rgba(0, 0, 0, 0.06), 0 1.5px 4px rgba(0, 0, 0, 0.05)";
@@ -306,11 +308,11 @@ const LivingRoom = ({
 
   const handleBubblesClick = useCallback(() => {
     setFeaturedCard("bubbles");
-  }, []);
+  }, [setFeaturedCard]);
 
   const handleCamblyClick = useCallback(() => {
     setFeaturedCard("cambly");
-  }, []);
+  }, [setFeaturedCard]);
 
   const handleFreelanceClick = useCallback(() => {
     window.open("https://behance.net/joaquinkunkel", "_blank");
@@ -339,7 +341,15 @@ const LivingRoom = ({
 
       return () => clearTimeout(timer);
     }
-  }, [shouldStartAnimation, isMobile]);
+  }, [shouldStartAnimation, isMobile, setIsAnimationDone]);
+
+
+  // New spring for Coursedog
+  const coursedogSpring = useSpring({
+    scale: hoveredObject === "coursedog" ? [1.1, 1.1, 1.1] : [1, 1, 1],
+    config: { duration: 250, easing: (t) => t * t * (3 - 2 * t) },
+  });
+
 
   // Shader for the TV screen
   const tvScreenShaderMaterial = new THREE.ShaderMaterial({
@@ -545,6 +555,68 @@ const LivingRoom = ({
         </animated.mesh>
       </Billboard>
 
+      {/* <group position={[-3, 0.5, 3]} scale={[1.1, 1.1, 1.1]}>
+      <animated.mesh
+        castShadow
+        scale={coursedogSpring.scale.to((s) => [s, s, s])}
+        onPointerOver={() => {
+          setHoveredObject("coursedog");
+          document.body.style.cursor = "pointer";
+        }}
+        onPointerOut={() => {
+          setHoveredObject(null);
+          document.body.style.cursor = "auto";
+        }}
+        onClick={() => console.log("Coursedog clicked")}
+      >
+        {(hoveredObject === "coursedog" || isMobile) && (
+          <Billboard>
+            <Text
+              position={[0, isMobile ? 3 : 3.5, 0]}
+              fontSize={isMobile ? 0.6 : 0.4}
+              color={isDarkMode ? "#5a67d8" : "#4c51bf"} // Blue-indigo color for both themes
+              font="/fonts/COOPBL.TTF"
+            >
+              Coursedog
+            </Text>
+            <Text
+              position={[0, isMobile ? 2.5 : 3, 0]}
+              fontSize={isMobile ? 0.35 : 0.24}
+              color={isDarkMode ? "white" : "#383842"}
+              font="/fonts/RadioGrotesk-Regular.ttf"
+            >
+              UI Designer
+            </Text>
+            {!isMobile && (
+              <Text
+                position={[0, 2.3, 0]}
+                fontSize={0.24}
+                color={"#777777"}
+                font="/fonts/RadioGrotesk-Regular.ttf"
+              >
+                2018 - 2019
+              </Text>
+            )}
+          </Billboard>
+        )}
+        <RoundedBox args={[1.5, 1, 1.5]} radius={0.2} smoothness={10}>
+          <meshStandardMaterial color="white" metalness={0.4} roughness={0.3} />
+        </RoundedBox>
+        <FloatingGroup active={false}>
+          <mesh scale={2.0} castShadow>
+            <DogTrophyModel position={[0, 0.39, 0]} />
+          </mesh>
+        </FloatingGroup>
+        <pointLight
+          position={[0, 2, 0]}
+          intensity={hoveredObject === "coursedog" ? 25 : 0.1}
+          distance={60}
+          color="lightblue"
+          castShadow
+        />
+      </animated.mesh>
+    </group> */}
+
       <animated.mesh
         position={[-3.0, 0, -3.6]}
         castShadow
@@ -575,7 +647,7 @@ const LivingRoom = ({
               color={isDarkMode ? "white" : "#383842"}
               font="/fonts/RadioGrotesk-Regular.ttf"
             >
-              UX & Front-end (founding team)
+              UX & Eng (founding team)
             </Text>
             {!isMobile && (
               <Text
@@ -815,8 +887,15 @@ const sectionStyle = {
   letterSpacing: ".02em",
 };
 
+const iconStyle={
+marginRight: 16,
+margiTop: 8,
+opacity: 0.65
+}
+
 const liStyle = {
   width: "100%",
+  listStyleType: 'none',
 };
 
 const mapStyle = {
@@ -964,47 +1043,41 @@ const BubblesFeaturedCard = ({ onBackgroundClick, isDarkMode, visible }: {
         </Row>
       </motion.div>
 
+<Row>
+
       <motion.div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 24,
-          margin: "20px 0",
-          width: "100%",
-        }}
+        style={sectionStyle
+        }
         variants={fadeInUp}
       >
-        <motion.div
-          style={{
-            ...sectionStyle,
-            padding: 20,
-            borderRadius: 12,
-            width: "100%",
-          }}
-          variants={fadeInUp}
-        >
-          <Caption style={{ marginBottom: 8, marginTop: 0 }}>Highlights</Caption>
-          <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
-            <li style={liStyle}>
-              Led the UX design of key features for video-based conversations <HighlightSpan>reducing the need for live meetings</HighlightSpan>.
-            </li>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
-            <li style={liStyle}>
-              Designed and implemented growth and core flows in React + Redux, including generative AI-powered features.
-            </li>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
-            <li style={liStyle}>
-              Full rebrand and visual guidelines for a scalable design system.
-            </li>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
-            <li style={liStyle}>
-            Managed customer support to gain direct insights into pain points and improve the overall E2E experience.</li>
-          </div>
-        </motion.div>
+<Caption style={{ marginBottom: 8, marginTop: 16 }}>Highlights</Caption>
+<div style={{ display: "flex", alignItems: "center", width: "100%" }}>
+  <li style={liStyle}>
+    <FontAwesomeIcon icon={faVideo} style={iconStyle} />
+    Co-led end-to-end UX for video conversation tools <HighlightSpan>to reduce the need for live meetings</HighlightSpan>.
+  </li>
+</div>
+<div style={{ display: "flex", alignItems: "center", width: "100%" }}>
+  <li style={liStyle}>
+    <FontAwesomeIcon icon={faCode} style={iconStyle} />
+    Designed and implemented growth flows in React + Redux with direct regard to conversion and churn metrics.
+  </li>
+</div>
+<div style={{ display: "flex", alignItems: "center", width: "100%" }}>
+  <li style={liStyle}>
+    <FontAwesomeIcon icon={faPaintBrush} style={iconStyle} />
+    Full rebrand and visual guidelines for a scalable design system.
+  </li>
+</div>
+<div style={{ display: "flex", alignItems: "center", width: "100%" }}>
+  <li style={liStyle}>
+    <FontAwesomeIcon icon={faHeadset} style={iconStyle} />
+    Co-managed customer support to gain direct insights into pain points and improve the overall E2E experience.
+  </li>
+</div>
       </motion.div>
+      </Row>
+
       <Row>
         <motion.div style={sectionStyle} variants={fadeInUp}>
           <div style={mapContainerStyle}>
