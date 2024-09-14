@@ -571,7 +571,7 @@ const LivingRoom = ({
               color={isDarkMode ? "white" : "#383842"}
               font="/fonts/RadioGrotesk-Regular.ttf"
             >
-              Founding designer
+              UX & Front-end (founding team)
             </Text>
             {!isMobile && (
               <Text
@@ -934,7 +934,8 @@ const BubblesFeaturedCard = ({
         <Row noWrap>
           <div>
             <FeaturedHeading>Bubbles</FeaturedHeading>
-            <Caption>Founding designer • 2021 - now</Caption>
+            <Caption>UX & Front-end (founding team)
+            • 2021 - now</Caption>
           </div>
           <Weblink
             href="https://usebubbles.com"
@@ -1364,9 +1365,7 @@ const VideoWithPlaceholder = () => {
   return (
     <div>
       {!videoReady && (
-        <div style={{ width: '230px', height: '100px', backgroundColor: '#e0e0e0', borderRadius: '6px' }}>
-          {/* Loading Placeholder (Could be a spinner, etc.) */}
-          <p>Loading video...</p>
+        <div style={{ width: '230px', height: '160px', backgroundColor: '#e0e0e0', borderRadius: '6px' }}>
         </div>
       )}
       <StyledVideo
