@@ -36,25 +36,30 @@ import useIsMobile from "./useIsMobile";
 import "./globals.css";
 import "leaflet/dist/leaflet.css";
 import css from "styled-components";
-import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry';
-import { FontLoader } from 'three/examples/jsm/loaders/FontLoader';
-import { Mesh, MeshStandardMaterial, BoxGeometry, Group } from 'three';
-import { useLoader } from '@react-three/fiber';
-import engravingFont from '../public/fonts/Supply_Bold.json'; // Load the modern, rounded font
+import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
+import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
+import { Mesh, MeshStandardMaterial, BoxGeometry, Group } from "three";
+import { useLoader } from "@react-three/fiber";
+import engravingFont from "../public/fonts/Supply_Bold.json"; // Load the modern, rounded font
 
-const featuredBoxShadow = '0 6px 10px rgba(0, 0, 0, 0.06), 0 1.5px 4px rgba(0, 0, 0, 0.05)';
+const featuredBoxShadow =
+  "0 6px 10px rgba(0, 0, 0, 0.06), 0 1.5px 4px rgba(0, 0, 0, 0.05)";
 
-function EngravedBox({ text, position, rotation } : {
+function EngravedBox({
+  text,
+  position,
+  rotation,
+}: {
   text: string;
   position: number[];
   rotation?: THREE.Euler;
 }) {
   const [font, setFont] = useState<any>(null);
-  
+
   // Load the font on component mount
   useEffect(() => {
     const loader = new FontLoader();
-    loader.load('/fonts/Supply_Bold.json', (loadedFont) => {
+    loader.load("/fonts/Supply_Bold.json", (loadedFont) => {
       setFont(loadedFont);
     });
   }, []);
@@ -76,7 +81,7 @@ function EngravedBox({ text, position, rotation } : {
 
   // Material for the engraved text
   const textMaterial = new MeshStandardMaterial({
-    color: '#aa4927', // Darker color for engraved text
+    color: "#aa4927", // Darker color for engraved text
     metalness: 0.2,
     roughness: 0.7,
   });
@@ -103,7 +108,6 @@ function EngravedBox({ text, position, rotation } : {
     </group>
   );
 }
-
 
 function LoadingScreen({ onLoaded }: { onLoaded: () => void }) {
   const { progress, loaded, total } = useProgress();
@@ -818,7 +822,7 @@ const liStyle = {
 const mapStyle = {
   // filter: "grayscale(1)",
   width: "100%",
-  height: 'auto',
+  height: "auto",
   mixBlendMode: "multiply" as "multiply",
 };
 const mapContainerStyle = {
@@ -845,7 +849,7 @@ const graphStyle = {
   outline: "1px solid rgba(0,0,0,0.05)",
   boxShadow: featuredBoxShadow,
   height: 100,
-  overflow: 'hidden',
+  overflow: "hidden",
 };
 const Row = styled.div<{
   noWrap?: boolean;
@@ -886,43 +890,37 @@ const indented = {
 const mapUrl = `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/-122.4194,37.7749,12/600x300?access_token=pk.eyJ1Ijoiam9hcXVpbmt1bmtlbCIsImEiOiJjbTBraHNzajMxN2IwMm1xMnA1NHBqMDY3In0.QoxI3AJs0BryBFMJXh_jXQ`;
 
 const svgGraph = (
-<svg
-  style={{ opacity: 0.9 }}
-  width="100%"
-  viewBox="0 0 100 50"
->
-  <defs>
-    {/* Gradient for the shaded area */}
-    <linearGradient id="lineGradient" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stopColor="rgba(135, 206, 250, 0.5)" />  {/* Light sky blue */}
-      <stop offset="100%" stopColor="rgba(0, 255, 127, 0)" />  {/* Soft green */}
-    </linearGradient>
-  </defs>
+  <svg style={{ opacity: 0.9 }} width="100%" viewBox="0 0 100 50">
+    <defs>
+      {/* Gradient for the shaded area */}
+      <linearGradient id="lineGradient" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="rgba(135, 206, 250, 0.5)" />{" "}
+        {/* Light sky blue */}
+        <stop offset="100%" stopColor="rgba(0, 255, 127, 0)" />{" "}
+        {/* Soft green */}
+      </linearGradient>
+    </defs>
 
-  {/* Shaded area under the line representing exponential growth */}
-  <polygon
-    fill="url(#lineGradient)"
-    points="0,50 10,48 20,45 30,42 40,38 50,32 60,28 70,20 80,15 90,10 100,5 100,50 0,50"
-  />
+    {/* Shaded area under the line representing exponential growth */}
+    <polygon
+      fill="url(#lineGradient)"
+      points="0,50 10,48 20,45 30,42 40,38 50,32 60,28 70,20 80,15 90,10 100,5 100,50 0,50"
+    />
 
-  {/* Line representing exponential growth */}
-  <polyline
-    fill="none"
-    stroke="rgba(0, 0, 0, 0.4)"
-    strokeWidth="1.5"
-    points="0,50 10,48 20,45 30,42 40,38 50,32 60,28 70,20 80,15 90,10 100,5" 
-  />
-</svg>
+    {/* Line representing exponential growth */}
+    <polyline
+      fill="none"
+      stroke="rgba(0, 0, 0, 0.4)"
+      strokeWidth="1.5"
+      points="0,50 10,48 20,45 30,42 40,38 50,32 60,28 70,20 80,15 90,10 100,5"
+    />
+  </svg>
 );
 
-const BubblesFeaturedCard = ({
-  onBackgroundClick,
-  isDarkMode,
-  visible,
-}: {
+const BubblesFeaturedCard = ({ onBackgroundClick, isDarkMode, visible }: {
   onBackgroundClick: () => void;
-  isDarkMode?: boolean;
-  visible?: boolean;
+  isDarkMode: boolean;
+  visible: boolean;
 }) => {
   return (
     <FeaturedCard
@@ -934,8 +932,7 @@ const BubblesFeaturedCard = ({
         <Row noWrap>
           <div>
             <FeaturedHeading>Bubbles</FeaturedHeading>
-            <Caption>UX & Front-end (founding team)
-            • 2021 - now</Caption>
+            <Caption>UX & Front-end (Founding Team) • 2021 - Now</Caption>
           </div>
           <Weblink
             href="https://usebubbles.com"
@@ -958,14 +955,15 @@ const BubblesFeaturedCard = ({
       >
         <Row noPadding spaceBetween>
           <div>
-          <QuoteType>At Bubbles, I design async collaboration software to make teams happier with how they use their time.</QuoteType>
-            <a target="_blank" href="https://www.producthunt.com/products/bubbles#bubbles-for-teams">
-            <ProductHuntBadge src="/img/producthunt-badge.png" />
-            </a>
+            <QuoteType>
+              At Bubbles, I design collaboration tools to make teams{" "}
+              <HighlightSpan>confident with how they use their time</HighlightSpan>.
+            </QuoteType>
           </div>
-            <VideoWithPlaceholder />
+          <VideoWithPlaceholder />
         </Row>
       </motion.div>
+
       <motion.div
         style={{
           display: "flex",
@@ -985,32 +983,25 @@ const BubblesFeaturedCard = ({
           }}
           variants={fadeInUp}
         >
-          <Caption style={{marginBottom: 8, marginTop: 0}}>
-            Some highlights
-          </Caption>
+          <Caption style={{ marginBottom: 8, marginTop: 0 }}>Highlights</Caption>
           <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
             <li style={liStyle}>
-              Co-lead UX design for end-to-end product flows
+              Led the UX design of key features for video-based conversations <HighlightSpan>reducing the need for live meetings</HighlightSpan>.
             </li>
           </div>
           <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
             <li style={liStyle}>
-               Implement growth and core user flows using React and Redux
-              <p style={{ ...captionStyle, ...indented }}>
-                Including generative AI for smart meeting notes and action items
-              </p>
+              Designed and implemented growth and core flows in React + Redux, including generative AI-powered features.
             </li>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
-            <li style={liStyle}>Full rebrand & marketing guidelines</li>
           </div>
           <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
             <li style={liStyle}>
-              Collaborated with the incredible&nbsp;
-              <a href="https://taylorlecroy.com/" target="_blank">
-                @Taylor Lecroy&nbsp;
-              </a>
+              Full rebrand and visual guidelines for a scalable design system.
             </li>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
+            <li style={liStyle}>
+            Managed customer support to gain direct insights into pain points and improve the overall E2E experience.</li>
           </div>
         </motion.div>
       </motion.div>
@@ -1028,14 +1019,32 @@ const BubblesFeaturedCard = ({
 
         <motion.div style={sectionStyle} variants={fadeInUp}>
           <div style={graphStyle}>{svgGraph}</div>
-          <div>ARR from 0 to $150K</div>
-          <Caption>since I joined in 2021</Caption>
+          <div>ARR from $0 to $150K</div>
+          <Caption>Since 2021</Caption>
         </motion.div>
       </Row>
+            {/* New Row for Product Hunt Badge with Card Styling */}
+            <motion.div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          margin: "20px 0",
+        }}
+        variants={fadeInUp}
+      >
+        <BadgeCard>
+          <a
+            href="https://www.producthunt.com/products/bubbles#bubbles-for-teams"
+            target="_blank"
+          >
+            <ProductHuntBadge src="/img/producthunt-badge.png" />
+          </a>
+        </BadgeCard>
+      </motion.div>
+
     </FeaturedCard>
   );
 };
-
 const CamblyFeaturedCard = ({
   onBackgroundClick,
   isDarkMode,
@@ -1365,8 +1374,14 @@ const VideoWithPlaceholder = () => {
   return (
     <div>
       {!videoReady && (
-        <div style={{ width: '230px', height: '160px', backgroundColor: '#e0e0e0', borderRadius: '6px' }}>
-        </div>
+        <div
+          style={{
+            width: "230px",
+            height: "160px",
+            backgroundColor: "#e0e0e0",
+            borderRadius: "6px",
+          }}
+        ></div>
       )}
       <StyledVideo
         playsInline
@@ -1375,28 +1390,43 @@ const VideoWithPlaceholder = () => {
         muted
         src="https://cdn.prod.website-files.com/63cc43d53b100d36f4967cc3/63d2f441daf96d163e51ee8b_Powerful%20(large)-transcode.mp4"
         onCanPlay={() => setVideoReady(true)} // Only show the video when it's ready
-        style={{ display: videoReady ? 'block' : 'none' }} // Hide video until ready
+        style={{ display: videoReady ? "block" : "none" }} // Hide video until ready
       />
     </div>
   );
 };
 
+
+// New Badge Card Styling
+const BadgeCard = styled.div`
+  padding: 16px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`;
+
 const ProductHuntBadge = styled.img`
   width: 190px;
-  margin-top: 20px;
-    @media (max-width: 600px) {
-    margin: 20px auto 0 0;
+  margin-top: 0;
+  filter: grayscale(1);
+  opacity: 1;
+  &:hover {
+    filter: none;
   }
-`
-
+`;
 const QuoteType = styled.p`
-font-size: 0.9em;
   ::first-letter {
     font-size: 250%;
-    color: green;  // Customize as you like
+    color: green; // Customize as you like
     font-weight: bold; // Optional, for emphasis
     float: left; // Ensures the drop cap "floats" to the left
     margin-right: 0.1em; // Adjust spacing
     line-height: 1; // Adjust line height to align properly
   }
+`;
+
+const HighlightSpan = styled.span`
+  color: #cc2f90;
+  font-weight: 700;
 `;

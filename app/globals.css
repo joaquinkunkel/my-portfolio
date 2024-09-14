@@ -71,6 +71,13 @@ li {
 }
 
 @font-face {
+  font-family: 'Radio Grotesk';
+  src: url('/fonts/RadioGrotesk-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: bold;
+}
+
+@font-face {
   font-family: 'Supply';
   src: url('/fonts/Supply-Regular.otf') format('opentype');
   font-weight: normal;
