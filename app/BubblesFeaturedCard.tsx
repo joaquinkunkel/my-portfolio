@@ -22,19 +22,20 @@ import {
   QuoteType,
   HighlightSpan,
 } from "./Styles"; // Ensure to import all the necessary styles and components
-import Image from "next/image";
 
-const BubblesFeaturedCard = ({
-  onBackgroundClick,
-  isDarkMode,
-  visible,
-}: {
+interface BubblesCardProps {
   onBackgroundClick: () => void;
-  isDarkMode: boolean;
-  visible: boolean;
+  darkMode: boolean;
+  isVisible?: boolean;
+}
+
+const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
+  onBackgroundClick,
+  darkMode,
+  isVisible,
 }) => {
   return (
-    <FeaturedCard onBackgroundClick={onBackgroundClick} visible={visible} isDarkMode={isDarkMode}>
+    <FeaturedCard onBackgroundClick={onBackgroundClick} isVisible={isVisible} darkMode={darkMode}>
       <motion.div variants={fadeInUp}>
         <Row noWrap>
           <div>

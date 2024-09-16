@@ -10,7 +10,7 @@ import {
 } from "react";
 import Lightbulb from "../public/icons/bulb.svg";
 import * as THREE from "three";
-import useIsMobile from "./useIsMobile";
+import useIsMobile from "./hooks/useIsMobile";
 import "./globals.css";
 import "leaflet/dist/leaflet.css";
 import { LinksContainer } from "./Styles";
@@ -20,6 +20,7 @@ import LoadingScreen from "./LoadingScreen";
 import DarkEffects from "./DarkEffects";
 import { IFeaturedCard } from "./FeaturedCard";
 import LivingRoom from "./LivingRoom";
+import React from "react";
 
 function ResponsiveCamera() {
   const isMobile = useIsMobile();
@@ -34,11 +35,11 @@ function ResponsiveCamera() {
   return null;
 }
 
-export default function Home() {
+function Home() {
   const isMobile = useIsMobile();
   const [activeProject, setActiveProject] = useState(null);
   const [hoveredProject, setHoveredProject] = useState(null);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [darkMode, setdarkMode] = useState(false);
   const controlsRef = useRef<any>(null);
   const [shouldStartAnimation, setShouldStartAnimation] = useState(false);
   const [isAnimationDone, setIsAnimationDone] = useState(false);
@@ -56,7 +57,7 @@ export default function Home() {
         height: "100svh",
         width: "100vw",
         position: "relative",
-        background: isDarkMode ? "#20192a" : "#eeeeee",
+        background: darkMode ? "#20192a" : "#eeeeee",
         animation: "gradientAnimation 120s ease infinite",
         backgroundSize: "500% 500%",
         transition: "all 0.3s ease-out",
@@ -67,20 +68,20 @@ export default function Home() {
           {featuredCard === "bubbles" && (
             <BubblesFeaturedCard
               onBackgroundClick={resetFeaturedCard}
-              isDarkMode={isDarkMode}
-              visible={featuredCard === "bubbles"}
+              darkMode={darkMode}
+              isVisible={featuredCard === "bubbles"}
             />
           )}
           {featuredCard === "cambly" && (
             <CamblyFeaturedCard
               onBackgroundClick={resetFeaturedCard}
-              isDarkMode={isDarkMode}
-              visible={featuredCard === "cambly"}
+              darkMode={darkMode}
+              isVisible={featuredCard === "cambly"}
             />
           )}
         </>
       )}
-      <LinksContainer visible={isAnimationDone} isDarkMode={isDarkMode}>
+      <LinksContainer isVisible={isAnimationDone} darkMode={darkMode}>
         <a
           style={{
             position: "absolute",
@@ -90,14 +91,14 @@ export default function Home() {
           }}
           href="#"
           onClick={() => {
-            setIsDarkMode(!isDarkMode);
+            setdarkMode(!darkMode);
           }}
         >
           <Lightbulb
             style={{
               width: 32,
               height: 32,
-              filter: isDarkMode ? "invert()" : "none",
+              filter: darkMode ? "invert()" : "none",
               strokeWidth: 9,
               stroke: "black",
             }}
@@ -110,8 +111,8 @@ export default function Home() {
             top: isMobile ? 20 : 75,
             right: isMobile ? 20 : 60,
             padding: "2px 10px",
-            background: isDarkMode ? "white" : "#383842",
-            color: isDarkMode ? "#383842" : "#eeeeee",
+            background: darkMode ? "white" : "#383842",
+            color: darkMode ? "#383842" : "#eeeeee",
             borderRadius: 10,
             fontFamily:
               "Cooper Black, Supply, Radio Grotesk, sans-serif, monospace, sans-serif",
@@ -163,7 +164,7 @@ export default function Home() {
               onProjectClick={setActiveProject}
               onProjectHover={setHoveredProject}
               controlsRef={controlsRef}
-              isDarkMode={isDarkMode}
+              darkMode={darkMode}
               setFeaturedCard={setFeaturedCard}
               shouldStartAnimation={shouldStartAnimation}
               setShouldStartAnimation={setShouldStartAnimation}
@@ -171,9 +172,11 @@ export default function Home() {
               setIsAnimationDone={setIsAnimationDone}
             />
           </group>
-          {isDarkMode && <DarkEffects/>}
+          {darkMode && <DarkEffects/>}
         </Suspense>
       </Canvas>
     </div>
   );
 }
+
+export default React.memo(Home);

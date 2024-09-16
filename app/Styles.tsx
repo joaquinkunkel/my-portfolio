@@ -170,13 +170,13 @@ export const indented = {
   marginLeft: 22,
 };
 
-export const LinksContainer = styled.div<{ visible: boolean; isDarkMode?: boolean }>`
+export const LinksContainer = styled.div<{ isVisible?: boolean; darkMode?: boolean }>`
   opacity: 0;
   font-family: "Radio Grotesk", sans-serif, monospace;
-  color: ${({ isDarkMode }) =>
-    isDarkMode ? "rgba(255, 255, 255, 0.7)" : "#383842"};
-  transition: ${({ visible }) => visible && "0.2s all ease-out"};
-  opacity: ${({ visible }) => (visible ? "1" : "0")};
+  color: ${({ darkMode }) =>
+    darkMode ? "rgba(255, 255, 255, 0.7)" : "#383842"};
+  transition: ${({ isVisible }) => isVisible && "0.2s all ease-out"};
+  opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
 `;
 
 export const Weblink = styled.a`

@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { motion } from "framer-motion";
 
 export const fadeInUp = {
@@ -19,16 +19,16 @@ export const cardVariants = {
 };
 export type IFeaturedCardProps = {
   onBackgroundClick: () => void;
-  isDarkMode: boolean | undefined;
+  darkMode?: boolean;
   children: React.ReactNode;
-  visible: boolean;
+  isVisible?: boolean;
 };
 
 const FeaturedCard: React.FC<IFeaturedCardProps> = ({
   onBackgroundClick,
-  isDarkMode,
+  darkMode,
   children,
-  visible,
+  isVisible,
 }) => {
   return (
     <CardBackground
@@ -36,7 +36,7 @@ const FeaturedCard: React.FC<IFeaturedCardProps> = ({
         onBackgroundClick();
         e.stopPropagation();
       }}
-      visible={visible}
+      isVisible={isVisible}
     >
       <motion.div
         initial="hidden"
@@ -45,7 +45,7 @@ const FeaturedCard: React.FC<IFeaturedCardProps> = ({
         style={{ width: "100%" }}
       >
         <Card
-          visible={visible}
+          isVisible={isVisible}
           onClick={(e) => {
             e.stopPropagation();
           }}
@@ -57,7 +57,7 @@ const FeaturedCard: React.FC<IFeaturedCardProps> = ({
   );
 };
 
-const Card = styled.div<{ visible: boolean; darkMode?: boolean }>`
+const Card = styled.div<{ isVisible?: boolean; darkMode?: boolean }>`
   background: rgba(225, 225, 225, 1);
   width: 100%;
   max-width: 600px;
@@ -75,14 +75,14 @@ const Card = styled.div<{ visible: boolean; darkMode?: boolean }>`
   line-height: 130%;
   position: relative;
   transition: bottom 0.2s ease-out;
-  bottom: ${({ visible }) => (visible ? "0" : "-80px")};
+  bottom: ${({ isVisible }) => (isVisible ? "0" : "-80px")};
 `;
 
-const CardBackground = styled.div<{ visible?: boolean }>`
+const CardBackground = styled.div<{ isVisible?: boolean }>`
   visibility: hidden;
   opacity: 0;
-  ${({ visible }) => visible && "visibility: visible; opacity: 1"};
-  opacity: ${({ visible }) => (visible ? 1 : 0)};
+  ${({ isVisible }) => isVisible && "visibility: visible; opacity: 1"};
+  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
   height: 100%;
   width: 100%;
   padding: 40px;

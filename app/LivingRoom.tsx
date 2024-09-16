@@ -7,7 +7,7 @@ import EngravedBox from "./EngravedBox";
 import FloatingGroup from "./FloatingGroup";
 import IOSIconShape from "./iOSIconShape";
 import { gradientShaderMaterial, textShader, tvScreenShaderMaterial } from "./shaders";
-import useIsMobile from "./useIsMobile";
+import useIsMobile from "./hooks/useIsMobile";
 import { Text } from "@react-three/drei";
 import GlassyTVScreen from "./GlassyTVScreen";
 import { IFeaturedCard } from "./FeaturedCard";
@@ -20,7 +20,7 @@ function BirdModel(props: any) {
 
 const LivingRoom = ({
   controlsRef,
-  isDarkMode,
+  darkMode,
   setFeaturedCard,
   shouldStartAnimation,
   isAnimationDone,
@@ -29,7 +29,7 @@ const LivingRoom = ({
   onProjectClick: (project: any) => void;
   onProjectHover: (project: any) => void;
   controlsRef: React.MutableRefObject<any>;
-  isDarkMode: boolean;
+  darkMode: boolean;
   setFeaturedCard: React.Dispatch<React.SetStateAction<IFeaturedCard>>;
   shouldStartAnimation: boolean;
   setShouldStartAnimation: React.Dispatch<React.SetStateAction<boolean>>;
@@ -156,7 +156,7 @@ const LivingRoom = ({
             anchorY="middle"
             castShadow
             font="/fonts/COOPBL.TTF"
-            color={isDarkMode ? "#ffffff" : "#383842"}
+            color={darkMode ? "#ffffff" : "#383842"}
           >
             Joaquín Kunkel
           </Text>
@@ -168,12 +168,12 @@ const LivingRoom = ({
           <Text
             position={[0, isMobile ? 7.96 : 5.86, 0]}
             fontSize={isMobile ? 0.5 : 0.36}
-            color={isDarkMode ? "white" : "#383842"}
+            color={darkMode ? "white" : "#383842"}
             anchorX="center"
             anchorY="middle"
             castShadow
             font="/fonts/RadioGrotesk-Regular.ttf"
-            material={isDarkMode ? textShaderRef.current || new THREE.ShaderMaterial : undefined}
+            material={darkMode ? textShaderRef.current || new THREE.ShaderMaterial : undefined}
           >
             Product designer who codes
           </Text>
@@ -200,7 +200,7 @@ const LivingRoom = ({
               <Text
                 position={[0, isMobile ? 3 : 3.5, 0]}
                 fontSize={isMobile ? 0.6 : 0.4}
-                color={isDarkMode ? "#5a67d8" : "#4c51bf"} // Blue-indigo color for both themes
+                color={darkMode ? "#5a67d8" : "#4c51bf"} // Blue-indigo color for both themes
                 font="/fonts/COOPBL.TTF"
               >
                 Coursedog
@@ -208,7 +208,7 @@ const LivingRoom = ({
               <Text
                 position={[0, isMobile ? 2.5 : 3, 0]}
                 fontSize={isMobile ? 0.35 : 0.24}
-                color={isDarkMode ? "white" : "#383842"}
+                color={darkMode ? "white" : "#383842"}
                 font="/fonts/RadioGrotesk-Regular.ttf"
               >
                 UI Designer
@@ -271,7 +271,7 @@ const LivingRoom = ({
             <Text
               position={[0, isMobile ? 2.9 : 3.35, 0]}
               fontSize={isMobile ? 0.35 : 0.24}
-              color={isDarkMode ? "white" : "#383842"}
+              color={darkMode ? "white" : "#383842"}
               font="/fonts/RadioGrotesk-Regular.ttf"
             >
               UX & Eng (founding team)
@@ -346,7 +346,7 @@ const LivingRoom = ({
             <Text
               position={[0, isMobile ? 3.6 : 3.6, 0]}
               fontSize={isMobile ? 0.6 : 0.4}
-              color={isDarkMode ? "#c6f545" : "#76d525"}
+              color={darkMode ? "#c6f545" : "#76d525"}
               font="/fonts/COOPBL.TTF"
             >
               Freelance
@@ -354,7 +354,7 @@ const LivingRoom = ({
             <Text
               position={[0, isMobile ? 3 : 3.15, 0]}
               fontSize={isMobile ? 0.35 : 0.24}
-              color={isDarkMode ? "white" : "#383842"}
+              color={darkMode ? "white" : "#383842"}
               font="/fonts/RadioGrotesk-Regular.ttf"
             >
               Design, motion & art
@@ -433,7 +433,7 @@ const LivingRoom = ({
             <Text
               position={[0, isMobile ? 2.4 : 2.58, 0]}
               fontSize={isMobile ? 0.35 : 0.27}
-              color={isDarkMode ? "white" : "#383842"}
+              color={darkMode ? "white" : "#383842"}
               font="/fonts/RadioGrotesk-Regular.ttf"
             >
               Lead product designer
