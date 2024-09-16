@@ -65,6 +65,7 @@ export const Row = styled.div<{
 
 export const FeaturedHeading = styled.h1`
   font-family:
+    Radio Grotesk,
     Cooper Black,
     Radio Grotesk;
   font-size: 26px;
@@ -187,8 +188,8 @@ export const Weblink = styled.a`
   color: white;
   text-decoration: none;
   font-family:
-    Cooper Black,
     Radio Grotesk,
+    Cooper Black,
     sans-serif;
   font-size: 0.9em;
   border: 1px solid rgba(0, 0, 0, 0.05);

@@ -69,7 +69,7 @@ const CardBackground = styled.div<{ isVisible?: boolean; darkMode?: boolean }>`
   width: 100%;
   padding: 40px;
   position: absolute;
-  font-family: "Cooper Black", serif;
+  font-weight: bold;
   z-index: 11;
   background: rgba(0, 0, 0, 0.5);
   overflow: auto;

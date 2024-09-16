@@ -156,7 +156,7 @@ const LivingRoom = ({
             anchorX="center"
             anchorY="middle"
             castShadow
-            font="/fonts/COOPBL.TTF"
+            font="/fonts/RadioGrotesk-Bold.otf"
             color={darkMode ? "#ffffff" : "#383842"}
           >
             Hi, I'm Joaquín.
@@ -169,7 +169,7 @@ const LivingRoom = ({
           <Text
             position={[0, isMobile ? 7.96 : 5.86, 0]}
             fontSize={isMobile ? 0.5 : 0.36}
-            color={darkMode ? "white" : "#383842"}
+            color={darkMode ? '#aaaaaa' : "#383842"}
             anchorX="center"
             anchorY="middle"
             castShadow
@@ -264,15 +264,15 @@ const LivingRoom = ({
             <Text
               position={[0, isMobile ? 3.5 : 3.75, 0]}
               fontSize={isMobile ? 0.6 : 0.4}
-              color="#e66578"
-              font="/fonts/COOPBL.TTF"
+              color={darkMode ? '#ffffff' : "#000000"}
+              font="/fonts/RadioGrotesk-Bold.otf"
             >
               Bubbles
             </Text>
             <Text
               position={[0, isMobile ? 2.9 : 3.35, 0]}
               fontSize={isMobile ? 0.35 : 0.24}
-              color={darkMode ? "white" : "#383842"}
+              color={darkMode ? '#aaaaaa' : "#383842"}
               font="/fonts/RadioGrotesk-Regular.ttf"
             >
               UX & Eng (founding team)
@@ -347,15 +347,15 @@ const LivingRoom = ({
             <Text
               position={[0, isMobile ? 3.6 : 3.6, 0]}
               fontSize={isMobile ? 0.6 : 0.4}
-              color={darkMode ? "#c6f545" : "#76d525"}
-              font="/fonts/COOPBL.TTF"
+              color={darkMode ? '#ffffff' : "#383842"}
+              font="/fonts/RadioGrotesk-Bold.otf"
             >
               Freelance
             </Text>
             <Text
               position={[0, isMobile ? 3 : 3.15, 0]}
               fontSize={isMobile ? 0.35 : 0.24}
-              color={darkMode ? "white" : "#383842"}
+              color={darkMode ? '#aaaaaa' : "#383842"}
               font="/fonts/RadioGrotesk-Regular.ttf"
             >
               Design, motion & art
@@ -426,15 +426,15 @@ const LivingRoom = ({
             <Text
               position={[0, isMobile ? 3 : 3, 0]}
               fontSize={isMobile ? 0.6 : 0.43}
-              color="#e49610"
-              font="/fonts/COOPBL.TTF"
+              color={darkMode ? '#ffffff' : "#000000"}
+              font="/fonts/RadioGrotesk-Bold.otf"
             >
               Cambly
             </Text>
             <Text
               position={[0, isMobile ? 2.4 : 2.58, 0]}
               fontSize={isMobile ? 0.35 : 0.27}
-              color={darkMode ? "white" : "#383842"}
+              color={darkMode ? '#aaaaaa' : "#383842"}
               font="/fonts/RadioGrotesk-Regular.ttf"
             >
               Lead product designer
