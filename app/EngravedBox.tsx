@@ -41,7 +41,7 @@ function EngravedBox({
 
   // Material for the engraved text
   const textMaterial = new THREE.MeshStandardMaterial({
-    color: "#aa4927", // Darker color for engraved text
+    color: "#732e44", // Darker color for engraved text
     metalness: 0.2,
     roughness: 0.7,
   });
@@ -55,7 +55,7 @@ function EngravedBox({
         smoothness={10}
         position={[0, 0.35, 0]}
       >
-        <meshStandardMaterial color="#e87967" metalness={0.3} roughness={0.4} />
+        <meshStandardMaterial color="#e66578" metalness={0.3} roughness={0.4} />
       </RoundedBox>
 
       {/* Engraved text */}

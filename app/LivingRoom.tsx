@@ -152,13 +152,14 @@ const LivingRoom = ({
           <Text
             position={[0, isMobile ? 9 : 6.5, 0]}
             fontSize={isMobile ? 1 : 0.65}
+            fontWeight="normal"
             anchorX="center"
             anchorY="middle"
             castShadow
             font="/fonts/COOPBL.TTF"
             color={darkMode ? "#ffffff" : "#383842"}
           >
-            Joaquín Kunkel
+            Hi, I'm Joaquín Kunkel.
           </Text>
         </animated.mesh>
       </Billboard>
