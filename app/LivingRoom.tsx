@@ -39,7 +39,7 @@ const LivingRoom = ({
   const tvScreenRef = useRef<THREE.ShaderMaterial | null>(null);
   const sphereRef = useRef<THREE.ShaderMaterial | null>(null);
   const textShaderRef = useRef<THREE.ShaderMaterial | null>(null);
-  const gradientShaderRef = useRef<THREE.ShaderMaterial>();
+  const gradientShaderRef = useRef<THREE.ShaderMaterial | null>(null);
   const [textVisible, setTextVisible] = useState(false);
   const [hoveredObject, setHoveredObject] = useState<string | null>(null);
   const isMobile = useIsMobile();
@@ -137,7 +137,7 @@ const LivingRoom = ({
     if (textShaderRef.current) {
       textShaderRef.current.uniforms.uTime.value = state.clock.getElapsedTime();
     }
-    if (sphereRef.current) {
+    if (sphereRef.current?.uniforms?.utime) {
       sphereRef.current.uniforms.uTime.value = state.clock.getElapsedTime();
     }
   });
