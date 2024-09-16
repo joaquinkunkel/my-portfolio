@@ -65,7 +65,6 @@ function Home() {
       }}
     >
       <Cursor />
-      <div className="cursor"></div>
       {controlsRef.current && (
         <>
           {featuredCard === "bubbles" && (
