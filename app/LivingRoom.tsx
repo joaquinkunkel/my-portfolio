@@ -159,7 +159,7 @@ const LivingRoom = ({
             font="/fonts/COOPBL.TTF"
             color={darkMode ? "#ffffff" : "#383842"}
           >
-            Hi, I'm Joaquín Kunkel.
+            Hi, I'm Joaquín.
           </Text>
         </animated.mesh>
       </Billboard>
