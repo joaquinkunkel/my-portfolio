@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Caption, captionStyle, FeaturedHeading, graphStyle, indented, liStyle, mapContainerStyle, mapStyle, Row, sectionStyle, Weblink } from "./Styles";
 import FeaturedCard, { fadeInUp } from "./FeaturedCard";
+import Image from "next/image";
 
 const CamblyFeaturedCard = ({
   onBackgroundClick,

@@ -39,7 +39,7 @@ const LivingRoom = ({
   const tvScreenRef = useRef<THREE.ShaderMaterial | null>(null);
   const sphereRef = useRef<THREE.ShaderMaterial | null>(null);
   const textShaderRef = useRef<THREE.ShaderMaterial | null>(null);
-  const gradientShaderRef = useRef<THREE.ShaderMaterial | null>(null);
+  const gradientShaderRef = useRef<THREE.ShaderMaterial>();
   const [textVisible, setTextVisible] = useState(false);
   const [hoveredObject, setHoveredObject] = useState<string | null>(null);
   const isMobile = useIsMobile();
@@ -56,6 +56,11 @@ const LivingRoom = ({
 
   const handleFreelanceClick = useCallback(() => {
     window.open("https://behance.net/joaquinkunkel", "_blank");
+  }, []);
+
+  useEffect(() => {
+    gradientShaderRef.current = gradientShaderMaterial;
+    textShaderRef.current = textShader;
   }, []);
 
   useEffect(() => {
@@ -83,11 +88,6 @@ const LivingRoom = ({
     }
   }, [shouldStartAnimation, isMobile, setIsAnimationDone]);
 
-
-  gradientShaderRef.current = gradientShaderMaterial;
-
-  // Shader for text
-  textShaderRef.current = textShader;
   
   const { position } = useSpring({
     from: {
@@ -100,8 +100,6 @@ const LivingRoom = ({
     },
     onRest: () => setTextVisible(true),
   });
-
-
 
   const birdSpring = useSpring({
     scale: hoveredObject === "bird" ? [1.1, 1.1, 1.1] : [1, 1, 1],
@@ -143,6 +141,7 @@ const LivingRoom = ({
       sphereRef.current.uniforms.uTime.value = state.clock.getElapsedTime();
     }
   });
+  
   return (
     <group position={[0, -1, 0]} scale={[1.1, 1.1, 1.1]}>
       <IOSIconShape />
@@ -174,7 +173,7 @@ const LivingRoom = ({
             anchorY="middle"
             castShadow
             font="/fonts/RadioGrotesk-Regular.ttf"
-            material={isDarkMode ? textShaderRef.current : undefined}
+            material={isDarkMode ? textShaderRef.current || new THREE.ShaderMaterial : undefined}
           >
             Product designer who codes
           </Text>
@@ -300,7 +299,7 @@ const LivingRoom = ({
               roughness={0.1}
               envMapIntensity={0.5}
             />
-            <primitive object={gradientShaderRef.current} ref={sphereRef} />
+            <primitive object={gradientShaderRef.current || new THREE.ShaderMaterial} ref={sphereRef} />
           </mesh>
 
           <mesh position={[0, 1.75, 0]}>

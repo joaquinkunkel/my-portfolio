@@ -22,6 +22,7 @@ import {
   QuoteType,
   HighlightSpan,
 } from "./Styles"; // Ensure to import all the necessary styles and components
+import Image from "next/image";
 
 const BubblesFeaturedCard = ({
   onBackgroundClick,

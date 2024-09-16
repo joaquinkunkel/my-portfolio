@@ -38,7 +38,7 @@ export default function Home() {
   const isMobile = useIsMobile();
   const [activeProject, setActiveProject] = useState(null);
   const [hoveredProject, setHoveredProject] = useState(null);
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const controlsRef = useRef<any>(null);
   const [shouldStartAnimation, setShouldStartAnimation] = useState(false);
   const [isAnimationDone, setIsAnimationDone] = useState(false);
