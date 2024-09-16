@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVideo, faCode, faPaintBrush, faHeadset } from "@fortawesome/free-solid-svg-icons";
 import FeaturedCard, { fadeInUp } from "./FeaturedCard";
 import {
-  sectionStyle,
   liStyle,
   iconStyle,
   Row,
@@ -21,6 +20,7 @@ import {
   ProductHuntBadge,
   QuoteType,
   HighlightSpan,
+  Section,
 } from "./Styles"; // Ensure to import all the necessary styles and components
 
 interface BubblesCardProps {
@@ -47,8 +47,8 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
           </Weblink>
         </Row>
       </motion.div>
-
-      <motion.div style={{ ...sectionStyle, padding: 16, borderRadius: 12, width: "100%" }} variants={fadeInUp}>
+        <Section>
+      <motion.div variants={fadeInUp}>
         <Row noPadding spaceBetween>
           <div>
             <QuoteType>
@@ -59,10 +59,13 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
           <VideoWithPlaceholder />
         </Row>
       </motion.div>
+        </Section>
 
       <Row>
-        <motion.div style={sectionStyle} variants={fadeInUp}>
-          <Caption style={{ marginBottom: 8, marginTop: 16 }}>Highlights</Caption>
+        <motion.div variants={fadeInUp}>
+          <Section>
+
+          <Caption style={{ marginBottom: 8 }}>Highlights</Caption>
           <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
             <li style={liStyle}>
               <FontAwesomeIcon icon={faVideo} style={iconStyle} />
@@ -87,25 +90,30 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
               Co-managed customer support to gain direct insights into pain points and improve the overall E2E experience.
             </li>
           </div>
+          </Section>
         </motion.div>
       </Row>
 
       <Row>
-        <motion.div style={sectionStyle} variants={fadeInUp}>
-          <div style={mapContainerStyle}>
-            <img src={mapUrl} alt="San Francisco Map" style={mapStyle} />
-          </div>
-          <div>
-            San Francisco, CA
-            <br />
-            <Caption>Founding team of 6</Caption>
-          </div>
+        <motion.div variants={fadeInUp} style={{width: '100%'}}>
+          <Section>
+            <div style={mapContainerStyle}>
+              <img src={mapUrl} alt="San Francisco Map" style={mapStyle} />
+            </div>
+            <div>
+              San Francisco, CA
+              <br />
+              <Caption>Founding team of 6</Caption>
+            </div>
+          </Section>
         </motion.div>
 
-        <motion.div style={sectionStyle} variants={fadeInUp}>
-          <div style={graphStyle}>{svgGraph}</div>
-          <div>ARR from $0 to $150K</div>
-          <Caption>Since 2021</Caption>
+        <motion.div variants={fadeInUp} style={{width: '100%'}}>
+          <Section>
+            <div style={graphStyle}>{svgGraph}</div>
+            <div>ARR from $0 to $150K</div>
+            <Caption>Since 2021</Caption>
+          </Section>
         </motion.div>
       </Row>
 

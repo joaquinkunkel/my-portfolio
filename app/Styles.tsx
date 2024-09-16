@@ -102,18 +102,18 @@ export const svgGraph = (
   </svg>
 );
 
-export const sectionStyle = {
-  background: "rgba(255, 255, 255, 0.4)",
-  padding: "4px 22px 18px",
-  fontSize: 16,
-  borderRadius: 12,
-  display: "flex",
-  alignItems: "baseline",
-  flexDirection: "column" as "column",
-  outline: "1px solid rgba(0, 0, 0, 0.05)",
-  width: "100%",
-  letterSpacing: ".02em",
-};
+export const Section = styled.div`
+  background: rgba(255, 255, 255, 0.4);
+  padding: 18px 22px 18px;
+  font-size: 16px;
+  border-radius: 14px;
+  display: flex;
+  alignItems: baseline;
+  flex-direction: column;
+  outline: 1px solid rgba(0, 0, 0, 0.05);
+  width: 100%;
+  letter-spacing: .02em;
+`;
 
 export const iconStyle={
 marginRight: 16,
@@ -138,7 +138,7 @@ export const mapContainerStyle = {
   borderRadius: 6,
   overflow: "hidden",
   width: "100%",
-  margin: "16px 0 12px",
+  margin: "0 0 12px",
   outline: "1px solid rgba(0,0,0,0.05)",
   boxShadow: featuredBoxShadow,
 };
@@ -149,7 +149,7 @@ export const graphStyle = {
   )`,
   borderRadius: 6,
   width: "100%",
-  margin: "16px 0 12px",
+  margin: "0 0 12px",
   display: "flex",
   alignItems: "flex-start",
   justifyContent: "center",

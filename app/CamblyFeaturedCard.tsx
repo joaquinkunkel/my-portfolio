@@ -1,8 +1,19 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Caption, captionStyle, FeaturedHeading, graphStyle, indented, liStyle, mapContainerStyle, mapStyle, Row, sectionStyle, Weblink } from "./Styles";
+import {
+  Caption,
+  captionStyle,
+  FeaturedHeading,
+  graphStyle,
+  indented,
+  liStyle,
+  mapContainerStyle,
+  mapStyle,
+  Row,
+  Section,
+  Weblink,
+} from "./Styles";
 import FeaturedCard, { fadeInUp } from "./FeaturedCard";
-import Image from "next/image";
 
 interface CamblyCardProps {
   onBackgroundClick: () => void;
@@ -59,57 +70,61 @@ const CamblyFeaturedCard: React.FC<CamblyCardProps> = ({
           </Weblink>
         </Row>
       </motion.div>
-
       <Row>
-        <motion.div style={sectionStyle} variants={fadeInUp}>
-          <div style={mapContainerStyle}>
-            <img src={mapUrl} alt="San Francisco Map" style={mapStyle} />
-          </div>
-          <div>
-            San Francisco, CA
-            <br />
-            <Caption>Hybrid team</Caption>
-          </div>
-        </motion.div>
-
-        <motion.div style={sectionStyle} variants={fadeInUp}>
-          <div style={graphStyle}>{svgGraph}</div>
-          <div>Solo UX designer</div>
-          <Caption>Product team of 12 • Company of 100</Caption>
-        </motion.div>
+        <Section>
+          <motion.div variants={fadeInUp} style={{width: '100%'}}>
+            <div style={mapContainerStyle}>
+              <img src={mapUrl} alt="San Francisco Map" style={mapStyle} />
+            </div>
+            <div>
+              San Francisco, CA
+              <br />
+              <Caption>Hybrid team</Caption>
+            </div>
+          </motion.div>
+        </Section>
+        <Section>
+          <motion.div variants={fadeInUp} style={{width: '100%'}}>
+            <div style={graphStyle}>{svgGraph}</div>
+            <div>Solo UX designer</div>
+            <Caption>Product team of 12 • Company of 100</Caption>
+          </motion.div>
+        </Section>
       </Row>
-
-      <Row>
-        <motion.div
-          style={{
-            ...sectionStyle,
-            padding: 20,
-            borderRadius: 12,
-            width: "100%",
-          }}
-          variants={fadeInUp}
-        >
-          <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
-            <li style={liStyle}>Owned UX for iOS, Android & web features</li>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
-            <li style={liStyle}>Implemented web features in React</li>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
-            <li style={liStyle}>
-              Introduced higher-converting onboarding flows
-              <p style={{ ...captionStyle, ...indented }}>
-                Boosted free-trial conversion by 10% in adult and kids products
-              </p>
-            </li>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
-            <li style={liStyle}>Full rebrand & marketing guidelines</li>
-          </div>
-        </motion.div>
-      </Row>
+      <motion.div variants={fadeInUp}>
+        <Row>
+          <Section>
+            <div
+              style={{ display: "flex", alignItems: "center", width: "100%" }}
+            >
+              <li style={liStyle}>Owned UX for iOS, Android & web features</li>
+            </div>
+            <div
+              style={{ display: "flex", alignItems: "center", width: "100%" }}
+            >
+              <li style={liStyle}>Implemented web features in React</li>
+            </div>
+            <div
+              style={{ display: "flex", alignItems: "center", width: "100%" }}
+            >
+              <li style={liStyle}>
+                Introduced higher-converting onboarding flows
+                <p style={{ ...captionStyle, ...indented }}>
+                  Boosted free-trial conversion by 10% in adult and kids
+                  products
+                </p>
+              </li>
+            </div>
+            <div
+              style={{ display: "flex", alignItems: "center", width: "100%" }}
+            >
+              <li style={liStyle}>Full rebrand & marketing guidelines</li>
+            </div>
+          </Section>
+        </Row>
+      </motion.div>
     </FeaturedCard>
   );
 };
 
-export default React.memo(CamblyFeaturedCard)
+export default React.memo(CamblyFeaturedCard);

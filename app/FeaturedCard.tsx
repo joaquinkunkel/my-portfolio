@@ -1,5 +1,6 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
+import { Section, Weblink } from "./Styles";
 
 export const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -49,6 +50,7 @@ const FeaturedCard: React.FC<IFeaturedCardProps> = ({
           onClick={(e) => {
             e.stopPropagation();
           }}
+          darkMode={darkMode}
         >
           {children}
         </Card>
@@ -74,8 +76,28 @@ const Card = styled.div<{ isVisible?: boolean; darkMode?: boolean }>`
   color: #474e59;
   line-height: 130%;
   position: relative;
-  transition: bottom 0.2s ease-out;
+  transition: all 0.2s ease-out;
   bottom: ${({ isVisible }) => (isVisible ? "0" : "-80px")};
+  ${({ darkMode }) =>
+    darkMode &&
+    css`
+      background: #33303d;
+      outline: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow:
+        0px 28px 60px -28px rgba(0, 0, 0, 0.6),
+        inset 0px 2px 2px -1px rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.8);
+      ${Section} {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      ${Weblink} {
+        background: #282330;
+        &:hover {
+          background: #080310;
+        }
+      }
+    `}
 `;
 
 const CardBackground = styled.div<{ isVisible?: boolean }>`
