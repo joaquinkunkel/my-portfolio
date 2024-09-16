@@ -262,7 +262,7 @@ const LivingRoom = ({
             <Text
               position={[0, isMobile ? 3.5 : 3.75, 0]}
               fontSize={isMobile ? 0.6 : 0.4}
-              color={darkMode ? '#ffffff' : "#000000"}
+              color={darkMode ? '#ffffff' : "#383842"}
               font="/fonts/RadioGrotesk-Bold.otf"
             >
               Bubbles
@@ -420,7 +420,7 @@ const LivingRoom = ({
             <Text
               position={[0, isMobile ? 3 : 3, 0]}
               fontSize={isMobile ? 0.6 : 0.43}
-              color={darkMode ? '#ffffff' : "#000000"}
+              color={darkMode ? '#ffffff' : "#383842"}
               font="/fonts/RadioGrotesk-Bold.otf"
             >
               Cambly
