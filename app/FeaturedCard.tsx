@@ -78,7 +78,7 @@ const Card = styled.div<{ visible: boolean; darkMode?: boolean }>`
   bottom: ${({ visible }) => (visible ? "0" : "-80px")};
 `;
 
-const CardBackground = styled.div<{ visible: boolean }>`
+const CardBackground = styled.div<{ visible?: boolean }>`
   visibility: hidden;
   opacity: 0;
   ${({ visible }) => visible && "visibility: visible; opacity: 1"};
