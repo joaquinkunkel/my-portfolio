@@ -38,6 +38,7 @@ const FeaturedCard: React.FC<IFeaturedCardProps> = ({
         e.stopPropagation();
       }}
       isVisible={isVisible}
+      darkMode={darkMode}
     >
       <motion.div
         initial="hidden"
@@ -58,6 +59,23 @@ const FeaturedCard: React.FC<IFeaturedCardProps> = ({
     </CardBackground>
   );
 };
+
+const CardBackground = styled.div<{ isVisible?: boolean; darkMode?: boolean }>`
+  visibility: hidden;
+  opacity: 0;
+  ${({ isVisible }) => isVisible && "visibility: visible; opacity: 1"};
+  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
+  height: 100%;
+  width: 100%;
+  padding: 40px;
+  position: absolute;
+  font-family: "Cooper Black", serif;
+  z-index: 11;
+  background: rgba(0, 0, 0, 0.5);
+  overflow: auto;
+  backdrop-filter: blur(28px);
+  ${({darkMode}) => (darkMode && 'background-color: rgba(20, 20, 20, 0.5);')}
+`;
 
 const Card = styled.div<{ isVisible?: boolean; darkMode?: boolean }>`
   background: rgba(225, 225, 225, 1);
@@ -81,39 +99,22 @@ const Card = styled.div<{ isVisible?: boolean; darkMode?: boolean }>`
   ${({ darkMode }) =>
     darkMode &&
     css`
-      background: #33303d;
+      background: #14131a;
       outline: 1px solid rgba(255, 255, 255, 0.06);
-      box-shadow:
-        0px 28px 60px -28px rgba(0, 0, 0, 0.6),
-        inset 0px 2px 2px -1px rgba(255, 255, 255, 0.1);
-      color: rgba(255, 255, 255, 0.8);
+      box-shadow: none;
+      outline: 1px solid rgba(255, 255, 255, 0.09);
+      color: rgba(255, 255, 255, 0.9);
       ${Section} {
-        background: rgba(255, 255, 255, 0.05);
+        background: #1a1a25;
         border: 1px solid rgba(255, 255, 255, 0.05);
       }
       ${Weblink} {
         background: #282330;
         &:hover {
-          background: #080310;
+          background: #484350;
         }
       }
     `}
-`;
-
-const CardBackground = styled.div<{ isVisible?: boolean }>`
-  visibility: hidden;
-  opacity: 0;
-  ${({ isVisible }) => isVisible && "visibility: visible; opacity: 1"};
-  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
-  height: 100%;
-  width: 100%;
-  padding: 40px;
-  position: absolute;
-  font-family: "Cooper Black", serif;
-  z-index: 11;
-  background: rgba(0, 0, 0, 0.5);
-  overflow: auto;
-  backdrop-filter: blur(28px);
 `;
 
 export default FeaturedCard;
