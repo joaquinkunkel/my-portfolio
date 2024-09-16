@@ -6,6 +6,8 @@ export const fadeInUp = {
   visible: { opacity: 1, y: 0 },
 };
 
+export type IFeaturedCard = "bubbles" | "cambly" | "freelance" | null;
+
 export const cardVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -15,7 +17,7 @@ export const cardVariants = {
     },
   },
 };
-type IFeaturedCardProps = {
+export type IFeaturedCardProps = {
   onBackgroundClick: () => void;
   isDarkMode: boolean | undefined;
   children: React.ReactNode;
@@ -89,6 +91,7 @@ const CardBackground = styled.div<{ visible?: boolean }>`
   z-index: 11;
   background: rgba(0, 0, 0, 0.5);
   overflow: auto;
+  backdrop-filter: blur(28px);
 `;
 
 export default FeaturedCard;
