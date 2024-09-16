@@ -73,7 +73,6 @@ const CardBackground = styled.div<{ isVisible?: boolean; darkMode?: boolean }>`
   z-index: 11;
   background: rgba(0, 0, 0, 0.5);
   overflow: auto;
-  backdrop-filter: blur(28px);
   ${({darkMode}) => (darkMode && 'background-color: rgba(20, 20, 20, 0.5);')}
 `;
 
