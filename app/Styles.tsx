@@ -170,7 +170,7 @@ export const indented = {
   marginLeft: 22,
 };
 
-export const LinksContainer = styled.div<{ visible?: boolean; isDarkMode?: boolean }>`
+export const LinksContainer = styled.div<{ visible: boolean; isDarkMode?: boolean }>`
   opacity: 0;
   font-family: "Radio Grotesk", sans-serif, monospace;
   color: ${({ isDarkMode }) =>
