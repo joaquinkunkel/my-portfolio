@@ -21,7 +21,7 @@ export type IFeaturedCardProps = {
   onBackgroundClick: () => void;
   isDarkMode: boolean | undefined;
   children: React.ReactNode;
-  visible?: boolean;
+  visible: boolean;
 };
 
 const FeaturedCard: React.FC<IFeaturedCardProps> = ({
@@ -64,12 +64,12 @@ const Card = styled.div<{ visible?: boolean; darkMode?: boolean }>`
   margin: 0 auto;
   z-index: 11;
   font-weight: 400;
-  border-radius: 16px;
+  border-radius: 22px;
   box-shadow:
     0px 28px 60px -28px rgba(0, 0, 0, 0.6),
     inset 0px 2px 2px -1px rgba(255, 255, 255, 0.6);
-  outline: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 10px 20px 4px;
+  outline: 1px solid rgba(0, 0, 0, 0.25);
+  padding: 6px 20px 4px;
   font-family: "Radio Grotesk", "Supply", sans-serif;
   color: #474e59;
   line-height: 130%;

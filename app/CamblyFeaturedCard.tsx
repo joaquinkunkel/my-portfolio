@@ -11,7 +11,7 @@ const CamblyFeaturedCard = ({
 }: {
   onBackgroundClick: () => void;
   isDarkMode?: boolean;
-  visible?: boolean;
+  visible: boolean;
 }) => {
   const mapUrl = `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/-122.4194,37.7749,12/600x300?access_token=pk.eyJ1Ijoiam9hcXVpbmt1bmtlbCIsImEiOiJjbTBraHNzajMxN2IwMm1xMnA1NHBqMDY3In0.QoxI3AJs0BryBFMJXh_jXQ`;
 
