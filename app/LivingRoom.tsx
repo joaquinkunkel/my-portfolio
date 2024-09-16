@@ -176,7 +176,7 @@ const LivingRoom = ({
             font="/fonts/RadioGrotesk-Regular.ttf"
             material={darkMode ? textShaderRef.current || new THREE.ShaderMaterial : undefined}
           >
-            Product designer who codes
+            I design and code software.
           </Text>
         </animated.mesh>
       </Billboard>
@@ -264,7 +264,7 @@ const LivingRoom = ({
             <Text
               position={[0, isMobile ? 3.5 : 3.75, 0]}
               fontSize={isMobile ? 0.6 : 0.4}
-              color="#cf60cf"
+              color="#e66578"
               font="/fonts/COOPBL.TTF"
             >
               Bubbles
