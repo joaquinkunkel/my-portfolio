@@ -21,6 +21,7 @@ import DarkEffects from "./DarkEffects";
 import { IFeaturedCard } from "./FeaturedCard";
 import LivingRoom from "./LivingRoom";
 import React from "react";
+import Cursor from "./Cursor";
 
 function ResponsiveCamera() {
   const isMobile = useIsMobile();
@@ -63,6 +64,8 @@ function Home() {
         transition: "all 0.3s ease-out",
       }}
     >
+      <Cursor />
+      <div className="cursor"></div>
       {controlsRef.current && (
         <>
           {featuredCard === "bubbles" && (

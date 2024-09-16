@@ -251,11 +251,9 @@ const LivingRoom = ({
         scale={lampSpring.scale.to((s) => [s, s, s])}
         onPointerOver={() => {
           setHoveredObject("lamp");
-          document.body.style.cursor = "pointer";
         }}
         onPointerOut={() => {
           setHoveredObject(null);
-          document.body.style.cursor = "auto";
         }}
         onClick={handleBubblesClick}
       >
@@ -334,11 +332,9 @@ const LivingRoom = ({
         scale={tvSpring.scale.to((s) => [s, s, s])}
         onPointerOver={() => {
           setHoveredObject("tv");
-          document.body.style.cursor = "pointer";
         }}
         onPointerOut={() => {
           setHoveredObject(null);
-          document.body.style.cursor = "auto";
         }}
         onClick={handleFreelanceClick}
       >
@@ -412,11 +408,9 @@ const LivingRoom = ({
         scale={birdSpring.scale.to((s) => [s, s, s])}
         onPointerOver={() => {
           setHoveredObject("bird");
-          document.body.style.cursor = "pointer";
         }}
         onPointerOut={() => {
           setHoveredObject(null);
-          document.body.style.cursor = "auto";
         }}
         onClick={handleCamblyClick}
         castShadow
