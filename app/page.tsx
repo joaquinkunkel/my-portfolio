@@ -174,7 +174,7 @@ function Home() {
               setIsAnimationDone={setIsAnimationDone}
             />
           </group>
-          {darkMode && <DarkEffects/>}
+          {/* {darkMode && <DarkEffects/>} */}
         </Suspense>
       </Canvas>
     </div>
