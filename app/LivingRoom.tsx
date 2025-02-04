@@ -159,7 +159,7 @@ const LivingRoom = ({
             font="/fonts/RadioGrotesk-Bold.otf"
             color={darkMode ? "#ffffff" : "#383842"}
           >
-            Hi, I'm Joaquín.
+            Hi, I am Joaquín.
           </Text>
         </animated.mesh>
       </Billboard>
