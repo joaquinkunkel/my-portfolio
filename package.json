@@ -5,7 +5,7 @@
   "homepage": "https://yourusername.github.io/your-repo-name",
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next lint --no-lint",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "predeploy": "npm run build",
