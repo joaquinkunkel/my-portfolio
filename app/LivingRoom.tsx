@@ -282,7 +282,7 @@ const LivingRoom = ({
                 color={"#777777"}
                 font="/fonts/RadioGrotesk-Regular.ttf"
               >
-                2021 - now
+                2021 - 2024
               </Text>
             )}
           </Billboard>
