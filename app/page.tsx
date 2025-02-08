@@ -64,7 +64,7 @@ function Home() {
         transition: "all 0.3s ease-out",
       }}
     >
-      <Cursor />
+      {/* <Cursor /> */}
       {controlsRef.current && (
         <>
           {featuredCard === "bubbles" && (
