@@ -58,7 +58,7 @@ function Home() {
         height: "100svh",
         width: "100vw",
         position: "relative",
-        background: darkMode ? "#20192a" : "#eeeeee",
+        background: darkMode ? "#0c0e14" : "#fcfdff",
         animation: "gradientAnimation 120s ease infinite",
         backgroundSize: "500% 500%",
         transition: "all 0.3s ease-out",

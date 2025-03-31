@@ -169,14 +169,14 @@ const LivingRoom = ({
           <Text
             position={[0, isMobile ? 7.96 : 5.86, 0]}
             fontSize={isMobile ? 0.5 : 0.36}
-            color={darkMode ? '#aaaaaa' : "#383842"}
+            color={darkMode ? '#fcfdff' : "#383842"}
             anchorX="center"
             anchorY="middle"
             castShadow
             font="/fonts/RadioGrotesk-Regular.ttf"
             material={darkMode ? textShaderRef.current || new THREE.ShaderMaterial : undefined}
           >
-            I design and code software.
+            I design and code delightful UIs.
           </Text>
         </animated.mesh>
       </Billboard>

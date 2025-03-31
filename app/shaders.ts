@@ -94,7 +94,7 @@ import * as THREE from "three";
           color.b += edgeFactor * (0.6 + 0.2 * sin(uTime + dist * 20.0 + 2.0));
         }
 
-        gl_FragColor = vec4(color, 0.3);
+        gl_FragColor = vec4(color, 0.6);
       }
     `,
     transparent: true,

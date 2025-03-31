@@ -1,6 +1,5 @@
 import { RoundedBox } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as THREE from "three";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry.js";
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader.js";

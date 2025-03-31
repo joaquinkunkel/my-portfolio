@@ -107,7 +107,7 @@ export const Section = styled.div`
   background: rgba(255, 255, 255, 0.4);
   padding: 14px 16px 14px;
   font-size: 16px;
-  border-radius: 14px;
+  border-radius: 10px;
   display: flex;
   alignItems: baseline;
   flex-direction: column;
@@ -209,7 +209,7 @@ export const Caption = styled.p`
 export const StyledVideo = styled.video`
   max-width: 230px;
   min-height: 100px;
-  border-radius: 10px;
+  border-radius: 6px;
   border: 1px solid rgba(0, 0, 0, 0.05);
   margin-left: 8px;
   @media (max-width: 600px) {
