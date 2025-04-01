@@ -95,7 +95,7 @@ li {
 
 @font-face {
   font-family: 'Radio Grotesk';
-  src: url('/fonts/RadioGrotesk-Bold.otf') format('truetype');
+  src: url('/fonts/SF-Pro-Display-Bold.otf') format('opentype');
   font-weight: bold;
   font-style: bold;
 }

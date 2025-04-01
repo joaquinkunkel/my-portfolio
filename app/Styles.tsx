@@ -33,8 +33,6 @@ export const QuoteType = styled.p`
 `;
 
 export const HighlightSpan = styled.span`
-  // color: #cc2f90;
-  font-weight: 700;
 `;
 
 export const Row = styled.div<{
@@ -68,8 +66,8 @@ export const FeaturedHeading = styled.h1`
     Radio Grotesk,
     Cooper Black,
     Radio Grotesk;
-  font-size: 26px;
-  font-weight: normal;
+  font-size: 28px;
+  font-weight: 700;
 `;
 
 
@@ -175,7 +173,7 @@ export const LinksContainer = styled.div<{ isVisible?: boolean; darkMode?: boole
   opacity: 0;
   font-family: "Radio Grotesk", sans-serif, monospace;
   color: ${({ darkMode }) =>
-    darkMode ? "rgba(255, 255, 255, 0.7)" : "#383842"};
+    darkMode ? "rgba(255, 255, 255, 0.76)" : "#282832"};
   transition: ${({ isVisible }) => isVisible && "0.2s all ease-out"};
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
 `;

@@ -90,7 +90,7 @@ const Card = styled.div<{ isVisible?: boolean; darkMode?: boolean }>`
   outline: 1px solid rgba(0, 0, 0, 0.25);
   padding: 6px 20px 4px;
   font-family: "Radio Grotesk", "Supply", sans-serif;
-  color: #474e59;
+  color: #373e49;
   line-height: 130%;
   position: relative;
   transition: all 0.2s ease-out;
