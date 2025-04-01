@@ -73,8 +73,8 @@ a:hover {
 li {
   position: relative;
   width: 100%;
-  padding-left: 35px;
-  text-indent: -35px;
+  padding-left: 33px;
+  text-indent: -33px;
   margin-bottom: 16px;
   line-height: 130%;
 }
@@ -88,7 +88,7 @@ li {
 
 @font-face {
   font-family: 'Radio Grotesk';
-  src: url('/fonts/RadioGrotesk-Regular.ttf') format('truetype');
+  src: url('/fonts/SF-Pro-Text-Regular.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }

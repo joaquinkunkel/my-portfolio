@@ -106,7 +106,7 @@ export const svgGraph = (
 export const Section = styled.div`
   background: rgba(255, 255, 255, 0.4);
   padding: 14px 16px 14px;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: 10px;
   display: flex;
   alignItems: baseline;
