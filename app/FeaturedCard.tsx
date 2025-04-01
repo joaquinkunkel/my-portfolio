@@ -71,13 +71,14 @@ const CardBackground = styled.div<{ isVisible?: boolean; darkMode?: boolean }>`
   position: absolute;
   font-weight: bold;
   z-index: 11;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.4);
   overflow: auto;
-  ${({darkMode}) => (darkMode && 'background-color: rgba(10, 12, 14, 0.9);')}
+  backdrop-filter: blur(8px);
+  ${({darkMode}) => (darkMode && 'background-color: rgba(10, 12, 14, 0.7);')}
 `;
 
 const Card = styled.div<{ isVisible?: boolean; darkMode?: boolean }>`
-  background: rgba(225, 225, 225, 1);
+  background: rgba(225, 225, 225, 0.85);
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
@@ -87,7 +88,7 @@ const Card = styled.div<{ isVisible?: boolean; darkMode?: boolean }>`
   box-shadow:
     0px 28px 60px -28px rgba(0, 0, 0, 0.6),
     inset 0px 2px 2px -1px rgba(255, 255, 255, 0.6);
-  outline: 1px solid rgba(0, 0, 0, 0.25);
+  outline: 1px solid rgba(0, 0, 0, 0.1);
   padding: 6px 20px 4px;
   font-family: "Radio Grotesk", "Supply", sans-serif;
   color: #373e49;
@@ -98,18 +99,18 @@ const Card = styled.div<{ isVisible?: boolean; darkMode?: boolean }>`
   ${({ darkMode }) =>
     darkMode &&
     css`
-      background: #0d1116;
+      background: rgba(20, 23, 29, 0.9);
       box-shadow: 0px 28px 60px -28px rgba(0, 0, 0, 0.6);
       outline: 1.2px solid rgba(255, 255, 255, 0.08);
       color: rgba(255, 255, 255, 0.7);
       ${Section} {
-        background: #161a25;
+        background: rgba(255, 255, 255, 0.03);
         // border: 1px solid rgba(255, 255, 255, 0.06);
       }
       ${Weblink} {
-        background: #282330;
+        background: #202330;
         &:hover {
-          background: #484350;
+          background: #404350;
         }
       }
     `}

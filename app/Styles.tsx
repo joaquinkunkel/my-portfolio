@@ -179,18 +179,18 @@ export const LinksContainer = styled.div<{ isVisible?: boolean; darkMode?: boole
 `;
 
 export const Weblink = styled.a`
-  background: #474e59;
-  border-radius: 10px;
+  background: #303a49;
+  border-radius: 20px;
   padding: 4px 10px;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-  color: white;
+  box-shadow: 0px 2px 2px -2px rgba(255, 255, 255, 0.1), inset 0px 1px 5px -2px rgba(0, 0, 0, 0.6);
+  color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
+  font-weight: 400;
   font-family:
     Radio Grotesk,
     Cooper Black,
     sans-serif;
-  font-size: 0.9em;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  font-size: 0.8em;
   transition: all 0.2s ease-out;
   opacity: 1;
   &:hover {

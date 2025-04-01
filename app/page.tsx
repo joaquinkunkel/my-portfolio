@@ -115,7 +115,7 @@ function Home() {
             padding: "2px 10px",
             background: darkMode ? "white" : "#383842",
             color: darkMode ? "#383842" : "#eeeeee",
-            borderRadius: 10,
+            borderRadius: 20,
             fontFamily:
               "Cooper Black, Supply, Radio Grotesk, sans-serif, monospace, sans-serif",
           }}
