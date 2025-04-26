@@ -20,16 +20,16 @@ export const cardVariants = {
 };
 export type IFeaturedCardProps = {
   onBackgroundClick: () => void;
-  darkMode?: boolean;
+  darkmode?: boolean;
   children: React.ReactNode;
-  isVisible?: boolean;
+  isvisible?: boolean;
 };
 
 const FeaturedCard: React.FC<IFeaturedCardProps> = ({
   onBackgroundClick,
-  darkMode,
+  darkmode,
   children,
-  isVisible,
+  isvisible,
 }) => {
   return (
     <CardBackground
@@ -37,8 +37,8 @@ const FeaturedCard: React.FC<IFeaturedCardProps> = ({
         onBackgroundClick();
         e.stopPropagation();
       }}
-      isVisible={isVisible}
-      darkMode={darkMode}
+      isvisible={isvisible}
+      darkmode={darkmode}
     >
       <motion.div
         initial="hidden"
@@ -47,11 +47,11 @@ const FeaturedCard: React.FC<IFeaturedCardProps> = ({
         style={{ width: "100%" }}
       >
         <Card
-          isVisible={isVisible}
+          isvisible={isvisible}
           onClick={(e) => {
             e.stopPropagation();
           }}
-          darkMode={darkMode}
+          darkmode={darkmode}
         >
           {children}
         </Card>
@@ -60,11 +60,11 @@ const FeaturedCard: React.FC<IFeaturedCardProps> = ({
   );
 };
 
-const CardBackground = styled.div<{ isVisible?: boolean; darkMode?: boolean }>`
+const CardBackground = styled.div<{ isvisible?: boolean; darkmode?: boolean }>`
   visibility: hidden;
   opacity: 0;
-  ${({ isVisible }) => isVisible && "visibility: visible; opacity: 1"};
-  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
+  ${({ isvisible }) => isvisible && "visibility: visible; opacity: 1"};
+  opacity: ${({ isvisible }) => (isvisible ? 1 : 0)};
   height: 100%;
   width: 100%;
   padding: 40px;
@@ -74,10 +74,10 @@ const CardBackground = styled.div<{ isVisible?: boolean; darkMode?: boolean }>`
   background: rgba(0, 0, 0, 0.4);
   overflow: auto;
   backdrop-filter: blur(8px);
-  ${({darkMode}) => (darkMode && 'background-color: rgba(10, 12, 14, 0.7);')}
+  ${({darkmode}) => (darkmode && 'background-color: rgba(10, 12, 14, 0.7);')}
 `;
 
-const Card = styled.div<{ isVisible?: boolean; darkMode?: boolean }>`
+const Card = styled.div<{ isvisible?: boolean; darkmode?: boolean }>`
   background: rgba(225, 225, 225, 0.85);
   width: 100%;
   max-width: 600px;
@@ -94,10 +94,10 @@ const Card = styled.div<{ isVisible?: boolean; darkMode?: boolean }>`
   color: #373e49;
   line-height: 130%;
   position: relative;
-  transition: all 0.2s ease-out;
-  bottom: ${({ isVisible }) => (isVisible ? "0" : "-80px")};
-  ${({ darkMode }) =>
-    darkMode &&
+  // transition: all 0.2s ease-out;
+  bottom: ${({ isvisible }) => (isvisible ? "0" : "-80px")};
+  ${({ darkmode }) =>
+    darkmode &&
     css`
       background: rgba(20, 23, 29, 0.9);
       box-shadow: 0px 28px 60px -28px rgba(0, 0, 0, 0.6);

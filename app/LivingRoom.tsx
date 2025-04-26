@@ -20,7 +20,7 @@ function BirdModel(props: any) {
 
 const LivingRoom = ({
   controlsRef,
-  darkMode,
+  darkmode,
   setFeaturedCard,
   shouldStartAnimation,
   isAnimationDone,
@@ -29,7 +29,7 @@ const LivingRoom = ({
   onProjectClick: (project: any) => void;
   onProjectHover: (project: any) => void;
   controlsRef: React.MutableRefObject<any>;
-  darkMode: boolean;
+  darkmode: boolean;
   setFeaturedCard: React.Dispatch<React.SetStateAction<IFeaturedCard>>;
   shouldStartAnimation: boolean;
   setShouldStartAnimation: React.Dispatch<React.SetStateAction<boolean>>;
@@ -157,7 +157,7 @@ const LivingRoom = ({
             anchorY="middle"
             castShadow
             font="/fonts/RadioGrotesk-Bold.otf"
-            color={darkMode ? "#ffffff" : "#383842"}
+            color={darkmode ? "#ffffff" : "#383842"}
           >
             Hi, I am Joaquín.
           </Text>
@@ -169,12 +169,12 @@ const LivingRoom = ({
           <Text
             position={[0, isMobile ? 7.96 : 5.86, 0]}
             fontSize={isMobile ? 0.5 : 0.36}
-            color={darkMode ? '#fcfdff' : "#383842"}
+            color={darkmode ? '#fcfdff' : "#383842"}
             anchorX="center"
             anchorY="middle"
             castShadow
             font="/fonts/SF-Pro-Text-Regular.otf"
-            material={darkMode ? textShaderRef.current || new THREE.ShaderMaterial : undefined}
+            material={darkmode ? textShaderRef.current || new THREE.ShaderMaterial : undefined}
           >
             I design and code delightful UIs.
           </Text>
@@ -201,7 +201,7 @@ const LivingRoom = ({
               <Text
                 position={[0, isMobile ? 3 : 3.5, 0]}
                 fontSize={isMobile ? 0.6 : 0.4}
-                color={darkMode ? "#5a67d8" : "#4c51bf"} // Blue-indigo color for both themes
+                color={darkmode ? "#5a67d8" : "#4c51bf"} // Blue-indigo color for both themes
                 font="/fonts/COOPBL.TTF"
               >
                 Coursedog
@@ -209,7 +209,7 @@ const LivingRoom = ({
               <Text
                 position={[0, isMobile ? 2.5 : 3, 0]}
                 fontSize={isMobile ? 0.35 : 0.24}
-                color={darkMode ? "white" : "#383842"}
+                color={darkmode ? "white" : "#383842"}
                 font="/fonts/SF-Pro-Text-Regular.otf"
               >
                 UI Designer
@@ -262,7 +262,7 @@ const LivingRoom = ({
             <Text
               position={[0, isMobile ? 3.5 : 3.75, 0]}
               fontSize={isMobile ? 0.6 : 0.4}
-              color={darkMode ? '#ffffff' : "#383842"}
+              color={darkmode ? '#ffffff' : "#383842"}
               font="/fonts/RadioGrotesk-Bold.otf"
             >
               Bubbles
@@ -270,7 +270,7 @@ const LivingRoom = ({
             <Text
               position={[0, isMobile ? 2.9 : 3.35, 0]}
               fontSize={isMobile ? 0.35 : 0.24}
-              color={darkMode ? '#aaaaaa' : "#383842"}
+              color={darkmode ? '#aaaaaa' : "#383842"}
               font="/fonts/SF-Pro-Text-Regular.otf"
             >
               UX & Eng (founding team)
@@ -343,7 +343,7 @@ const LivingRoom = ({
             <Text
               position={[0, isMobile ? 3.6 : 3.6, 0]}
               fontSize={isMobile ? 0.6 : 0.4}
-              color={darkMode ? '#ffffff' : "#383842"}
+              color={darkmode ? '#ffffff' : "#383842"}
               font="/fonts/RadioGrotesk-Bold.otf"
             >
               Freelance
@@ -351,7 +351,7 @@ const LivingRoom = ({
             <Text
               position={[0, isMobile ? 3 : 3.15, 0]}
               fontSize={isMobile ? 0.35 : 0.24}
-              color={darkMode ? '#aaaaaa' : "#383842"}
+              color={darkmode ? '#aaaaaa' : "#383842"}
               font="/fonts/SF-Pro-Text-Regular.otf"
             >
               Design, motion & art
@@ -420,7 +420,7 @@ const LivingRoom = ({
             <Text
               position={[0, isMobile ? 3 : 3, 0]}
               fontSize={isMobile ? 0.6 : 0.43}
-              color={darkMode ? '#ffffff' : "#383842"}
+              color={darkmode ? '#ffffff' : "#383842"}
               font="/fonts/RadioGrotesk-Bold.otf"
             >
               Cambly
@@ -428,7 +428,7 @@ const LivingRoom = ({
             <Text
               position={[0, isMobile ? 2.4 : 2.58, 0]}
               fontSize={isMobile ? 0.35 : 0.27}
-              color={darkMode ? '#aaaaaa' : "#383842"}
+              color={darkmode ? '#aaaaaa' : "#383842"}
               font="/fonts/SF-Pro-Text-Regular.otf"
             >
               Lead product designer

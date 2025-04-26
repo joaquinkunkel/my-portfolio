@@ -21,21 +21,22 @@ import {
   QuoteType,
   HighlightSpan,
   Section,
+  GridList,
 } from "./Styles"; // Ensure to import all the necessary styles and components
 
 interface BubblesCardProps {
   onBackgroundClick: () => void;
-  darkMode: boolean;
-  isVisible?: boolean;
+  darkmode: boolean;
+  isvisible?: boolean;
 }
 
 const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
   onBackgroundClick,
-  darkMode,
-  isVisible,
+  darkmode,
+  isvisible,
 }) => {
   return (
-    <FeaturedCard onBackgroundClick={onBackgroundClick} isVisible={isVisible} darkMode={darkMode}>
+    <FeaturedCard onBackgroundClick={onBackgroundClick} isvisible={isvisible} darkmode={darkmode}>
       <motion.div variants={fadeInUp}>
         <Row noWrap>
           <div>
@@ -64,32 +65,27 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
       <Row>
         <motion.div variants={fadeInUp}>
           <Section>
-
-          <Caption style={{ marginBottom: 8 }}>Highlights</Caption>
-          <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
-            <li style={liStyle}>
+            <GridList>
+              <Caption style={{ marginBottom: 8 }}>Highlights</Caption>
               <FontAwesomeIcon icon={faVideo} style={iconStyle} />
-              Co-led end-to-end UX for video conversation tools to reduce the need for live meetings.
-            </li>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
-            <li style={liStyle}>
+              <p>
+                  Led the end-to-end UI development of 20+ features for an conversational-AI-based productivity platform, building mobile-responsive components in <b>React + Redux</b>.
+              </p>
+              <p>
               <FontAwesomeIcon icon={faCode} style={iconStyle} />
-              Designed and implemented growth flows in React + Redux with direct regard to conversion and churn metrics.
-            </li>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
-            <li style={liStyle}>
+              </p>
+              <p>
+                Reduced user churn and boosted activation, building in-product onboarding flows and email marketing campaigns on Drip with dynamic user data.
+              </p>
               <FontAwesomeIcon icon={faPaintBrush} style={iconStyle} />
-              Full rebrand and visual guidelines for a scalable design system.
-            </li>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
-            <li style={liStyle}>
+              <p>
+                Implemented a full rebrand and visual guidelines for a scalable design system.
+              </p>
               <FontAwesomeIcon icon={faHeadset} style={iconStyle} />
-              Co-managed customer support to gain direct insights into pain points and improve the overall E2E experience.
-            </li>
-          </div>
+              <p>
+                Led user testing and interviews to improve UX, while managing customer support to address product pain points.
+              </p>
+            </GridList>
           </Section>
         </motion.div>
       </Row>

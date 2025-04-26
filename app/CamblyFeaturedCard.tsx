@@ -17,14 +17,14 @@ import FeaturedCard, { fadeInUp } from "./FeaturedCard";
 
 interface CamblyCardProps {
   onBackgroundClick: () => void;
-  darkMode: boolean;
-  isVisible?: boolean;
+  darkmode: boolean;
+  isvisible?: boolean;
 }
 
 const CamblyFeaturedCard: React.FC<CamblyCardProps> = ({
   onBackgroundClick,
-  darkMode,
-  isVisible,
+  darkmode,
+  isvisible,
 }) => {
   const mapUrl = `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/-122.4194,37.7749,12/600x300?access_token=pk.eyJ1Ijoiam9hcXVpbmt1bmtlbCIsImEiOiJjbTBraHNzajMxN2IwMm1xMnA1NHBqMDY3In0.QoxI3AJs0BryBFMJXh_jXQ`;
 
@@ -52,8 +52,8 @@ const CamblyFeaturedCard: React.FC<CamblyCardProps> = ({
   return (
     <FeaturedCard
       onBackgroundClick={onBackgroundClick}
-      darkMode={darkMode}
-      isVisible={isVisible}
+      darkmode={darkmode}
+      isvisible={isvisible}
     >
       <motion.div variants={fadeInUp}>
         <Row noWrap>

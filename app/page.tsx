@@ -40,7 +40,7 @@ function Home() {
   const isMobile = useIsMobile();
   const [activeProject, setActiveProject] = useState(null);
   const [hoveredProject, setHoveredProject] = useState(null);
-  const [darkMode, setdarkMode] = useState(false);
+  const [darkmode, setdarkmode] = useState(false);
   const controlsRef = useRef<any>(null);
   const [shouldStartAnimation, setShouldStartAnimation] = useState(false);
   const [isAnimationDone, setIsAnimationDone] = useState(false);
@@ -58,7 +58,7 @@ function Home() {
         height: "100svh",
         width: "100vw",
         position: "relative",
-        background: darkMode ? "#0c0e14" : "#fcfdff",
+        background: darkmode ? "#0c0e14" : "#fcfdff",
         animation: "gradientAnimation 120s ease infinite",
         backgroundSize: "500% 500%",
         transition: "all 0.3s ease-out",
@@ -70,20 +70,20 @@ function Home() {
           {featuredCard === "bubbles" && (
             <BubblesFeaturedCard
               onBackgroundClick={resetFeaturedCard}
-              darkMode={darkMode}
-              isVisible={featuredCard === "bubbles"}
+              darkmode={darkmode}
+              isvisible={featuredCard === "bubbles"}
             />
           )}
           {featuredCard === "cambly" && (
             <CamblyFeaturedCard
               onBackgroundClick={resetFeaturedCard}
-              darkMode={darkMode}
-              isVisible={featuredCard === "cambly"}
+              darkmode={darkmode}
+              isvisible={featuredCard === "cambly"}
             />
           )}
         </>
       )}
-      <LinksContainer isVisible={isAnimationDone} darkMode={darkMode}>
+      <LinksContainer isvisible={isAnimationDone} darkmode={darkmode}>
         <a
           style={{
             position: "absolute",
@@ -93,14 +93,14 @@ function Home() {
           }}
           href="#"
           onClick={() => {
-            setdarkMode(!darkMode);
+            setdarkmode(!darkmode);
           }}
         >
           <Lightbulb
             style={{
               width: 32,
               height: 32,
-              filter: darkMode ? "invert()" : "none",
+              filter: darkmode ? "invert()" : "none",
               strokeWidth: 9,
               stroke: "black",
             }}
@@ -113,8 +113,8 @@ function Home() {
             top: isMobile ? 20 : 75,
             right: isMobile ? 20 : 60,
             padding: "2px 10px",
-            background: darkMode ? "white" : "#383842",
-            color: darkMode ? "#383842" : "#eeeeee",
+            background: darkmode ? "white" : "#383842",
+            color: darkmode ? "#383842" : "#eeeeee",
             borderRadius: 20,
             fontFamily:
               "Cooper Black, Supply, Radio Grotesk, sans-serif, monospace, sans-serif",
@@ -166,7 +166,7 @@ function Home() {
               onProjectClick={setActiveProject}
               onProjectHover={setHoveredProject}
               controlsRef={controlsRef}
-              darkMode={darkMode}
+              darkmode={darkmode}
               setFeaturedCard={setFeaturedCard}
               shouldStartAnimation={shouldStartAnimation}
               setShouldStartAnimation={setShouldStartAnimation}
@@ -174,7 +174,7 @@ function Home() {
               setIsAnimationDone={setIsAnimationDone}
             />
           </group>
-          {/* {darkMode && <DarkEffects/>} */}
+          {/* {darkmode && <DarkEffects/>} */}
         </Suspense>
       </Canvas>
     </div>

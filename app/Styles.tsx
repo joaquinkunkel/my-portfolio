@@ -114,9 +114,15 @@ export const Section = styled.div`
   letter-spacing: .02em;
 `;
 
+export const GridList = styled.div`
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  grid-auto-rows: auto;
+  row-gap: 8px;
+`
+
 export const iconStyle={
-marginRight: 16,
-margiTop: 8,
+marginTop: 4,
 opacity: 0.65
 }
 
@@ -169,13 +175,13 @@ export const indented = {
   marginLeft: 22,
 };
 
-export const LinksContainer = styled.div<{ isVisible?: boolean; darkMode?: boolean }>`
+export const LinksContainer = styled.div<{ isvisible?: boolean; darkmode?: boolean }>`
   opacity: 0;
   font-family: "Radio Grotesk", sans-serif, monospace;
-  color: ${({ darkMode }) =>
-    darkMode ? "rgba(255, 255, 255, 0.76)" : "#282832"};
-  transition: ${({ isVisible }) => isVisible && "0.2s all ease-out"};
-  opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
+  color: ${({ darkmode }) =>
+    darkmode ? "rgba(255, 255, 255, 0.76)" : "#282832"};
+  transition: ${({ isvisible }) => isvisible && "0.2s all ease-out"};
+  opacity: ${({ isvisible }) => (isvisible ? "1" : "0")};
 `;
 
 export const Weblink = styled.a`
@@ -202,12 +208,14 @@ export const Caption = styled.p`
   font-size: 0.85em;
   opacity: 0.75;
   margin-top: 4px;
+  margin-bottom: -4px;
+  grid-column: 1 / -1;
 `;
 
 export const StyledVideo = styled.video`
   max-width: 230px;
   min-height: 100px;
-  border-radius: 6px;
+  border-radius: 8px;
   border: 1px solid rgba(0, 0, 0, 0.05);
   margin-left: 8px;
   @media (max-width: 600px) {
