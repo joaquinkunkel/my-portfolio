@@ -173,7 +173,7 @@ const LivingRoom = ({
             anchorX="center"
             anchorY="middle"
             castShadow
-            font="/fonts/RadioGrotesk-Regular.ttf"
+            font="/fonts/SF-Pro-Text-Regular.otf"
             material={darkMode ? textShaderRef.current || new THREE.ShaderMaterial : undefined}
           >
             I design and code delightful UIs.
@@ -210,7 +210,7 @@ const LivingRoom = ({
                 position={[0, isMobile ? 2.5 : 3, 0]}
                 fontSize={isMobile ? 0.35 : 0.24}
                 color={darkMode ? "white" : "#383842"}
-                font="/fonts/RadioGrotesk-Regular.ttf"
+                font="/fonts/SF-Pro-Text-Regular.otf"
               >
                 UI Designer
               </Text>
@@ -219,7 +219,7 @@ const LivingRoom = ({
                   position={[0, 2.3, 0]}
                   fontSize={0.24}
                   color={"#777777"}
-                  font="/fonts/RadioGrotesk-Regular.ttf"
+                  font="/fonts/SF-Pro-Text-Regular.otf"
                 >
                   2018 - 2019
                 </Text>
@@ -271,7 +271,7 @@ const LivingRoom = ({
               position={[0, isMobile ? 2.9 : 3.35, 0]}
               fontSize={isMobile ? 0.35 : 0.24}
               color={darkMode ? '#aaaaaa' : "#383842"}
-              font="/fonts/RadioGrotesk-Regular.ttf"
+              font="/fonts/SF-Pro-Text-Regular.otf"
             >
               UX & Eng (founding team)
             </Text>
@@ -280,7 +280,7 @@ const LivingRoom = ({
                 position={[0, 3, 0]}
                 fontSize={0.24}
                 color={"#777777"}
-                font="/fonts/RadioGrotesk-Regular.ttf"
+                font="/fonts/SF-Pro-Text-Regular.otf"
               >
                 2021 - 2024
               </Text>
@@ -352,7 +352,7 @@ const LivingRoom = ({
               position={[0, isMobile ? 3 : 3.15, 0]}
               fontSize={isMobile ? 0.35 : 0.24}
               color={darkMode ? '#aaaaaa' : "#383842"}
-              font="/fonts/RadioGrotesk-Regular.ttf"
+              font="/fonts/SF-Pro-Text-Regular.otf"
             >
               Design, motion & art
             </Text>
@@ -361,7 +361,7 @@ const LivingRoom = ({
                 position={[0, 2.76, 0]}
                 fontSize={0.24}
                 color={"#777777"}
-                font="/fonts/RadioGrotesk-Regular.ttf"
+                font="/fonts/SF-Pro-Text-Regular.otf"
               >
                 Since 2015
               </Text>
@@ -429,7 +429,7 @@ const LivingRoom = ({
               position={[0, isMobile ? 2.4 : 2.58, 0]}
               fontSize={isMobile ? 0.35 : 0.27}
               color={darkMode ? '#aaaaaa' : "#383842"}
-              font="/fonts/RadioGrotesk-Regular.ttf"
+              font="/fonts/SF-Pro-Text-Regular.otf"
             >
               Lead product designer
             </Text>
@@ -438,7 +438,7 @@ const LivingRoom = ({
                 position={[0, 2.2, 0]}
                 fontSize={0.27}
                 color={"#777777"}
-                font="/fonts/RadioGrotesk-Regular.ttf"
+                font="/fonts/SF-Pro-Text-Regular.otf"
               >
                 2019 - 2021
               </Text>
