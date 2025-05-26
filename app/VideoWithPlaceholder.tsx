@@ -9,7 +9,6 @@ const VideoWithPlaceholder: React.FC<VideoWithPlaceholderProps> = (({ src }) => 
   const [videoReady, setVideoReady] = useState(false);
 
   const triggerVideoReady = useCallback(() => {
-    console.log('@@Video ready')
     setVideoReady(true)
   }, [])
 

@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 
 export const featuredBoxShadow =
@@ -120,17 +121,6 @@ export const GridList = styled.div`
   grid-auto-rows: auto;
   row-gap: 8px;
 `
-
-export const iconStyle={
-marginTop: 4,
-opacity: 0.65
-}
-
-export const liStyle = {
-  width: "100%",
-  listStyleType: 'none',
-};
-
 export const mapStyle = {
   // filter: "grayscale(1)",
   width: "100%",
@@ -232,4 +222,9 @@ export const VideoPlaceholder = styled.div`
   height: 160px;
   border-radius: 8px;
   background: #e0e0e0;
+`
+
+export const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
+  margin-top: 4px;
+  opacity: 0.65;
 `

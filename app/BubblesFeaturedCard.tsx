@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVideo, faCode, faPaintBrush, faHeadset } from "@fortawesome/free-solid-svg-icons";
 import FeaturedCard, { fadeInUp } from "./FeaturedCard";
 import {
-  iconStyle,
   Row,
   Weblink,
   FeaturedHeading,
@@ -22,6 +20,7 @@ import {
   GridList,
 } from "./Styles"; // Ensure to import all the necessary styles and components
 import VideoWithPlaceholder from "./VideoWithPlaceholder";
+import CVListItem from "./CVListItem";
 
 const bubblesVideoSrc = "https://cdn.prod.website-files.com/63cc43d53b100d36f4967cc3/63d2f441daf96d163e51ee8b_Powerful%20(large)-transcode.mp4";
 
@@ -67,25 +66,21 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
         <motion.div variants={fadeInUp}>
           <Section>
             <GridList>
-              <Caption style={{ marginBottom: 8 }}>Highlights</Caption>
-              <FontAwesomeIcon icon={faVideo} style={iconStyle} />
-              <p>
+              <Caption>Highlights</Caption>
+              <CVListItem icon={faVideo}>
+                <>
                   Led the end-to-end UI development of 20+ features for an conversational-AI-based productivity platform, building mobile-responsive components in <b>React + Redux</b>.
-              </p>
-              <p>
-              <FontAwesomeIcon icon={faCode} style={iconStyle} />
-              </p>
-              <p>
+                </>
+              </CVListItem>
+              <CVListItem icon={faCode}>
                 Reduced user churn and boosted activation, building in-product onboarding flows and email marketing campaigns on Drip with dynamic user data.
-              </p>
-              <FontAwesomeIcon icon={faPaintBrush} style={iconStyle} />
-              <p>
+              </CVListItem>
+              <CVListItem icon={faPaintBrush}>
                 Implemented a full rebrand and visual guidelines for a scalable design system.
-              </p>
-              <FontAwesomeIcon icon={faHeadset} style={iconStyle} />
-              <p>
+              </CVListItem>
+              <CVListItem icon={faHeadset}>
                 Led user testing and interviews to improve UX, while managing customer support to address product pain points.
-              </p>
+              </CVListItem>
             </GridList>
           </Section>
         </motion.div>
