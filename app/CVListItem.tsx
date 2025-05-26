@@ -3,15 +3,15 @@ import { StyledFontAwesomeIcon } from "./Styles";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 interface CVListItemProps {
-  icon: IconProp;
+  icon?: IconProp;
   children?: ReactElement | string;
 }
 
 const CVListItem: React.FC<CVListItemProps> = ({ icon, children }) => {
   return (
     <>
-      <StyledFontAwesomeIcon icon={icon} />
-      <p>{children}</p>
+      {icon && <StyledFontAwesomeIcon icon={icon} />}
+      <p>{!icon && '• '}{children}</p>
     </>
   );
 };

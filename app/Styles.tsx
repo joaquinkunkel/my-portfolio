@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from "next/image";
 import styled from "styled-components";
 
 export const featuredBoxShadow =
@@ -6,7 +7,7 @@ export const featuredBoxShadow =
 
 // New Badge Card Styling
 export const BadgeCard = styled.div`
-  padding: 16px;
+  padding: 4px 16px 24px;
   border-radius: 12px;
   display: flex;
   justify-content: center;
@@ -121,39 +122,40 @@ export const GridList = styled.div`
   grid-auto-rows: auto;
   row-gap: 8px;
 `
-export const mapStyle = {
-  // filter: "grayscale(1)",
-  width: "100%",
-  height: "auto",
-  mixBlendMode: "multiply" as "multiply",
-};
-export const mapContainerStyle = {
-  background: "white",
-  height: 100,
-  borderRadius: 6,
-  overflow: "hidden",
-  width: "100%",
-  margin: "0 0 12px",
-  outline: "1px solid rgba(0,0,0,0.05)",
-  boxShadow: featuredBoxShadow,
-};
-export const graphStyle = {
-  background: `linear-gradient(135deg, 
+export const Map = styled.img`
+  /* filter: grayscale(1); */
+  width: 100%;
+  height: auto;
+  mix-blend-mode: multiply;
+`
+
+export const MapContainer = styled.div`
+  background: white;
+  height: 100px;
+  border-radius: 6px;
+  overflow: hidden;
+  width: 100%;
+  margin: 0 0 12px;
+  outline: 1px solid rgba(0,0,0,0.05);
+  box-shadow: ${featuredBoxShadow};
+`
+
+export const StyledGraph = styled.div`
+  background: linear-gradient(135deg, 
     rgba(245, 243, 236, 0.85),  /* soft peach */
     rgba(246, 245, 221, 0.75)   /* light mint green */
-  )`,
-  borderRadius: 6,
-  width: "100%",
-  margin: "0 0 12px",
-  display: "flex",
-  alignItems: "flex-start",
-  justifyContent: "center",
-  outline: "1px solid rgba(0,0,0,0.05)",
-  boxShadow: featuredBoxShadow,
-  height: 100,
-  overflow: "hidden",
-};
-
+  );
+  border-radius: 6px;
+  width: 100%;
+  margin: 0 0 12px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  outline: 1px solid rgba(0,0,0,0.05);
+  box-shadow: ${featuredBoxShadow};
+  height: 100px;
+  overflow: hidden;
+`
 
 export const captionStyle = {
   fontSize: "0.85em",
