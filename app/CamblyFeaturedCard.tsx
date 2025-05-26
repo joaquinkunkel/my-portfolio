@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import {
   Caption,
   FeaturedHeading,
-  indented,
   MapContainer,
   Map,
   Row,
