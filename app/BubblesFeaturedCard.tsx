@@ -22,6 +22,7 @@ import {
   Section,
   GridList,
 } from "./Styles"; // Ensure to import all the necessary styles and components
+import VideoWithPlaceholder from "./VideoWithPlaceholder";
 
 interface BubblesCardProps {
   onBackgroundClick: () => void;
@@ -125,32 +126,3 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
 };
 
 export default React.memo(BubblesFeaturedCard);
-
-
-const VideoWithPlaceholder = () => {
-  const [videoReady, setVideoReady] = useState(false);
-
-  return (
-    <div>
-      {!videoReady && (
-        <div
-          style={{
-            width: "230px",
-            height: "160px",
-            backgroundColor: "#e0e0e0",
-            borderRadius: "6px",
-          }}
-        ></div>
-      )}
-      <StyledVideo
-        playsInline
-        autoPlay
-        loop
-        muted
-        src="https://cdn.prod.website-files.com/63cc43d53b100d36f4967cc3/63d2f441daf96d163e51ee8b_Powerful%20(large)-transcode.mp4"
-        onCanPlay={() => setVideoReady(true)} // Only show the video when it's ready
-        isReady={videoReady}
-      />
-    </div>
-  );
-};

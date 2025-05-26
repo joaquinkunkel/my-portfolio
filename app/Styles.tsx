@@ -212,7 +212,7 @@ export const Caption = styled.p`
   grid-column: 1 / -1;
 `;
 
-export const StyledVideo = styled.video<{isReady ?: boolean}>`
+export const StyledVideo = styled.video`
   max-width: 230px;
   min-height: 100px;
   border-radius: 8px;
@@ -222,7 +222,13 @@ export const StyledVideo = styled.video<{isReady ?: boolean}>`
     margin: 8px auto;
     max-width: 100%;
   }
-  display: ${(isReady) => (isReady ? 'block' : 'none')}
   filter: brightness(0.72);
   transition: all 0.2s;
 `;
+
+export const VideoPlaceholder = styled.div`
+  width: 230px;
+  height: 160px;
+  border-radius: 8px;
+  background: #e0e0e0;
+`
