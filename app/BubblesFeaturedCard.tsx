@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVideo, faCode, faPaintBrush, faHeadset } from "@fortawesome/free-solid-svg-icons";
 import FeaturedCard, { fadeInUp } from "./FeaturedCard";
 import {
-  liStyle,
   iconStyle,
   Row,
   Weblink,
