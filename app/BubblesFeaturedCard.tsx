@@ -14,7 +14,6 @@ import {
   mapContainerStyle,
   graphStyle,
   svgGraph,
-  StyledVideo,
   BadgeCard,
   ProductHuntBadge,
   QuoteType,
@@ -23,6 +22,8 @@ import {
   GridList,
 } from "./Styles"; // Ensure to import all the necessary styles and components
 import VideoWithPlaceholder from "./VideoWithPlaceholder";
+
+const bubblesVideoSrc = "https://cdn.prod.website-files.com/63cc43d53b100d36f4967cc3/63d2f441daf96d163e51ee8b_Powerful%20(large)-transcode.mp4";
 
 interface BubblesCardProps {
   onBackgroundClick: () => void;
@@ -57,7 +58,7 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
               <HighlightSpan>confident with how they use their time</HighlightSpan>.
             </QuoteType>
           </div>
-          <VideoWithPlaceholder />
+          <VideoWithPlaceholder src={bubblesVideoSrc} />
         </Row>
       </motion.div>
         </Section>
