@@ -212,7 +212,7 @@ export const Caption = styled.p`
   grid-column: 1 / -1;
 `;
 
-export const StyledVideo = styled.video`
+export const StyledVideo = styled.video<{isReady ?: boolean}>`
   max-width: 230px;
   min-height: 100px;
   border-radius: 8px;
@@ -222,7 +222,7 @@ export const StyledVideo = styled.video`
     margin: 8px auto;
     max-width: 100%;
   }
-  // box-shadow: -4px 10px 32px rgba(0, 0, 0, 0.2);
+  display: ${(isReady) => (isReady ? 'block' : 'none')}
   filter: brightness(0.72);
   transition: all 0.2s;
 `;
