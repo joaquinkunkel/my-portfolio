@@ -1,5 +1,5 @@
 // components/Cursor.js
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Cursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -27,4 +27,4 @@ const Cursor = () => {
   );
 };
 
-export default Cursor;
+export default React.memo(Cursor);
