@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import { StyledFontAwesomeIcon } from "./Styles";
+import { StyledFontAwesomeIcon } from "./StyledComponents";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 interface CVListItemProps {

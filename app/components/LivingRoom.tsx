@@ -6,11 +6,11 @@ import * as THREE from "three";
 import EngravedBox from "./EngravedBox";
 import FloatingGroup from "./FloatingGroup";
 import IOSIconShape from "./iOSIconShape";
-import { gradientShaderMaterial, textShader, tvScreenShaderMaterial } from "./shaders";
-import useIsMobile from "./hooks/useIsMobile";
+import { gradientShaderMaterial, textShader, tvScreenShaderMaterial } from "../shaders";
+import useIsMobile from "../hooks/useIsMobile";
 import { Text } from "@react-three/drei";
 import GlassyTVScreen from "./GlassyTVScreen";
-import { IFeaturedCard } from "./FeaturedCard";
+import { FeaturedCard } from "./FeaturedCard";
 
 // Load the GLTF bird model
 function BirdModel(props: any) {
@@ -30,7 +30,7 @@ const LivingRoom = ({
   onProjectHover: (project: any) => void;
   controlsRef: React.MutableRefObject<any>;
   darkmode: boolean;
-  setFeaturedCard: React.Dispatch<React.SetStateAction<IFeaturedCard>>;
+  setFeaturedCard: React.Dispatch<React.SetStateAction<FeaturedCard>>;
   shouldStartAnimation: boolean;
   setShouldStartAnimation: React.Dispatch<React.SetStateAction<boolean>>;
   isAnimationDone: boolean;

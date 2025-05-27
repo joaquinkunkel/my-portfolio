@@ -23,7 +23,7 @@ import {
   Section,
   GridList,
   StyledGraph,
-} from "./Styles"; // Ensure to import all the necessary styles and components
+} from "./StyledComponents"; // Ensure to import all the necessary styles and components
 import VideoWithPlaceholder from "./VideoWithPlaceholder";
 import CVListItem from "./CVListItem";
 

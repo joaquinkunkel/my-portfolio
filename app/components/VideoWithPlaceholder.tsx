@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { StyledVideo, VideoPlaceholder } from "./Styles";
+import { StyledVideo, VideoPlaceholder } from "./StyledComponents";
 
 interface VideoWithPlaceholderProps {
     src: string;

@@ -13,15 +13,15 @@ import * as THREE from "three";
 import useIsMobile from "./hooks/useIsMobile";
 import "./globals.css";
 import "leaflet/dist/leaflet.css";
-import { LinksContainer } from "./Styles";
-import BubblesFeaturedCard from "./BubblesFeaturedCard";
-import CamblyFeaturedCard from "./CamblyFeaturedCard";
-import LoadingScreen from "./LoadingScreen";
-import DarkEffects from "./DarkEffects";
-import { IFeaturedCard } from "./FeaturedCard";
-import LivingRoom from "./LivingRoom";
+import { LinksContainer } from "./components/StyledComponents";
+import BubblesFeaturedCard from "./components/BubblesFeaturedCard";
+import CamblyFeaturedCard from "./components/CamblyFeaturedCard";
+import LoadingScreen from "./components/LoadingScreen";
+import DarkEffects from "./components/DarkEffects";
+import { FeaturedCard } from "./components/FeaturedCard";
+import LivingRoom from "./components/LivingRoom";
 import React from "react";
-import Cursor from "./Cursor";
+import Cursor from "./components/Cursor";
 
 function ResponsiveCamera() {
   const isMobile = useIsMobile();
@@ -44,7 +44,7 @@ function Home() {
   const controlsRef = useRef<any>(null);
   const [shouldStartAnimation, setShouldStartAnimation] = useState(false);
   const [isAnimationDone, setIsAnimationDone] = useState(false);
-  const [featuredCard, setFeaturedCard] = useState<IFeaturedCard>(null);
+  const [featuredCard, setFeaturedCard] = useState<FeaturedCard>(null);
   const resetFeaturedCard = useCallback(() => {
     setFeaturedCard(null);
   }, []);

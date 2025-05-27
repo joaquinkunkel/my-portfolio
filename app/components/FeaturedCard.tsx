@@ -1,13 +1,13 @@
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
-import { Section, Weblink } from "./Styles";
+import { Section, Weblink } from "./StyledComponents";
 
 export const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 },
 };
 
-export type IFeaturedCard = "bubbles" | "cambly" | "freelance" | null;
+export type FeaturedCard = "bubbles" | "cambly" | "freelance" | null;
 
 export const cardVariants = {
   hidden: { opacity: 0 },
@@ -18,7 +18,8 @@ export const cardVariants = {
     },
   },
 };
-export type IFeaturedCardProps = {
+
+export interface IFeaturedCardProps {
   onBackgroundClick: () => void;
   darkmode?: boolean;
   children: React.ReactNode;
@@ -94,8 +95,6 @@ const Card = styled.div<{ isvisible?: boolean; darkmode?: boolean }>`
   color: #373e49;
   line-height: 130%;
   position: relative;
-  // transition: all 0.2s ease-out;
-  bottom: ${({ isvisible }) => (isvisible ? "0" : "-80px")};
   ${({ darkmode }) =>
     darkmode &&
     css`

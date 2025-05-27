@@ -9,7 +9,7 @@ import {
   Section,
   Weblink,
   StyledGraph,
-} from "./Styles";
+} from "./StyledComponents";
 import FeaturedCard, { fadeInUp } from "./FeaturedCard";
 import CVListItem from "./CVListItem";
 
