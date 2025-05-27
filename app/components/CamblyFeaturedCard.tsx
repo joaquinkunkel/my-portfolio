@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import {
   Caption,
   FeaturedHeading,
@@ -10,8 +9,9 @@ import {
   Weblink,
   StyledGraph,
 } from "./StyledComponents";
-import FeaturedCard, { fadeInUp } from "./FeaturedCard";
+import FeaturedCard from "./FeaturedCard";
 import CVListItem from "./CVListItem";
+import MotionWrapper from "./MotionWrapper";
 
 interface CamblyCardProps {
   onBackgroundClick: () => void;
@@ -53,7 +53,7 @@ const CamblyFeaturedCard: React.FC<CamblyCardProps> = ({
       darkmode={darkmode}
       isvisible={isvisible}
     >
-      <motion.div variants={fadeInUp}>
+      <MotionWrapper>
         <Row noWrap>
           <div>
             <FeaturedHeading>Cambly</FeaturedHeading>
@@ -67,10 +67,10 @@ const CamblyFeaturedCard: React.FC<CamblyCardProps> = ({
             Visit website
           </Weblink>
         </Row>
-      </motion.div>
+      </MotionWrapper>
       <Row>
         <Section>
-          <motion.div variants={fadeInUp} style={{ width: "100%" }}>
+          <MotionWrapper fullWidth>
             <MapContainer>
               <Map src={mapUrl} alt="San Francisco Map" />
             </MapContainer>
@@ -79,17 +79,17 @@ const CamblyFeaturedCard: React.FC<CamblyCardProps> = ({
               <br />
               <Caption>Hybrid team</Caption>
             </div>
-          </motion.div>
+          </MotionWrapper>
         </Section>
         <Section>
-          <motion.div variants={fadeInUp} style={{ width: "100%" }}>
+          <MotionWrapper fullWidth>
             <StyledGraph>{svgGraph}</StyledGraph>
             <div>Solo UX designer</div>
             <Caption>Product team of 12 • Company of 100</Caption>
-          </motion.div>
+          </MotionWrapper>
         </Section>
       </Row>
-      <motion.div variants={fadeInUp}>
+      <MotionWrapper>
         <Row>
           <Section>
               <CVListItem>Owned UX for iOS, Android & web features</CVListItem>
@@ -98,7 +98,7 @@ const CamblyFeaturedCard: React.FC<CamblyCardProps> = ({
               <CVListItem>Full rebrand & marketing guidelines</CVListItem>
           </Section>
         </Row>
-      </motion.div>
+      </MotionWrapper>
     </FeaturedCard>
   );
 };

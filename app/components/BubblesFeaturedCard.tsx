@@ -1,12 +1,11 @@
 import React from "react";
-import { motion } from "framer-motion";
 import {
   faVideo,
   faCode,
   faPaintBrush,
   faHeadset,
 } from "@fortawesome/free-solid-svg-icons";
-import FeaturedCard, { fadeInUp } from "./FeaturedCard";
+import FeaturedCard from "./FeaturedCard";
 import {
   Row,
   Weblink,
@@ -26,6 +25,7 @@ import {
 } from "./StyledComponents"; // Ensure to import all the necessary styles and components
 import VideoWithPlaceholder from "./VideoWithPlaceholder";
 import CVListItem from "./CVListItem";
+import MotionWrapper from "./MotionWrapper";
 
 const bubblesVideoSrc =
   "https://cdn.prod.website-files.com/63cc43d53b100d36f4967cc3/63d2f441daf96d163e51ee8b_Powerful%20(large)-transcode.mp4";
@@ -47,7 +47,7 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
       isvisible={isvisible}
       darkmode={darkmode}
     >
-      <motion.div variants={fadeInUp}>
+      <MotionWrapper>
         <Row noWrap>
           <div>
             <FeaturedHeading>Bubbles</FeaturedHeading>
@@ -61,9 +61,9 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
             Visit website
           </Weblink>
         </Row>
-      </motion.div>
+      </MotionWrapper>
       <Section>
-        <motion.div variants={fadeInUp}>
+        <MotionWrapper>
           <Row noPadding spaceBetween>
             <div>
               <QuoteType>
@@ -76,10 +76,10 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
             </div>
             <VideoWithPlaceholder src={bubblesVideoSrc} />
           </Row>
-        </motion.div>
+        </MotionWrapper>
       </Section>
       <Row>
-        <motion.div variants={fadeInUp}>
+        <MotionWrapper>
           <Section>
             <GridList>
               <Caption>Highlights</Caption>
@@ -105,10 +105,10 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
               </CVListItem>
             </GridList>
           </Section>
-        </motion.div>
+        </MotionWrapper>
       </Row>
       <Row>
-        <motion.div variants={fadeInUp} style={{ width: "100%" }}>
+        <MotionWrapper fullWidth>
           <Section>
             <MapContainer>
               <Map src={mapUrl} alt="San Francisco Map" />
@@ -119,18 +119,18 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
               <Caption>Founding team of 6</Caption>
             </div>
           </Section>
-        </motion.div>
-        <motion.div variants={fadeInUp} style={{ width: "100%" }}>
+        </MotionWrapper>
+        <MotionWrapper fullWidth>
           <Section>
             <StyledGraph>{svgGraph}</StyledGraph>
             <div>ARR from $0 to $150K</div>
             <Caption>Since 2021</Caption>
           </Section>
-        </motion.div>
+        </MotionWrapper>
       </Row>
 
       {/* Product Hunt Badge */}
-      <motion.div variants={fadeInUp}>
+      <MotionWrapper>
         <BadgeCard>
           <a
             href="https://www.producthunt.com/products/bubbles#bubbles-for-teams"
@@ -142,7 +142,7 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
             />
           </a>
         </BadgeCard>
-      </motion.div>
+      </MotionWrapper>
     </FeaturedCard>
   );
 };

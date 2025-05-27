@@ -2,11 +2,6 @@ import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 import { Section, Weblink } from "./StyledComponents";
 
-export const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
-
 export type FeaturedCard = "bubbles" | "cambly" | "freelance" | null;
 
 export const cardVariants = {
