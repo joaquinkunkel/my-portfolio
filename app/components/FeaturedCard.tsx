@@ -78,6 +78,8 @@ const Card = styled.div<{ isvisible?: boolean; darkmode?: boolean }>`
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
+  max-height: calc(100svh - 80px);
+  overflow: auto;
   z-index: 11;
   font-weight: 400;
   border-radius: 14px;
