@@ -1,27 +1,20 @@
-"use client"; // Add this line at the very top
+"use client";
 import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls as DreiOrbitControls } from "@react-three/drei";
-import {
-  useState,
-  useRef,
-  useEffect,
-  useCallback,
-  Suspense,
-} from "react";
-import Lightbulb from "../public/icons/bulb.svg";
+import { useState, useRef, useEffect, useCallback, Suspense } from "react";
 import * as THREE from "three";
 import useIsMobile from "./hooks/useIsMobile";
 import "./globals.css";
 import "leaflet/dist/leaflet.css";
-import { LinksContainer } from "./components/StyledComponents";
+import { ContactLink, DarkModeToggleIcon, DarkModeToggleLink, GitHubLink, LinksContainer, PageContainer } from "./components/StyledComponents";
 import BubblesFeaturedCard from "./components/BubblesFeaturedCard";
 import CamblyFeaturedCard from "./components/CamblyFeaturedCard";
 import LoadingScreen from "./components/LoadingScreen";
-import DarkEffects from "./components/DarkEffects";
 import { FeaturedCard } from "./components/FeaturedCard";
 import LivingRoom from "./components/LivingRoom";
 import React from "react";
-import Cursor from "./components/Cursor";
+// import DarkEffects from "./components/DarkEffects";
+// import Cursor from "./components/Cursor";
 
 function ResponsiveCamera() {
   const isMobile = useIsMobile();
@@ -48,22 +41,17 @@ function Home() {
   const resetFeaturedCard = useCallback(() => {
     setFeaturedCard(null);
   }, []);
+
   const sceneScale = useIsMobile()
     ? new THREE.Vector3(0.8, 0.8, 0.8)
     : new THREE.Vector3(1, 1, 1);
 
+  const toggleDarkMode = useCallback(() => {
+    setdarkmode(!darkmode);
+  }, [darkmode]);
+
   return (
-    <div
-      style={{
-        height: "100svh",
-        width: "100vw",
-        position: "relative",
-        background: darkmode ? "#0c0e14" : "#fcfdff",
-        animation: "gradientAnimation 120s ease infinite",
-        backgroundSize: "500% 500%",
-        transition: "all 0.3s ease-out",
-      }}
-    >
+    <PageContainer darkmode={darkmode}>
       {/* <Cursor /> */}
       {controlsRef.current && (
         <>
@@ -84,59 +72,28 @@ function Home() {
         </>
       )}
       <LinksContainer isvisible={isAnimationDone} darkmode={darkmode}>
-        <a
-          style={{
-            position: "absolute",
-            zIndex: 10,
-            bottom: isMobile ? 40 : 75,
-            left: isMobile ? 20 : 60,
-          }}
+        <DarkModeToggleLink
+          isMobile={isMobile}
           href="#"
-          onClick={() => {
-            setdarkmode(!darkmode);
-          }}
+          onClick={toggleDarkMode}
         >
-          <Lightbulb
-            style={{
-              width: 32,
-              height: 32,
-              filter: darkmode ? "invert()" : "none",
-              strokeWidth: 9,
-              stroke: "black",
-            }}
-          />
-        </a>
-        <a
-          style={{
-            position: "absolute",
-            zIndex: 10,
-            top: isMobile ? 20 : 75,
-            right: isMobile ? 20 : 60,
-            padding: "2px 10px",
-            background: darkmode ? "white" : "#383842",
-            color: darkmode ? "#383842" : "#eeeeee",
-            borderRadius: 20,
-            fontFamily:
-              "Cooper Black, Supply, Radio Grotesk, sans-serif, monospace, sans-serif",
-          }}
+          <DarkModeToggleIcon darkmode={darkmode} />
+        </DarkModeToggleLink>
+        <ContactLink 
+          darkmode={darkmode} 
+          isMobile={isMobile}
           href="mailto:joaquinkunkel@gmail.com"
           target="_blank"
         >
           Let&apos;s talk!
-        </a>
-        <a
-          style={{
-            position: "absolute",
-            zIndex: 10,
-            bottom: isMobile ? 40 : 75,
-            right: isMobile ? 20 : 60,
-            fontFamily: "Radio Grotesk, sans-serif, monospace, sans-serif",
-          }}
+        </ContactLink>
+        <GitHubLink
+          isMobile={isMobile}
           href="https://github.com/joaquinkunkel/my-portfolio"
           target="_blank"
         >
           See this page on GitHub
-        </a>
+        </GitHubLink>
       </LinksContainer>
       <Canvas shadows>
         <Suspense
@@ -177,7 +134,7 @@ function Home() {
           {/* {darkmode && <DarkEffects/>} */}
         </Suspense>
       </Canvas>
-    </div>
+    </PageContainer>
   );
 }
 

@@ -1,8 +1,54 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
+import Lightbulb from "../../public/icons/bulb.svg";
 
 export const featuredBoxShadow =
   "0 6px 10px rgba(0, 0, 0, 0.06), 0 1.5px 4px rgba(0, 0, 0, 0.05)";
+
+export const PageContainer = styled.div<{ darkmode: boolean }>`
+  height: 100svh;
+  width: 100vw;
+  position: relative;
+  background: ${({darkmode}) => darkmode ? '#0c0e14' : '#fcfdff'};
+  animation: gradientAnimation 120s ease infinite;
+  background-size: 500% 500%;
+  transition: all 0.3s ease-out;
+`;
+
+export const DarkModeToggleLink = styled.a<{ isMobile: boolean }>`
+  position: absolute;
+  z-index: 10;
+  bottom: ${props => props.isMobile ? '40px' : '75px'};
+  left: ${props => props.isMobile ? '20px' : '60px'};
+`;
+
+export const DarkModeToggleIcon = styled(Lightbulb)<{ darkmode: boolean }>`
+  width: 32px;
+  height: 32px;
+  filter: ${props => props.darkmode ? 'invert()' : 'none'};
+  stroke-width: 9;
+  stroke: black;
+`;
+
+export const ContactLink = styled.a<{ darkmode: boolean; isMobile: boolean }>`
+  position: absolute;
+  z-index: 10;
+  top: ${props => props.isMobile ? '20px' : '75px'};
+  right: ${props => props.isMobile ? '20px' : '60px'};
+  padding: 2px 10px;
+  background: ${props => props.darkmode ? 'white' : '#383842'};
+  color: ${props => props.darkmode ? '#383842' : '#eeeeee'};
+  border-radius: 20px;
+  font-family: Cooper Black, Supply, Radio Grotesk, sans-serif, monospace, sans-serif;
+`;
+
+export const GitHubLink = styled.a<{ isMobile: boolean }>`
+  position: absolute;
+  z-index: 10;
+  bottom: ${({isMobile}) => isMobile ? '40px' : '75px'};
+  right: ${({isMobile}) => isMobile ? '20px' : '60px'};
+  font-family: Radio Grotesk, sans-serif, monospace;
+`;
 
 // New Badge Card Styling
 export const BadgeCard = styled.div`
