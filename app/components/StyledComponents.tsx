@@ -82,6 +82,16 @@ export const QuoteType = styled.p`
 export const HighlightSpan = styled.span`
 `;
 
+export const CardHeader = styled.div<{ darkmode ?: boolean }>`
+  padding: 8px 24px 2px;
+  margin: 0 -20px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  background: ${({darkmode}) => darkmode ? 'rgba(20, 23, 29, 0.9)' : 'rgba(225, 225, 225, 0.9)'};
+`;
+
 export const Row = styled.div<{
   noWrap?: boolean;
   noPadding?: boolean;

@@ -22,6 +22,7 @@ import {
   Section,
   GridList,
   StyledGraph,
+  CardHeader,
 } from "./StyledComponents"; // Ensure to import all the necessary styles and components
 import VideoWithPlaceholder from "./VideoWithPlaceholder";
 import CVListItem from "./CVListItem";
@@ -47,7 +48,7 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
       isvisible={isvisible}
       darkmode={darkmode}
     >
-      <MotionWrapper>
+      <CardHeader darkmode={darkmode}>
         <Row noWrap>
           <div>
             <FeaturedHeading>Bubbles</FeaturedHeading>
@@ -61,7 +62,7 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
             Visit website
           </Weblink>
         </Row>
-      </MotionWrapper>
+      </CardHeader>
       <Section>
         <MotionWrapper>
           <Row noPadding spaceBetween>

@@ -8,6 +8,7 @@ import {
   Section,
   Weblink,
   StyledGraph,
+  CardHeader,
 } from "./StyledComponents";
 import FeaturedCard from "./FeaturedCard";
 import CVListItem from "./CVListItem";
@@ -53,7 +54,7 @@ const CamblyFeaturedCard: React.FC<CamblyCardProps> = ({
       darkmode={darkmode}
       isvisible={isvisible}
     >
-      <MotionWrapper>
+      <CardHeader darkmode={darkmode}>
         <Row noWrap>
           <div>
             <FeaturedHeading>Cambly</FeaturedHeading>
@@ -67,7 +68,7 @@ const CamblyFeaturedCard: React.FC<CamblyCardProps> = ({
             Visit website
           </Weblink>
         </Row>
-      </MotionWrapper>
+      </CardHeader>
       <Row>
         <Section>
           <MotionWrapper fullWidth>

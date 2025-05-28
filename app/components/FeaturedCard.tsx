@@ -1,6 +1,10 @@
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
-import { Section, Weblink } from "./StyledComponents";
+import { Section, StyledFontAwesomeIcon, Weblink } from "./StyledComponents";
+import { useCallback } from "react";
+import {
+  faClose,
+} from "@fortawesome/free-solid-svg-icons";
 
 export type FeaturedCard = "bubbles" | "cambly" | "freelance" | null;
 
@@ -19,7 +23,7 @@ export interface IFeaturedCardProps {
   darkmode?: boolean;
   children: React.ReactNode;
   isvisible?: boolean;
-};
+}
 
 const FeaturedCard: React.FC<IFeaturedCardProps> = ({
   onBackgroundClick,
@@ -27,12 +31,19 @@ const FeaturedCard: React.FC<IFeaturedCardProps> = ({
   children,
   isvisible,
 }) => {
+  const handleBackgroundClick = useCallback(
+    (e: any) => {
+      onBackgroundClick();
+      e.stopPropagation();
+    },
+    [onBackgroundClick],
+  );
+  const stopPropagation = useCallback((e: any) => {
+    e.stopPropagation();
+  }, []);
   return (
     <CardBackground
-      onClick={(e) => {
-        onBackgroundClick();
-        e.stopPropagation();
-      }}
+      onClick={handleBackgroundClick}
       isvisible={isvisible}
       darkmode={darkmode}
     >
@@ -42,15 +53,18 @@ const FeaturedCard: React.FC<IFeaturedCardProps> = ({
         variants={cardVariants}
         style={{ width: "100%" }}
       >
-        <Card
-          isvisible={isvisible}
-          onClick={(e) => {
-            e.stopPropagation();
-          }}
-          darkmode={darkmode}
-        >
-          {children}
-        </Card>
+        <CardWrapper>
+          <CloseButton darkmode={darkmode} onClick={handleBackgroundClick}>
+            <StyledFontAwesomeIcon icon={faClose} />
+          </CloseButton>
+          <Card
+            isvisible={isvisible}
+            onClick={stopPropagation}
+            darkmode={darkmode}
+          >
+            {children}
+          </Card>
+        </CardWrapper>
       </motion.div>
     </CardBackground>
   );
@@ -70,24 +84,29 @@ const CardBackground = styled.div<{ isvisible?: boolean; darkmode?: boolean }>`
   background: rgba(0, 0, 0, 0.4);
   overflow: auto;
   backdrop-filter: blur(8px);
-  ${({darkmode}) => (darkmode && 'background-color: rgba(10, 12, 14, 0.7);')}
+  ${({ darkmode }) => darkmode && "background-color: rgba(10, 12, 14, 0.7);"}
+`;
+
+const CardWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
 `;
 
 const Card = styled.div<{ isvisible?: boolean; darkmode?: boolean }>`
   background: rgba(225, 225, 225, 0.85);
   width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
   max-height: calc(100svh - 80px);
   overflow: auto;
   z-index: 11;
   font-weight: 400;
-  border-radius: 14px;
+  border-radius: 20px;
   box-shadow:
     0px 28px 60px -28px rgba(0, 0, 0, 0.6),
     inset 0px 2px 2px -1px rgba(255, 255, 255, 0.6);
   outline: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 6px 20px 4px;
+  padding: 0px 20px 4px;
   font-family: "Radio Grotesk", "Supply", sans-serif;
   color: #373e49;
   line-height: 130%;
@@ -110,6 +129,40 @@ const Card = styled.div<{ isvisible?: boolean; darkmode?: boolean }>`
         }
       }
     `}
+`;
+
+const CloseButton = styled.div<{ darkmode?: boolean }>`
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  z-index: 100;
+  background: red;
+  height: 24px;
+  width: 24px;
+  border-radius: 12px;
+  display: flex;
+  align-tems: center;
+  justify-content: center;
+  background: rgba(225, 225, 225, 0.85);
+  box-shadow:
+    0px 4px 8px 0 rgba(0, 0, 0, 0.12),
+    inset 0px 2px 2px -1px rgba(255, 255, 255, 0.6);
+  color: rgba(20, 23, 29, 0.9);
+  outline: 1px solid rgba(0, 0, 0, 0.1);
+  &:hover {
+    cursor: pointer;
+    > ${StyledFontAwesomeIcon} {
+      opacity: 0.8;
+    }
+  }
+  ${({ darkmode }) =>
+    darkmode &&
+    css`
+      background: rgba(28, 31, 37, 0.8);
+      color: rgba(255, 255, 255, 1);
+      outline: 1.2px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.12);
+    `};
 `;
 
 export default FeaturedCard;

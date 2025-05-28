@@ -12,6 +12,7 @@ import {
   VimeoIframe,
   VideoLoadingOverlay,
   LoadingSpinner,
+  CardHeader,
 } from "./StyledComponents";
 import FeaturedCard from "./FeaturedCard";
 import CVListItem from "./CVListItem";
@@ -76,7 +77,7 @@ const FreelanceFeaturedCard: React.FC<FreelanceCardProps> = ({
       darkmode={darkmode}
       isvisible={isvisible}
     >
-      <MotionWrapper>
+      <CardHeader darkmode={darkmode}>
         <Row noWrap>
           <div>
             <FeaturedHeading>Freelance work</FeaturedHeading>
@@ -90,7 +91,7 @@ const FreelanceFeaturedCard: React.FC<FreelanceCardProps> = ({
             See on Behance
           </Weblink>
         </Row>
-      </MotionWrapper>
+      </CardHeader>
       <MotionWrapper>
         <Row>
           <Section noPadding>
