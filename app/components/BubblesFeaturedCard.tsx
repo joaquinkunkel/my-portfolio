@@ -51,7 +51,7 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
         <Row noWrap>
           <div>
             <FeaturedHeading>Bubbles</FeaturedHeading>
-            <Caption>UX & Front-end (Founding Team) • 2021 - Now</Caption>
+            <Caption>UX & Front-end (Founding Team) • 2021 - 2024</Caption>
           </div>
           <Weblink
             href="https://usebubbles.com"

@@ -176,7 +176,7 @@ const LivingRoom = ({
             font="/fonts/SF-Pro-Text-Regular.otf"
             material={darkmode ? textShaderRef.current || new THREE.ShaderMaterial : undefined}
           >
-            I design and code delightful UIs.
+            I design and code delightful experiences.
           </Text>
         </animated.mesh>
       </Billboard>
