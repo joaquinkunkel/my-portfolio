@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Lightbulb from "../../public/icons/bulb.svg";
 
 export const featuredBoxShadow =
@@ -148,9 +148,9 @@ export const svgGraph = (
   </svg>
 );
 
-export const Section = styled.div`
+export const Section = styled.div<{ noPadding?: boolean }>`
   background: rgba(255, 255, 255, 0.4);
-  padding: 14px 16px 14px;
+  padding: ${({noPadding}) => noPadding ? '0' : '14px 16px 14px'};
   font-size: 14px;
   border-radius: 10px;
   display: flex;
@@ -264,14 +264,62 @@ export const StyledVideo = styled.video<{isReady ?: boolean}>`
   transition: all 0.2s;
 `;
 
-export const VideoPlaceholder = styled.div`
+export const VideoPlaceholder = styled.div<{ isMobile ?: boolean }>`
   width: 230px;
   height: 160px;
   border-radius: 8px;
   background: #e0e0e0;
+  ${({ isMobile }) => isMobile && css`
+      height: 80px;
+    `}
 `
 
 export const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   margin-top: 4px;
   opacity: 0.65;
 `
+
+export const VimeoContainer = styled.div`
+  padding: 56.25% 0 0 0;
+  position: relative;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+`;
+
+export const VimeoIframe = styled.iframe`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+`;
+
+export const VideoLoadingOverlay = styled.div<{ isLoading: boolean }>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f0f0f0;
+  display: ${props => props.isLoading ? 'flex' : 'none'};
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: opacity 0.3s ease-out;
+`;
+
+export const LoadingSpinner = styled.div`
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e0e0e0;
+  border-top: 3px solid #333;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+`;

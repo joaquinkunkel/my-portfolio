@@ -55,8 +55,8 @@ const LivingRoom = ({
   }, [setFeaturedCard]);
 
   const handleFreelanceClick = useCallback(() => {
-    window.open("https://behance.net/joaquinkunkel", "_blank");
-  }, []);
+    setFeaturedCard("freelance")
+  }, [setFeaturedCard]);
 
   useEffect(() => {
     gradientShaderRef.current = gradientShaderMaterial;
@@ -251,9 +251,11 @@ const LivingRoom = ({
         scale={lampSpring.scale.to((s) => [s, s, s])}
         onPointerOver={() => {
           setHoveredObject("lamp");
+          document.body.style.cursor = "pointer";
         }}
         onPointerOut={() => {
           setHoveredObject(null);
+          document.body.style.cursor = "default";
         }}
         onClick={handleBubblesClick}
       >
@@ -332,9 +334,11 @@ const LivingRoom = ({
         scale={tvSpring.scale.to((s) => [s, s, s])}
         onPointerOver={() => {
           setHoveredObject("tv");
+          document.body.style.cursor = "pointer";
         }}
         onPointerOut={() => {
           setHoveredObject(null);
+          document.body.style.cursor = "default";
         }}
         onClick={handleFreelanceClick}
       >
@@ -408,9 +412,11 @@ const LivingRoom = ({
         scale={birdSpring.scale.to((s) => [s, s, s])}
         onPointerOver={() => {
           setHoveredObject("bird");
+          document.body.style.cursor = "pointer";
         }}
         onPointerOut={() => {
           setHoveredObject(null);
+          document.body.style.cursor = "default";
         }}
         onClick={handleCamblyClick}
         castShadow

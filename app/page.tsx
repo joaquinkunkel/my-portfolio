@@ -13,6 +13,7 @@ import LoadingScreen from "./components/LoadingScreen";
 import { FeaturedCard } from "./components/FeaturedCard";
 import LivingRoom from "./components/LivingRoom";
 import React from "react";
+import FreelanceFeaturedCard from "./components/FreelanceFeaturedCard";
 // import DarkEffects from "./components/DarkEffects";
 // import Cursor from "./components/Cursor";
 
@@ -67,6 +68,13 @@ function Home() {
               onBackgroundClick={resetFeaturedCard}
               darkmode={darkmode}
               isvisible={featuredCard === "cambly"}
+            />
+          )}
+          {featuredCard === "freelance" && (
+            <FreelanceFeaturedCard
+              onBackgroundClick={resetFeaturedCard}
+              darkmode={darkmode}
+              isvisible={featuredCard === "freelance"}
             />
           )}
         </>
