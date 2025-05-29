@@ -90,6 +90,7 @@ export const CardHeader = styled.div<{ darkmode ?: boolean }>`
   z-index: 100;
   backdrop-filter: blur(8px);
   background: ${({darkmode}) => darkmode ? 'rgba(20, 23, 29, 0.9)' : 'rgba(225, 225, 225, 0.9)'};
+  outline: 1px solid rgba(0, 0, 0, 0.05);
 `;
 
 export const Row = styled.div<{

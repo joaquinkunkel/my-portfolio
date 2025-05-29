@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { StyledVideo, VideoPlaceholder } from "./StyledComponents";
+import { LoadingSpinner, StyledVideo, VideoLoadingOverlay, VideoPlaceholder } from "./StyledComponents";
 
 interface VideoWithPlaceholderProps {
     src: string;
@@ -14,9 +14,9 @@ const VideoWithPlaceholder: React.FC<VideoWithPlaceholderProps> = (({ src }) => 
 
   return (
     <div>
-      {!videoReady && (
-        <VideoPlaceholder />
-      )}
+      <VideoLoadingOverlay isLoading={!videoReady}>
+        <LoadingSpinner />
+      </VideoLoadingOverlay>
       <StyledVideo
         playsInline
         autoPlay

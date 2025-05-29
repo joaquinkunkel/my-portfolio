@@ -137,11 +137,13 @@ const CloseButton = styled.div<{ darkmode?: boolean }>`
   left: -8px;
   z-index: 100;
   background: red;
-  height: 24px;
-  width: 24px;
-  border-radius: 12px;
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
   display: flex;
-  align-tems: center;
+  align-items: center;
+  padding: 0 0 4px;
+  font-size: 18px;
   justify-content: center;
   background: rgba(225, 225, 225, 0.85);
   box-shadow:
@@ -151,6 +153,7 @@ const CloseButton = styled.div<{ darkmode?: boolean }>`
   outline: 1px solid rgba(0, 0, 0, 0.1);
   &:hover {
     cursor: pointer;
+    background: ${({ darkmode }) => darkmode ? 'rgba(28, 31, 37, 1.0)' : 'rgba(225, 225, 225, 1.0)'};
     > ${StyledFontAwesomeIcon} {
       opacity: 0.8;
     }
