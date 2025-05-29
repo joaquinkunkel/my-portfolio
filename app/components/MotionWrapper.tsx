@@ -2,7 +2,7 @@ import React from "react";
 import { motion, Variants } from "framer-motion";
 
 interface MotionWrapperProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   variants?: Variants;
   className?: string;
   style?: React.CSSProperties;

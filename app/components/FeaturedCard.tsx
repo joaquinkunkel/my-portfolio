@@ -90,7 +90,7 @@ const CardBackground = styled.div<{ isvisible?: boolean; darkmode?: boolean }>`
 const CardWrapper = styled.div`
   position: relative;
   width: 100%;
-  max-width: 600px;
+  max-width: 680px;
   margin: 0 auto;
 `;
 

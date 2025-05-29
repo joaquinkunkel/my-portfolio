@@ -33,8 +33,12 @@ import VimeoPlayer from "./VimeoPlayer";
 
 const video1Src =
   "https://cdn.prod.website-files.com/63cc43d53b100d36f4967cc3/63d2f441daf96d163e51ee8b_Powerful%20(large)-transcode.mp4";
-
-const video2Src = "https://player.vimeo.com/video/912275371";
+const video2Src =
+  "https://cdn.prod.website-files.com/63cc43d53b100d36f4967cc3/63dcda70e1e0cef9efc2262f_use-case_cta-2-transcode.mp4";
+const video3Src =
+  "https://cdn.prod.website-files.com/63cc43d53b100d36f4967cc3/63d2f5972af4b3b10917e14d_Q%20on%20priorities%20(large-transcode.mp4";
+const video4Src =
+  "https://cdn.prod.website-files.com/63cc43d53b100d36f4967cc3/63dcdaf3a88f45abce7f9225_share-inspo-transcode.mp4";
 
 interface BubblesCardProps {
   onBackgroundClick: () => void;
@@ -68,40 +72,40 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
           </Weblink>
         </Row>
       </CardHeader>
-      <Section>
-        <MotionWrapper>
-          <Row noPadding spaceBetween>
-            <div>
-              <QuoteType>
-                At Bubbles, I design collaboration tools to make teams{" "}
-                <HighlightSpan>
-                  confident with how they use their time
-                </HighlightSpan>
-                .
-              </QuoteType>
-            </div>
-            <VideoWithPlaceholder src={video1Src} />
-          </Row>
-        </MotionWrapper>
-      </Section>
-      <Row>
+      <Row noPadding spaceBetween>
         <MotionWrapper fullWidth>
-          <Section>
-            <MapContainer>
-              <Map src={mapUrl} alt="San Francisco Map" />
-            </MapContainer>
-            <div>
-              San Francisco, CA
-              <br />
-              <Caption>Founding team of 6</Caption>
-            </div>
+          <QuoteType>
+            At Bubbles, we built collaboration tools to make teams confident
+            with how they use their time.
+          </QuoteType>
+        </MotionWrapper>
+        <MotionWrapper fullWidth>
+          <Section noPadding>
+            <VideoWithPlaceholder src={video3Src} />
           </Section>
         </MotionWrapper>
+      </Row>
+      <Row extraPadding spaceBetween>
+        <MotionWrapper fullWidth></MotionWrapper>
         <MotionWrapper fullWidth>
-          <Section>
-            <StyledGraph>{svgGraph}</StyledGraph>
-            <div>ARR from $0 to $150K</div>
-            <Caption>Since 2021</Caption>
+          <Section noPadding>
+            <VideoWithPlaceholder src={video1Src} />
+          </Section>
+        </MotionWrapper>
+      </Row>
+      <Row extraPadding spaceBetween>
+        <MotionWrapper fullWidth></MotionWrapper>
+        <MotionWrapper fullWidth>
+          <Section noPadding>
+            <VideoWithPlaceholder src={video4Src} />
+          </Section>
+        </MotionWrapper>
+      </Row>
+      <Row extraPadding spaceBetween>
+        <MotionWrapper fullWidth></MotionWrapper>
+        <MotionWrapper fullWidth>
+          <Section noPadding>
+            <VideoWithPlaceholder src={video2Src} />
           </Section>
         </MotionWrapper>
       </Row>
@@ -134,16 +138,6 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
           </Section>
         </MotionWrapper>
       </Row>
-      <MotionWrapper>
-        <Row>
-          <Section noPadding>
-            <VideoWithPlaceholder src="https://cdn.prod.website-files.com/63cc43d53b100d36f4967cc3/63dcda70e1e0cef9efc2262f_use-case_cta-2-transcode.mp4" />
-          </Section>
-          <Section noPadding>
-            <VideoWithPlaceholder src="https://cdn.prod.website-files.com/63cc43d53b100d36f4967cc3/63dcda6aa80e948d7d32fa6a_use-case_cta-1-transcode.mp4" />
-          </Section>
-        </Row>
-      </MotionWrapper>
       {/* Product Hunt Badge */}
       <MotionWrapper>
         <BadgeCard>
