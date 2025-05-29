@@ -59,7 +59,7 @@ const FreelanceFeaturedCard: React.FC<FreelanceCardProps> = ({
         <Row noWrap>
           <div>
             <FeaturedHeading>Freelance work</FeaturedHeading>
-            <Caption>Designing since 2011 (started at age 15)</Caption>
+            <Caption>2011 - now</Caption>
           </div>
           <Weblink
             href="https://behance.net/joaquinkunkel"
