@@ -9,10 +9,19 @@ import {
   Weblink,
   StyledGraph,
   CardHeader,
+  GridList,
 } from "./StyledComponents";
 import FeaturedCard from "./FeaturedCard";
 import CVListItem from "./CVListItem";
 import MotionWrapper from "./MotionWrapper";
+import {
+  faArrowTrendUp,
+  faCode,
+  faCodeBranch,
+  faEarth,
+  faPaintBrush,
+  faWebAwesome,
+} from "@fortawesome/free-solid-svg-icons";
 
 interface CamblyCardProps {
   onBackgroundClick: () => void;
@@ -93,10 +102,27 @@ const CamblyFeaturedCard: React.FC<CamblyCardProps> = ({
       <MotionWrapper>
         <Row>
           <Section>
-              <CVListItem>Owned UX for iOS, Android & web features</CVListItem>
-              <CVListItem>Implemented web features in React</CVListItem>
-              <CVListItem>Boosted free-trial conversion by 10% in adult and kids products</CVListItem>
-              <CVListItem>Full rebrand & marketing guidelines</CVListItem>
+            <GridList>
+              <Caption>Highlights</Caption>
+              <CVListItem icon={faArrowTrendUp}>
+                Managed UX design, achieving an 18% conversion boost by
+                redesigning key onboarding flows in the adult and kids products
+                on web, iOS, and Android.
+              </CVListItem>
+              <CVListItem icon={faCodeBranch}>
+                Unified the design system in React and Figma by designing and
+                building reusable, cross-platform components
+              </CVListItem>
+              <CVListItem icon={faEarth}>
+                Led the redesign and React.js implementation of marketing
+                website, prioritizing responsiveness and localization,
+                partnering with global marketing teams to conduct A/B tests
+                around signup metrics
+              </CVListItem>
+              <CVListItem icon={faPaintBrush}>
+                Led a full rebrand & marketing guidelines
+              </CVListItem>
+            </GridList>
           </Section>
         </Row>
       </MotionWrapper>

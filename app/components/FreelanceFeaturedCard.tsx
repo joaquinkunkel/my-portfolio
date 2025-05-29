@@ -8,16 +8,12 @@ import {
   Section,
   Weblink,
   StyledGraph,
-  VimeoContainer,
-  VimeoIframe,
-  VideoLoadingOverlay,
-  LoadingSpinner,
   CardHeader,
 } from "./StyledComponents";
 import FeaturedCard from "./FeaturedCard";
 import CVListItem from "./CVListItem";
 import MotionWrapper from "./MotionWrapper";
-import Player from "@vimeo/player";
+import VimeoPlayer from "./VimeoPlayer";
 
 interface FreelanceCardProps {
   onBackgroundClick: () => void;
@@ -53,24 +49,6 @@ const FreelanceFeaturedCard: React.FC<FreelanceCardProps> = ({
   darkmode,
   isvisible,
 }) => {
-  const [isVideoLoading, setIsVideoLoading] = useState(true);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-
-  useEffect(() => {
-    if (iframeRef.current) {
-      const player = new Player(iframeRef.current);
-
-      player.on("loaded", () => {
-        setIsVideoLoading(false);
-      });
-
-      player.on("error", (error: any) => {
-        console.error("Vimeo player error:", error);
-        setIsVideoLoading(false);
-      });
-    }
-  }, []);
-
   return (
     <FeaturedCard
       onBackgroundClick={onBackgroundClick}
@@ -95,17 +73,10 @@ const FreelanceFeaturedCard: React.FC<FreelanceCardProps> = ({
       <MotionWrapper>
         <Row>
           <Section noPadding>
-            <VimeoContainer>
-              <VideoLoadingOverlay isLoading>
-                <LoadingSpinner />
-              </VideoLoadingOverlay>
-              <VimeoIframe
-                ref={iframeRef}
-                src="https://player.vimeo.com/video/268515791?background=1"
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-                title="Motion & Animation Reel"
-              />
-            </VimeoContainer>
+            <VimeoPlayer
+              title="Motion & Animation Reel"
+              src="https://player.vimeo.com/video/268515791?background=1"
+            />
           </Section>
         </Row>
       </MotionWrapper>

@@ -23,13 +23,18 @@ import {
   GridList,
   StyledGraph,
   CardHeader,
+  VimeoContainer,
+  VimeoIframe,
 } from "./StyledComponents"; // Ensure to import all the necessary styles and components
 import VideoWithPlaceholder from "./VideoWithPlaceholder";
 import CVListItem from "./CVListItem";
 import MotionWrapper from "./MotionWrapper";
+import VimeoPlayer from "./VimeoPlayer";
 
-const bubblesVideoSrc =
+const video1Src =
   "https://cdn.prod.website-files.com/63cc43d53b100d36f4967cc3/63d2f441daf96d163e51ee8b_Powerful%20(large)-transcode.mp4";
+
+const video2Src = "https://player.vimeo.com/video/912275371";
 
 interface BubblesCardProps {
   onBackgroundClick: () => void;
@@ -75,10 +80,31 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
                 .
               </QuoteType>
             </div>
-            <VideoWithPlaceholder src={bubblesVideoSrc} />
+            <VideoWithPlaceholder src={video1Src} />
           </Row>
         </MotionWrapper>
       </Section>
+      <Row>
+        <MotionWrapper fullWidth>
+          <Section>
+            <MapContainer>
+              <Map src={mapUrl} alt="San Francisco Map" />
+            </MapContainer>
+            <div>
+              San Francisco, CA
+              <br />
+              <Caption>Founding team of 6</Caption>
+            </div>
+          </Section>
+        </MotionWrapper>
+        <MotionWrapper fullWidth>
+          <Section>
+            <StyledGraph>{svgGraph}</StyledGraph>
+            <div>ARR from $0 to $150K</div>
+            <Caption>Since 2021</Caption>
+          </Section>
+        </MotionWrapper>
+      </Row>
       <Row>
         <MotionWrapper>
           <Section>
@@ -108,28 +134,16 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
           </Section>
         </MotionWrapper>
       </Row>
-      <Row>
-        <MotionWrapper fullWidth>
-          <Section>
-            <MapContainer>
-              <Map src={mapUrl} alt="San Francisco Map" />
-            </MapContainer>
-            <div>
-              San Francisco, CA
-              <br />
-              <Caption>Founding team of 6</Caption>
-            </div>
+      <MotionWrapper>
+        <Row>
+          <Section noPadding>
+            <VideoWithPlaceholder src="https://cdn.prod.website-files.com/63cc43d53b100d36f4967cc3/63dcda70e1e0cef9efc2262f_use-case_cta-2-transcode.mp4" />
           </Section>
-        </MotionWrapper>
-        <MotionWrapper fullWidth>
-          <Section>
-            <StyledGraph>{svgGraph}</StyledGraph>
-            <div>ARR from $0 to $150K</div>
-            <Caption>Since 2021</Caption>
+          <Section noPadding>
+            <VideoWithPlaceholder src="https://cdn.prod.website-files.com/63cc43d53b100d36f4967cc3/63dcda6aa80e948d7d32fa6a_use-case_cta-1-transcode.mp4" />
           </Section>
-        </MotionWrapper>
-      </Row>
-
+        </Row>
+      </MotionWrapper>
       {/* Product Hunt Badge */}
       <MotionWrapper>
         <BadgeCard>

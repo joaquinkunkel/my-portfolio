@@ -165,7 +165,8 @@ export const Section = styled.div<{ noPadding?: boolean }>`
   font-size: 14px;
   border-radius: 10px;
   display: flex;
-  alignItems: baseline;
+  align-items: baseline;
+  justify-content: center;
   flex-direction: column;
   outline: 1px solid rgba(0, 0, 0, 0.05);
   width: 100%;
@@ -261,17 +262,13 @@ export const Caption = styled.p`
 `;
 
 export const StyledVideo = styled.video<{isReady ?: boolean}>`
-  max-width: 230px;
   min-height: 100px;
   border-radius: 8px;
   border: 1px solid rgba(0, 0, 0, 0.05);
-  margin-left: 8px;
   @media (max-width: 600px) {
-    margin: 8px auto;
     max-width: 100%;
   }
   display: ${(isReady) => (isReady ? 'block' : 'none')};
-  filter: brightness(0.72);
   transition: all 0.2s;
 `;
 

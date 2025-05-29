@@ -22,10 +22,11 @@ const VideoWithPlaceholder: React.FC<VideoWithPlaceholderProps> = (({ src }) => 
         autoPlay
         loop
         muted
-        src={src}
         isReady={videoReady}
         onCanPlay={triggerVideoReady} // Only show the video when it's ready
-      />
+      >
+        <source src={src} />
+      </StyledVideo>
     </div>
   );
 });
