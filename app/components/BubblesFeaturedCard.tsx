@@ -86,15 +86,22 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
         </MotionWrapper>
       </Row>
       <Row extraPadding spaceBetween>
-        <MotionWrapper fullWidth></MotionWrapper>
         <MotionWrapper fullWidth>
           <Section noPadding>
             <VideoWithPlaceholder src={video1Src} />
           </Section>
         </MotionWrapper>
+        <MotionWrapper fullWidth>
+          <QuoteType>
+            Bubbles started out as a video-commenting tool for time-based
+            feedback...
+          </QuoteType>
+        </MotionWrapper>
       </Row>
       <Row extraPadding spaceBetween>
-        <MotionWrapper fullWidth></MotionWrapper>
+        <MotionWrapper fullWidth>
+          <QuoteType>...helpful for any type of visual media.</QuoteType>
+        </MotionWrapper>
         <MotionWrapper fullWidth>
           <Section noPadding>
             <VideoWithPlaceholder src={video4Src} />
@@ -102,14 +109,18 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
         </MotionWrapper>
       </Row>
       <Row extraPadding spaceBetween>
-        <MotionWrapper fullWidth></MotionWrapper>
         <MotionWrapper fullWidth>
           <Section noPadding>
             <VideoWithPlaceholder src={video2Src} />
           </Section>
         </MotionWrapper>
+        <MotionWrapper fullWidth>
+          <QuoteType>
+            I made these motion graphics here for our marketing website.
+          </QuoteType>
+        </MotionWrapper>
       </Row>
-      <Row>
+      <Row extraPadding>
         <MotionWrapper>
           <Section>
             <GridList>
@@ -138,20 +149,22 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
           </Section>
         </MotionWrapper>
       </Row>
-      {/* Product Hunt Badge */}
-      <MotionWrapper>
-        <BadgeCard>
-          <a
-            href="https://www.producthunt.com/products/bubbles#bubbles-for-teams"
-            target="_blank"
-          >
-            <ProductHuntBadge
-              src="/img/producthunt-badge.png"
-              alt="Product Hunt product of the day"
-            />
-          </a>
-        </BadgeCard>
-      </MotionWrapper>
+      <Row extraPadding>
+        {/* Product Hunt Badge */}
+        <MotionWrapper fullWidth>
+          <BadgeCard>
+            <a
+              href="https://www.producthunt.com/products/bubbles#bubbles-for-teams"
+              target="_blank"
+            >
+              <ProductHuntBadge
+                src="/img/producthunt-badge.png"
+                alt="Product Hunt product of the day"
+              />
+            </a>
+          </BadgeCard>
+        </MotionWrapper>
+      </Row>
     </FeaturedCard>
   );
 };
