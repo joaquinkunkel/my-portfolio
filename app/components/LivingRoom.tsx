@@ -367,7 +367,7 @@ const LivingRoom = ({
                 color={"#777777"}
                 font="/fonts/SF-Pro-Text-Regular.otf"
               >
-                Since 2015
+                Since 2011
               </Text>
             )}
           </Billboard>

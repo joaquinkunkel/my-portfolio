@@ -10,6 +10,7 @@ import {
   StyledGraph,
   CardHeader,
   GridList,
+  QuoteType,
 } from "./StyledComponents";
 import FeaturedCard from "./FeaturedCard";
 import CVListItem from "./CVListItem";
@@ -22,6 +23,7 @@ import {
   faPaintBrush,
   faWebAwesome,
 } from "@fortawesome/free-solid-svg-icons";
+import VideoWithPlaceholder from "./VideoWithPlaceholder";
 
 interface CamblyCardProps {
   onBackgroundClick: () => void;
@@ -52,6 +54,9 @@ const svgGraph = (
   </svg>
 );
 
+const video1Src =
+  "https://framerusercontent.com/assets/tNSXQfInsPLjNNirMDazH7BKRrY.mp4";
+
 const CamblyFeaturedCard: React.FC<CamblyCardProps> = ({
   onBackgroundClick,
   darkmode,
@@ -78,6 +83,16 @@ const CamblyFeaturedCard: React.FC<CamblyCardProps> = ({
           </Weblink>
         </Row>
       </CardHeader>
+            <Row spaceBetween>
+              <MotionWrapper fullWidth>
+                <QuoteType>I built high-converting web & mobile user flows for a language tutoring platform.</QuoteType>
+              </MotionWrapper>
+              <MotionWrapper fullWidth>
+                <Section noPadding>
+                  <VideoWithPlaceholder src={video1Src} />
+                </Section>
+              </MotionWrapper>
+            </Row>
       <Row>
         <Section>
           <MotionWrapper fullWidth>
