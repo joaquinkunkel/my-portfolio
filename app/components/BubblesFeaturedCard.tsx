@@ -21,7 +21,6 @@ import {
 import VideoWithPlaceholder from "./VideoWithPlaceholder";
 import CVListItem from "./CVListItem";
 import MotionWrapper from "./MotionWrapper";
-import VimeoPlayer from "./VimeoPlayer";
 
 const video0Src =
   "https://framerusercontent.com/assets/9pblVpezInUsm3k7hitYccREWE.mp4";

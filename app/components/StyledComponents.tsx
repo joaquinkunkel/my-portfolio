@@ -326,25 +326,6 @@ export const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   opacity: 0.65;
 `;
 
-export const VimeoContainer = styled.div`
-  padding: 56.25% 0 0 0;
-  position: relative;
-  width: 100%;
-  border-radius: 8px;
-  overflow: hidden;
-  outline: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: ${featuredBoxShadow};
-`;
-
-export const VimeoIframe = styled.iframe`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-`;
-
 export const VideoLoadingOverlay = styled.div<{ isLoading: boolean }>`
   position: absolute;
   top: 0;
