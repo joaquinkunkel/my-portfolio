@@ -116,7 +116,7 @@ const Card = styled.div<{ isvisible?: boolean; darkmode?: boolean }>`
   ${({ darkmode }) =>
     darkmode &&
     css`
-      background: rgba(20, 23, 29, 0.9);
+      background: rgba(35, 38, 44, 0.9);
       box-shadow: 0px 28px 60px -28px rgba(0, 0, 0, 0.6);
       outline: 1.2px solid rgba(255, 255, 255, 0.08);
       color: rgba(255, 255, 255, 0.7);
@@ -138,6 +138,24 @@ const CardContent = styled.div`
   overflow: auto;
   max-height: calc(100svh - 80px);
   height: 100%;
+  /* Webkit browsers */
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 20px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+  }
+  
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
 `;
 
 const CloseButton = styled.div<{ darkmode?: boolean }>`
@@ -170,9 +188,8 @@ const CloseButton = styled.div<{ darkmode?: boolean }>`
   ${({ darkmode }) =>
     darkmode &&
     css`
-      background: rgba(28, 31, 37, 0.8);
+      background: rgba(35, 38, 44, 0.8);
       color: rgba(255, 255, 255, 1);
-      outline: 1.2px solid rgba(255, 255, 255, 0.08);
       box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.12);
     `};
 `;

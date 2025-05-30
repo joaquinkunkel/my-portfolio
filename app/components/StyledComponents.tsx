@@ -9,7 +9,7 @@ export const PageContainer = styled.div<{ darkmode: boolean }>`
   height: 100svh;
   width: 100vw;
   position: relative;
-  background: ${({ darkmode }) => (darkmode ? "#0c0e14" : "#fcfdff")};
+  background: ${({ darkmode }) => (darkmode ? "#1c1e24" : "#fcfdff")};
   animation: gradientAnimation 120s ease infinite;
   background-size: 500% 500%;
   transition: all 0.3s ease-out;
@@ -106,7 +106,7 @@ export const CardHeader = styled.div<{ darkmode?: boolean }>`
   z-index: 100;
   backdrop-filter: blur(8px);
   background: ${({ darkmode }) =>
-    darkmode ? "rgba(20, 23, 29, 0.9)" : "rgba(225, 225, 225, 0.9)"};
+    darkmode ? "rgba(35, 38, 44, 0.9)" : "rgba(225, 225, 225, 0.9)"};
   outline: 1px solid rgba(0, 0, 0, 0.05);
 `;
 
@@ -255,7 +255,7 @@ export const LinksContainer = styled.div<{
 `;
 
 export const Weblink = styled.a`
-  background: #303a49;
+  background: #1c1e24;
   border-radius: 20px;
   padding: 4px 10px;
   box-shadow:
