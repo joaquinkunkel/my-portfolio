@@ -87,6 +87,7 @@ const FreelanceFeaturedCard: React.FC<FreelanceCardProps> = ({
             <VimeoPlayer
               src="https://player.vimeo.com/video/312047168?background=1"
               title="Coursedog ad"
+              squareAspectRatio
             />
           </Section>
           <QuoteType>
