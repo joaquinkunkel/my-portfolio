@@ -155,7 +155,7 @@ const CardContent = styled.div`
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
 
-  @media (max-width: 600px) {
+    @media (max-width: 600px) {
     max-height: calc(100svh - 32px);
   }
 `;

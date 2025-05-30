@@ -133,7 +133,7 @@ export const Row = styled.div<{
     ${({ noWrap }) => noWrap && "flex-direction: row;"}
   }
   ${({ noPadding }) => noPadding && "padding: 0; margin: 0;"}
-  ${({ extraPadding }) => extraPadding && "padding: 42px 0 0; margin: 0;"}
+  ${({ extraPadding }) => extraPadding && "padding: 28px 0 0; margin: 0;"}
   ${({ spaceBetween }) =>
     spaceBetween && "gap: space-between; align-items: center;"}
 `;
@@ -207,7 +207,7 @@ export const Map = styled.img`
 export const MapContainer = styled.div`
   background: white;
   height: 100px;
-  border-radius: 6px;
+  border-radius: 8px;
   overflow: hidden;
   width: 100%;
   margin: 0 0 12px;
@@ -221,7 +221,7 @@ export const StyledGraph = styled.div`
     rgba(245, 243, 236, 0.85),
     /* soft peach */ rgba(246, 245, 221, 0.75) /* light mint green */
   );
-  border-radius: 6px;
+  border-radius: 8px;
   width: 100%;
   margin: 0 0 12px;
   display: flex;

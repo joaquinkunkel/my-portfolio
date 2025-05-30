@@ -73,7 +73,7 @@ const CamblyFeaturedCard: React.FC<CamblyCardProps> = ({
         <Row noWrap>
           <div>
             <FeaturedHeading>Cambly</FeaturedHeading>
-            <Caption>UX lead and front-end engineer • 2019 - 2021</Caption>
+            <Caption>UX lead and front-end • 2019 - 2021</Caption>
           </div>
           <Weblink
             href="https://cambly.com"
@@ -95,7 +95,7 @@ const CamblyFeaturedCard: React.FC<CamblyCardProps> = ({
         <MotionWrapper fullWidth>
           <QuoteType>
             I built high-converting web & mobile user flows for a language
-            tutoring platform.
+            tutoring platform. My work included product-led growth and core experience flows.
           </QuoteType>
         </MotionWrapper>
       </Row>
@@ -111,8 +111,8 @@ const CamblyFeaturedCard: React.FC<CamblyCardProps> = ({
         </MotionWrapper>
         <MotionWrapper fullWidth>
           <QuoteType>
-            Including prototypes, React components, brand illustrations, and
-            animated content.
+            I made prototypes, React components, brand illustrations, and
+            animated content. (Like this loading Lottie!)
           </QuoteType>
         </MotionWrapper>
       </Row>
