@@ -62,7 +62,9 @@ const FeaturedCard: React.FC<IFeaturedCardProps> = ({
             onClick={stopPropagation}
             darkmode={darkmode}
           >
-            {children}
+            <CardContent>
+              {children}
+            </CardContent>
           </Card>
         </CardWrapper>
       </motion.div>
@@ -98,7 +100,7 @@ const Card = styled.div<{ isvisible?: boolean; darkmode?: boolean }>`
   background: rgba(225, 225, 225, 0.85);
   width: 100%;
   max-height: calc(100svh - 80px);
-  overflow: auto;
+  overflow: hidden; // Changed from auto to hidden
   z-index: 11;
   font-weight: 400;
   border-radius: 20px;
@@ -106,7 +108,7 @@ const Card = styled.div<{ isvisible?: boolean; darkmode?: boolean }>`
     0px 28px 60px -28px rgba(0, 0, 0, 0.6),
     inset 0px 2px 2px -1px rgba(255, 255, 255, 0.6);
   outline: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 0px 20px 4px;
+  padding: 0; // Remove padding here
   font-family: "Radio Grotesk", "Supply", sans-serif;
   color: #373e49;
   line-height: 130%;
@@ -120,7 +122,6 @@ const Card = styled.div<{ isvisible?: boolean; darkmode?: boolean }>`
       color: rgba(255, 255, 255, 0.7);
       ${Section} {
         background: rgba(255, 255, 255, 0.03);
-        // border: 1px solid rgba(255, 255, 255, 0.06);
       }
       ${Weblink} {
         background: #202330;
@@ -131,10 +132,18 @@ const Card = styled.div<{ isvisible?: boolean; darkmode?: boolean }>`
     `}
 `;
 
+// Add a new inner wrapper for scrollable content
+const CardContent = styled.div`
+  padding: 0px 20px 4px;
+  overflow: auto;
+  max-height: calc(100svh - 80px);
+  height: 100%;
+`;
+
 const CloseButton = styled.div<{ darkmode?: boolean }>`
   position: absolute;
-  top: -8px;
-  left: -8px;
+  top: -12px;
+  left: -12px;
   z-index: 100;
   background: red;
   height: 32px;
