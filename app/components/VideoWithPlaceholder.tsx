@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { LoadingSpinner, StyledVideo, VideoLoadingOverlay, VideoPlaceholder } from "./StyledComponents";
+import { LoadingSpinner, StyledSource, StyledVideo, VideoContainer, VideoLoadingOverlay } from "./StyledComponents";
 
 interface VideoWithPlaceholderProps {
     src: string;
@@ -13,7 +13,7 @@ const VideoWithPlaceholder: React.FC<VideoWithPlaceholderProps> = (({ src }) => 
   }, [])
 
   return (
-    <div>
+    <VideoContainer isLoading={!videoReady}>
       <VideoLoadingOverlay isLoading={!videoReady}>
         <LoadingSpinner />
       </VideoLoadingOverlay>
@@ -25,9 +25,9 @@ const VideoWithPlaceholder: React.FC<VideoWithPlaceholderProps> = (({ src }) => 
         isReady={videoReady}
         onCanPlay={triggerVideoReady} // Only show the video when it's ready
       >
-        <source src={src} />
+        <StyledSource isReady={videoReady} src={src} />
       </StyledVideo>
-    </div>
+    </VideoContainer>
   );
 });
 

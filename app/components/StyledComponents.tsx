@@ -285,46 +285,32 @@ export const Caption = styled.p`
   grid-column: 1 / -1;
 `;
 
+export const VideoContainer = styled.div<{ isLoading?: boolean }>`
+  transition: height 0.3s ease-out;
+  min-height: 120px;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  outline: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: ${featuredBoxShadow};
+  @media (max-width: 600px) {
+    max-width: 100%;
+  }
+  display: ${({ isLoading }) => isLoading ? 'flex' : 'block'};
+  align-items: center;
+  justify-content: center;
+`
+
 export const StyledVideo = styled.video<{ isReady?: boolean }>`
-  min-height: 100px;
-  border-radius: 8px;
-  outline: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: ${featuredBoxShadow};
-  @media (max-width: 600px) {
-    max-width: 100%;
-  }
+  min-height: 180px;
+  width: 100%;
   display: ${(isReady) => (isReady ? "block" : "none")};
   transition: all 0.2s;
 `;
 
-export const StyledGIF = styled.img<{ isReady?: boolean }>`
-  min-height: 100px;
-  border-radius: 8px;
-  outline: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: ${featuredBoxShadow};
-  @media (max-width: 600px) {
-    max-width: 100%;
-  }
-  display: ${(isReady) => (isReady ? "block" : "none")};
-  transition: all 0.2s;
-`;
-
-export const VideoPlaceholder = styled.div<{ isMobile?: boolean }>`
-  width: 230px;
-  height: 160px;
-  border-radius: 8px;
-  background: #e0e0e0;
-  ${({ isMobile }) =>
-    isMobile &&
-    css`
-      height: 80px;
-    `}
-`;
-
-export const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
-  margin-top: 4px;
-  opacity: 0.65;
-`;
+export const StyledSource = styled.source<{ isReady?: boolean }>`
+  display: ${({ isReady }) => isReady ? 'block' : 'none'};
+`
 
 export const VideoLoadingOverlay = styled.div<{ isLoading: boolean }>`
   position: absolute;
@@ -356,4 +342,21 @@ export const LoadingSpinner = styled.div`
       transform: rotate(360deg);
     }
   }
+`;
+
+export const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
+  margin-top: 4px;
+  opacity: 0.65;
+`;
+
+export const StyledGIF = styled.img<{ isReady?: boolean }>`
+  min-height: 100px;
+  border-radius: 8px;
+  outline: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: ${featuredBoxShadow};
+  @media (max-width: 600px) {
+    max-width: 100%;
+  }
+  display: ${(isReady) => (isReady ? "block" : "none")};
+  transition: all 0.2s;
 `;
