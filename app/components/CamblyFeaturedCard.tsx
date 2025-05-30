@@ -2,8 +2,6 @@ import React from "react";
 import {
   Caption,
   FeaturedHeading,
-  MapContainer,
-  Map,
   Row,
   Section,
   Weblink,
@@ -11,6 +9,7 @@ import {
   CardHeader,
   GridList,
   QuoteType,
+  MobileColumns,
 } from "./StyledComponents";
 import FeaturedCard from "./FeaturedCard";
 import CVListItem from "./CVListItem";
@@ -88,23 +87,20 @@ const CamblyFeaturedCard: React.FC<CamblyCardProps> = ({
         <MotionWrapper fullWidth>
           <VideoWithPlaceholder src={video1Src} />
         </MotionWrapper>
-        </Row>
-        <Row>
+      </Row>
+      <Row>
         <MotionWrapper fullWidth>
           <QuoteType>
             I built high-converting web & mobile user flows for a language
-            tutoring platform. My work included product-led growth and core experience flows.
+            tutoring platform. My work included product-led growth and core
+            experience flows.
           </QuoteType>
         </MotionWrapper>
       </Row>
       <Row extraPadding spaceBetween>
         <MotionWrapper fullWidth>
           <Section noPadding>
-            <VideoWithPlaceholder
-              src={
-                "/img/cambly_loading.mp4"
-              }
-            />
+            <VideoWithPlaceholder src={"/img/cambly_loading.mp4"} />
           </Section>
         </MotionWrapper>
         <MotionWrapper fullWidth>
@@ -114,29 +110,19 @@ const CamblyFeaturedCard: React.FC<CamblyCardProps> = ({
           </QuoteType>
         </MotionWrapper>
       </Row>
-      <Row extraPadding>
+      <Row extraPadding spaceBetween>
         <MotionWrapper fullWidth>
-          <Section>
-            <MapContainer>
-              <Map src={mapUrl} alt="San Francisco Map" />
-            </MapContainer>
-            <div>
-              San Francisco, CA
-              <br />
-              <Caption>Hybrid team</Caption>
-            </div>
-          </Section>
+          <div>
+            Solo UX designer
+            <Caption>Product team of 12 • Company of 100</Caption>
+          </div>
         </MotionWrapper>
         <MotionWrapper fullWidth>
-          <Section>
-            <StyledGraph>{svgGraph}</StyledGraph>
-            <div>Solo UX designer</div>
-            <Caption>Product team of 12 • Company of 100</Caption>
-          </Section>
+          <StyledGraph>{svgGraph}</StyledGraph>
         </MotionWrapper>
       </Row>
       <MotionWrapper>
-        <Row>
+        <Row extraPadding>
           <Section>
             <GridList>
               <Caption>Highlights</Caption>

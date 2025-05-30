@@ -1,15 +1,13 @@
-import React, { useEffect, useState, useRef } from "react";
+import React from "react";
 import {
   Caption,
   FeaturedHeading,
-  MapContainer,
-  Map,
   Row,
   Section,
   Weblink,
-  StyledGraph,
   CardHeader,
   QuoteType,
+  ContactLink,
 } from "./StyledComponents";
 import FeaturedCard from "./FeaturedCard";
 import CVListItem from "./CVListItem";

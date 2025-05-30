@@ -30,7 +30,7 @@ export const DarkModeToggleIcon = styled(Lightbulb)<{ darkmode: boolean }>`
   stroke: black;
 `;
 
-export const ContactLink = styled.a<{ darkmode: boolean; isMobile: boolean }>`
+export const ContactLink = styled.a<{ darkmode?: boolean; isMobile?: boolean }>`
   position: absolute;
   z-index: 10;
   top: ${(props) => (props.isMobile ? "20px" : "75px")};
@@ -100,7 +100,7 @@ export const QuoteType = styled.p<{ larger?: boolean }>`
 export const HighlightSpan = styled.span``;
 
 export const CardHeader = styled.div<{ darkmode?: boolean }>`
-  padding: 8px 24px 2px;
+  padding: 8px 24px 20px;
   margin: 0 -20px 16px;
   position: sticky;
   top: 0;
@@ -136,6 +136,10 @@ export const Row = styled.div<{
   ${({ extraPadding }) => extraPadding && "padding: 28px 0 0; margin: 0;"}
   ${({ spaceBetween }) =>
     spaceBetween && "gap: space-between; align-items: center;"}
+
+  &:last-child {
+    margin: 20px 0 0;
+  }
 `;
 
 export const FeaturedHeading = styled.h1`
@@ -183,7 +187,7 @@ export const Section = styled.div<{ noPadding?: boolean }>`
   font-size: 14px;
   border-radius: 10px;
   display: flex;
-  align-items: baseline;
+  align-items: flex-start;
   justify-content: center;
   flex-direction: column;
   outline: 1px solid rgba(0, 0, 0, 0.05);
@@ -191,28 +195,19 @@ export const Section = styled.div<{ noPadding?: boolean }>`
   letter-spacing: 0.02em;
 `;
 
+export const MobileColumns = styled.div`
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 100%;
+  grid-template-columns: 1fr 1fr;
+  }
+`
+
 export const GridList = styled.div`
   display: grid;
   grid-template-columns: 40px 1fr;
   grid-auto-rows: auto;
   row-gap: 8px;
-`;
-export const Map = styled.img`
-  /* filter: grayscale(1); */
-  width: 100%;
-  height: auto;
-  mix-blend-mode: multiply;
-`;
-
-export const MapContainer = styled.div`
-  background: white;
-  height: 100px;
-  border-radius: 8px;
-  overflow: hidden;
-  width: 100%;
-  margin: 0 0 12px;
-  outline: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: ${featuredBoxShadow};
 `;
 
 export const StyledGraph = styled.div`
@@ -223,9 +218,8 @@ export const StyledGraph = styled.div`
   );
   border-radius: 8px;
   width: 100%;
-  margin: 0 0 12px;
   display: flex;
-  align-items: flex-start;
+  align-items: baseline;
   justify-content: center;
   outline: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: ${featuredBoxShadow};

@@ -132,7 +132,7 @@ const Card = styled.div<{ isvisible?: boolean; darkmode?: boolean }>`
 
 // Add a new inner wrapper for scrollable content
 const CardContent = styled.div`
-  padding: 0px 20px 4px;
+  padding: 0px 20px 20px;
   overflow: auto;
   max-height: calc(100svh - 80px);
   height: 100%;
