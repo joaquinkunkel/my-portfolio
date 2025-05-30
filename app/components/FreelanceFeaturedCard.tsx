@@ -72,16 +72,6 @@ const FreelanceFeaturedCard: React.FC<FreelanceCardProps> = ({
         </Row>
       </CardHeader>
       <MotionWrapper>
-        <Row>
-          <Section noPadding>
-            <VimeoPlayer
-              title="Motion & Animation Reel"
-              src="https://player.vimeo.com/video/268515791?background=1"
-            />
-          </Section>
-        </Row>
-      </MotionWrapper>
-      <MotionWrapper>
         <Row spaceBetween>
           <Section noPadding>
             <VimeoPlayer
@@ -94,6 +84,16 @@ const FreelanceFeaturedCard: React.FC<FreelanceCardProps> = ({
             Apart from UX and engineering, I make motion graphics for marketing
             and UI.
           </QuoteType>
+        </Row>
+      </MotionWrapper>
+      <MotionWrapper>
+        <Row>
+          <Section noPadding>
+            <VimeoPlayer
+              title="Motion & Animation Reel"
+              src="https://player.vimeo.com/video/268515791?background=1"
+            />
+          </Section>
         </Row>
       </MotionWrapper>
     </FeaturedCard>
