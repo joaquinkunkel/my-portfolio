@@ -51,6 +51,7 @@ export const ContactLink = styled.a<{ darkmode: boolean; isMobile: boolean }>`
 export const GitHubLink = styled.a<{ isMobile: boolean }>`
   position: absolute;
   z-index: 10;
+  text-align: right;
   bottom: ${({ isMobile }) => (isMobile ? "40px" : "75px")};
   right: ${({ isMobile }) => (isMobile ? "20px" : "60px")};
   font-size: 14px;
