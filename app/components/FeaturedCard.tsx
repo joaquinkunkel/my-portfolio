@@ -2,9 +2,7 @@ import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 import { Section, StyledFontAwesomeIcon, Weblink } from "./StyledComponents";
 import { useCallback } from "react";
-import {
-  faClose,
-} from "@fortawesome/free-solid-svg-icons";
+import { faClose } from "@fortawesome/free-solid-svg-icons";
 
 export type FeaturedCard = "bubbles" | "cambly" | "freelance" | null;
 
@@ -62,9 +60,7 @@ const FeaturedCard: React.FC<IFeaturedCardProps> = ({
             onClick={stopPropagation}
             darkmode={darkmode}
           >
-            <CardContent>
-              {children}
-            </CardContent>
+            <CardContent>{children}</CardContent>
           </Card>
         </CardWrapper>
       </motion.div>
@@ -87,6 +83,9 @@ const CardBackground = styled.div<{ isvisible?: boolean; darkmode?: boolean }>`
   overflow: auto;
   backdrop-filter: blur(8px);
   ${({ darkmode }) => darkmode && "background-color: rgba(10, 12, 14, 0.7);"}
+  @media (max-width: 600px) {
+    padding: 16px;
+  }
 `;
 
 const CardWrapper = styled.div`
@@ -99,7 +98,6 @@ const CardWrapper = styled.div`
 const Card = styled.div<{ isvisible?: boolean; darkmode?: boolean }>`
   background: rgba(225, 225, 225, 0.85);
   width: 100%;
-  max-height: calc(100svh - 80px);
   overflow: hidden; // Changed from auto to hidden
   z-index: 11;
   font-weight: 400;
@@ -142,20 +140,24 @@ const CardContent = styled.div`
   &::-webkit-scrollbar {
     width: 8px;
   }
-  
+
   &::-webkit-scrollbar-track {
     background: transparent;
     border-radius: 20px;
   }
-  
+
   &::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.3);
     border-radius: 20px;
   }
-  
+
   /* Firefox */
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+
+  @media (max-width: 600px) {
+    max-height: calc(100svh - 32px);
+  }
 `;
 
 const CloseButton = styled.div<{ darkmode?: boolean }>`
@@ -180,7 +182,8 @@ const CloseButton = styled.div<{ darkmode?: boolean }>`
   outline: 1px solid rgba(0, 0, 0, 0.1);
   &:hover {
     cursor: pointer;
-    background: ${({ darkmode }) => darkmode ? 'rgba(28, 31, 37, 1.0)' : 'rgba(225, 225, 225, 1.0)'};
+    background: ${({ darkmode }) =>
+      darkmode ? "rgba(28, 31, 37, 1.0)" : "rgba(225, 225, 225, 1.0)"};
     > ${StyledFontAwesomeIcon} {
       opacity: 0.8;
     }
