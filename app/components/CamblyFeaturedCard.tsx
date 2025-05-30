@@ -86,15 +86,17 @@ const CamblyFeaturedCard: React.FC<CamblyCardProps> = ({
       </CardHeader>
       <Row spaceBetween>
         <MotionWrapper fullWidth>
+          <Section noPadding>
+            <VideoWithPlaceholder src={video1Src} />
+          </Section>
+        </MotionWrapper>
+        </Row>
+        <Row>
+        <MotionWrapper fullWidth>
           <QuoteType>
             I built high-converting web & mobile user flows for a language
             tutoring platform.
           </QuoteType>
-        </MotionWrapper>
-        <MotionWrapper fullWidth>
-          <Section noPadding>
-            <VideoWithPlaceholder src={video1Src} />
-          </Section>
         </MotionWrapper>
       </Row>
       <Row extraPadding spaceBetween>
