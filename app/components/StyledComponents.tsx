@@ -318,7 +318,7 @@ export const VideoLoadingOverlay = styled.div<{ isLoading: boolean }>`
   left: 0;
   width: 100%;
   height: 100%;
-  background: #f0f0f0;
+  background: rgba(255, 255, 255, 0.1);
   display: ${(props) => (props.isLoading ? "flex" : "none")};
   align-items: center;
   justify-content: center;

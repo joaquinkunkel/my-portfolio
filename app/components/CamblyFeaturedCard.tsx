@@ -84,11 +84,9 @@ const CamblyFeaturedCard: React.FC<CamblyCardProps> = ({
           </Weblink>
         </Row>
       </CardHeader>
-      <Row spaceBetween>
+      <Row>
         <MotionWrapper fullWidth>
-          <Section noPadding>
-            <VideoWithPlaceholder src={video1Src} />
-          </Section>
+          <VideoWithPlaceholder src={video1Src} />
         </MotionWrapper>
         </Row>
         <Row>
@@ -102,9 +100,9 @@ const CamblyFeaturedCard: React.FC<CamblyCardProps> = ({
       <Row extraPadding spaceBetween>
         <MotionWrapper fullWidth>
           <Section noPadding>
-            <GIFWithPlaceholder
+            <VideoWithPlaceholder
               src={
-                "https://framerusercontent.com/images/4nDQJ6vKdXZwtOrOgLUxv3H4ew.gif"
+                "/img/cambly_loading.mp4"
               }
             />
           </Section>
