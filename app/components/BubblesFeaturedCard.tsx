@@ -11,26 +11,20 @@ import {
   Weblink,
   FeaturedHeading,
   Caption,
-  mapUrl,
-  Map,
-  MapContainer,
-  svgGraph,
   BadgeCard,
   ProductHuntBadge,
   QuoteType,
-  HighlightSpan,
   Section,
   GridList,
-  StyledGraph,
   CardHeader,
-  VimeoContainer,
-  VimeoIframe,
 } from "./StyledComponents"; // Ensure to import all the necessary styles and components
 import VideoWithPlaceholder from "./VideoWithPlaceholder";
 import CVListItem from "./CVListItem";
 import MotionWrapper from "./MotionWrapper";
 import VimeoPlayer from "./VimeoPlayer";
 
+const video0Src =
+  "https://framerusercontent.com/assets/9pblVpezInUsm3k7hitYccREWE.mp4";
 const video1Src =
   "https://cdn.prod.website-files.com/63cc43d53b100d36f4967cc3/63d2f441daf96d163e51ee8b_Powerful%20(large)-transcode.mp4";
 const video2Src =
@@ -61,7 +55,7 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
         <Row noWrap>
           <div>
             <FeaturedHeading>Bubbles</FeaturedHeading>
-            <Caption>UX & Front-end (Founding Team) • 2021 - 2024</Caption>
+            <Caption>UX Engineer (Founding Team) • 2021 - 2024</Caption>
           </div>
           <Weblink
             href="https://usebubbles.com"
@@ -72,52 +66,64 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
           </Weblink>
         </Row>
       </CardHeader>
-      <Row noPadding spaceBetween>
+      <Row spaceBetween>
+        <MotionWrapper fullWidth>
+          <VideoWithPlaceholder src={video0Src} />
+        </MotionWrapper>
+      </Row>
+      <Row spaceBetween>
         <MotionWrapper fullWidth>
           <QuoteType>
-            At Bubbles, we built collaboration tools to make teams confident
-            with how they use their time.
+            Bubbles is a set of async workspace tools to help teams feel confident about
+            their use of time. Bubbles lets you cut down on unnecessary meetings and stop thinking: "...this call could have been an email."
           </QuoteType>
         </MotionWrapper>
+      </Row>
+      <Row spaceBetween extraPadding>
         <MotionWrapper fullWidth>
           <Section noPadding>
             <VideoWithPlaceholder src={video3Src} />
           </Section>
         </MotionWrapper>
-      </Row>
-      <Row extraPadding spaceBetween>
         <MotionWrapper fullWidth>
-          <Section noPadding>
-            <VideoWithPlaceholder src={video1Src} />
-          </Section>
+          <QuoteType>
+            Our main user personas include management, marketers, and designers.
+          </QuoteType>
         </MotionWrapper>
+      </Row>
+      <Row spaceBetween extraPadding>
         <MotionWrapper fullWidth>
           <QuoteType>
             Bubbles started out as a video-commenting tool for time-based
             feedback...
           </QuoteType>
         </MotionWrapper>
-      </Row>
-      <Row extraPadding spaceBetween>
-        <MotionWrapper fullWidth>
-          <QuoteType>...helpful for any type of visual media.</QuoteType>
-        </MotionWrapper>
         <MotionWrapper fullWidth>
           <Section noPadding>
-            <VideoWithPlaceholder src={video4Src} />
+            <VideoWithPlaceholder src={video1Src} />
           </Section>
         </MotionWrapper>
       </Row>
-      <Row extraPadding spaceBetween>
+      <Row spaceBetween extraPadding>
         <MotionWrapper fullWidth>
           <Section noPadding>
             <VideoWithPlaceholder src={video2Src} />
           </Section>
         </MotionWrapper>
         <MotionWrapper fullWidth>
+          <QuoteType>...helpful for any type of visual media.</QuoteType>
+        </MotionWrapper>
+      </Row>
+      <Row spaceBetween extraPadding>
+        <MotionWrapper fullWidth>
           <QuoteType>
             I made these motion graphics here for our marketing website.
           </QuoteType>
+        </MotionWrapper>
+        <MotionWrapper fullWidth>
+          <Section noPadding>
+            <VideoWithPlaceholder src={video4Src} />
+          </Section>
         </MotionWrapper>
       </Row>
       <Row extraPadding>

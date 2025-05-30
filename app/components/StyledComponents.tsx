@@ -36,7 +36,7 @@ export const ContactLink = styled.a<{ darkmode: boolean; isMobile: boolean }>`
   top: ${(props) => (props.isMobile ? "20px" : "75px")};
   right: ${(props) => (props.isMobile ? "20px" : "60px")};
   padding: 2px 10px;
-  background: ${(props) => (props.darkmode ? "white" : "#383842")};
+  background: ${(props) => (props.darkmode ? "white" : "#303a49")};
   color: ${(props) => (props.darkmode ? "#383842" : "#eeeeee")};
   border-radius: 20px;
   font-family:
@@ -53,6 +53,7 @@ export const GitHubLink = styled.a<{ isMobile: boolean }>`
   z-index: 10;
   bottom: ${({ isMobile }) => (isMobile ? "40px" : "75px")};
   right: ${({ isMobile }) => (isMobile ? "20px" : "60px")};
+  font-size: 14px;
   font-family:
     Radio Grotesk,
     sans-serif,
@@ -77,7 +78,7 @@ export const ProductHuntBadge = styled.img`
     filter: none;
   }
 `;
-export const QuoteType = styled.p`
+export const QuoteType = styled.p<{ larger?: boolean }>`
   ::first-letter {
     font-size: 250%;
     color: green; // Customize as you like
@@ -86,6 +87,13 @@ export const QuoteType = styled.p`
     margin-right: 0.1em; // Adjust spacing
     line-height: 1; // Adjust line height to align properly
   }
+  line-height: 1.5;
+  ${({ larger }) =>
+    larger &&
+    css`
+      font-size: 1.1em;
+      line-height: 1.3;
+    `}
 `;
 
 export const HighlightSpan = styled.span``;
@@ -124,7 +132,7 @@ export const Row = styled.div<{
     ${({ noWrap }) => noWrap && "flex-direction: row;"}
   }
   ${({ noPadding }) => noPadding && "padding: 0; margin: 0;"}
-  ${({ extraPadding }) => extraPadding && "padding: 56px 0 0; margin: 0;"}
+  ${({ extraPadding }) => extraPadding && "padding: 42px 0 0; margin: 0;"}
   ${({ spaceBetween }) =>
     spaceBetween && "gap: space-between; align-items: center;"}
 `;
@@ -280,6 +288,19 @@ export const StyledVideo = styled.video<{ isReady?: boolean }>`
   min-height: 100px;
   border-radius: 8px;
   outline: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: ${featuredBoxShadow};
+  @media (max-width: 600px) {
+    max-width: 100%;
+  }
+  display: ${(isReady) => (isReady ? "block" : "none")};
+  transition: all 0.2s;
+`;
+
+export const StyledGIF = styled.img<{ isReady?: boolean }>`
+  min-height: 100px;
+  border-radius: 8px;
+  outline: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: ${featuredBoxShadow};
   @media (max-width: 600px) {
     max-width: 100%;
   }
@@ -310,6 +331,8 @@ export const VimeoContainer = styled.div`
   width: 100%;
   border-radius: 8px;
   overflow: hidden;
+  outline: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: ${featuredBoxShadow};
 `;
 
 export const VimeoIframe = styled.iframe`

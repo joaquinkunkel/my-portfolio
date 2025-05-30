@@ -9,6 +9,7 @@ import {
   Weblink,
   StyledGraph,
   CardHeader,
+  QuoteType,
 } from "./StyledComponents";
 import FeaturedCard from "./FeaturedCard";
 import CVListItem from "./CVListItem";
@@ -66,7 +67,7 @@ const FreelanceFeaturedCard: React.FC<FreelanceCardProps> = ({
             target="_blank"
             rel="noopener noreferrer"
           >
-            See on Behance
+            See more on Behance
           </Weblink>
         </Row>
       </CardHeader>
@@ -78,6 +79,20 @@ const FreelanceFeaturedCard: React.FC<FreelanceCardProps> = ({
               src="https://player.vimeo.com/video/268515791?background=1"
             />
           </Section>
+        </Row>
+      </MotionWrapper>
+      <MotionWrapper>
+        <Row spaceBetween>
+          <Section noPadding>
+            <VimeoPlayer
+              src="https://player.vimeo.com/video/312047168?background=1"
+              title="Coursedog ad"
+            />
+          </Section>
+          <QuoteType>
+            Apart from UX and engineering, I make motion graphics for marketing
+            and UI.
+          </QuoteType>
         </Row>
       </MotionWrapper>
     </FeaturedCard>

@@ -24,6 +24,7 @@ import {
   faWebAwesome,
 } from "@fortawesome/free-solid-svg-icons";
 import VideoWithPlaceholder from "./VideoWithPlaceholder";
+import GIFWithPlaceholder from "./GIFWithPlaceholder";
 
 interface CamblyCardProps {
   onBackgroundClick: () => void;
@@ -55,7 +56,7 @@ const svgGraph = (
 );
 
 const video1Src =
-  "https://framerusercontent.com/assets/tNSXQfInsPLjNNirMDazH7BKRrY.mp4";
+  "https://framerusercontent.com/assets/W8vS7JIV88gxJB3lsilDB6oUKk.mp4";
 
 const CamblyFeaturedCard: React.FC<CamblyCardProps> = ({
   onBackgroundClick,
@@ -72,7 +73,7 @@ const CamblyFeaturedCard: React.FC<CamblyCardProps> = ({
         <Row noWrap>
           <div>
             <FeaturedHeading>Cambly</FeaturedHeading>
-            <Caption>Lead product designer • 2019 - 2021</Caption>
+            <Caption>UX lead and front-end engineer • 2019 - 2021</Caption>
           </div>
           <Weblink
             href="https://cambly.com"
@@ -83,19 +84,39 @@ const CamblyFeaturedCard: React.FC<CamblyCardProps> = ({
           </Weblink>
         </Row>
       </CardHeader>
-            <Row spaceBetween>
-              <MotionWrapper fullWidth>
-                <QuoteType>I built high-converting web & mobile user flows for a language tutoring platform.</QuoteType>
-              </MotionWrapper>
-              <MotionWrapper fullWidth>
-                <Section noPadding>
-                  <VideoWithPlaceholder src={video1Src} />
-                </Section>
-              </MotionWrapper>
-            </Row>
-      <Row>
-        <Section>
-          <MotionWrapper fullWidth>
+      <Row spaceBetween>
+        <MotionWrapper fullWidth>
+          <QuoteType>
+            I built high-converting web & mobile user flows for a language
+            tutoring platform.
+          </QuoteType>
+        </MotionWrapper>
+        <MotionWrapper fullWidth>
+          <Section noPadding>
+            <VideoWithPlaceholder src={video1Src} />
+          </Section>
+        </MotionWrapper>
+      </Row>
+      <Row extraPadding spaceBetween>
+        <MotionWrapper fullWidth>
+          <Section noPadding>
+            <GIFWithPlaceholder
+              src={
+                "https://framerusercontent.com/images/4nDQJ6vKdXZwtOrOgLUxv3H4ew.gif"
+              }
+            />
+          </Section>
+        </MotionWrapper>
+        <MotionWrapper fullWidth>
+          <QuoteType>
+            Including prototypes, React components, brand illustrations, and
+            animated content.
+          </QuoteType>
+        </MotionWrapper>
+      </Row>
+      <Row extraPadding>
+        <MotionWrapper fullWidth>
+          <Section>
             <MapContainer>
               <Map src={mapUrl} alt="San Francisco Map" />
             </MapContainer>
@@ -104,15 +125,15 @@ const CamblyFeaturedCard: React.FC<CamblyCardProps> = ({
               <br />
               <Caption>Hybrid team</Caption>
             </div>
-          </MotionWrapper>
-        </Section>
-        <Section>
-          <MotionWrapper fullWidth>
+          </Section>
+        </MotionWrapper>
+        <MotionWrapper fullWidth>
+          <Section>
             <StyledGraph>{svgGraph}</StyledGraph>
             <div>Solo UX designer</div>
             <Caption>Product team of 12 • Company of 100</Caption>
-          </MotionWrapper>
-        </Section>
+          </Section>
+        </MotionWrapper>
       </Row>
       <MotionWrapper>
         <Row>

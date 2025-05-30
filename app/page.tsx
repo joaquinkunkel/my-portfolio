@@ -100,7 +100,7 @@ function Home() {
           href="https://github.com/joaquinkunkel/my-portfolio"
           target="_blank"
         >
-          See this page on GitHub
+          Built with Next.js and ReactThreeFiber • <b>See code on GitHub</b>
         </GitHubLink>
       </LinksContainer>
       <Canvas shadows>

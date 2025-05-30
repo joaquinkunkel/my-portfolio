@@ -275,7 +275,7 @@ const LivingRoom = ({
               color={darkmode ? '#aaaaaa' : "#383842"}
               font="/fonts/SF-Pro-Text-Regular.otf"
             >
-              UX & Eng (founding team)
+              UX Engineer (founding team)
             </Text>
             {!isMobile && (
               <Text
@@ -437,7 +437,7 @@ const LivingRoom = ({
               color={darkmode ? '#aaaaaa' : "#383842"}
               font="/fonts/SF-Pro-Text-Regular.otf"
             >
-              Lead product designer
+              UX lead and front-end engineer
             </Text>
             {!isMobile && (
               <Text
