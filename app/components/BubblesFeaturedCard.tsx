@@ -75,7 +75,7 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
         <MotionWrapper fullWidth>
           <QuoteType>
             Bubbles is a set of async workspace tools to help teams feel confident about
-            their use of time. Bubbles lets you cut down on unnecessary meetings and stop thinking: "...this call could have been an email."
+            their use of time. Bubbles lets you cut down on unnecessary meetings and stop thinking: 😒 ...this call could have been an email.
           </QuoteType>
         </MotionWrapper>
       </Row>
