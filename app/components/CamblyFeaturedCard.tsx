@@ -69,20 +69,22 @@ const CamblyFeaturedCard: React.FC<CamblyCardProps> = ({
       isvisible={isvisible}
     >
       <CardHeader darkmode={darkmode}>
-        <Row noWrap>
-          <div>
-            <FeaturedHeading>Cambly</FeaturedHeading>
-            <Caption>UX lead and front-end • 2019 - 2021</Caption>
-          </div>
-          <Weblink
-            href="https://cambly.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            darkmode={darkmode}
-          >
-            Visit website
-          </Weblink>
-        </Row>
+        <MotionWrapper>
+          <Row noWrap>
+            <div>
+              <FeaturedHeading>Cambly</FeaturedHeading>
+              <Caption>UX lead and front-end • 2019 - 2021</Caption>
+            </div>
+            <Weblink
+              href="https://cambly.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              darkmode={darkmode}
+            >
+              Visit website
+            </Weblink>
+          </Row>
+        </MotionWrapper>
       </CardHeader>
       <Row>
         <MotionWrapper fullWidth>

@@ -67,7 +67,7 @@ export const GitHubLink = styled.a<{ isMobile: boolean }>`
 // New Badge Card Styling
 export const BadgeCard = styled.div`
   padding: 4px 16px 24px;
-  border-radius: 12px;
+  border-radius: 16px;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -105,7 +105,7 @@ export const HighlightSpan = styled.span``;
 export const CardHeader = styled.div<{ darkmode?: boolean }>`
   padding: 16px 16px 20px;
   margin: 4px -16px 12px;
-  border-radius: 16px;
+  border-radius: 20px;
   position: sticky;
   top: 4px;
   z-index: 100;
@@ -155,7 +155,7 @@ export const FeaturedHeading = styled.h1`
     Radio Grotesk,
     Cooper Black,
     Radio Grotesk;
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 700;
   margin-bottom: 8px;
 `;
@@ -194,7 +194,7 @@ export const Section = styled.div<{ noPadding?: boolean }>`
   background: rgba(255, 255, 255, 0.4);
   padding: ${({ noPadding }) => (noPadding ? "0" : "14px 16px 14px")};
   font-size: 14px;
-  border-radius: 10px;
+  border-radius: 14px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -225,7 +225,7 @@ export const StyledGraph = styled.div`
     rgba(245, 243, 236, 0.85),
     /* soft peach */ rgba(246, 245, 221, 0.75) /* light mint green */
   );
-  border-radius: 8px;
+  border-radius: 12px;
   width: 100%;
   display: flex;
   align-items: baseline;
@@ -298,7 +298,7 @@ export const VideoContainer = styled.div<{ isLoading?: boolean }>`
   transition: height 0.3s ease-out;
   min-height: 120px;
   position: relative;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   outline: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: ${featuredBoxShadow};
@@ -331,7 +331,7 @@ export const VideoLoadingOverlay = styled.div<{ isLoading: boolean }>`
   display: ${(props) => (props.isLoading ? "flex" : "none")};
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  border-radius: 12px;
   transition: opacity 0.3s ease-out;
 `;
 

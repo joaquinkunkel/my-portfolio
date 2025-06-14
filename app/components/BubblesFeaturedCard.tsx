@@ -51,21 +51,24 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
       darkmode={darkmode}
     >
       <CardHeader darkmode={darkmode}>
-        <Row noWrap>
-          <div>
-            <FeaturedHeading>Bubbles</FeaturedHeading>
-            <Caption>UX Engineer (Founding) • 2021 - 2024</Caption>
-          </div>
-          <Weblink
-            href="https://usebubbles.com"
-            target="_blank"
-            darkmode={darkmode}
-            rel="noopener noreferrer"
-          >
-            Visit website
-          </Weblink>
-        </Row>
+        <MotionWrapper>
+          <Row noWrap>
+            <div>
+              <FeaturedHeading>Bubbles</FeaturedHeading>
+              <Caption>UX Engineer (Founding) • 2021 - 2024</Caption>
+            </div>
+            <Weblink
+              href="https://usebubbles.com"
+              target="_blank"
+              darkmode={darkmode}
+              rel="noopener noreferrer"
+            >
+              Visit website
+            </Weblink>
+          </Row>
+        </MotionWrapper>
       </CardHeader>
+
       <Row spaceBetween>
         <MotionWrapper fullWidth>
           <VideoWithPlaceholder src={video0Src} />
@@ -74,8 +77,10 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
       <Row spaceBetween>
         <MotionWrapper fullWidth>
           <QuoteType>
-            Bubbles is a set of async workspace tools to help teams feel confident about
-            their use of time. Bubbles lets you cut down on unnecessary meetings and stop thinking: 😒 ...this call could have been an email.
+            Bubbles is a set of async workspace tools to help teams feel
+            confident about their use of time. Bubbles lets you cut down on
+            unnecessary meetings and stop thinking: 😒 ...this call could have
+            been an email.
           </QuoteType>
         </MotionWrapper>
       </Row>

@@ -30,20 +30,22 @@ const FreelanceFeaturedCard: React.FC<FreelanceCardProps> = ({
       isvisible={isvisible}
     >
       <CardHeader darkmode={darkmode}>
-        <Row noWrap>
-          <div>
-            <FeaturedHeading>Freelance work</FeaturedHeading>
-            <Caption>2011 - now</Caption>
-          </div>
-          <Weblink
-            href="https://behance.net/joaquinkunkel"
-            target="_blank"
-            rel="noopener noreferrer"
-                        darkmode={darkmode}
-          >
-            See more on Behance
-          </Weblink>
-        </Row>
+        <MotionWrapper>
+          <Row noWrap>
+            <div>
+              <FeaturedHeading>Freelance work</FeaturedHeading>
+              <Caption>2011 - now</Caption>
+            </div>
+            <Weblink
+              href="https://behance.net/joaquinkunkel"
+              target="_blank"
+              rel="noopener noreferrer"
+              darkmode={darkmode}
+            >
+              See more on Behance
+            </Weblink>
+          </Row>
+        </MotionWrapper>
       </CardHeader>
       <MotionWrapper>
         <Row spaceBetween>

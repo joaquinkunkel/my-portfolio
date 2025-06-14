@@ -101,7 +101,7 @@ const Card = styled.div<{ isvisible?: boolean; darkmode?: boolean }>`
   overflow: hidden; // Changed from auto to hidden
   z-index: 11;
   font-weight: 400;
-  border-radius: 20px;
+  border-radius: 24px;
   box-shadow:
     0px 28px 60px -28px rgba(0, 0, 0, 0.6),
     inset 0px 2px 2px -1px rgba(255, 255, 255, 0.6);
@@ -143,12 +143,12 @@ const CardContent = styled.div`
 
   &::-webkit-scrollbar-track {
     background: transparent;
-    border-radius: 20px;
+    border-radius: 24px;
   }
 
   &::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.3);
-    border-radius: 20px;
+    border-radius: 24px;
   }
 
   /* Firefox */
