@@ -140,6 +140,9 @@ const LivingRoom = ({
     if (sphereRef.current?.uniforms?.utime) {
       sphereRef.current.uniforms.uTime.value = state.clock.getElapsedTime();
     }
+    if (gradientShaderRef.current?.uniforms?.uTime) {
+      gradientShaderRef.current.uniforms.uTime.value = state.clock.getElapsedTime();
+    }
   });
   
   return (
@@ -262,7 +265,7 @@ const LivingRoom = ({
         {(hoveredObject === "lamp" || isMobile) && (
           <Billboard>
             <Text
-              position={[0, isMobile ? 3.5 : 3.75, 0]}
+              position={[0, isMobile ? 3.25 : 3.5, 0]}
               fontSize={isMobile ? 0.6 : 0.4}
               color={darkmode ? '#ffffff' : "#383842"}
               font="/fonts/RadioGrotesk-Bold.otf"
@@ -270,7 +273,7 @@ const LivingRoom = ({
               Bubbles
             </Text>
             <Text
-              position={[0, isMobile ? 2.9 : 3.35, 0]}
+              position={[0, isMobile ? 2.65 : 3.1, 0]}
               fontSize={isMobile ? 0.35 : 0.24}
               color={darkmode ? '#aaaaaa' : "#383842"}
               font="/fonts/SF-Pro-Text-Regular.otf"
@@ -279,7 +282,7 @@ const LivingRoom = ({
             </Text>
             {!isMobile && (
               <Text
-                position={[0, 3, 0]}
+                position={[0, 2.75, 0]}
                 fontSize={0.24}
                 color={"#777777"}
                 font="/fonts/SF-Pro-Text-Regular.otf"
@@ -290,7 +293,7 @@ const LivingRoom = ({
           </Billboard>
         )}
         <FloatingGroup active>
-          <mesh position={[0, 1.75, 0]}>
+          <mesh position={[0, 1.45, 0]}>
             <sphereGeometry args={[0.75, 32, 32]} />
             <meshStandardMaterial
               color="white"
@@ -303,14 +306,14 @@ const LivingRoom = ({
             <primitive object={gradientShaderRef.current || new THREE.ShaderMaterial} ref={sphereRef} />
           </mesh>
 
-          <mesh position={[0, 1.75, 0]}>
+          <mesh position={[0, 1.45, 0]}>
             <sphereGeometry args={[0.76, 33, 33]} />
             <meshStandardMaterial
               color="gray"
               metalness={1}
               roughness={0.3}
               transparent
-              opacity={0.4}
+              opacity={0.1}
               envMapIntensity={1}
             />
           </mesh>
@@ -373,17 +376,17 @@ const LivingRoom = ({
           </Billboard>
         )}
         <RoundedBox
-          args={[2, 0.6, 2]}
-          radius={0.1}
+          args={[2.3, 0.4, 2]}
+          radius={0.2}
           smoothness={10}
           position={[0, 0.55, 0.1]}
         >
-          <meshStandardMaterial color="white" metalness={0.4} roughness={0.3} />
+          <meshStandardMaterial color="#b5a796" metalness={0.3} roughness={0.4} />
         </RoundedBox>
-        <FloatingGroup active={hoveredObject === "tv"}>
-          <GlassyTVScreen />
-          <mesh position={[0, 1.4, 0]}>
-            <boxGeometry args={[1.5, 1, 1]} />
+        <FloatingGroup active={false}>
+          <GlassyTVScreen active={hoveredObject === 'tv'} />
+          <mesh position={[0, 1.3, 0.1]}>
+            <boxGeometry args={[1.5, 1.6, 1]} />
             <meshStandardMaterial
               color="#333333"
               metalness={0.6}
@@ -391,17 +394,48 @@ const LivingRoom = ({
             />
           </mesh>
 
-          <mesh position={[0, 1.4, 0.51]} castShadow>
-            <planeGeometry args={[1.3, 0.8]} />
-            <primitive object={tvScreenShaderMaterial} ref={tvScreenRef} />
+          <mesh position={[0.55, 0.92, 0.15]}>
+            <boxGeometry args={[0.15, 0.15, 1]} />
+            <meshStandardMaterial
+              color="#fa6600"
+              metalness={0.6}
+              roughness={0.3}
+            />
+          </mesh>
+          <mesh position={[0.35, 0.92, 0.15]}>
+            <boxGeometry args={[0.17, 0.15, 1]} />
+            <meshStandardMaterial
+              color="#555555"
+              metalness={0.6}
+              roughness={0.3}
+            />
+          </mesh>
+          <mesh position={[0.15, 0.92, 0.15]}>
+            <boxGeometry args={[0.17, 0.15, 1]} />
+            <meshStandardMaterial
+              color="#555555"
+              metalness={0.6}
+              roughness={0.3}
+            />
+          </mesh>
+          <mesh position={[-0.05, 0.92, 0.15]}>
+            <boxGeometry args={[0.17, 0.15, 1]} />
+            <meshStandardMaterial
+              color="#555555"
+              metalness={0.6}
+              roughness={0.3}
+            />
+          </mesh>
+          <mesh position={[0, 1.55, 0.61]} castShadow>
+            <planeGeometry args={[1.2, 0.9]} />
+            {hoveredObject === "tv" && <primitive object={tvScreenShaderMaterial} ref={tvScreenRef} />}
           </mesh>
         </FloatingGroup>
-
         <pointLight
-          position={[0.2, 1, 1.2]}
-          intensity={hoveredObject === "tv" ? 0.4 : 0.1}
-          distance={8}
-          color="pink"
+          position={[-1.2, 1.8, 1.0]}
+          intensity={hoveredObject === "tv" ? 1.0 : 0.2}
+          distance={100}
+          color="#444400"
           castShadow
         />
       </animated.mesh>

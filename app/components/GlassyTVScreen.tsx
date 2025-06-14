@@ -1,7 +1,11 @@
 import React, { useMemo } from "react";
 import * as THREE from "three";
 
-function GlassyTVScreen() {
+interface IGlassyTVScreenProps {
+  active: boolean
+}
+
+const GlassyTVScreen: React.FC<IGlassyTVScreenProps> = ({ active }) => {
     const envMap = useMemo(() => {
       // Create a basic color-based environment map
       const size = 512; // Size of the texture
@@ -39,14 +43,14 @@ function GlassyTVScreen() {
     }
   
     return (
-      <mesh position={[0, 1.41, 0.52]} castShadow>
-        <planeGeometry args={[1.3, 0.8]} />
+      <mesh position={[0, 1.55, 0.62]} castShadow>
+        <planeGeometry args={[1.2, 0.9]} />
         <meshPhysicalMaterial
-          color="#ffffff"
-          metalness={0.6}
+          color="#535333"
+          metalness={0.9}
           roughness={0}
           transparent={true}
-          opacity={0.1}
+          opacity={active ? 0.1 : 0.7}
           reflectivity={1}
           clearcoat={1}
           clearcoatRoughness={0.05}

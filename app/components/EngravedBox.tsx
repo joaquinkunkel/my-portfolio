@@ -49,12 +49,12 @@ function EngravedBox({
     <group>
       {/* The box */}
       <RoundedBox
-        args={[1.8, 0.8, 1.8]}
+        args={[1.8, 0.4, 1.8]}
         radius={0.2}
         smoothness={10}
         position={[0, 0.35, 0]}
       >
-        <meshStandardMaterial color="#e66578" metalness={0.3} roughness={0.4} />
+        <meshStandardMaterial color="#6a60ab" metalness={0.3} roughness={0.4} />
       </RoundedBox>
 
       {/* Engraved text */}
