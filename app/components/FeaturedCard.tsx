@@ -104,7 +104,7 @@ const Card = styled.div<{ isvisible?: boolean; darkmode?: boolean }>`
   border-radius: 24px;
   box-shadow:
     0px 28px 60px -28px rgba(0, 0, 0, 0.6),
-    inset 0px 2px 2px -1px rgba(255, 255, 255, 0.6);
+    inset 0px 1px 0.5px rgba(255, 255, 255, 0.6);
   outline: 1px solid rgba(0, 0, 0, 0.1);
   padding: 0; // Remove padding here
   font-family: "Radio Grotesk", "Supply", sans-serif;
@@ -117,7 +117,7 @@ const Card = styled.div<{ isvisible?: boolean; darkmode?: boolean }>`
     css`
       background: rgba(35, 38, 44, 0.9);
       box-shadow: 0px 28px 60px -28px rgba(0, 0, 0, 0.6);
-      outline: 1.2px solid rgba(255, 255, 255, 0.08);
+      outline: 1.2px solid rgba(255, 255, 255, 0.1);
       color: rgba(255, 255, 255, 0.8);
       ${Section} {
         background: rgba(255, 255, 255, 0.03);
@@ -163,7 +163,7 @@ const CardContent = styled.div`
 const CloseButton = styled.div<{ darkmode?: boolean }>`
   position: absolute;
   top: 12px;
-  left: 12px;
+  left: 14px;
   z-index: 100;
   background: red;
   height: 20px;

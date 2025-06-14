@@ -103,20 +103,20 @@ export const QuoteType = styled.p<{ larger?: boolean }>`
 export const HighlightSpan = styled.span``;
 
 export const CardHeader = styled.div<{ darkmode?: boolean }>`
-  padding: 16px 16px 20px;
-  margin: 4px -16px 12px;
-  border-radius: 20px;
+  padding: 18px 16px 20px;
+  margin: 6px -14px 12px;
+  border-radius: 18px;
   position: sticky;
-  top: 4px;
+  top: 6px;
   z-index: 100;
   backdrop-filter: blur(8px);
   background: ${({ darkmode }) =>
     darkmode ? "rgba(45, 48, 54, 0.9)" : "rgba(225, 225, 225, 0.9)"};
   outline: ${({ darkmode }) =>
-    darkmode ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid rgba(0, 0, 0, 0.05)"};
-  box-shadow: ${({ darkmode }) =>
-    darkmode ? "0px -24px 16px rgba(35, 38, 44, 0.9)"
-      : "0px -24px 16px rgba(225, 225, 225, 0.9)"}, ${mutedBoxShadow};
+    darkmode ? "0px solid rgba(255, 255, 255, 0.1)" : "1px solid rgba(0, 0, 0, 0.05)"};
+  box-shadow: ${featuredBoxShadow}, ${({ darkmode }) =>
+    darkmode ? "0px -24px 16px rgba(35, 38, 44, 0.9), inset 0px 1px 0.5px rgba(255, 255, 255, 0.1), inset 0px -1px 0.5px rgba(0, 0, 0, 0.3)"
+      : "0px -24px 16px rgba(225, 225, 225, 0.9), inset 0px 1px 0.5px rgba(255, 255, 255, 0.6), inset 0px -1px 0.5px rgba(0, 0, 0, 0.1)"};
 `;
 
 export const Row = styled.div<{

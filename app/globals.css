@@ -62,12 +62,13 @@ body {
 }
 
 a {
-  opacity: 0.8;
+  opacity: 1;
+  transition: 0.2s ease-out all;
 }
 
 a:hover {
   /* cursor: none; */
-  opacity: 1;
+  opacity: 0.75;
 }
 
 li {
