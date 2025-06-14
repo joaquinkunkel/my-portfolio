@@ -4,6 +4,8 @@ import Lightbulb from "../../public/icons/bulb.svg";
 
 export const featuredBoxShadow =
   "0 6px 10px rgba(0, 0, 0, 0.06), 0 1.5px 4px rgba(0, 0, 0, 0.05)";
+export const mutedBoxShadow =
+"0 0px 10px rgba(0, 0, 0, 0.06), 0 1.5px 4px rgba(0, 0, 0, 0.05)";
 
 export const PageContainer = styled.div<{ darkmode: boolean }>`
   height: 100svh;
@@ -37,8 +39,9 @@ export const ContactLink = styled.a<{ darkmode?: boolean; isMobile?: boolean }>`
   right: ${(props) => (props.isMobile ? "20px" : "60px")};
   padding: 2px 10px;
   background: ${(props) => (props.darkmode ? "white" : "#303a49")};
-  color: ${(props) => (props.darkmode ? "#383842" : "#eeeeee")};
+  color: ${(props) => (props.darkmode ? "#383842" : "#f4f4f4")};
   border-radius: 20px;
+  cursor: pointer;
   font-family:
     Cooper Black,
     Supply,
@@ -100,15 +103,20 @@ export const QuoteType = styled.p<{ larger?: boolean }>`
 export const HighlightSpan = styled.span``;
 
 export const CardHeader = styled.div<{ darkmode?: boolean }>`
-  padding: 8px 24px 20px;
-  margin: 0 -20px 16px;
+  padding: 16px 16px 20px;
+  margin: 4px -16px 12px;
+  border-radius: 16px;
   position: sticky;
-  top: 0;
+  top: 4px;
   z-index: 100;
   backdrop-filter: blur(8px);
   background: ${({ darkmode }) =>
-    darkmode ? "rgba(35, 38, 44, 0.9)" : "rgba(225, 225, 225, 0.9)"};
-  outline: 1px solid rgba(0, 0, 0, 0.05);
+    darkmode ? "rgba(45, 48, 54, 0.9)" : "rgba(225, 225, 225, 0.9)"};
+  outline: ${({ darkmode }) =>
+    darkmode ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid rgba(0, 0, 0, 0.05)"};
+  box-shadow: ${({ darkmode }) =>
+    darkmode ? "0px -24px 16px rgba(35, 38, 44, 0.9)"
+      : "0px -24px 16px rgba(225, 225, 225, 0.9)"}, ${mutedBoxShadow};
 `;
 
 export const Row = styled.div<{
@@ -149,6 +157,7 @@ export const FeaturedHeading = styled.h1`
     Radio Grotesk;
   font-size: 28px;
   font-weight: 700;
+  margin-bottom: 8px;
 `;
 
 export const mapUrl = `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/-122.4194,37.7749,12/600x300?access_token=pk.eyJ1Ijoiam9hcXVpbmt1bmtlbCIsImEiOiJjbTBraHNzajMxN2IwMm1xMnA1NHBqMDY3In0.QoxI3AJs0BryBFMJXh_jXQ`;
@@ -249,14 +258,20 @@ export const LinksContainer = styled.div<{
   opacity: ${({ isvisible }) => (isvisible ? "1" : "0")};
 `;
 
-export const Weblink = styled.a`
-  background: #1c1e24;
+export const Weblink = styled.a<{ darkmode ?: boolean }>`
+  background: rgba(200, 200, 200, 0.85);
+  color: rgba(20, 23, 29, 0.9);
+  position: relative;
+  top: -28px;
+  right: -8px;
   border-radius: 20px;
+    ${({ darkmode }) =>
+    darkmode &&
+    css`
+      background: rgba(55, 58, 64, 0.8);
+      color: rgba(255, 255, 255, 1);
+    `};
   padding: 4px 10px;
-  box-shadow:
-    0px 2px 2px -2px rgba(255, 255, 255, 0.1),
-    inset 0px 1px 5px -2px rgba(0, 0, 0, 0.6);
-  color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
   font-weight: 400;
   font-family:
@@ -264,16 +279,16 @@ export const Weblink = styled.a`
     Cooper Black,
     sans-serif;
   font-size: 0.8em;
-  transition: all 0.2s ease-out;
+  transition: all 0.1s ease-out;
   opacity: 1;
   &:hover {
-    background: #171e29;
+    background: rgba(170, 170, 170, 0.9);
   }
 `;
 
 export const Caption = styled.p`
   font-size: 0.85em;
-  opacity: 0.75;
+  opacity: 0.9;
   margin-top: 4px;
   margin-bottom: -4px;
   grid-column: 1 / -1;
@@ -340,7 +355,9 @@ export const LoadingSpinner = styled.div`
 
 export const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   margin-top: 4px;
-  opacity: 0.65;
+  opacity: 0.8;
+  width: 18px;
+  height: 18px;
 `;
 
 export const StyledGIF = styled.img<{ isReady?: boolean }>`

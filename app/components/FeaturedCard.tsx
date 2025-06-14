@@ -4,7 +4,7 @@ import { Section, StyledFontAwesomeIcon, Weblink } from "./StyledComponents";
 import { useCallback } from "react";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 
-export type FeaturedCard = "bubbles" | "cambly" | "freelance" | null;
+export type FeaturedCard = "bubbles" | "cambly" | "freelance" | "contact" | null;
 
 export const cardVariants = {
   hidden: { opacity: 0 },
@@ -96,7 +96,7 @@ const CardWrapper = styled.div`
 `;
 
 const Card = styled.div<{ isvisible?: boolean; darkmode?: boolean }>`
-  background: rgba(225, 225, 225, 0.85);
+  background: rgba(225, 225, 225, 0.7);
   width: 100%;
   overflow: hidden; // Changed from auto to hidden
   z-index: 11;
@@ -108,9 +108,10 @@ const Card = styled.div<{ isvisible?: boolean; darkmode?: boolean }>`
   outline: 1px solid rgba(0, 0, 0, 0.1);
   padding: 0; // Remove padding here
   font-family: "Radio Grotesk", "Supply", sans-serif;
-  color: #373e49;
+  color: #272e39;
   line-height: 130%;
   position: relative;
+  transition: .3s ease-out all;
   ${({ darkmode }) =>
     darkmode &&
     css`
@@ -122,7 +123,6 @@ const Card = styled.div<{ isvisible?: boolean; darkmode?: boolean }>`
         background: rgba(255, 255, 255, 0.03);
       }
       ${Weblink} {
-        background: #202330;
         &:hover {
           background: #404350;
         }
@@ -162,28 +162,31 @@ const CardContent = styled.div`
 
 const CloseButton = styled.div<{ darkmode?: boolean }>`
   position: absolute;
-  top: -12px;
-  left: -12px;
+  top: 12px;
+  left: 12px;
   z-index: 100;
   background: red;
-  height: 32px;
-  width: 32px;
+  height: 20px;
+  width: 20px;
   border-radius: 16px;
   display: flex;
   align-items: center;
   padding: 0 0 4px;
-  font-size: 18px;
+  font-size: 12px;
   justify-content: center;
-  background: rgba(225, 225, 225, 0.85);
-  box-shadow:
-    0px 4px 8px 0 rgba(0, 0, 0, 0.12),
-    inset 0px 2px 2px -1px rgba(255, 255, 255, 0.6);
+  transition: 0.1s all;
+  background: rgba(200, 200, 200, 0.85);
   color: rgba(20, 23, 29, 0.9);
-  outline: 1px solid rgba(0, 0, 0, 0.1);
+  > ${StyledFontAwesomeIcon} {
+    width: 14px;
+    height: 14px; 
+    opacity: 0.5;
+  }
   &:hover {
     cursor: pointer;
     background: ${({ darkmode }) =>
-      darkmode ? "rgba(28, 31, 37, 1.0)" : "rgba(225, 225, 225, 1.0)"};
+      darkmode ? "rgba(250, 100, 100, 1.0)" : "rgba(250, 100, 100, 1.0)"};
+      color: rgba(20, 23, 29, 0.9);
     > ${StyledFontAwesomeIcon} {
       opacity: 0.8;
     }
@@ -191,9 +194,8 @@ const CloseButton = styled.div<{ darkmode?: boolean }>`
   ${({ darkmode }) =>
     darkmode &&
     css`
-      background: rgba(35, 38, 44, 0.8);
+      background: rgba(55, 58, 64, 0.8);
       color: rgba(255, 255, 255, 1);
-      box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.12);
     `};
 `;
 

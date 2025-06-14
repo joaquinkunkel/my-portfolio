@@ -79,7 +79,7 @@ const LivingRoom = ({
 
   useEffect(() => {
     if (shouldStartAnimation) {
-      const animationDuration = isMobile ? 3000 : 1800; // Adjust based on your intro animation duration
+      const animationDuration = isMobile ? 2000 : 1000; // Adjust based on your intro animation duration
       const timer = setTimeout(() => {
         setIsAnimationDone(true);
       }, animationDuration);
@@ -95,7 +95,7 @@ const LivingRoom = ({
     },
     to: { position: [-12.47, isMobile ? 7 : 5.28, 9.57] },
     config: {
-      duration: isMobile ? 3000 : 1800,
+      duration: isMobile ? 2000 : 1000,
       easing: (t) => (isMobile ? --t * t * t + 1 : --t * t + 1),
     },
     onRest: () => setTextVisible(true),

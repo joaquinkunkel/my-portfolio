@@ -14,6 +14,7 @@ import { FeaturedCard } from "./components/FeaturedCard";
 import LivingRoom from "./components/LivingRoom";
 import React from "react";
 import FreelanceFeaturedCard from "./components/FreelanceFeaturedCard";
+import ContactFeaturedCard from "./components/ContactFeaturedCard";
 // import DarkEffects from "./components/DarkEffects";
 // import Cursor from "./components/Cursor";
 
@@ -77,6 +78,13 @@ function Home() {
               isvisible={featuredCard === "freelance"}
             />
           )}
+          {featuredCard === "contact" && (
+            <ContactFeaturedCard
+              onBackgroundClick={resetFeaturedCard}
+              darkmode={darkmode}
+              isvisible={featuredCard === "contact"}
+            />
+          )}
         </>
       )}
       <LinksContainer isvisible={isAnimationDone} darkmode={darkmode}>
@@ -90,10 +98,10 @@ function Home() {
         <ContactLink 
           darkmode={darkmode} 
           isMobile={isMobile}
-          href="mailto:joaquinkunkel@gmail.com"
+          onClick={() => setFeaturedCard("contact")}
           target="_blank"
         >
-          Let&apos;s talk!
+          Contact
         </ContactLink>
         <GitHubLink
           isMobile={isMobile}

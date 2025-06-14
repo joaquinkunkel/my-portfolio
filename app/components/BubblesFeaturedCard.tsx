@@ -59,6 +59,7 @@ const BubblesFeaturedCard: React.FC<BubblesCardProps> = ({
           <Weblink
             href="https://usebubbles.com"
             target="_blank"
+            darkmode={darkmode}
             rel="noopener noreferrer"
           >
             Visit website

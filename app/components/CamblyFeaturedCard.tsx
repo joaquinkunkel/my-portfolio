@@ -78,6 +78,7 @@ const CamblyFeaturedCard: React.FC<CamblyCardProps> = ({
             href="https://cambly.com"
             target="_blank"
             rel="noopener noreferrer"
+            darkmode={darkmode}
           >
             Visit website
           </Weblink>
