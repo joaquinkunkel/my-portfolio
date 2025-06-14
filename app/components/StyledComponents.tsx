@@ -284,6 +284,9 @@ export const Weblink = styled.a<{ darkmode ?: boolean }>`
   &:hover {
     background: rgba(170, 170, 170, 0.9);
   }
+  @media screen and (max-width: 600px) {
+    position: static;
+  }
 `;
 
 export const Caption = styled.p`
