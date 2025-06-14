@@ -118,7 +118,7 @@ const Card = styled.div<{ isvisible?: boolean; darkmode?: boolean }>`
       background: rgba(35, 38, 44, 0.9);
       box-shadow: 0px 28px 60px -28px rgba(0, 0, 0, 0.6);
       outline: 1.2px solid rgba(255, 255, 255, 0.08);
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(255, 255, 255, 0.8);
       ${Section} {
         background: rgba(255, 255, 255, 0.03);
       }
