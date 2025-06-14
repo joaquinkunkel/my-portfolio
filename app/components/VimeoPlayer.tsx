@@ -48,7 +48,7 @@ export const VimeoContainer = styled.div<{ squareAspectRatio ?: boolean }>`
   padding: ${({ squareAspectRatio }) => squareAspectRatio ? '100% 0 0 0': '56.25% 0 0 0'};
   position: relative;
   width: 100%;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   outline: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: ${featuredBoxShadow};
