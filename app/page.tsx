@@ -35,7 +35,7 @@ function Home() {
   const isMobile = useIsMobile();
   const [activeProject, setActiveProject] = useState(null);
   const [hoveredProject, setHoveredProject] = useState(null);
-  const [darkmode, setdarkmode] = useState(true);
+  const [darkmode, setdarkmode] = useState(false);
   const controlsRef = useRef<any>(null);
   const [shouldStartAnimation, setShouldStartAnimation] = useState(false);
   const [isAnimationDone, setIsAnimationDone] = useState(false);
